@@ -307,10 +307,16 @@
         /* ---------- PROFIL PEMANDU ---------- */
 
         .pemandu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 24px;
             margin-top: 8px;
+        }
+
+        .pemandu-card {
+            flex: 1 1 calc(33.333% - 16px);
+            max-width: calc(33.333% - 16px);
         }
 
         .pemandu-card {
@@ -444,16 +450,18 @@
         /* ---------- RESPONSIVE: TABLET (<=1024px) ---------- */
 
         @media (max-width: 1024px) {
-            .pemandu-grid {
-                grid-template-columns: 1fr 1fr;
+            .pemandu-card {
+                flex: 1 1 calc(50% - 12px);
+                max-width: calc(50% - 12px);
             }
         }
 
         /* ---------- RESPONSIVE: TABLET KECIL & MOBILE (<=768px) ---------- */
 
         @media (max-width: 768px) {
-            .pemandu-grid {
-                grid-template-columns: 1fr;
+            .pemandu-card {
+                flex: 1 1 100%;
+                max-width: 100%;
             }
 
             .dash-wrap {
@@ -1089,6 +1097,182 @@
                 padding: 22px 20px 24px;
             }
         }
+
+         /* ---------- TOMBOL GALERI DI KARTU USTAD ---------- */
+
+        .pemandu-card-footer {
+            padding: 0 16px 20px;
+        }
+
+        .pemandu-gallery-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--gold-deep);
+            border-radius: var(--radius-md, 12px);
+            background: var(--gold-pale);
+            color: var(--gold-deep);
+            font-family: inherit;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .pemandu-gallery-btn:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            color: var(--ink);
+            border-color: transparent;
+            box-shadow: var(--shadow-gold);
+            transform: translateY(-2px);
+        }
+
+        .pemandu-gallery-btn svg {
+            flex-shrink: 0;
+        }
+
+        /* ---------- MODAL GALERI FOTO USTAD & JAMAAH ---------- */
+
+        #galleryModalOverlay {
+            align-items: flex-start;
+            overflow-y: auto;
+            padding: 44px 20px;
+        }
+
+        #galleryModalOverlay .wa-modal {
+            max-width: 900px;
+            max-height: none;
+            margin: auto;
+        }
+
+        .gallery-modal-scroll {
+            overflow-y: visible;
+            padding: 34px 48px 48px;
+        }
+
+        .ustad-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 32px 32px;
+        }
+
+        .gallery-grid-item {
+            position: relative;
+            min-width: 0;
+            border-radius: var(--radius-md, 16px);
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-md, 0 10px 24px rgba(0, 0, 0, 0.12));
+            transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+        }
+
+        .gallery-grid-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg, 0 18px 34px rgba(0, 0, 0, 0.16));
+        }
+
+        .gallery-grid-photo {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: #eee3ce;
+        }
+
+        .gallery-grid-photo img,
+        .gallery-grid-photo .gallery-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .gallery-grid-item img {
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s var(--ease-out);
+        }
+
+
+        .gallery-grid-item:hover img {
+            transform: scale(1.06);
+        }
+
+        .gallery-fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            background: linear-gradient(155deg, #f1e7d2 0%, #e2d2ac 100%);
+        }
+
+        .gallery-fallback span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--gold-deep);
+            background: rgba(255, 255, 255, 0.75);
+            padding: 5px 10px;
+            border-radius: var(--radius-full, 999px);
+            margin: 12px;
+        }
+
+        .gallery-fallback svg {
+            display: none;
+        }
+
+        .gallery-empty-note {
+            display: none;
+            text-align: center;
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            padding: 20px 0 4px;
+        }
+
+        @media (max-width: 900px) {
+            .ustad-gallery-grid {
+                gap: 24px 20px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            #galleryModalOverlay .wa-modal {
+                max-width: 620px;
+            }
+
+            .gallery-modal-scroll {
+                padding: 28px 26px 32px;
+            }
+
+            .ustad-gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #galleryModalOverlay {
+                padding: 24px 14px;
+            }
+
+            .gallery-modal-scroll {
+                padding: 24px 18px 28px;
+            }
+
+            .ustad-gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
     </style>
 </head>
 
@@ -1388,7 +1572,7 @@
                         <div class="pemandu-grid">
                             <div class="pemandu-card">
                                 <div class="pemandu-photo">
-                                    <img src="Image/ustad-asep.jpeg" alt="Ustad Asep Masdinar LC"
+                                    <img src="Image/ustad-asep.png" alt="Ustad Asep Masdinar LC"
                                         onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold-light), var(--gold))'; this.style.display='none'" />
                                 </div>
                                 <div class="pemandu-info">
@@ -1402,41 +1586,8 @@
                                         </svg>
                                         Ustad Pembimbing
                                     </span>
-                                    <p class="pemandu-desc">Membimbing jamaah dengan penguasaan fiqih manasik yang
-                                        mendalam, memastikan setiap rukun ibadah dijalankan sesuai tuntunan.</p>
-
+                                    <p class="pemandu-desc">"Sabar tanpa tepi | Ikhlas tanpa tapi | Beramal sampai mati"</p>
                                     <ul class="pemandu-bio">
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
-                                                <path d="M6 12v5c0 1.6 2.7 3 6 3s6-1.4 6-3v-5" />
-                                            </svg>
-                                            <span><strong>Pendidikan Terakhir</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: nama pesantren/universitas
-                                                    & jurusan]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M12 15a5 5 0 100-10 5 5 0 000 10z" />
-                                                <path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5" />
-                                            </svg>
-                                            <span><strong>Gelar</strong><span class="bio-value placeholder">[Lengkapi:
-                                                    gelar akademik/keagamaan, mis. Lc., S.Ag.]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5" />
-                                            </svg>
-                                            <span><strong>Pengalaman</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: jumlah tahun & jumlah
-                                                    keberangkatan membimbing]</span></span>
-                                        </li>
                                         <li>
                                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -1466,11 +1617,56 @@
 
                             <div class="pemandu-card">
                                 <div class="pemandu-photo">
-                                    <img src="Image/ustad-ropi.jpeg" alt="Ustad Ropii"
+                                    <img src="Image/ustad-dindin.png" alt="Ustad Dindin Komarudin"
                                         onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold-light), var(--gold))'; this.style.display='none'" />
                                 </div>
                                 <div class="pemandu-info">
-                                    <div class="pemandu-name">Ustad Ropii</div>
+                                    <div class="pemandu-name">Ustad Dindin Komarudin</div>
+                                    <span class="pemandu-role">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <circle cx="12" cy="8" r="4" />
+                                            <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+                                        </svg>
+                                        Kepala Cabang Khalifah Asia Bekasi
+                                    </span>
+                                    <p class="pemandu-desc">"Umroh itu ibadah yang menyenangnkan, jadi kita harus bahagia"</p>
+                                    <ul class="pemandu-bio">
+                                        <li>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+                                            </svg>
+                                            <span><strong>Biografi Singkat</strong><span
+                                                    class="bio-value placeholder">[Lengkapi: 1-2 kalimat perjalanan
+                                                    dakwah/karier ustad]</span></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pemandu-card-footer">
+                                    <button type="button" class="pemandu-gallery-btn" data-ustad="dindin">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                                            <circle cx="9" cy="9" r="2" />
+                                            <path d="M21 15l-5-5L5 21" />
+                                        </svg>
+                                        Lihat Galeri Bersama Ustad Ini
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="pemandu-card">
+                                <div class="pemandu-photo">
+                                    <img src="Image/ustad-ropii.png" alt="Ustad Ropii"
+                                        onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold-light), var(--gold))'; this.style.display='none'" />
+                                </div>
+                                <div class="pemandu-info">
+                                    <div class="pemandu-name">Ustad Ropi'i Al-Ghazali</div>
                                     <span class="pemandu-role">
                                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -1480,41 +1676,9 @@
                                         </svg>
                                         Ustad Pembimbing
                                     </span>
-                                    <p class="pemandu-desc">Menemani jamaah selama ibadah di Tanah Suci dengan sabar dan
-                                        telaten, menjawab setiap pertanyaan seputar tata cara umroh.</p>
-
+                                    <p class="pemandu-desc">"Setiap langkah di Tanah Suci adalah 
+                                        panggilan cinta dari Allah untuk hamba-Nya yang rindu pulang."</p>
                                     <ul class="pemandu-bio">
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
-                                                <path d="M6 12v5c0 1.6 2.7 3 6 3s6-1.4 6-3v-5" />
-                                            </svg>
-                                            <span><strong>Pendidikan Terakhir</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: nama pesantren/universitas
-                                                    & jurusan]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M12 15a5 5 0 100-10 5 5 0 000 10z" />
-                                                <path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5" />
-                                            </svg>
-                                            <span><strong>Gelar</strong><span class="bio-value placeholder">[Lengkapi:
-                                                    gelar akademik/keagamaan]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5" />
-                                            </svg>
-                                            <span><strong>Pengalaman</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: jumlah tahun & jumlah
-                                                    keberangkatan membimbing]</span></span>
-                                        </li>
                                         <li>
                                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -1544,11 +1708,11 @@
 
                             <div class="pemandu-card">
                                 <div class="pemandu-photo">
-                                    <img src="Image/ustad-abdulah.jpeg" alt="Ustad Abdullah"
+                                    <img src="Image/ustad-mahmud2.png" alt="Mahmud Aburachman Al-Hafizh"
                                         onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold-light), var(--gold))'; this.style.display='none'" />
                                 </div>
                                 <div class="pemandu-info">
-                                    <div class="pemandu-name">Ustad Abdullah</div>
+                                    <div class="pemandu-name">ustad Mahmud Aburachman Al-Hafizh</div>
                                     <span class="pemandu-role">
                                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -1558,41 +1722,8 @@
                                         </svg>
                                         Ustad Pembimbing
                                     </span>
-                                    <p class="pemandu-desc">Mengurus kebutuhan teknis perjalanan jamaah di lapangan,
-                                        mulai dari akomodasi hingga koordinasi jadwal ziarah.</p>
-
+                                    <p class="pemandu-desc">"yuk kebaitullah menabur doa, menuai pahala dan melebur dosa."</p>
                                     <ul class="pemandu-bio">
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
-                                                <path d="M6 12v5c0 1.6 2.7 3 6 3s6-1.4 6-3v-5" />
-                                            </svg>
-                                            <span><strong>Pendidikan Terakhir</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: nama pesantren/universitas
-                                                    & jurusan]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M12 15a5 5 0 100-10 5 5 0 000 10z" />
-                                                <path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5" />
-                                            </svg>
-                                            <span><strong>Gelar</strong><span class="bio-value placeholder">[Lengkapi:
-                                                    gelar akademik/keagamaan]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5" />
-                                            </svg>
-                                            <span><strong>Pengalaman</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: jumlah tahun & jumlah
-                                                    keberangkatan membimbing]</span></span>
-                                        </li>
                                         <li>
                                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -1603,84 +1734,6 @@
                                             <span><strong>Biografi Singkat</strong><span
                                                     class="bio-value placeholder">[Lengkapi: 1-2 kalimat perjalanan
                                                     dakwah/karier ustad]</span></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="pemandu-card-footer">
-                                    <button type="button" class="pemandu-gallery-btn" data-ustad="abdullah">
-                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <rect x="3" y="3" width="18" height="18" rx="2" />
-                                            <circle cx="9" cy="9" r="2" />
-                                            <path d="M21 15l-5-5L5 21" />
-                                        </svg>
-                                        Lihat Galeri Bersama Ustad Ini
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="pemandu-card">
-                                <div class="pemandu-photo">
-                                    <img src="Image/ustad-mahmud.jpeg" alt="Kyai Hj Mahmud Abrudarch"
-                                        onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold-light), var(--gold))'; this.style.display='none'" />
-                                </div>
-                                <div class="pemandu-info">
-                                    <div class="pemandu-name">Kyai Hj Mahmud Abrudarch</div>
-                                    <span class="pemandu-role">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <circle cx="12" cy="8" r="4" />
-                                            <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
-                                        </svg>
-                                        Ustad Pembimbing
-                                    </span>
-                                    <p class="pemandu-desc">Membina jamaah dengan pendekatan keteladanan, membimbing
-                                        kesiapan lahir dan batin sebelum dan selama perjalanan ibadah.</p>
-
-                                    <ul class="pemandu-bio">
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
-                                                <path d="M6 12v5c0 1.6 2.7 3 6 3s6-1.4 6-3v-5" />
-                                            </svg>
-                                            <span><strong>Pendidikan Terakhir</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: nama pesantren/universitas
-                                                    & jurusan]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M12 15a5 5 0 100-10 5 5 0 000 10z" />
-                                                <path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5" />
-                                            </svg>
-                                            <span><strong>Gelar</strong><span class="bio-value placeholder">[Lengkapi:
-                                                    gelar akademik/keagamaan]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5" />
-                                            </svg>
-                                            <span><strong>Pengalaman</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: jumlah tahun & jumlah
-                                                    keberangkatan membimbing]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
-                                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-                                            </svg>
-                                            <span><strong>Biografi Singkat</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: 1-2 kalimat perjalanan
-                                                    dakwah/karier kyai]</span></span>
                                         </li>
                                     </ul>
                                 </div>
@@ -1697,14 +1750,13 @@
                                     </button>
                                 </div>
                             </div>
-
                             <div class="pemandu-card">
                                 <div class="pemandu-photo">
-                                    <img src="Image/ustad-aburachman.jpeg" alt="Aburachmand Al-Hafizh"
+                                    <img src="Image/ustad-kodir1.png" alt="Ustad Kodir"
                                         onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold-light), var(--gold))'; this.style.display='none'" />
                                 </div>
                                 <div class="pemandu-info">
-                                    <div class="pemandu-name">Aburachmand Al-Hafizh</div>
+                                    <div class="pemandu-name">Ustad Muhamad Kodir S.Si. M.T.</div>
                                     <span class="pemandu-role">
                                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -1714,41 +1766,9 @@
                                         </svg>
                                         Ustad Pembimbing
                                     </span>
-                                    <p class="pemandu-desc">Membimbing bacaan Al-Qur'an dan doa-doa manasik dengan
-                                        kaidah tajwid yang benar bagi jamaah selama perjalanan ibadah.</p>
-
+                                    <p class="pemandu-desc">"Umrah panggilan sayang dari Allah SWT agar
+                                         diri Lebih Baik dan raih surgaNya"</p>
                                     <ul class="pemandu-bio">
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
-                                                <path d="M6 12v5c0 1.6 2.7 3 6 3s6-1.4 6-3v-5" />
-                                            </svg>
-                                            <span><strong>Pendidikan Terakhir</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: nama pesantren/universitas
-                                                    & jurusan]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M12 15a5 5 0 100-10 5 5 0 000 10z" />
-                                                <path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5" />
-                                            </svg>
-                                            <span><strong>Gelar</strong><span class="bio-value placeholder">[Lengkapi:
-                                                    gelar akademik/keagamaan, mis. Al-Hafizh]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5" />
-                                            </svg>
-                                            <span><strong>Pengalaman</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: jumlah tahun & jumlah
-                                                    keberangkatan membimbing]</span></span>
-                                        </li>
                                         <li>
                                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -1758,90 +1778,12 @@
                                             </svg>
                                             <span><strong>Biografi Singkat</strong><span
                                                     class="bio-value placeholder">[Lengkapi: 1-2 kalimat perjalanan
-                                                    dakwah/karier ustad]</span></span>
+                                                    dakwah/karier kyai]</span></span>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="pemandu-card-footer">
-                                    <button type="button" class="pemandu-gallery-btn" data-ustad="aburachman">
-                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <rect x="3" y="3" width="18" height="18" rx="2" />
-                                            <circle cx="9" cy="9" r="2" />
-                                            <path d="M21 15l-5-5L5 21" />
-                                        </svg>
-                                        Lihat Galeri Bersama Ustad Ini
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="pemandu-card">
-                                <div class="pemandu-photo">
-                                    <img src="Image/ustad-dindin.jpeg" alt="Ustad Dindin Komarudin"
-                                        onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold-light), var(--gold))'; this.style.display='none'" />
-                                </div>
-                                <div class="pemandu-info">
-                                    <div class="pemandu-name">Ustad Dindin Komarudin</div>
-                                    <span class="pemandu-role">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <circle cx="12" cy="8" r="4" />
-                                            <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
-                                        </svg>
-                                        Ustad Pembimbing
-                                    </span>
-                                    <p class="pemandu-desc">Mendampingi jamaah dalam kajian pra-keberangkatan serta
-                                        praktik manasik agar setiap jamaah siap dan percaya diri beribadah.</p>
-
-                                    <ul class="pemandu-bio">
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
-                                                <path d="M6 12v5c0 1.6 2.7 3 6 3s6-1.4 6-3v-5" />
-                                            </svg>
-                                            <span><strong>Pendidikan Terakhir</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: nama pesantren/universitas
-                                                    & jurusan]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M12 15a5 5 0 100-10 5 5 0 000 10z" />
-                                                <path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5" />
-                                            </svg>
-                                            <span><strong>Gelar</strong><span class="bio-value placeholder">[Lengkapi:
-                                                    gelar akademik/keagamaan]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5" />
-                                            </svg>
-                                            <span><strong>Pengalaman</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: jumlah tahun & jumlah
-                                                    keberangkatan membimbing]</span></span>
-                                        </li>
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
-                                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-                                            </svg>
-                                            <span><strong>Biografi Singkat</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: 1-2 kalimat perjalanan
-                                                    dakwah/karier ustad]</span></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="pemandu-card-footer">
-                                    <button type="button" class="pemandu-gallery-btn" data-ustad="dindin">
+                                    <button type="button" class="pemandu-gallery-btn" data-ustad="kodir">
                                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                             stroke-linejoin="round">
@@ -1854,69 +1796,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="pemandu-group-photos">
-                            <div class="pemandu-group-grid">
-                                <div class="group-photo">
-                                    <img src="Image/jamaah-bersama-1.jpg" alt="Foto bersama jamaah 1"
-                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-                                    <div class="gallery-fallback" style="display:none">
-                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <rect x="3" y="3" width="18" height="18" rx="2" />
-                                            <circle cx="9" cy="9" r="2" />
-                                            <path d="M21 15l-5-5L5 21" />
-                                        </svg>
-                                        <span>Foto menyusul</span>
-                                    </div>
-                                </div>
-                                <div class="group-photo">
-                                    <img src="Image/jamaah-bersama-2.jpg" alt="Foto bersama jamaah 2"
-                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-                                    <div class="gallery-fallback" style="display:none">
-                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <rect x="3" y="3" width="18" height="18" rx="2" />
-                                            <circle cx="9" cy="9" r="2" />
-                                            <path d="M21 15l-5-5L5 21" />
-                                        </svg>
-                                        <span>Foto menyusul</span>
-                                    </div>
-                                </div>
-                                <div class="group-photo">
-                                    <img src="Image/jamaah-bersama-3.jpg" alt="Foto bersama jamaah 3"
-                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-                                    <div class="gallery-fallback" style="display:none">
-                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <rect x="3" y="3" width="18" height="18" rx="2" />
-                                            <circle cx="9" cy="9" r="2" />
-                                            <path d="M21 15l-5-5L5 21" />
-                                        </svg>
-                                        <span>Foto menyusul</span>
-                                    </div>
-                                </div>
-                                <div class="group-photo">
-                                    <img src="Image/jamaah-bersama-4.jpg" alt="Foto bersama jamaah 4"
-                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-                                    <div class="gallery-fallback" style="display:none">
-                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <rect x="3" y="3" width="18" height="18" rx="2" />
-                                            <circle cx="9" cy="9" r="2" />
-                                            <path d="M21 15l-5-5L5 21" />
-                                        </svg>
-                                        <span>Foto menyusul</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -2272,6 +2151,31 @@
                     </button>
                     <span class="email-copy-msg" id="emailCopyMsg" aria-live="polite"></span>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wa-modal-overlay" id="galleryModalOverlay">
+        <div class="wa-modal" role="dialog" aria-modal="true" aria-labelledby="galleryModalTitle"
+            style="max-width:700px;">
+            <div class="wa-modal-header">
+                <button type="button" class="wa-modal-close" id="galleryModalClose" aria-label="Tutup">×</button>
+                <div class="wa-modal-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <circle cx="9" cy="9" r="2" />
+                        <path d="M21 15l-5-5L5 21" />
+                    </svg>
+                </div>
+                <h3 id="galleryModalTitle">Galeri Bersama Jamaah</h3>
+                <p class="wa-modal-sub">Momen kebersamaan <strong id="galleryNameTag">Ustad</strong> dengan para
+                    jamaah selama membimbing perjalanan ibadah.</p>
+            </div>
+            <div class="wa-modal-scroll gallery-modal-scroll">
+                <div class="ustad-gallery-grid" id="galleryGrid"></div>
+                <p class="gallery-empty-note" id="galleryEmptyNote">Foto galeri untuk ustad ini akan segera
+                    ditambahkan.</p>
             </div>
         </div>
     </div>
@@ -2664,12 +2568,11 @@
 
         (function () {
             const galleryData = {
-                asep: { name: 'Ustad Asep Masdinar LC', photos: ['Image/galeri-asep-1.jpg', 'Image/galeri-asep-2.jpg', 'Image/galeri-asep-3.jpg', 'Image/galeri-asep-4.jpg'] },
-                ropi: { name: 'Ustad Ropii', photos: ['Image/galeri-ropi-1.jpg', 'Image/galeri-ropi-2.jpg', 'Image/galeri-ropi-3.jpg', 'Image/galeri-ropi-4.jpg'] },
-                abdullah: { name: 'Ustad Abdullah', photos: ['Image/galeri-abdullah-1.jpg', 'Image/galeri-abdullah-2.jpg', 'Image/galeri-abdullah-3.jpg', 'Image/galeri-abdullah-4.jpg'] },
-                mahmud: { name: 'Kyai Hj Mahmud Abrudarch', photos: ['Image/galeri-mahmud-1.jpg', 'Image/galeri-mahmud-2.jpg', 'Image/galeri-mahmud-3.jpg', 'Image/galeri-mahmud-4.jpg'] },
-                aburachman: { name: 'Aburachmand Al-Hafizh', photos: ['Image/galeri-aburachman-1.jpg', 'Image/galeri-aburachman-2.jpg', 'Image/galeri-aburachman-3.jpg', 'Image/galeri-aburachman-4.jpg'] },
-                dindin: { name: 'Ustad Dindin Komarudin', photos: ['Image/galeri-dindin-1.jpg', 'Image/galeri-dindin-2.jpg', 'Image/galeri-dindin-3.jpg', 'Image/galeri-dindin-4.jpg'] }
+                asep: { name: 'Ustad Asep Masdinar LC', photos: ['Image/jamaahustadasep1.jpeg', 'Image/jamaahustadasep2.jpeg', 'Image/jamaahustadasep3.jpeg', 'Image/jamaahustadasep4.jpeg'] },
+                ropi: { name: 'Ustad Ropii', photos: ['Image/jamaahustadropii1.jpeg', 'Image/jamaahustadropii2.jpeg', 'Image/jamaahustadropii3.jpeg', 'Image/jamaahustadropii4.jpeg'] },
+                mahmud: { name: 'Mahmud Abdurachman Al-Hafizh', photos: ['Image/jamaahustadmahmud1.jpeg', 'Image/jamaahustadmahmud2.jpeg', 'Image/jamaahustadmahmud3.jpeg', 'Image/jamaahustadmahmud4.jpeg'] },
+                kodir: { name: 'Muhamad Kodir', photos: ['Image/jamaahustadkodir1.jpeg', 'Image/galeri-aburachman-2.jpg', 'Image/galeri-aburachman-3.jpg', 'Image/galeri-aburachman-4.jpg'] },
+                dindin: { name: 'Ustad Dindin Komarudin', photos: ['Image/jamaahustaddindin1.jpeg', 'Image/jamaahustaddindin2.jpeg', 'Image/jamaahustaddindin3.jpeg', 'Image/jamaahustaddindin4.jpeg'] }
             };
 
             const galleryOverlay = document.getElementById('galleryModalOverlay');
@@ -2688,11 +2591,13 @@
                     const item = document.createElement('div');
                     item.className = 'gallery-grid-item';
                     item.innerHTML = `
-                        <img src="${src}" alt="Foto bersama jamaah ${i + 1}"
-                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-                        <div class="gallery-fallback" style="display:none">
-                            ${fallbackIconSvg}
-                            <span>Foto menyusul</span>
+                        <div class="gallery-grid-photo">
+                            <img src="${src}" alt="Foto bersama jamaah ${i + 1}"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+                            <div class="gallery-fallback" style="display:none">
+                                ${fallbackIconSvg}
+                                <span>Foto menyusul</span>
+                            </div>
                         </div>`;
                     galleryGrid.appendChild(item);
                 });
