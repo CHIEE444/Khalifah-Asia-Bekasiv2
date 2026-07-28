@@ -38,6 +38,50 @@
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
 
+    <!-- ================= GOOGLE ANALYTICS 4 (GA4) =================
+         Cara pasang:
+         1. Buka analytics.google.com -> buat Property baru -> catat "Measurement ID"
+            (formatnya G-XXXXXXXXXX).
+         2. Ganti DUA tempat tulisan G-XXXXXXXXXX di bawah ini dengan Measurement ID Anda.
+         3. Selesai — traffic & event (lead form, klik WA, download brosur, dll) otomatis
+            mulai tercatat begitu file ini di-upload ke hosting.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX'); // <-- GANTI dengan Measurement ID GA4 Anda
+    </script>
+
+    <!-- ================= META PIXEL (Facebook & Instagram Ads) =================
+         Cara pasang:
+         1. Buka business.facebook.com/events_manager -> buat Pixel baru -> catat "Pixel ID".
+         2. Ganti DUA tempat tulisan XXXXXXXXXXXXXXX di bawah ini dengan Pixel ID Anda.
+         3. Selesai — Pixel otomatis mengirim event PageView, dan event Lead saat ada yang
+            submit form konsultasi/booking (lihat fungsi trackEvent() di bagian bawah halaman).
+    -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'XXXXXXXXXXXXXXX'); // <-- GANTI dengan Pixel ID Meta Anda
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXX&ev=PageView&noscript=1" />
+        <!-- ID di atas juga harus diganti, sama seperti Pixel ID di atas -->
+    </noscript>
+
     <!-- Style tambahan untuk grid 4 kolom Artikel & Berita (gabungan) -->
     <style>
         .article-grid-4 {
@@ -86,6 +130,74 @@
                 "ratingValue": "4.9",
                 "reviewCount": "128"
             }
+        }
+        </script>
+
+    <!-- JSON-LD FAQPage — bonus SEO: berpotensi tampil sebagai rich snippet accordion
+         langsung di hasil pencarian Google. Kontennya mengikuti FAQ yang sudah ada di
+         halaman (section #faq) — kalau isi FAQ di section diubah, sesuaikan juga di sini. -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Dokumen apa saja yang menjadi persyaratan Umroh?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Dokumen persyaratan Umroh antara lain: paspor asli 48 halaman (minimal nama 3 kata, masa berlaku 12 bulan dari tanggal keberangkatan), fotocopy KTP ukuran A4, fotocopy KK, fotocopy buku nikah bagi pasangan suami istri, pas foto 4x6 sebanyak 3 lembar dengan latar putih, buku kuning suntik meningitis, dan fotocopy akta kelahiran untuk anak usia 17 tahun ke bawah."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Khalifah Asia Bekasi berizin resmi?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya. Khalifah Asia Bekasi merupakan bagian dari PT. Indonesia International Business yang mengantongi izin PPIU resmi dari Kementerian Agama RI."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah harga sudah termasuk semua biaya?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Harga sudah termasuk tiket pesawat PP, hotel, visa umroh, makan 3 kali sehari, bus full AC, serta muthawif dan muthawifah. Belum termasuk biaya handling dan perlengkapan, paspor, vaksin dan polio, kelebihan bagasi, serta pengeluaran pribadi."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bagaimana kebijakan pembatalan dan refund?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Pembatalan dapat dilakukan sesuai ketentuan yang berlaku, dengan potongan biaya tergantung jarak waktu pembatalan terhadap tanggal keberangkatan. Hubungi admin untuk simulasi biaya refund."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah bisa membayar dengan cicilan atau DP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Bisa, mulai dari DP 30% dari harga paket, dengan sisa pembayaran dicicil sebelum tanggal keberangkatan."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah ada pendampingan selama di Tanah Suci?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya, setiap rombongan didampingi muthawif dan muthawifah bersertifikat mulai dari manasik sebelum keberangkatan hingga pelaksanaan umroh di Makkah dan Madinah."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bagaimana cara mendaftar sebagai Agent Khalifah?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Calon agent dapat menghubungi tim melalui WhatsApp atau mengunjungi halaman Jadi Agent untuk informasi skema penghasilan dan benefit umroh gratis bagi Agent Khalifah."
+                    }
+                }
+            ]
         }
         </script>
 </head>
@@ -226,7 +338,7 @@
                 <div class="partner-track">
                     <!-- Logo -->
                     <img src="Foto Slider Partner/logobsi.png" alt="Bank Syariah Indonesia">
-                    <img src="Foto Slider Partner/logodanamon-1.jpg" alt="Bank Danamon">
+                    <img src="Foto Slider Partner/logodanamon-1-removebg-preview.png" alt="Bank Danamon">
                     <img src="Foto Slider Partner/logo-bank-bjb-syariah.png" alt="Bank BJB Syariah">
                     <img src="Foto Slider Partner/logo-bank-ocbc-removebg-preview.png" alt="Bank OCBC">
                     <img src="Foto Slider Partner/Logo-Bank-CIMB-Niaga-Syariah.png"
@@ -237,13 +349,13 @@
                     <img src="Foto Slider Partner/maskapakigaruda.png" alt="Garuda Indonesia">
                     <img src="Foto Slider Partner/siskopatuh.png" alt="Sisko Patuh">
                     <img src="Foto Slider Partner/logo-5-pasti-umrah.png" alt="5 Pasti Umrah">
-                    <img src="Foto Slider Partner/logo-amitra.jpg" alt="Amitra">
+                    <img src="Foto Slider Partner/logo-amitra-removebg-preview.png" alt="Amitra">
                     <img src="Foto Slider Partner/logo-umroh-com.png" alt="umroh">
                     <img src="Foto Slider Partner/logoikhlas.png" alt="logo ikhlas">
 
                     <!-- Duplikat agar looping mulus -->
                     <img src="Foto Slider Partner/logobsi.png" alt="Bank Syariah Indonesia">
-                    <img src="Foto Slider Partner/logodanamon-1.jpg" alt="Bank Danamon">
+                    <img src="Foto Slider Partner/logodanamon-1-removebg-preview.png" alt="Bank Danamon">
                     <img src="Foto Slider Partner/logo-bank-bjb-syariah.png" alt="Bank BJB Syariah">
                     <img src="Foto Slider Partner/logo-bank-ocbc-removebg-preview.png" alt="Bank OCBC">
                     <img src="Foto Slider Partner/Logo-Bank-CIMB-Niaga-Syariah.png"
@@ -254,7 +366,7 @@
                     <img src="Foto Slider Partner/maskapakigaruda.png" alt="Garuda Indonesia">
                     <img src="Foto Slider Partner/siskopatuh.png" alt="Sisko Patuh">
                     <img src="Foto Slider Partner/logo-5-pasti-umrah.png" alt="5 Pasti Umrah">
-                    <img src="Foto Slider Partner/logo-amitra.jpg" alt="Amitra">
+                    <img src="Foto Slider Partner/logo-amitra-removebg-preview.png" alt="Amitra">
                     <img src="Foto Slider Partner/logo-umroh-com.png" alt="umroh">
                     <img src="Foto Slider Partner/logoikhlas.png" alt="logo ikhlas">
                 </div>
@@ -442,15 +554,17 @@
                 <h2>Galeri Kami - Ibadah sekaligus menjelajah</h2>
                 <p>Intip pilihan destinasi terbaik kami yang memadukan khusyuknya ibadah dengan petualangan muslim yang
                     berkesan.</p>
-                <!-- TODO: ganti isi array `galeriLainnyaImages` di bagian <script> (cari "GALERI LAINNYA")
-                     dengan foto-foto dokumentasi lama agar galeri ini semakin banyak dan lengkap. -->
-                <button type="button" class="gallery-more-btn" id="galeriLainnyaBtn" data-program="lainnya">
+                <!-- Tombol ini sekarang menuju HALAMAN TERPISAH (galeri-lainnya.html), bukan modal lagi,
+                     supaya bisa menampung 30+ foto dokumentasi tanpa membuat modal kepanjangan.
+                     Untuk menambah/mengganti foto, edit langsung di file galeri-lainnya.html
+                     (cari komentar "TAMBAHKAN FOTO DI SINI"). -->
+                <a href="galeri-lainnya.html" class="gallery-more-btn">
                     Lihat Galeri Lainnya
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14M13 6l6 6-6 6" />
                     </svg>
-                </button>
+                </a>
             </div>
             <div class="gallery-grid">
                 <div class="gallery-card ar-169 reveal reveal-delay-1">
@@ -789,7 +903,8 @@
                 <!-- TODO: poster asli untuk jadwal ini belum tersedia, masih pakai gambar sementara.
                      Harga Triple/Double di bawah juga masih ESTIMASI, tolong sesuaikan dengan harga resmi. -->
                 <div class="departure-card reveal reveal-delay-1" data-bulan="februari" data-jenis="turki"
-                    data-harga="31.8" data-harga-quad="31.8" data-harga-triple="32.8" data-harga-double="34.2">
+                    data-harga="31.8" data-harga-quad="31.8" data-harga-triple="32.8" data-harga-double="34.2"
+                    data-itin="turki12">
                     <div class="departure-media">
                         <img src="Image/umrohturki.jpg" alt="Umroh Plus Turki" onerror="this.style.display='none'" />
                         <span class="departure-badge">Best Seller</span>
@@ -827,7 +942,8 @@
                 </div>
 
                 <div class="departure-card reveal reveal-delay-6" data-bulan="agustus" data-jenis="maulid"
-                    data-harga="34.3" data-harga-quad="34.3" data-harga-triple="35.3" data-harga-double="36.9">
+                    data-harga="34.3" data-harga-quad="34.3" data-harga-triple="35.3" data-harga-double="36.9"
+                    data-itin="maulid912">
                     <div class="departure-media">
                         <img src="Image/paketspesialnabi.jpeg" alt="Umroh Special Maulid Nabi 1448H"
                             onerror="this.style.display='none'" />
@@ -867,7 +983,7 @@
                 </div>
 
                 <div class="departure-card reveal reveal-delay-1" data-bulan="juni" data-jenis="turki" data-harga="38.0"
-                    data-harga-quad="38.0" data-harga-triple="38.8" data-harga-double="40.2">
+                    data-harga-quad="38.0" data-harga-triple="38.8" data-harga-double="40.2" data-itin="turki14">
                     <div class="departure-media">
                         <img src="Image/postersep-des2026.jpeg" alt="Umroh Plus Turki"
                             onerror="this.style.display='none'" />
@@ -908,7 +1024,7 @@
                 <div class="departure-card reveal reveal-delay-2"
                     data-bulan="januari februari maret april mei juni juli agustus september oktober november desember"
                     data-jenis="thaif" data-harga="31.0" data-harga-quad="31.0" data-harga-triple="32.0"
-                    data-harga-double="33.8">
+                    data-harga-double="33.8" data-itin="thaif14">
                     <div class="departure-media">
                         <img src="Image/umrohthaif.jpg" alt="Umroh Plus Thaif" onerror="this.style.display='none'" />
                         <span class="departure-badge departure-badge-promo">Jadwal Fleksibel</span>
@@ -946,7 +1062,7 @@
 
                 <div class="departure-card reveal reveal-delay-3" data-bulan="september oktober november desember"
                     data-jenis="reguler" data-harga="29.9" data-harga-quad="29.9" data-harga-triple="30.6"
-                    data-harga-double="32">
+                    data-harga-double="32" data-itin="reguler912a">
                     <div class="departure-media">
                         <img src="Image/paketumrohawalmusim.jpeg" alt="Umroh Friendly Awal Musim 1448H"
                             onerror="this.style.display='none'" />
@@ -986,7 +1102,7 @@
 
                 <div class="departure-card reveal reveal-delay-4" data-bulan="september oktober november desember"
                     data-jenis="reguler" data-harga="32.3" data-harga-quad="32.3" data-harga-triple="33.3"
-                    data-harga-double="34.9">
+                    data-harga-double="34.9" data-itin="reguler912b">
                     <div class="departure-media">
                         <img src="Image/pakejangantanyakanharga.jpeg"
                             alt="Jangan Tanya Harganya Dulu, Tanyakan Seberapa Pasti Keberangkatannya"
@@ -1027,7 +1143,8 @@
                 </div>
 
                 <div class="departure-card reveal reveal-delay-5" data-bulan="mei" data-jenis="reguler"
-                    data-harga="28.5" data-harga-quad="28.5" data-harga-triple="29.5" data-harga-double="31.0">
+                    data-harga="28.5" data-harga-quad="28.5" data-harga-triple="29.5" data-harga-double="31.0"
+                    data-itin="reguler9">
                     <div class="departure-media">
                         <img src="Image/paketspesialnabi.jpeg" alt="Umroh Spesial Nabi"
                             onerror="this.style.display='none'" />
@@ -1066,7 +1183,8 @@
                 </div>
 
                 <div class="departure-card reveal reveal-delay-6" data-bulan="juli" data-jenis="yordania"
-                    data-harga="41.2" data-harga-quad="41.2" data-harga-triple="42.2" data-harga-double="44.0">
+                    data-harga="41.2" data-harga-quad="41.2" data-harga-triple="42.2" data-harga-double="44.0"
+                    data-itin="yordania14">
                     <div class="departure-media">
                         <img src="Image/paket-yordania-2026.jpg" alt="Umroh Plus Yordania"
                             onerror="this.style.display='none'" />
@@ -1829,10 +1947,32 @@
 
                 <div class="detail-modal-bottom">
                     <div class="detail-modal-price" id="detailModalPrice"></div>
-                    <button type="button" class="departure-btn" id="detailModalBookBtn">Booking Sekarang</button>
+                    <div class="detail-modal-actions">
+                        <button type="button" class="brosur-btn" id="detailModalBrosurBtn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <path d="M7 10l5 5 5-5" />
+                                <path d="M12 15V3" />
+                            </svg>
+                            <span id="detailModalBrosurBtnLabel">Unduh Brosur PDF</span>
+                        </button>
+                        <button type="button" class="departure-btn" id="detailModalBookBtn">Booking Sekarang</button>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- ================= TEMPLATE BROSUR PDF (dipakai fitur download PDF) =================
+         Overlay ini muncul sesaat di layar user ("Menyiapkan brosur...") selagi brosur
+         di-render lalu difoto jadi PDF oleh html2canvas. Sebelumnya elemen ini disembunyikan
+         jauh di luar layar (left:-9999px), tapi itu menyebabkan html2canvas gagal memotret
+         dan hasil PDF-nya blank — makanya sekarang dirender di layar dengan overlay penutup. -->
+    <div class="brosur-overlay" id="brosurOverlay">
+        <div class="brosur-overlay-spinner"></div>
+        <p>Menyiapkan brosur PDF...</p>
+        <div id="brosurTemplate" class="brosur-template" aria-hidden="true"></div>
     </div>
 
     <!-- ================= MODAL VIDEO TESTIMONI (video offline, upload sendiri) ================= -->
@@ -1878,6 +2018,14 @@
     <!-- GSAP + Draggable (dipakai untuk carousel testimoni 3D) -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+    <!-- html2canvas + jsPDF — dipakai fitur "Unduh Brosur PDF" di modal detail paket.
+         CATATAN: sebelumnya memakai html2pdf.js, tapi library itu mempunyai bug resmi
+         yang diakui pembuatnya sendiri ("Node cloning is buggy" & "Maximum canvas size
+         menyebabkan PDF blank") yang menyebabkan hasil unduhan PDF putih kosong.
+         Sekarang html2canvas & jsPDF dipanggil langsung secara manual (lihat script di
+         bawah), jadi tidak lagi melewati proses cloning bermasalah tsb. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <script>
         // ========== KONFIGURASI INTEGRASI GOOGLE SHEETS ==========
@@ -1885,6 +2033,22 @@
         // tempel kode dari file GOOGLE-SHEETS-SETUP.md -> Deploy as Web App
         // (Execute as: Me, Who has access: Anyone) -> salin URL Web App ke bawah ini.
         const GOOGLE_SHEET_WEBHOOK_URL = ""; // <-- TEMPEL URL WEB APP APPS SCRIPT DI SINI
+
+        // ========== HELPER: KIRIM EVENT KE GA4 & META PIXEL ==========
+        // Dipakai di titik-titik penting (submit form, klik WA, download brosur) supaya
+        // kelihatan di Google Analytics & Meta Ads Manager traffic/lead datang dari mana.
+        // Aman dipanggil kapan saja — kalau gtag/fbq belum siap (misal Ad-Blocker aktif),
+        // fungsi ini otomatis dilewati tanpa memunculkan error di console.
+        function trackEvent(eventName, params) {
+            params = params || {};
+            try {
+                if (typeof gtag === 'function') gtag('event', eventName, params);
+            } catch (err) { /* GA4 diblokir/gagal load, aman diabaikan */ }
+            try {
+                if (typeof fbq === 'function') fbq('trackCustom', eventName, params);
+            } catch (err) { /* Meta Pixel diblokir/gagal load, aman diabaikan */ }
+        }
+        window.trackEvent = trackEvent;
 
         // Kirim data lead ke Google Sheet secara diam-diam (tidak mengganggu proses WhatsApp).
         // Kalau URL belum diisi, fungsi ini otomatis dilewati tanpa error.
@@ -2177,6 +2341,12 @@
                     pesan: pesan
                 });
 
+                // Event standar GA4 "generate_lead" & Meta Pixel "Lead" — ini yang dipakai
+                // Google/Meta untuk optimasi campaign iklan (dioptimalkan ke orang yang
+                // mirip dengan orang yang benar-benar isi form, bukan cuma yang klik iklan).
+                try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: waContext, layanan: layanan }); } catch (err) { }
+                try { if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: layanan, content_category: waContext }); } catch (err) { }
+
                 const waUrl = `https://wa.me/${waTargetNumber}?text=${encodeURIComponent(pesanTemplate)}`;
                 window.open(waUrl, '_blank', 'noopener,noreferrer');
                 closeWaModal();
@@ -2443,6 +2613,121 @@
             }
         }
 
+        // ========== DATA RUNDOWN / SUSUNAN ACARA PER PAKET ==========
+        // TODO: rencana harian di bawah ini masih contoh demonstrasi (lihat juga catatan
+        // "*Rencana harian bersifat indikatif..." di dalam modal). Silakan sesuaikan urutan
+        // hari, kegiatan, atau tambahkan detail lain sesuai program riil di lapangan.
+        // Cara nambah paket baru: beri `data-itin="kunci-baru"` pada kartu .departure-card
+        // di HTML, lalu tambahkan key yang sama persis di object itineraryData di bawah ini.
+        const itineraryData = {
+            turki12: [
+                { day: 'Hari 1', title: 'Keberangkatan Jakarta - Istanbul', desc: 'Jamaah berkumpul di Bandara Soekarno-Hatta, penerbangan menuju Istanbul, Turki.' },
+                { day: 'Hari 2', title: 'Tiba di Istanbul', desc: 'Check-in hotel, istirahat, dan persiapan city tour keesokan hari.' },
+                { day: 'Hari 3', title: 'City Tour Istanbul', desc: 'Mengunjungi Hagia Sophia, Blue Mosque (Masjid Sultan Ahmed), dan Topkapi Palace.' },
+                { day: 'Hari 4', title: 'Susur Bosphorus & Grand Bazaar', desc: 'Menikmati pemandangan Selat Bosphorus, berbelanja di Grand Bazaar & Spice Market, lanjut penerbangan menuju Madinah.' },
+                { day: 'Hari 5', title: 'Tiba di Madinah', desc: 'Check-in hotel dekat Masjid Nabawi, istirahat.' },
+                { day: 'Hari 6', title: 'Ziarah Raudhah & Masjid Nabawi', desc: 'Shalat berjamaah dan ziarah ke Raudhah serta makam Rasulullah SAW.' },
+                { day: 'Hari 7', title: 'Ziarah Kota Madinah', desc: 'Mengunjungi Jabal Uhud, Masjid Quba, dan kebun kurma Madinah.' },
+                { day: 'Hari 8', title: 'Perjalanan Madinah - Makkah', desc: 'Miqat di Bir Ali (Dzulhulaifah), perjalanan darat menuju Makkah, dilanjutkan Umroh pertama.' },
+                { day: 'Hari 9', title: 'Ibadah di Masjidil Haram', desc: 'Tawaf dan Sa\'i mandiri, memperbanyak ibadah di sekitar Ka\'bah.' },
+                { day: 'Hari 10', title: 'City Tour Makkah', desc: 'Mengunjungi Jabal Rahmah, Jabal Tsur, dan Museum Ka\'bah.' },
+                { day: 'Hari 11', title: 'Waktu Bebas Ibadah', desc: 'Waktu bebas beribadah di Masjidil Haram, persiapan menuju Jeddah.' },
+                { day: 'Hari 12', title: 'Kepulangan Jeddah - Jakarta', desc: 'Check-out hotel, penerbangan kembali menuju Jakarta.' }
+            ],
+            turki14: [
+                { day: 'Hari 1', title: 'Keberangkatan Jakarta - Istanbul', desc: 'Jamaah berkumpul di Bandara Soekarno-Hatta, penerbangan menuju Istanbul, Turki.' },
+                { day: 'Hari 2', title: 'Tiba di Istanbul', desc: 'Check-in hotel, istirahat.' },
+                { day: 'Hari 3', title: 'City Tour Istanbul', desc: 'Mengunjungi Hagia Sophia, Blue Mosque (Masjid Sultan Ahmed), dan Topkapi Palace.' },
+                { day: 'Hari 4', title: 'Susur Bosphorus & Grand Bazaar', desc: 'Menikmati pemandangan Selat Bosphorus, berbelanja di Grand Bazaar & Spice Market.' },
+                { day: 'Hari 5', title: 'Waktu Bebas di Istanbul', desc: 'Waktu bebas menjelajahi kawasan bersejarah Istanbul.' },
+                { day: 'Hari 6', title: 'Penerbangan Istanbul - Madinah', desc: 'Check-out hotel, penerbangan menuju Madinah.' },
+                { day: 'Hari 7', title: 'Tiba di Madinah', desc: 'Check-in hotel dekat Masjid Nabawi, istirahat.' },
+                { day: 'Hari 8', title: 'Ziarah Raudhah & Masjid Nabawi', desc: 'Shalat berjamaah dan ziarah ke Raudhah serta makam Rasulullah SAW.' },
+                { day: 'Hari 9', title: 'Ziarah Kota Madinah', desc: 'Mengunjungi Jabal Uhud, Masjid Quba, dan kebun kurma Madinah.' },
+                { day: 'Hari 10', title: 'Perjalanan Madinah - Makkah', desc: 'Miqat di Bir Ali, perjalanan darat menuju Makkah, dilanjutkan Umroh pertama.' },
+                { day: 'Hari 11', title: 'Ibadah di Masjidil Haram', desc: 'Tawaf dan Sa\'i mandiri, memperbanyak ibadah di sekitar Ka\'bah.' },
+                { day: 'Hari 12', title: 'City Tour Makkah', desc: 'Mengunjungi Jabal Rahmah, Jabal Tsur, dan Museum Ka\'bah.' },
+                { day: 'Hari 13', title: 'Waktu Bebas Ibadah', desc: 'Waktu bebas beribadah di Masjidil Haram, persiapan menuju Jeddah.' },
+                { day: 'Hari 14', title: 'Kepulangan Jeddah - Jakarta', desc: 'Check-out hotel, penerbangan kembali menuju Jakarta.' }
+            ],
+            maulid912: [
+                { day: 'Hari 1', title: 'Keberangkatan Jakarta - Madinah', desc: 'Jamaah berkumpul di Bandara Soekarno-Hatta, penerbangan menuju Madinah.' },
+                { day: 'Hari 2', title: 'Tiba di Madinah', desc: 'Check-in hotel dekat Masjid Nabawi, istirahat.' },
+                { day: 'Hari 3', title: 'Ziarah Raudhah & Masjid Nabawi', desc: 'Menapak jejak kelahiran dan perjuangan Rasulullah SAW, shalat berjamaah di Raudhah.' },
+                { day: 'Hari 4', title: 'Ziarah Kota Madinah', desc: 'Mengunjungi Jabal Uhud, Masjid Quba, dan kebun kurma Madinah.' },
+                { day: 'Hari 5', title: 'Perjalanan Madinah - Makkah', desc: 'Miqat di Bir Ali, perjalanan darat menuju Makkah, dilanjutkan Umroh pertama.' },
+                { day: 'Hari 6', title: 'Ibadah di Masjidil Haram', desc: 'Tawaf dan Sa\'i mandiri di seputar Ka\'bah.' },
+                { day: 'Hari 7', title: 'City Tour Makkah', desc: 'Mengunjungi Jabal Rahmah, Jabal Tsur, dan Museum Ka\'bah.' },
+                { day: 'Hari 8', title: 'Waktu Bebas Ibadah', desc: 'Waktu bebas beribadah, persiapan menuju Jeddah.' },
+                { day: 'Hari 9', title: 'Kepulangan Jeddah - Jakarta', desc: 'Check-out hotel, penerbangan kembali menuju Jakarta. (Untuk paket 12 hari, jamaah mendapat 3 hari tambahan waktu bebas ibadah di Makkah sebelum kepulangan.)' }
+            ],
+            thaif14: [
+                { day: 'Hari 1', title: 'Keberangkatan Jakarta - Madinah', desc: 'Jamaah berkumpul di Bandara Soekarno-Hatta, penerbangan menuju Madinah.' },
+                { day: 'Hari 2', title: 'Tiba di Madinah', desc: 'Check-in hotel dekat Masjid Nabawi, istirahat.' },
+                { day: 'Hari 3', title: 'Ziarah Raudhah & Masjid Nabawi', desc: 'Shalat berjamaah dan ziarah ke Raudhah serta makam Rasulullah SAW.' },
+                { day: 'Hari 4', title: 'Ziarah Kota Madinah', desc: 'Mengunjungi Jabal Uhud, Masjid Quba, dan kebun kurma Madinah.' },
+                { day: 'Hari 5', title: 'Waktu Bebas Ibadah di Madinah', desc: 'Waktu bebas beribadah di Masjid Nabawi.' },
+                { day: 'Hari 6', title: 'Perjalanan Madinah - Makkah', desc: 'Miqat di Bir Ali, perjalanan darat menuju Makkah, dilanjutkan Umroh pertama.' },
+                { day: 'Hari 7', title: 'Ibadah di Masjidil Haram', desc: 'Tawaf dan Sa\'i mandiri di seputar Ka\'bah.' },
+                { day: 'Hari 8', title: 'City Tour Makkah', desc: 'Mengunjungi Jabal Rahmah dan Jabal Tsur.' },
+                { day: 'Hari 9', title: 'Perjalanan ke Thaif', desc: 'Naik cable car (teleferik) Al Hada menikmati udara sejuk pegunungan Thaif.' },
+                { day: 'Hari 10', title: 'Jelajah Kota Thaif', desc: 'Mengunjungi Kebun Anggur & Delima serta Istana Shubra.' },
+                { day: 'Hari 11', title: 'Kembali ke Makkah', desc: 'Perjalanan kembali ke Makkah, waktu bebas ibadah.' },
+                { day: 'Hari 12', title: 'Umroh Sunnah', desc: 'Miqat dari Ji\'ranah/Tan\'im untuk pelaksanaan Umroh sunnah bagi yang berkenan.' },
+                { day: 'Hari 13', title: 'Waktu Bebas & Persiapan Kepulangan', desc: 'Waktu bebas ibadah, persiapan menuju Jeddah.' },
+                { day: 'Hari 14', title: 'Kepulangan Jeddah - Jakarta', desc: 'Check-out hotel, penerbangan kembali menuju Jakarta.' }
+            ],
+            reguler912a: [
+                { day: 'Hari 1', title: 'Keberangkatan Jakarta - Madinah', desc: 'Jamaah berkumpul di Bandara Soekarno-Hatta, penerbangan menuju Madinah.' },
+                { day: 'Hari 2', title: 'Tiba di Madinah', desc: 'Check-in hotel dekat Masjid Nabawi, istirahat.' },
+                { day: 'Hari 3', title: 'Ziarah Raudhah & Masjid Nabawi', desc: 'Shalat berjamaah dan ziarah ke Raudhah serta makam Rasulullah SAW.' },
+                { day: 'Hari 4', title: 'Ziarah Kota Madinah', desc: 'Mengunjungi Jabal Uhud, Masjid Quba, dan kebun kurma Madinah.' },
+                { day: 'Hari 5', title: 'Perjalanan Madinah - Makkah', desc: 'Miqat di Bir Ali, perjalanan darat menuju Makkah, dilanjutkan Umroh pertama.' },
+                { day: 'Hari 6', title: 'Ibadah di Masjidil Haram', desc: 'Tawaf dan Sa\'i mandiri di seputar Ka\'bah.' },
+                { day: 'Hari 7', title: 'City Tour Makkah', desc: 'Mengunjungi Jabal Rahmah, Jabal Tsur, dan Museum Ka\'bah.' },
+                { day: 'Hari 8', title: 'Waktu Bebas Ibadah', desc: 'Waktu bebas beribadah, persiapan menuju Jeddah.' },
+                { day: 'Hari 9', title: 'Kepulangan Jeddah - Jakarta', desc: 'Check-out hotel, penerbangan kembali menuju Jakarta. (Untuk paket 12 hari, jamaah mendapat 3 hari tambahan waktu bebas ibadah di Makkah sebelum kepulangan.)' }
+            ],
+            reguler912b: [
+                { day: 'Hari 1', title: 'Keberangkatan Jakarta - Madinah', desc: 'Jamaah berkumpul di Bandara Soekarno-Hatta, penerbangan menuju Madinah.' },
+                { day: 'Hari 2', title: 'Tiba di Madinah', desc: 'Check-in hotel dekat Masjid Nabawi, istirahat setelah perjalanan panjang.' },
+                { day: 'Hari 3', title: 'Ziarah Raudhah & Masjid Nabawi', desc: 'Shalat berjamaah dan ziarah ke Raudhah serta makam Rasulullah SAW.' },
+                { day: 'Hari 4', title: 'Ziarah Kota Madinah', desc: 'Mengunjungi Jabal Uhud, Masjid Quba, dan kebun kurma Madinah.' },
+                { day: 'Hari 5', title: 'Perjalanan Madinah - Makkah', desc: 'Miqat di Bir Ali, perjalanan darat menuju Makkah, dilanjutkan Umroh pertama.' },
+                { day: 'Hari 6', title: 'Ibadah di Masjidil Haram', desc: 'Tawaf dan Sa\'i mandiri di seputar Ka\'bah.' },
+                { day: 'Hari 7', title: 'City Tour Makkah', desc: 'Mengunjungi Jabal Rahmah, Jabal Tsur, dan Museum Ka\'bah.' },
+                { day: 'Hari 8', title: 'Waktu Bebas Ibadah', desc: 'Waktu bebas beribadah, persiapan menuju Jeddah.' },
+                { day: 'Hari 9', title: 'Kepulangan Jeddah - Jakarta', desc: 'Check-out hotel, penerbangan kembali menuju Jakarta. (Untuk paket 12 hari, jamaah mendapat 3 hari tambahan waktu bebas ibadah di Makkah sebelum kepulangan.)' }
+            ],
+            reguler9: [
+                { day: 'Hari 1', title: 'Keberangkatan Jakarta - Madinah', desc: 'Jamaah berkumpul di Bandara Soekarno-Hatta, penerbangan menuju Madinah.' },
+                { day: 'Hari 2', title: 'Tiba di Madinah', desc: 'Check-in hotel dekat Masjid Nabawi, istirahat.' },
+                { day: 'Hari 3', title: 'Ziarah Raudhah & Masjid Nabawi', desc: 'Shalat berjamaah dan ziarah ke Raudhah serta makam Rasulullah SAW.' },
+                { day: 'Hari 4', title: 'Ziarah Kota Madinah', desc: 'Mengunjungi Jabal Uhud, Masjid Quba, dan kebun kurma Madinah.' },
+                { day: 'Hari 5', title: 'Perjalanan Madinah - Makkah', desc: 'Miqat di Bir Ali, perjalanan darat menuju Makkah, dilanjutkan Umroh pertama.' },
+                { day: 'Hari 6', title: 'Ibadah di Masjidil Haram', desc: 'Tawaf dan Sa\'i mandiri di seputar Ka\'bah.' },
+                { day: 'Hari 7', title: 'City Tour Makkah', desc: 'Mengunjungi Jabal Rahmah, Jabal Tsur, dan Museum Ka\'bah.' },
+                { day: 'Hari 8', title: 'Waktu Bebas Ibadah', desc: 'Waktu bebas beribadah, persiapan menuju Jeddah.' },
+                { day: 'Hari 9', title: 'Kepulangan Jeddah - Jakarta', desc: 'Check-out hotel, penerbangan kembali menuju Jakarta.' }
+            ],
+            yordania14: [
+                { day: 'Hari 1', title: 'Keberangkatan Jakarta - Amman', desc: 'Jamaah berkumpul di Bandara Soekarno-Hatta, penerbangan menuju Amman, Yordania.' },
+                { day: 'Hari 2', title: 'Tiba di Amman', desc: 'City tour Amman Citadel dan Roman Theatre.' },
+                { day: 'Hari 3', title: 'Jelajah Petra', desc: 'Mengunjungi kota kuno Petra, salah satu dari Tujuh Keajaiban Dunia.' },
+                { day: 'Hari 4', title: 'Laut Mati & Jerash', desc: 'Mengapung di Laut Mati (Dead Sea) dan mengunjungi reruntuhan kota Romawi Jerash.' },
+                { day: 'Hari 5', title: 'Penerbangan Amman - Madinah', desc: 'Check-out hotel, penerbangan menuju Madinah.' },
+                { day: 'Hari 6', title: 'Tiba di Madinah', desc: 'Check-in hotel dekat Masjid Nabawi, istirahat.' },
+                { day: 'Hari 7', title: 'Ziarah Raudhah & Masjid Nabawi', desc: 'Shalat berjamaah dan ziarah ke Raudhah serta makam Rasulullah SAW.' },
+                { day: 'Hari 8', title: 'Ziarah Kota Madinah', desc: 'Mengunjungi Jabal Uhud dan Masjid Quba.' },
+                { day: 'Hari 9', title: 'Perjalanan Madinah - Makkah', desc: 'Miqat di Bir Ali, perjalanan darat menuju Makkah, dilanjutkan Umroh pertama.' },
+                { day: 'Hari 10', title: 'Ibadah di Masjidil Haram', desc: 'Tawaf dan Sa\'i mandiri di seputar Ka\'bah.' },
+                { day: 'Hari 11', title: 'City Tour Makkah', desc: 'Mengunjungi Jabal Rahmah dan Jabal Tsur.' },
+                { day: 'Hari 12', title: 'Waktu Bebas Ibadah', desc: 'Waktu bebas beribadah di Masjidil Haram.' },
+                { day: 'Hari 13', title: 'Persiapan Kepulangan', desc: 'Perjalanan menuju Jeddah, waktu belanja oleh-oleh.' },
+                { day: 'Hari 14', title: 'Kepulangan Jeddah - Jakarta', desc: 'Check-out hotel, penerbangan kembali menuju Jakarta.' }
+            ]
+        };
+
         // ========== MODAL DETAIL JADWAL KEBERANGKATAN ==========
         (function () {
             const overlay = document.getElementById('detailModalOverlay');
@@ -2457,7 +2742,49 @@
             const specsEl = document.getElementById('detailModalSpecs');
             const priceEl = document.getElementById('detailModalPrice');
             const bookBtn = document.getElementById('detailModalBookBtn');
+            const itineraryEl = document.getElementById('detailModalItinerary');
             if (!overlay) return;
+
+            function renderItinerary(key) {
+                if (!itineraryEl) return;
+                const data = itineraryData[key];
+                itineraryEl.innerHTML = '';
+                if (!data || !data.length) {
+                    itineraryEl.innerHTML = '<p class="itinerary-empty">Rundown perjalanan untuk paket ini akan segera tersedia. Silakan hubungi tim kami via WhatsApp untuk info lebih lengkap.</p>';
+                    return;
+                }
+                data.forEach(function (item, idx) {
+                    const wrap = document.createElement('div');
+                    wrap.className = 'itinerary-item';
+                    wrap.innerHTML =
+                        '<button type="button" class="itinerary-item-head" aria-expanded="' + (idx === 0 ? 'true' : 'false') + '">' +
+                        '<span class="itinerary-item-day">' + item.day + '</span>' +
+                        '<span class="itinerary-item-title">' + item.title + '</span>' +
+                        '<svg class="itinerary-item-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6" /></svg>' +
+                        '</button>' +
+                        '<div class="itinerary-item-body"><p>' + item.desc + '</p></div>';
+                    itineraryEl.appendChild(wrap);
+                });
+
+                const heads = itineraryEl.querySelectorAll('.itinerary-item-head');
+                heads.forEach(function (head) {
+                    const body = head.nextElementSibling;
+                    if (head.getAttribute('aria-expanded') === 'true') {
+                        body.style.maxHeight = body.scrollHeight + 'px';
+                    }
+                    head.addEventListener('click', function () {
+                        const expanded = head.getAttribute('aria-expanded') === 'true';
+                        heads.forEach(function (h) {
+                            h.setAttribute('aria-expanded', 'false');
+                            h.nextElementSibling.style.maxHeight = null;
+                        });
+                        if (!expanded) {
+                            head.setAttribute('aria-expanded', 'true');
+                            body.style.maxHeight = body.scrollHeight + 'px';
+                        }
+                    });
+                });
+            }
 
             window.showDepartureDetail = function (btn) {
                 const card = btn.closest('.departure-card');
@@ -2513,12 +2840,31 @@
 
                 specsEl.innerHTML = specItems.map(item => `<li>${item}</li>`).join('');
 
+                const itinKey = card.getAttribute('data-itin');
+                renderItinerary(itinKey);
+
                 priceEl.innerHTML = priceBlock ? priceBlock.innerHTML : '';
 
                 bookBtn.onclick = function () {
                     closeDetailModal();
                     if (bookingLink) bookingLink.click();
                 };
+
+                // Simpan data paket yang sedang dibuka, dipakai oleh tombol "Unduh Brosur PDF"
+                window.currentDetailPackage = {
+                    itinKey: itinKey,
+                    title: titleEl.textContent.trim(),
+                    badge: badgeEl.style.display !== 'none' ? badgeEl.textContent.trim() : '',
+                    eyebrow: eyebrowEl.textContent.trim(),
+                    desc: descEl.textContent.trim(),
+                    specs: specItems,
+                    priceHtml: priceEl.innerHTML,
+                    imgSrc: imgSrc
+                };
+
+                // Lacak paket mana yang paling sering dilihat calon jamaah (GA4 view_item / Meta ViewContent)
+                try { if (typeof gtag === 'function') gtag('event', 'view_item', { item_name: window.currentDetailPackage.title }); } catch (err) { }
+                try { if (typeof fbq === 'function') fbq('track', 'ViewContent', { content_name: window.currentDetailPackage.title }); } catch (err) { }
 
                 overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
@@ -2576,6 +2922,167 @@
             });
         })();
 
+        // ========== DOWNLOAD BROSUR PDF PER PAKET ==========
+        // Membuat brosur PDF secara instan di browser (tanpa perlu siapkan file PDF manual
+        // per paket) dari data paket yang sedang dibuka di modal detail. Jamaah bisa
+        // langsung kirim PDF-nya ke keluarga lewat WhatsApp/email tanpa perlu screenshot.
+        //
+        // CATATAN TEKNIS (riwayat perbaikan):
+        // 1) Awalnya template brosur ditaruh JAUH di luar layar (left:-9999px) supaya tidak
+        //    kelihatan user — ini bikin html2canvas gagal "memotret" & hasil PDF blank putih.
+        //    -> Diperbaiki: brosur dirender NORMAL di layar, ditutup overlay loading.
+        // 2) Namun PDF masih tetap blank karena akar masalah sebenarnya ada di library
+        //    html2pdf.js itu sendiri: sebelum memotret, html2pdf.js meng-CLONE elemen ke
+        //    iframe tersembunyi, dan proses cloning ini punya bug resmi (diakui di GitHub
+        //    issue-nya) yang membuat style CSS tidak terbawa dengan benar ke hasil clone,
+        //    plus batas ukuran kanvas yang gampang terlampaui saat scale:2 dipakai —
+        //    keduanya berujung pada PDF kosong.
+        //    -> Diperbaiki: tidak lagi memakai html2pdf.js. html2canvas & jsPDF dipanggil
+        //    LANGSUNG secara manual di bawah ini, memotret elemen brosur yang benar-benar
+        //    tampil di layar (bukan hasil clone), lalu gambar hasil potretnya disusun
+        //    sendiri jadi PDF multi-halaman jika perlu. Ini jauh lebih stabil di semua
+        //    browser, termasuk browser HP (Chrome/Safari Android & iOS).
+        (function () {
+            const brosurBtn = document.getElementById('detailModalBrosurBtn');
+            const brosurLabel = document.getElementById('detailModalBrosurBtnLabel');
+            const overlay = document.getElementById('brosurOverlay');
+            const template = document.getElementById('brosurTemplate');
+            if (!brosurBtn || !template || !overlay) return;
+
+            // Menyusun 1 gambar hasil potret html2canvas menjadi PDF A4, dipecah otomatis
+            // jadi beberapa halaman kalau kontennya lebih panjang dari 1 halaman A4.
+            function canvasToPdfAndSave(canvas, filename) {
+                const jsPDFCtor = (window.jspdf && window.jspdf.jsPDF) ? window.jspdf.jsPDF : null;
+                if (!jsPDFCtor) throw new Error('jsPDF belum termuat');
+
+                const pdf = new jsPDFCtor('p', 'mm', 'a4');
+                const pageWidth = pdf.internal.pageSize.getWidth();
+                const pageHeight = pdf.internal.pageSize.getHeight();
+
+                const imgWidth = pageWidth;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                const imgData = canvas.toDataURL('image/jpeg', 0.92);
+
+                let heightLeft = imgHeight;
+                let position = 0;
+
+                pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                while (heightLeft > 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+
+                pdf.save(filename);
+            }
+
+            function buildBrosurHtml(pkg) {
+                const itin = (itineraryData && pkg.itinKey) ? itineraryData[pkg.itinKey] : null;
+                const itinHtml = (itin && itin.length)
+                    ? itin.map(function (it) {
+                        return '<div class="bp-itin-row"><strong>' + it.day + ' — ' + it.title + '.</strong> ' + it.desc + '</div>';
+                    }).join('')
+                    : '<div class="bp-itin-row">Rundown perjalanan detail akan diinformasikan tim kami. Hubungi WhatsApp untuk info lengkap.</div>';
+
+                const specsHtml = (pkg.specs && pkg.specs.length)
+                    ? '<ul class="bp-specs">' + pkg.specs.map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ul>'
+                    : '';
+
+                return '' +
+                    '<div class="bp-page">' +
+                    '  <div class="bp-header">' +
+                    '    <img src="Image/Khalifah Bekasi.png" class="bp-logo" crossorigin="anonymous" onerror="this.style.display=\'none\'" />' +
+                    '    <div class="bp-header-text"><div class="bp-brand">Khalifah Asia Bekasi</div><div class="bp-tagline">Umroh &amp; Haji Khusus Berizin Resmi Kemenag RI</div></div>' +
+                    '  </div>' +
+                    (pkg.imgSrc ? '  <img src="' + pkg.imgSrc + '" class="bp-poster" crossorigin="anonymous" onerror="this.style.display=\'none\'" />' : '') +
+                    '  <div class="bp-badge-row">' + (pkg.badge ? '<span class="bp-badge">' + pkg.badge + '</span>' : '') + (pkg.eyebrow ? '<span class="bp-eyebrow">' + pkg.eyebrow + '</span>' : '') + '</div>' +
+                    '  <h1 class="bp-title">' + pkg.title + '</h1>' +
+                    '  <p class="bp-desc">' + (pkg.desc || '') + '</p>' +
+                    '  <div class="bp-price-box">' + pkg.priceHtml + '</div>' +
+                    '  <h3 class="bp-section-title">Spesifikasi Paket</h3>' +
+                    specsHtml +
+                    '  <h3 class="bp-section-title">Gambaran Rencana Perjalanan</h3>' +
+                    '  <div class="bp-itin">' + itinHtml + '</div>' +
+                    '  <div class="bp-footer">' +
+                    '    <div><strong>WhatsApp:</strong> +62 817-8435-31 &nbsp;|&nbsp; <strong>Email:</strong> info@khalifahasia.co.id</div>' +
+                    '    <div class="bp-footer-note">Brosur ini dibuat otomatis dari khalifahasiabekasi.co.id — harga &amp; jadwal dapat berubah, mohon konfirmasi ulang ke tim kami sebelum mendaftar.</div>' +
+                    '  </div>' +
+                    '</div>';
+            }
+
+            // Tunggu semua <img> di dalam elemen selesai dimuat (berhasil ATAU gagal),
+            // supaya html2canvas tidak "memotret" sebelum gambar sempat tampil.
+            function waitForImages(el) {
+                const imgs = Array.from(el.querySelectorAll('img'));
+                if (!imgs.length) return Promise.resolve();
+                return Promise.all(imgs.map(function (img) {
+                    if (img.complete) return Promise.resolve();
+                    return new Promise(function (resolve) {
+                        img.addEventListener('load', resolve, { once: true });
+                        img.addEventListener('error', resolve, { once: true });
+                        // Jaga-jaga kalau event tidak pernah terpicu (koneksi sangat lambat)
+                        setTimeout(resolve, 4000);
+                    });
+                }));
+            }
+
+            brosurBtn.addEventListener('click', function () {
+                const pkg = window.currentDetailPackage;
+                if (!pkg || typeof html2canvas === 'undefined') return;
+
+                brosurBtn.disabled = true;
+                const originalLabel = brosurLabel.textContent;
+                brosurLabel.textContent = 'Menyiapkan PDF...';
+
+                template.innerHTML = buildBrosurHtml(pkg);
+                overlay.classList.add('active');
+
+                const safeName = pkg.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+                function finish() {
+                    overlay.classList.remove('active');
+                    brosurBtn.disabled = false;
+                    brosurLabel.textContent = originalLabel;
+                    template.innerHTML = '';
+                }
+
+                waitForImages(template).then(function () {
+                    // Tunggu 2 frame render browser supaya layout & paint elemen brosur
+                    // benar-benar selesai sebelum dipotret (jaga-jaga di HP yang lebih lambat).
+                    return new Promise(function (resolve) {
+                        requestAnimationFrame(function () { requestAnimationFrame(resolve); });
+                    });
+                }).then(function () {
+                    // scale dibatasi max 2 dan disesuaikan lebar elemen, supaya kanvas hasil
+                    // potret tidak melebihi batas ukuran kanvas yang didukung browser HP
+                    // (ini penyebab utama PDF blank sebelumnya).
+                    const scale = Math.min(2, 1600 / template.offsetWidth);
+                    return html2canvas(template, {
+                        scale: scale > 0 ? scale : 1.5,
+                        useCORS: true,
+                        allowTaint: false,
+                        backgroundColor: '#ffffff',
+                        windowWidth: template.scrollWidth,
+                        windowHeight: template.scrollHeight
+                    });
+                }).then(function (canvas) {
+                    canvasToPdfAndSave(canvas, 'Brosur-' + (safeName || 'paket-umroh') + '.pdf');
+                }).then(function () {
+                    finish();
+                    // Lacak brosur mana yang paling banyak diunduh (sinyal minat serius calon jamaah)
+                    try { if (typeof gtag === 'function') gtag('event', 'download_brosur', { item_name: pkg.title }); } catch (err) { }
+                    try { if (typeof fbq === 'function') fbq('trackCustom', 'DownloadBrosur', { content_name: pkg.title }); } catch (err) { }
+                }).catch(function (err) {
+                    console.warn('Gagal membuat brosur PDF:', err);
+                    finish();
+                    alert('Maaf, brosur PDF gagal dibuat. Silakan coba lagi atau hubungi kami via WhatsApp.');
+                });
+            });
+        })();
+
         // ========== MODAL: LIHAT SEMUA GALERI PER PROGRAM (tombol "Lihat semua galeri pada program ini") ==========
         (function () {
             const overlay = document.getElementById('programGalleryOverlay');
@@ -2584,7 +3091,7 @@
             const titleEl = document.getElementById('programGalleryTitle');
             const descEl = document.getElementById('programGalleryDesc');
             const gridEl = document.getElementById('programGalleryGrid');
-            const buttons = document.querySelectorAll('.gallery-view-all-btn, .gallery-more-btn');
+            const buttons = document.querySelectorAll('.gallery-view-all-btn');
             if (!overlay || !gridEl || !buttons.length) return;
             const programGalleries = {
                 thaif: {
@@ -2626,14 +3133,6 @@
                     title: 'Umroh Plus Uzbekistan',
                     desc: 'Telusuri jejak peradaban Islam di Samarkand dan Bukhara — dokumentasi perjalanan jamaah Khalifah Asia.',
                     images: ['Image/galerikami4.jpeg', 'Image/fotbar5.jpeg', 'Image/galerikami6.jpeg', 'Image/galerikami1.jpeg', 'Image/fotbar2.jpeg', 'Image/galerikami10.jpeg']
-                },
-                // ===== GALERI LAINNYA: dokumentasi lama, di luar 8 program di atas =====
-                // TODO PENTING: ganti daftar path di bawah ini dengan foto-foto dokumentasi lama
-                // yang ingin ditambahkan (boleh sebanyak-banyaknya, tidak terbatas 6 seperti di atas).
-                lainnya: {
-                    title: 'Galeri Lainnya',
-                    desc: 'Kumpulan dokumentasi perjalanan jamaah Khalifah Asia Bekasi dari periode-periode sebelumnya.',
-                    images: ['Image/fotbar1.jpeg', 'Image/fotbar2.jpeg', 'Image/galerikami3.jpeg', 'Image/galerikami4.jpeg', 'Image/fotbar4.jpeg', 'Image/galerikami6.jpeg', 'Image/galeri7.jpg', 'Image/fotbar8.jpeg']
                 }
             };
 
@@ -2765,6 +3264,12 @@
             const closeBtn = document.getElementById('livechatClose');
             const panel = document.getElementById('livechatPanel');
             if (!widget || !toggleBtn) return;
+
+            // Lacak setiap klik tombol WhatsApp mengambang sebagai sinyal "Contact"
+            toggleBtn.addEventListener('click', function () {
+                try { if (typeof gtag === 'function') gtag('event', 'contact', { method: 'whatsapp_floating' }); } catch (err) { }
+                try { if (typeof fbq === 'function') fbq('track', 'Contact'); } catch (err) { }
+            });
 
             function openChat() {
                 widget.classList.add('open');

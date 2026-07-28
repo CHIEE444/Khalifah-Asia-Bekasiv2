@@ -1100,51 +1100,37 @@ ol {
   color: var(--tosca);
 }
 
-/* ---------- BENEFIT CARDS ---------- */
+/* ---------- BENEFIT CARDS ----------
+   Konsep: kartu berbentuk "jendela mihrab" — lengkungan cahaya lembut di
+   bagian atas kartu (seperti cahaya masuk dari jendela masjid), medali
+   bundar bertepi emas yang menggantung di tepi atas kartu (terinspirasi
+   dari ornamen rosette pada manuskrip Islam klasik), dan pola geometris
+   tipis (kisi berlian, khas ubin masjid) sebagai tekstur latar — bukan
+   lagi kartu ikon-bulat + angka pudar bergaya template SaaS generik. */
+:root {
+  --benefit-gold: #c9a46a;
+  --benefit-gold-soft: rgba(201, 164, 106, 0.35);
+  --benefit-glow: rgba(160, 214, 180, 0.22);
+}
+
 .benefit-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
   margin-bottom: 32px;
+  align-items: start;
 }
 
 .benefit-card {
   background: var(--white);
-  border-radius: var(--radius-lg);
-  padding: 40px 32px;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(160, 214, 180, 0.05) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(-45deg, rgba(160, 214, 180, 0.05) 0 1px, transparent 1px 22px);
+  border-radius: 26px;
+  padding: 60px 30px 34px;
   border: 1px solid var(--line);
   position: relative;
-  overflow: hidden;
-  transition: all 0.5s var(--ease-out);
-}
-
-.benefit-card:nth-child(2),
-.benefit-card:nth-child(5) {
-  transform: translateY(22px);
-}
-
-.benefit-card:nth-child(2):hover,
-.benefit-card:nth-child(5):hover {
-  transform: translateY(14px);
-}
-
-@media (max-width: 900px) {
-  .benefit-card:nth-child(2),
-  .benefit-card:nth-child(5) {
-    transform: none;
-  }
-}
-
-.benefit-index {
-  position: absolute;
-  top: 28px;
-  right: 32px;
-  font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
-  font-size: 2.1rem;
-  font-weight: 600;
-  color: var(--paper-deep);
-  z-index: 0;
-  line-height: 1;
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out), border-color 0.5s var(--ease-out);
 }
 
 .benefit-card::before {
@@ -1153,65 +1139,106 @@ ol {
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: var(--ink);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s var(--ease-out);
+  height: 130px;
+  border-radius: 26px 26px 0 0;
+  background: radial-gradient(120% 100% at 50% -10%, var(--benefit-glow) 0%, rgba(160, 214, 180, 0) 72%);
+  transition: opacity 0.5s var(--ease-out);
+  pointer-events: none;
 }
 
 .benefit-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--neutral-pale);
+  border-color: var(--benefit-gold-soft);
 }
 
 .benefit-card:hover::before {
-  transform: scaleX(1);
+  opacity: 1.4;
 }
 
-.benefit-icon {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
+/* Penanda "Bab" — nomor di sini genuinely berurutan (kisah berdirinya
+   Khalifah Asia: kenapa kami -> sejarah -> pencapaian), jadi dipertahankan
+   sebagai chapter marker, bukan sekadar dekorasi. */
+.benefit-index {
+  position: absolute;
+  top: 22px;
+  right: 26px;
+  font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--benefit-gold);
+  z-index: 1;
+  line-height: 1;
+}
 
+.benefit-index::before {
+  content: "Bab ";
+}
+
+/* Medali bundar tepi-emas yang "menggantung" di tepi atas kartu */
+.benefit-icon {
+  position: absolute;
+  top: -30px;
+  left: 30px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text);
-  margin-bottom: 24px;
-  border: 1px solid var(--line);
-  transition: all 0.4s var(--ease-out);
-  position: relative;
-  z-index: 1;
+  background: var(--ink);
+  color: var(--tosca);
+  z-index: 2;
+  box-shadow:
+    0 0 0 5px var(--white),
+    0 0 0 6.5px var(--benefit-gold-soft),
+    var(--shadow-md);
+  transition: transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease-out), color 0.45s var(--ease-out);
 }
 
 .benefit-card:hover .benefit-icon {
-  background: var(--neutral-pale);
-  color: var(--ink);
-  border-color: var(--ink);
-  transform: scale(1.08) rotate(-4deg);
-  box-shadow: var(--shadow-dark);
+  transform: scale(1.08) rotate(-6deg);
+  color: var(--benefit-gold);
+  box-shadow:
+    0 0 0 5px var(--white),
+    0 0 0 7px var(--benefit-gold),
+    var(--shadow-dark);
 }
 
 .benefit-card h3 {
   font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.32rem;
   color: var(--ink);
-  margin-bottom: 18px;
-  font-weight: 600;
+  margin: 10px 0 0;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   position: relative;
   z-index: 1;
+}
+
+/* Garis flourish singkat di bawah judul — merujuk pada pemisah ayat pada
+   manuskrip klasik, tanpa perlu menambah markup baru di HTML. */
+.benefit-card h3::after {
+  content: "";
+  display: block;
+  width: 38px;
+  height: 2px;
+  margin: 16px 0 18px;
+  background: linear-gradient(90deg, var(--benefit-gold) 0%, rgba(201, 164, 106, 0) 100%);
 }
 
 .benefit-card p {
   position: relative;
   z-index: 1;
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   font-weight: 500;
   color: var(--text-soft);
   line-height: 1.75;
 }
+
+
 
 /* Promo Cards */
 .promo-grid {
@@ -8319,4 +8346,426 @@ object {
   .post-shell {
     padding: 0 18px 60px;
   }
+}
+/* =========================================================
+   HALAMAN GALERI LAINNYA (galeri-lainnya.html) — dibuat karena
+   dokumentasi akan diisi 30+ foto, jadi dipisah dari modal
+   supaya lebih leluasa & rapi, terutama tampilan di HP.
+   ========================================================= */
+.lainnya-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  padding: 0 0 70px;
+}
+
+.lainnya-grid-item {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  background: var(--paper-warm);
+  border: 1px solid var(--line-soft);
+}
+
+.lainnya-grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.lainnya-grid-item:hover img {
+  transform: scale(1.06);
+}
+
+.lainnya-grid-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 8, 5, 0);
+  transition: background 0.3s ease;
+}
+
+.lainnya-grid-item:hover::after {
+  background: rgba(13, 8, 5, 0.12);
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .lainnya-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+}
+
+/* HP — 3 kolom (sebelumnya modal lama cuma 2 kolom di HP, ini sengaja
+   dibuat lebih rapat/banyak karena akan diisi 30+ foto) */
+@media (max-width: 720px) {
+  .lainnya-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+}
+
+/* HP kecil — tetap 3 kolom, cuma gap dikecilkan lagi supaya tidak terlalu sempit */
+@media (max-width: 380px) {
+  .lainnya-grid {
+    gap: 6px;
+  }
+}
+
+/* ---------- LIGHTBOX FOTO (klik salah satu foto = tampil penuh + next/prev) ---------- */
+.lainnya-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 8, 5, 0.92);
+  z-index: 4000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lainnya-lightbox-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lainnya-lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 84vh;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  object-fit: contain;
+}
+
+.lainnya-lightbox-close,
+.lainnya-lightbox-prev,
+.lainnya-lightbox-next {
+  position: absolute;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.lainnya-lightbox-close:hover,
+.lainnya-lightbox-prev:hover,
+.lainnya-lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.lainnya-lightbox-close {
+  top: 20px;
+  right: 20px;
+  font-size: 1.4rem;
+}
+
+.lainnya-lightbox-prev {
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lainnya-lightbox-next {
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lainnya-lightbox-counter {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 640px) {
+  .lainnya-lightbox-prev,
+  .lainnya-lightbox-next {
+    width: 38px;
+    height: 38px;
+  }
+  .lainnya-lightbox-prev { left: 8px; }
+  .lainnya-lightbox-next { right: 8px; }
+  .lainnya-lightbox-close { top: 10px; right: 10px; }
+}
+
+/* ---------- FIX FOTO FLYER YANG KE-CROP DI ATAS ----------
+   Tambahkan class "obj-top" ini pada tag <img> foto flyer/poster
+   yang bagian atasnya (judul/teks) ke-potong, supaya crop-nya
+   dari bagian atas foto, bukan dari tengah. Bisa dipakai di mana
+   saja (gallery-grid, lainnya-grid, dsb). */
+.obj-top {
+  object-position: top center !important;
+}
+
+/* ============================================================
+   FITUR TAMBAHAN: TOMBOL & LAYOUT "UNDUH BROSUR PDF"
+   ============================================================ */
+
+.detail-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.brosur-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 16px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--line-soft);
+  background: transparent;
+  color: var(--ink);
+  font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background 0.2s var(--ease-out), border-color 0.2s var(--ease-out), transform 0.15s var(--ease-out);
+  white-space: nowrap;
+}
+
+.brosur-btn:hover {
+  background: var(--neutral-pale);
+  border-color: var(--tosca);
+  transform: translateY(-1px);
+}
+
+.brosur-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}
+
+@media (max-width: 600px) {
+  .detail-modal-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .brosur-btn,
+  .detail-modal-actions .departure-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* ---- Overlay "Menyiapkan brosur PDF..." (brosur dirender di layar, lalu difoto html2canvas) ---- */
+.brosur-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #ffffff;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  overflow: auto;
+  padding: 40px 0;
+}
+
+.brosur-overlay.active {
+  display: flex;
+}
+
+.brosur-overlay p {
+  font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
+  font-weight: 700;
+  color: var(--ink, #1f2023);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.brosur-overlay-spinner {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid var(--neutral-pale, rgba(31,31,31,0.08));
+  border-top-color: var(--tosca, #A0D6B4);
+  animation: brosurSpin 0.8s linear infinite;
+}
+
+@keyframes brosurSpin {
+  to { transform: rotate(360deg); }
+}
+
+.brosur-template {
+  width: 780px;
+  max-width: 92vw;
+  background: #ffffff;
+  box-shadow: var(--shadow-md, 0 12px 40px rgba(20,20,20,0.12));
+}
+
+.bp-page {
+  font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
+  color: var(--ink, #1f2023);
+  background: #ffffff;
+  padding: 48px 52px 40px;
+  box-sizing: border-box;
+}
+
+.bp-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--tosca, #A0D6B4);
+  margin-bottom: 22px;
+}
+
+.bp-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.bp-brand {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.bp-tagline {
+  font-size: 0.78rem;
+  color: var(--text-soft, #636363);
+  margin-top: 2px;
+}
+
+.bp-poster {
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  display: block;
+}
+
+.bp-badge-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.bp-badge {
+  background: var(--tosca, #A0D6B4);
+  color: #0d0d0e;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.bp-eyebrow {
+  background: var(--neutral-pale, rgba(31,31,31,0.05));
+  color: var(--text-soft, #636363);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.bp-title {
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin: 4px 0 8px;
+  line-height: 1.25;
+}
+
+.bp-desc {
+  font-size: 0.92rem;
+  color: var(--text-soft, #636363);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.bp-price-box {
+  background: var(--neutral-pale, rgba(31,31,31,0.05));
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.bp-section-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin: 0 0 10px;
+  border-top: 1px dashed var(--line, #e2e2e2);
+  padding-top: 18px;
+}
+
+.bp-specs {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 20px;
+}
+
+.bp-specs li {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  padding-left: 16px;
+  position: relative;
+}
+
+.bp-specs li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--tosca, #A0D6B4);
+}
+
+.bp-itin-row {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  margin-bottom: 8px;
+}
+
+.bp-itin-row strong {
+  color: var(--ink, #1f2023);
+}
+
+.bp-footer {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line, #e2e2e2);
+  font-size: 0.8rem;
+}
+
+.bp-footer-note {
+  margin-top: 6px;
+  color: var(--text-muted, #999999);
+  font-size: 0.72rem;
+  line-height: 1.5;
 }
