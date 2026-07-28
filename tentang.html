@@ -364,7 +364,7 @@
         }
 
         .pemandu-info {
-            padding: 18px 16px 22px;
+            padding: 18px 16px 16px;
         }
 
         .pemandu-name {
@@ -393,7 +393,7 @@
             font-size: 0.88rem;
             line-height: 1.7;
             color: var(--text-soft);
-            margin: 12px 0 0;
+            margin: 12px 0 4px;
         }
 
         .pemandu-note {
@@ -403,49 +403,6 @@
             text-align: center;
         }
 
-        /* ---------- BIODATA PEMANDU (untuk kepercayaan user) ---------- */
-
-        .pemandu-bio {
-            list-style: none;
-            margin: 14px 0 0;
-            padding: 12px 0 0;
-            border-top: 1px dashed var(--line);
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .pemandu-bio li {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            font-size: 0.82rem;
-            line-height: 1.5;
-            color: var(--text-soft);
-        }
-
-        .pemandu-bio svg {
-            flex-shrink: 0;
-            margin-top: 2px;
-            color: var(--gold-deep);
-        }
-
-        .pemandu-bio strong {
-            display: block;
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 1px;
-        }
-
-        .pemandu-bio .bio-value.placeholder {
-            color: #b3452f;
-            font-weight: 600;
-            font-style: italic;
-        }
 
         /* ---------- RESPONSIVE: TABLET (<=1024px) ---------- */
 
@@ -1181,7 +1138,7 @@
             width: 100%;
             aspect-ratio: 4 / 3;
             overflow: hidden;
-            background: #eee3ce;
+            background: var(--paper-warm);
         }
 
         .gallery-grid-photo img,
@@ -1210,7 +1167,7 @@
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
-            background: linear-gradient(155deg, #f1e7d2 0%, #e2d2ac 100%);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
         }
 
         .gallery-fallback span {
@@ -1587,19 +1544,6 @@
                                         Ustad Pembimbing
                                     </span>
                                     <p class="pemandu-desc">"Sabar tanpa tepi | Ikhlas tanpa tapi | Beramal sampai mati"</p>
-                                    <ul class="pemandu-bio">
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
-                                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-                                            </svg>
-                                            <span><strong>Biografi Singkat</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: 1-2 kalimat perjalanan
-                                                    dakwah/karier ustad]</span></span>
-                                        </li>
-                                    </ul>
                                 </div>
                                 <div class="pemandu-card-footer">
                                     <button type="button" class="pemandu-gallery-btn" data-ustad="asep">
@@ -1632,19 +1576,6 @@
                                         Kepala Cabang Khalifah Asia Bekasi
                                     </span>
                                     <p class="pemandu-desc">"Umroh itu ibadah yang menyenangnkan, jadi kita harus bahagia"</p>
-                                    <ul class="pemandu-bio">
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
-                                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-                                            </svg>
-                                            <span><strong>Biografi Singkat</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: 1-2 kalimat perjalanan
-                                                    dakwah/karier ustad]</span></span>
-                                        </li>
-                                    </ul>
                                 </div>
                                 <div class="pemandu-card-footer">
                                     <button type="button" class="pemandu-gallery-btn" data-ustad="dindin">
@@ -1678,19 +1609,6 @@
                                     </span>
                                     <p class="pemandu-desc">"Setiap langkah di Tanah Suci adalah 
                                         panggilan cinta dari Allah untuk hamba-Nya yang rindu pulang."</p>
-                                    <ul class="pemandu-bio">
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
-                                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-                                            </svg>
-                                            <span><strong>Biografi Singkat</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: 1-2 kalimat perjalanan
-                                                    dakwah/karier ustad]</span></span>
-                                        </li>
-                                    </ul>
                                 </div>
                                 <div class="pemandu-card-footer">
                                     <button type="button" class="pemandu-gallery-btn" data-ustad="ropi">
@@ -1723,19 +1641,6 @@
                                         Ustad Pembimbing
                                     </span>
                                     <p class="pemandu-desc">"yuk kebaitullah menabur doa, menuai pahala dan melebur dosa."</p>
-                                    <ul class="pemandu-bio">
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
-                                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-                                            </svg>
-                                            <span><strong>Biografi Singkat</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: 1-2 kalimat perjalanan
-                                                    dakwah/karier ustad]</span></span>
-                                        </li>
-                                    </ul>
                                 </div>
                                 <div class="pemandu-card-footer">
                                     <button type="button" class="pemandu-gallery-btn" data-ustad="mahmud">
@@ -1768,19 +1673,6 @@
                                     </span>
                                     <p class="pemandu-desc">"Umrah panggilan sayang dari Allah SWT agar
                                          diri Lebih Baik dan raih surgaNya"</p>
-                                    <ul class="pemandu-bio">
-                                        <li>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
-                                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-                                            </svg>
-                                            <span><strong>Biografi Singkat</strong><span
-                                                    class="bio-value placeholder">[Lengkapi: 1-2 kalimat perjalanan
-                                                    dakwah/karier kyai]</span></span>
-                                        </li>
-                                    </ul>
                                 </div>
                                 <div class="pemandu-card-footer">
                                     <button type="button" class="pemandu-gallery-btn" data-ustad="kodir">
