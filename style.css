@@ -6607,6 +6607,212 @@ object {
   }
 }
 
+/* ---------- SEMINAR & SOSIALISASI (halaman Info Manasik) ---------- */
+.im-sem-subhead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-soft);
+  margin: -8px 0 26px;
+}
+
+.im-sem-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.im-sem-dot-seminar {
+  background: var(--ink, #1f2023);
+}
+
+.im-sem-dot-sosialisasi {
+  background: var(--text-soft, #636363);
+}
+
+.im-sem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.im-sem-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out), border-color 0.5s var(--ease-out);
+}
+
+.im-sem-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--neutral-pale);
+}
+
+.im-sem-banner {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.im-sem-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13, 8, 5, 0.05) 40%, rgba(13, 8, 5, 0.55) 100%);
+}
+
+.im-sem-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.im-sem-card:hover .im-sem-banner img {
+  transform: scale(1.06);
+}
+
+.im-sem-category {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.im-sem-category-seminar {
+  background: rgba(31, 32, 35, 0.82);
+}
+
+.im-sem-category-sosialisasi {
+  background: rgba(99, 99, 99, 0.82);
+}
+
+.im-sem-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px 22px 24px;
+}
+
+.im-sem-speaker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.im-sem-speaker-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+}
+
+.im-sem-speaker-name {
+  display: block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.im-sem-speaker-role {
+  display: block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.im-sem-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.im-sem-desc {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+.im-sem-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.im-sem-tag {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-soft);
+  border: 1px solid var(--line);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: var(--paper-warm);
+}
+
+.im-sem-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.im-sem-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.im-sem-meta-item svg {
+  flex-shrink: 0;
+  color: var(--text-soft, #636363);
+}
+
+.im-sem-btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+@media (max-width: 1000px) {
+  .im-sem-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .im-sem-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- ARTICLE / BERITA "LIHAT SEMUA" BUTTON ---------- */
 .article-viewall-wrap {
   display: flex;

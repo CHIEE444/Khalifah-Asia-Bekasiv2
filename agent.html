@@ -13,6 +13,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
 
+    <!-- ================= SUPABASE (Auth + Database untuk sistem Agent) ================= -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-client.js"></script>
+    <script src="assets/js/referral-capture.js"></script>
+
     <style>
         /* ================= AGENT — PAGE STYLES ================= */
 
@@ -786,6 +791,381 @@
                 font-size: 1.7rem;
             }
         }
+
+        /* ================= AUTH MODAL (Login / Daftar Agent) ================= */
+        .auth-tabs {
+            display: flex;
+            gap: 8px;
+            background: var(--paper-warm, #faf7f1);
+            border-radius: var(--radius-md, 12px);
+            padding: 5px;
+            margin-bottom: 22px;
+        }
+
+        .auth-tab-btn {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 11px 10px;
+            border-radius: 9px;
+            font-family: inherit;
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--text-soft);
+            cursor: pointer;
+            transition: all 0.25s var(--ease-out);
+        }
+
+        .auth-tab-btn.active {
+            background: var(--white);
+            color: var(--gold-deep);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .auth-panel {
+            display: none;
+        }
+
+        .auth-panel.active {
+            display: block;
+            animation: fadeInUp 0.4s var(--ease-out) both;
+        }
+
+        .auth-alert {
+            display: none;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 12px 14px;
+            border-radius: var(--radius-md, 12px);
+            font-size: 0.82rem;
+            line-height: 1.55;
+            margin-bottom: 16px;
+        }
+
+        .auth-alert.show {
+            display: flex;
+        }
+
+        .auth-alert.error {
+            background: #fdf2f1;
+            color: #b8382a;
+        }
+
+        .auth-alert.success {
+            background: #eef7f0;
+            color: #2e7d4f;
+        }
+
+        .auth-switch-hint {
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .auth-switch-hint a {
+            color: var(--gold-deep);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* ================= SECTION: AKUN AGENT ================= */
+        .akun-agent-section {
+            padding: 90px 0 100px;
+            background: var(--paper-warm, #faf7f1);
+        }
+
+        .akun-locked {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg, 20px);
+            padding: 52px 40px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .akun-locked-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .akun-locked h2 {
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+            font-weight: 700;
+            color: var(--brown-soft);
+            margin-bottom: 12px;
+        }
+
+        .akun-locked p {
+            color: var(--text-soft);
+            line-height: 1.8;
+            max-width: 460px;
+            margin: 0 auto 28px;
+        }
+
+        .akun-locked-actions {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .akun-unlocked {
+            display: none;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .akun-unlocked.show {
+            display: block;
+        }
+
+        .akun-locked.hide {
+            display: none;
+        }
+
+        .akun-greeting {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg, 20px);
+            padding: 26px 30px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 22px;
+        }
+
+        .akun-greeting h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--brown-soft);
+            margin-bottom: 4px;
+        }
+
+        .akun-greeting p {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .akun-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .akun-stat-card {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md, 14px);
+            padding: 20px 18px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .akun-stat-num {
+            font-family: "Manrope", sans-serif;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--gold-deep);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .akun-stat-label {
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .akun-share-box {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg, 20px);
+            padding: 30px 32px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 22px;
+        }
+
+        .akun-share-box h4 {
+            font-family: "Manrope", sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--brown-soft);
+            margin-bottom: 6px;
+        }
+
+        .akun-share-box>p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .copy-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .copy-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .copy-field {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px 16px;
+            background: var(--paper-warm, #faf7f1);
+            border: 1.5px dashed var(--line);
+            border-radius: var(--radius-md, 12px);
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--ink);
+            overflow: hidden;
+        }
+
+        .copy-field span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .copy-btn-small {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: none;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            color: var(--ink);
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 12px 16px;
+            border-radius: var(--radius-md, 12px);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform 0.2s ease;
+        }
+
+        .copy-btn-small:hover {
+            transform: translateY(-2px);
+        }
+
+        .akun-referral-table-wrap {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg, 20px);
+            padding: 26px 28px 10px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 22px;
+            overflow-x: auto;
+        }
+
+        .akun-referral-table-wrap h4 {
+            font-family: "Manrope", sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--brown-soft);
+            margin-bottom: 16px;
+        }
+
+        .akun-referral-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.84rem;
+        }
+
+        .akun-referral-table th {
+            text-align: left;
+            padding: 10px 12px;
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            border-bottom: 1.5px solid var(--line);
+        }
+
+        .akun-referral-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--line);
+            color: var(--ink);
+        }
+
+        .akun-referral-empty {
+            text-align: center;
+            padding: 30px 10px;
+            color: var(--text-muted);
+            font-size: 0.86rem;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            padding: 4px 11px;
+            border-radius: var(--radius-full, 999px);
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .status-pill.baru {
+            background: #eef2fb;
+            color: #3357a8;
+        }
+
+        .status-pill.diproses {
+            background: #fff4de;
+            color: #9a6a00;
+        }
+
+        .status-pill.deal {
+            background: #eef7f0;
+            color: #2e7d4f;
+        }
+
+        .status-pill.batal {
+            background: #fdf2f1;
+            color: #b8382a;
+        }
+
+        .akun-logout-row {
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .akun-stats {
+                grid-template-columns: 1fr;
+            }
+            .akun-greeting {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .copy-row {
+                flex-direction: column;
+            }
+            .akun-locked {
+                padding: 40px 22px;
+            }
+        }
     </style>
 </head>
 
@@ -897,8 +1277,8 @@
                 <p class="hero-desc">Ambil peran dalam program kemitraan umroh yang dikelola secara amanah, profesional, dan berkelanjutan — dengan sistem yang transparan dan pendampingan penuh dari tim kami.</p>
                 <div class="agent-hero-actions">
                     <a href="#benefit" class="btn btn-primary btn-shine">Lihat Benefit Agent →</a>
-                    <a href="https://wa.me/62817843531" class="btn btn-outline btn-shine" data-wa-trigger="hero">Daftar
-                        via WhatsApp</a>
+                    <a href="#akun-agent" class="btn btn-outline btn-shine" data-auth-trigger="register">Login / Daftar
+                        Jadi Agent</a>
                 </div>
             </div>
         </div>
@@ -1053,15 +1433,15 @@
                         <ul class="dash-panel-list">
                             <li>
                                 <span class="num">1</span>
-                                <p>Hubungi tim kami melalui WhatsApp resmi dan sampaikan minat Anda untuk bergabung sebagai Agent Khalifah.</p>
+                                <p>Isi formulir "Daftar Jadi Agent" di halaman ini (nama, no. WhatsApp, email & password) — akun Anda langsung aktif, tanpa perlu menunggu.</p>
                             </li>
                             <li>
                                 <span class="num">2</span>
-                                <p>Ikuti proses pendaftaran dan verifikasi data diri yang dipandu langsung oleh tim kemitraan kami.</p>
+                                <p>Login ke dashboard Agent Anda untuk mengambil kode & link referral pribadi yang siap dibagikan ke calon jamaah.</p>
                             </li>
                             <li>
                                 <span class="num">3</span>
-                                <p>Dapatkan pembekalan materi produk & sistem kerja, lalu mulai aktif memperkenalkan paket Umroh & Haji Khusus kami.</p>
+                                <p>Bagikan link Anda, pantau progres referral langsung dari dashboard, dan dapatkan komisi setiap kali jamaah mendaftar lewat link Anda.</p>
                             </li>
                         </ul>
                     </div>
@@ -1090,6 +1470,98 @@
         </div>
     </section>
 
+    <!-- ================= SECTION: AKUN AGENT (Login / Dashboard Referral Asli) ================= -->
+    <section class="section akun-agent-section" id="akun-agent">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="section-eyebrow">Akun Agent</span>
+                <h2>Dashboard Agent Anda</h2>
+                <p>Login untuk melihat kode referral, link, dan progres komisi Anda. Belum punya akun? Daftar dulu di bawah ini.</p>
+            </div>
+
+            <!-- STATE: BELUM LOGIN -->
+            <div class="akun-locked reveal" id="akunLocked">
+                <div class="akun-locked-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="10" width="16" height="10" rx="2" />
+                        <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                    </svg>
+                </div>
+                <h2>Masuk ke Akun Agent</h2>
+                <p>Login memakai email &amp; password Anda untuk mengambil link referral pribadi, atau daftar sekarang untuk mulai mendapatkan komisi dari setiap jamaah yang Anda referensikan.</p>
+                <div class="akun-locked-actions">
+                    <button type="button" class="btn btn-primary btn-shine" data-auth-trigger="login">Login Agent</button>
+                    <button type="button" class="btn btn-outline btn-shine" data-auth-trigger="register">Daftar Jadi Agent</button>
+                </div>
+            </div>
+
+            <!-- STATE: SUDAH LOGIN -->
+            <div class="akun-unlocked" id="akunUnlocked">
+                <div class="akun-greeting">
+                    <div>
+                        <h3 id="akunNamaAgent">Halo, Agent</h3>
+                        <p>Selamat datang kembali di dashboard Agent Khalifah Asia Bekasi.</p>
+                    </div>
+                    <button type="button" class="btn btn-outline" id="btnLogoutAgent">Keluar</button>
+                </div>
+
+                <div class="akun-stats">
+                    <div class="akun-stat-card">
+                        <div class="akun-stat-num" id="statTotalReferral">0</div>
+                        <div class="akun-stat-label">Total Referral</div>
+                    </div>
+                    <div class="akun-stat-card">
+                        <div class="akun-stat-num" id="statDiproses">0</div>
+                        <div class="akun-stat-label">Sedang Diproses</div>
+                    </div>
+                    <div class="akun-stat-card">
+                        <div class="akun-stat-num" id="statDeal">0</div>
+                        <div class="akun-stat-label">Berhasil Deal</div>
+                    </div>
+                </div>
+
+                <div class="akun-share-box">
+                    <h4>Kode &amp; Link Referral Anda</h4>
+                    <p>Bagikan link ini ke calon jamaah. Setiap pendaftaran umroh lewat link ini otomatis tercatat sebagai referral Anda.</p>
+                    <div class="copy-row">
+                        <div class="copy-field"><span id="akunKodeReferral">—</span></div>
+                        <button type="button" class="copy-btn-small" id="btnCopyKode">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
+                            Salin Kode
+                        </button>
+                    </div>
+                    <div class="copy-row">
+                        <div class="copy-field"><span id="akunLinkReferral">—</span></div>
+                        <button type="button" class="copy-btn-small" id="btnCopyLink">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
+                            Salin Link
+                        </button>
+                    </div>
+                </div>
+
+                <div class="akun-referral-table-wrap">
+                    <h4>Riwayat Referral Anda</h4>
+                    <table class="akun-referral-table" id="akunReferralTable">
+                        <thead>
+                            <tr>
+                                <th>Nama Calon Jamaah</th>
+                                <th>Paket</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="akunReferralTbody">
+                            <!-- diisi otomatis lewat JS -->
+                        </tbody>
+                    </table>
+                    <div class="akun-referral-empty" id="akunReferralEmpty">Belum ada calon jamaah yang mendaftar lewat link Anda.</div>
+                </div>
+
+                <p style="text-align:center; font-size:0.86rem; color:var(--text-muted);">Ada pertanyaan seputar komisi atau program? <a href="https://wa.me/62817843531" data-wa-trigger="dashboard" style="color:var(--gold-deep); font-weight:700;">Tanya via WhatsApp</a></p>
+            </div>
+        </div>
+    </section>
+
     <!-- ================= CTA ================= -->
     <section class="poster-paket" style="margin-top:0; padding: 70px 0;">
         <div class="container" style="position:relative; z-index:1; text-align:center;">
@@ -1097,7 +1569,10 @@
             <h2 style="font-family:'Manrope',sans-serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:700; color:var(--brown-soft); margin:14px 0 16px;">
                 Siap Menjadi Bagian dari Agent Khalifah?</h2>
             <p style="color:var(--text-soft); max-width:600px; margin:0 auto 32px; line-height:1.8;">Bangun peran, kontribusi, dan manfaat bersama Khalifah Asia Bekasi dalam program umroh yang amanah.</p>
-            <a href="https://wa.me/62817843531" class="btn btn-primary btn-shine" style="display:inline-flex;" data-wa-trigger="cta">Daftar Sekarang →</a>
+            <a href="#akun-agent" class="btn btn-primary btn-shine" style="display:inline-flex;" data-auth-trigger="register">Daftar Sekarang →</a>
+            <div style="margin-top:16px;">
+                <a href="https://wa.me/62817843531" class="btn btn-outline" style="display:inline-flex;" data-wa-trigger="cta">Tanya Dulu via WhatsApp</a>
+            </div>
         </div>
     </section>
 
@@ -1198,6 +1673,99 @@
             © 2026 <span>Khalifah Asia Bekasi</span>. All rights reserved.
         </div>
     </footer>
+
+    <!-- ================= MODAL: LOGIN / DAFTAR AGENT ================= -->
+    <div class="wa-modal-overlay" id="authModalOverlay">
+        <div class="wa-modal" style="max-width:460px;">
+            <div class="wa-modal-header">
+                <button type="button" class="wa-modal-close" id="authModalClose" aria-label="Tutup">&times;</button>
+                <div class="wa-modal-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="10" width="16" height="10" rx="2" />
+                        <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                    </svg>
+                </div>
+                <h3>Akun Agent Khalifah</h3>
+                <p class="wa-modal-sub">Login jika sudah punya akun, atau daftar untuk mulai berbagi link referral Anda.</p>
+            </div>
+            <div class="wa-modal-scroll">
+                <div class="auth-tabs">
+                    <button type="button" class="auth-tab-btn active" data-auth-tab="login">Login</button>
+                    <button type="button" class="auth-tab-btn" data-auth-tab="register">Daftar Jadi Agent</button>
+                </div>
+
+                <div class="auth-alert" id="authAlert"></div>
+
+                <!-- PANEL LOGIN -->
+                <div class="auth-panel active" id="authPanelLogin">
+                    <form id="loginForm" novalidate>
+                        <div class="wa-field full">
+                            <label for="loginEmail">Email</label>
+                            <div class="wa-input-wrap">
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="M2 7l10 6 10-6" /></svg>
+                                <input type="email" id="loginEmail" required autocomplete="email" placeholder="nama@email.com" />
+                            </div>
+                            <span class="wa-error"></span>
+                        </div>
+                        <div class="wa-field full">
+                            <label for="loginPassword">Password</label>
+                            <div class="wa-input-wrap">
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+                                <input type="password" id="loginPassword" required autocomplete="current-password" placeholder="Password Anda" />
+                            </div>
+                            <span class="wa-error"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-shine wa-modal-submit" id="loginSubmitBtn">Login</button>
+                        <p class="auth-switch-hint">Belum punya akun? <a data-auth-tab="register">Daftar di sini</a></p>
+                    </form>
+                </div>
+
+                <!-- PANEL DAFTAR -->
+                <div class="auth-panel" id="authPanelRegister">
+                    <form id="registerForm" novalidate>
+                        <div class="wa-field full">
+                            <label for="regNama">Nama Lengkap</label>
+                            <div class="wa-input-wrap">
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 4-6 8-6s8 2 8 6" /></svg>
+                                <input type="text" id="regNama" required placeholder="Nama sesuai KTP" />
+                            </div>
+                            <span class="wa-error"></span>
+                        </div>
+                        <div class="wa-field full">
+                            <label for="regWhatsapp">No. WhatsApp</label>
+                            <div class="wa-input-wrap">
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                                <input type="tel" id="regWhatsapp" required placeholder="08xxxxxxxxxx" />
+                            </div>
+                            <span class="wa-error"></span>
+                        </div>
+                        <div class="wa-field full">
+                            <label for="regEmail">Email</label>
+                            <div class="wa-input-wrap">
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="M2 7l10 6 10-6" /></svg>
+                                <input type="email" id="regEmail" required autocomplete="email" placeholder="nama@email.com" />
+                            </div>
+                            <span class="wa-error"></span>
+                        </div>
+                        <div class="wa-field full">
+                            <label for="regPassword">Buat Password</label>
+                            <div class="wa-input-wrap">
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+                                <input type="password" id="regPassword" required minlength="6" autocomplete="new-password" placeholder="Minimal 6 karakter" />
+                            </div>
+                            <span class="wa-error"></span>
+                        </div>
+                        <div class="wa-trust-note">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                            <span>Data Anda tersimpan aman dan hanya digunakan untuk keperluan program kemitraan Agent Khalifah Asia Bekasi.</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-shine wa-modal-submit" id="registerSubmitBtn">Daftar Jadi Agent</button>
+                        <p class="auth-switch-hint">Sudah punya akun? <a data-auth-tab="login">Login di sini</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- ================= MODAL: FORM BIODATA WHATSAPP ================= -->
     <div class="wa-modal-overlay" id="waModalOverlay">
@@ -1779,6 +2347,421 @@
             document.querySelectorAll('[data-email-trigger]').forEach(btn => {
                 btn.addEventListener('click', openEmailModal);
             });
+        })();
+    </script>
+
+    <!-- ================= SCRIPT: AUTH AGENT (Login/Daftar) + DASHBOARD REFERRAL ================= -->
+    <script>
+        (function () {
+            const sb = window.supabaseClient || null;
+
+            // ---------- Referensi elemen: Modal Auth ----------
+            const authOverlay = document.getElementById('authModalOverlay');
+            const authClose = document.getElementById('authModalClose');
+            const authAlert = document.getElementById('authAlert');
+            const authTabBtns = document.querySelectorAll('[data-auth-tab]');
+            const authPanels = document.querySelectorAll('.auth-panel');
+
+            const loginForm = document.getElementById('loginForm');
+            const loginEmail = document.getElementById('loginEmail');
+            const loginPassword = document.getElementById('loginPassword');
+            const loginSubmitBtn = document.getElementById('loginSubmitBtn');
+
+            const registerForm = document.getElementById('registerForm');
+            const regNama = document.getElementById('regNama');
+            const regWhatsapp = document.getElementById('regWhatsapp');
+            const regEmail = document.getElementById('regEmail');
+            const regPassword = document.getElementById('regPassword');
+            const registerSubmitBtn = document.getElementById('registerSubmitBtn');
+
+            // ---------- Referensi elemen: Dashboard Agent ----------
+            const akunLocked = document.getElementById('akunLocked');
+            const akunUnlocked = document.getElementById('akunUnlocked');
+            const akunNamaAgent = document.getElementById('akunNamaAgent');
+            const btnLogoutAgent = document.getElementById('btnLogoutAgent');
+            const statTotalReferral = document.getElementById('statTotalReferral');
+            const statDiproses = document.getElementById('statDiproses');
+            const statDeal = document.getElementById('statDeal');
+            const akunKodeReferral = document.getElementById('akunKodeReferral');
+            const akunLinkReferral = document.getElementById('akunLinkReferral');
+            const btnCopyKode = document.getElementById('btnCopyKode');
+            const btnCopyLink = document.getElementById('btnCopyLink');
+            const akunReferralTable = document.getElementById('akunReferralTable');
+            const akunReferralTbody = document.getElementById('akunReferralTbody');
+            const akunReferralEmpty = document.getElementById('akunReferralEmpty');
+
+            if (!authOverlay || !loginForm || !registerForm) return; // halaman tidak lengkap, jangan lanjut
+
+            // ================= MODAL: buka / tutup / ganti tab =================
+            let lastFocusedEl = null;
+
+            function switchAuthTab(tab) {
+                authTabBtns.forEach(b => b.classList.toggle('active', b.dataset.authTab === tab));
+                authPanels.forEach(p => p.classList.toggle('active', p.id === `authPanel${tab.charAt(0).toUpperCase()}${tab.slice(1)}`));
+                clearAuthAlert();
+            }
+
+            function openAuthModal(tab) {
+                switchAuthTab(tab === 'register' ? 'register' : 'login');
+                lastFocusedEl = document.activeElement;
+                authOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    const activePanel = document.querySelector('.auth-panel.active input');
+                    if (activePanel) activePanel.focus();
+                }, 150);
+            }
+
+            function closeAuthModal() {
+                authOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                clearAuthAlert();
+                if (lastFocusedEl) lastFocusedEl.focus();
+            }
+
+            document.querySelectorAll('[data-auth-trigger]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openAuthModal(btn.dataset.authTrigger);
+                });
+            });
+
+            authTabBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    switchAuthTab(btn.dataset.authTab);
+                    const activePanel = document.querySelector('.auth-panel.active input');
+                    if (activePanel) activePanel.focus();
+                });
+            });
+
+            authClose.addEventListener('click', closeAuthModal);
+            authOverlay.addEventListener('click', (e) => {
+                if (e.target === authOverlay) closeAuthModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && authOverlay.classList.contains('active')) closeAuthModal();
+            });
+
+            // ================= ALERT (pesan sukses / error di dalam modal) =================
+            function showAuthAlert(type, message) {
+                authAlert.textContent = message;
+                authAlert.className = `auth-alert show ${type}`;
+            }
+
+            function clearAuthAlert() {
+                authAlert.textContent = '';
+                authAlert.className = 'auth-alert';
+            }
+
+            // ================= VALIDASI SEDERHANA (mengikuti pola field WA di halaman ini) =================
+            function markFieldError(input, message) {
+                const wrap = input.closest('.wa-field');
+                if (!wrap) return;
+                const err = wrap.querySelector('.wa-error');
+                if (err) err.textContent = message;
+                input.classList.add('invalid');
+            }
+
+            function clearFieldError(input) {
+                const wrap = input.closest('.wa-field');
+                if (!wrap) return;
+                const err = wrap.querySelector('.wa-error');
+                if (err) err.textContent = '';
+                input.classList.remove('invalid');
+            }
+
+            function validateLoginForm() {
+                let valid = true;
+                clearFieldError(loginEmail);
+                clearFieldError(loginPassword);
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!loginEmail.value.trim() || !emailPattern.test(loginEmail.value.trim())) {
+                    markFieldError(loginEmail, 'Masukkan email yang valid.');
+                    valid = false;
+                }
+                if (!loginPassword.value) {
+                    markFieldError(loginPassword, 'Password wajib diisi.');
+                    valid = false;
+                }
+                return valid;
+            }
+
+            function validateRegisterForm() {
+                let valid = true;
+                [regNama, regWhatsapp, regEmail, regPassword].forEach(clearFieldError);
+
+                if (!regNama.value.trim()) {
+                    markFieldError(regNama, 'Nama lengkap wajib diisi.');
+                    valid = false;
+                }
+                const digitsOnly = regWhatsapp.value.trim().replace(/[^0-9]/g, '');
+                if (digitsOnly.length < 9) {
+                    markFieldError(regWhatsapp, 'Nomor WhatsApp tidak valid (minimal 9 digit angka).');
+                    valid = false;
+                }
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!regEmail.value.trim() || !emailPattern.test(regEmail.value.trim())) {
+                    markFieldError(regEmail, 'Masukkan email yang valid.');
+                    valid = false;
+                }
+                if (!regPassword.value || regPassword.value.length < 6) {
+                    markFieldError(regPassword, 'Password minimal 6 karakter.');
+                    valid = false;
+                }
+                return valid;
+            }
+
+            [loginEmail, loginPassword, regNama, regWhatsapp, regEmail, regPassword].forEach(input => {
+                input.addEventListener('input', () => clearFieldError(input));
+            });
+
+            // ================= PESAN ERROR SUPABASE -> BAHASA INDONESIA ================= 
+            function mapAuthError(err) {
+                const msg = (err && err.message) ? err.message : 'Terjadi kesalahan, silakan coba lagi.';
+                if (/already registered|already exists/i.test(msg)) return 'Email ini sudah terdaftar. Silakan login.';
+                if (/invalid login credentials/i.test(msg)) return 'Email atau password salah.';
+                if (/email not confirmed/i.test(msg)) return 'Email belum dikonfirmasi. Silakan cek inbox email Anda.';
+                if (/password should be at least/i.test(msg)) return 'Password minimal 6 karakter.';
+                return msg;
+            }
+
+            function setBtnLoading(btn, loading, loadingText, normalText) {
+                btn.disabled = loading;
+                btn.textContent = loading ? loadingText : normalText;
+            }
+
+            // ================= GENERATE KODE REFERRAL UNIK =================
+            function slugifyNama(nama) {
+                const first = nama.trim().split(/\s+/)[0] || 'AGENT';
+                const clean = first.toUpperCase().replace(/[^A-Z0-9]/g, '');
+                return (clean || 'AGENT').slice(0, 8);
+            }
+
+            async function generateUniqueKodeReferral(nama) {
+                const prefix = slugifyNama(nama);
+                for (let i = 0; i < 8; i++) {
+                    const kode = `${prefix}${Math.floor(1000 + Math.random() * 9000)}`;
+                    const { data, error } = await sb.from('agents').select('id').eq('kode_referral', kode).maybeSingle();
+                    if (!error && !data) return kode;
+                }
+                return `AGT${Date.now().toString().slice(-8)}`;
+            }
+
+            function buildReferralLink(kode) {
+                const base = window.location.href.split('agent.html')[0];
+                return `${base}index.html?ref=${encodeURIComponent(kode)}`;
+            }
+
+            // ================= SUBMIT: DAFTAR JADI AGENT =================
+            registerForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                clearAuthAlert();
+                if (!sb) {
+                    showAuthAlert('error', 'Sistem akun belum terhubung ke database. Hubungi admin website.');
+                    return;
+                }
+                if (!validateRegisterForm()) return;
+
+                const nama = regNama.value.trim();
+                const whatsapp = regWhatsapp.value.trim();
+                const email = regEmail.value.trim();
+                const password = regPassword.value;
+
+                setBtnLoading(registerSubmitBtn, true, 'Memproses...', 'Daftar Jadi Agent');
+                try {
+                    const { data, error } = await sb.auth.signUp({ email, password });
+                    if (error) throw error;
+
+                    const userId = data.user ? data.user.id : (data.session ? data.session.user.id : null);
+                    if (!userId) throw new Error('Gagal membuat akun, silakan coba lagi.');
+
+                    const kodeReferral = await generateUniqueKodeReferral(nama);
+                    const { error: insertError } = await sb.from('agents').insert({
+                        id: userId,
+                        nama,
+                        whatsapp,
+                        email,
+                        kode_referral: kodeReferral
+                    });
+                    if (insertError) throw insertError;
+
+                    if (data.session) {
+                        showAuthAlert('success', 'Pendaftaran berhasil! Selamat datang, Agent.');
+                        registerForm.reset();
+                        setTimeout(() => { closeAuthModal(); loadAgentDashboard(); }, 900);
+                    } else {
+                        showAuthAlert('success', 'Pendaftaran berhasil! Silakan cek email Anda untuk konfirmasi, lalu login.');
+                        registerForm.reset();
+                        setTimeout(() => switchAuthTab('login'), 1800);
+                    }
+                } catch (err) {
+                    showAuthAlert('error', mapAuthError(err));
+                } finally {
+                    setBtnLoading(registerSubmitBtn, false, 'Memproses...', 'Daftar Jadi Agent');
+                }
+            });
+
+            // ================= SUBMIT: LOGIN =================
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                clearAuthAlert();
+                if (!sb) {
+                    showAuthAlert('error', 'Sistem akun belum terhubung ke database. Hubungi admin website.');
+                    return;
+                }
+                if (!validateLoginForm()) return;
+
+                setBtnLoading(loginSubmitBtn, true, 'Memproses...', 'Login');
+                try {
+                    const { error } = await sb.auth.signInWithPassword({
+                        email: loginEmail.value.trim(),
+                        password: loginPassword.value
+                    });
+                    if (error) throw error;
+                    showAuthAlert('success', 'Login berhasil!');
+                    loginForm.reset();
+                    setTimeout(() => { closeAuthModal(); loadAgentDashboard(); }, 500);
+                } catch (err) {
+                    showAuthAlert('error', mapAuthError(err));
+                } finally {
+                    setBtnLoading(loginSubmitBtn, false, 'Memproses...', 'Login');
+                }
+            });
+
+            // ================= LOGOUT =================
+            if (btnLogoutAgent) {
+                btnLogoutAgent.addEventListener('click', async () => {
+                    if (!sb) return;
+                    btnLogoutAgent.disabled = true;
+                    await sb.auth.signOut();
+                    btnLogoutAgent.disabled = false;
+                    showLockedState();
+                });
+            }
+
+            // ================= TAMPILKAN STATE: BELUM LOGIN / SUDAH LOGIN =================
+            function showLockedState() {
+                if (akunLocked) akunLocked.style.display = '';
+                if (akunUnlocked) akunUnlocked.style.display = 'none';
+            }
+
+            function showUnlockedState() {
+                if (akunLocked) akunLocked.style.display = 'none';
+                if (akunUnlocked) akunUnlocked.style.display = 'block';
+            }
+
+            // ================= RENDER TABEL RIWAYAT REFERRAL =================
+            function renderReferrals(referrals) {
+                const total = referrals.length;
+                const deal = referrals.filter(r => r.status === 'deal').length;
+                const diproses = referrals.filter(r => r.status === 'diproses' || r.status === 'baru').length;
+
+                if (statTotalReferral) statTotalReferral.textContent = total;
+                if (statDiproses) statDiproses.textContent = diproses;
+                if (statDeal) statDeal.textContent = deal;
+
+                if (!akunReferralTbody) return;
+                akunReferralTbody.innerHTML = '';
+
+                if (total === 0) {
+                    if (akunReferralTable) akunReferralTable.style.display = 'none';
+                    if (akunReferralEmpty) akunReferralEmpty.style.display = '';
+                    return;
+                }
+
+                if (akunReferralTable) akunReferralTable.style.display = '';
+                if (akunReferralEmpty) akunReferralEmpty.style.display = 'none';
+
+                const statusLabel = { baru: 'Baru Masuk', diproses: 'Diproses', deal: 'Berhasil Deal', batal: 'Batal' };
+
+                referrals.forEach(r => {
+                    const tr = document.createElement('tr');
+                    const tanggal = r.created_at ? new Date(r.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
+                    const statusKey = ['baru', 'diproses', 'deal', 'batal'].includes(r.status) ? r.status : 'baru';
+                    tr.innerHTML = `
+                        <td>${escapeHtml(r.nama_calon_jamaah || '—')}</td>
+                        <td>${escapeHtml(r.paket || '—')}</td>
+                        <td>${tanggal}</td>
+                        <td><span class="status-pill ${statusKey}">${statusLabel[statusKey]}</span></td>
+                    `;
+                    akunReferralTbody.appendChild(tr);
+                });
+            }
+
+            function escapeHtml(str) {
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
+            // ================= MUAT DASHBOARD AGENT (dipanggil saat load halaman & setelah login/daftar) =================
+            async function loadAgentDashboard() {
+                if (!sb) { showLockedState(); return; }
+
+                const { data: { session } } = await sb.auth.getSession();
+                if (!session) { showLockedState(); return; }
+
+                const { data: agent, error } = await sb.from('agents').select('*').eq('id', session.user.id).maybeSingle();
+                if (error || !agent) { showLockedState(); return; }
+
+                if (akunNamaAgent) akunNamaAgent.textContent = `Halo, ${agent.nama}`;
+                if (akunKodeReferral) akunKodeReferral.textContent = agent.kode_referral;
+                if (akunLinkReferral) akunLinkReferral.textContent = buildReferralLink(agent.kode_referral);
+
+                const { data: referrals } = await sb
+                    .from('referrals')
+                    .select('*')
+                    .eq('agent_id', agent.id)
+                    .order('created_at', { ascending: false });
+
+                renderReferrals(referrals || []);
+                showUnlockedState();
+            }
+
+            // ================= SALIN KODE / LINK =================
+            function copyText(text, btn) {
+                const originalLabel = btn.innerHTML;
+                const done = () => {
+                    btn.innerHTML = originalLabel.replace(/Salin (Kode|Link)/, 'Tersalin!');
+                    setTimeout(() => { btn.innerHTML = originalLabel; }, 2000);
+                };
+                const fallbackCopy = () => {
+                    const tmp = document.createElement('input');
+                    tmp.value = text;
+                    document.body.appendChild(tmp);
+                    tmp.select();
+                    try { document.execCommand('copy'); } catch (e) {}
+                    document.body.removeChild(tmp);
+                    done();
+                };
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(done).catch(fallbackCopy);
+                } else {
+                    fallbackCopy();
+                }
+            }
+
+            if (btnCopyKode) {
+                btnCopyKode.addEventListener('click', () => {
+                    const kode = akunKodeReferral ? akunKodeReferral.textContent.trim() : '';
+                    if (kode && kode !== '—') copyText(kode, btnCopyKode);
+                });
+            }
+            if (btnCopyLink) {
+                btnCopyLink.addEventListener('click', () => {
+                    const link = akunLinkReferral ? akunLinkReferral.textContent.trim() : '';
+                    if (link && link !== '—') copyText(link, btnCopyLink);
+                });
+            }
+
+            // ================= JALANKAN SAAT HALAMAN DIBUKA =================
+            showLockedState();
+            loadAgentDashboard();
+
+            if (sb) {
+                sb.auth.onAuthStateChange(() => loadAgentDashboard());
+            }
         })();
     </script>
 </body>
