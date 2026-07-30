@@ -350,7 +350,7 @@
                     <img src="Foto Slider Partner/siskopatuh.png" alt="Sisko Patuh">
                     <img src="Foto Slider Partner/logo-5-pasti-umrah.png" alt="5 Pasti Umrah">
                     <img src="Foto Slider Partner/logo-amitra-removebg-preview.png" alt="Amitra">
-                    <img src="Foto Slider Partner/logo-umroh-com.png" alt="umroh">
+
                     <img src="Foto Slider Partner/logoikhlas.png" alt="logo ikhlas">
 
                     <!-- Duplikat agar looping mulus -->
@@ -367,7 +367,7 @@
                     <img src="Foto Slider Partner/siskopatuh.png" alt="Sisko Patuh">
                     <img src="Foto Slider Partner/logo-5-pasti-umrah.png" alt="5 Pasti Umrah">
                     <img src="Foto Slider Partner/logo-amitra-removebg-preview.png" alt="Amitra">
-                    <img src="Foto Slider Partner/logo-umroh-com.png" alt="umroh">
+
                     <img src="Foto Slider Partner/logoikhlas.png" alt="logo ikhlas">
                 </div>
             </div>
@@ -554,14 +554,10 @@
                 <h2>Galeri Kami - Ibadah sekaligus menjelajah</h2>
                 <p>Intip pilihan destinasi terbaik kami yang memadukan khusyuknya ibadah dengan petualangan muslim yang
                     berkesan.</p>
-                <!-- Tombol ini sekarang menuju HALAMAN TERPISAH (galeri-lainnya.html), bukan modal lagi,
-                     supaya bisa menampung 30+ foto dokumentasi tanpa membuat modal kepanjangan.
-                     Untuk menambah/mengganti foto, edit langsung di file galeri-lainnya.html
-                     (cari komentar "TAMBAHKAN FOTO DI SINI"). -->
                 <a href="galeri-lainnya.html" class="gallery-more-btn">
                     Lihat Galeri Lainnya
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14M13 6l6 6-6 6" />
                     </svg>
                 </a>
@@ -594,10 +590,7 @@
                     <img src="Image/galerikami6.jpeg" alt="Umroh Ramadhan" loading="lazy" decoding="async"
                         onload="this.classList.add('is-loaded');this.closest('.gallery-card').classList.add('img-loaded')" />
                     <div class="cap">
-                        <h3>Umroh Reguler</h3>
                         <p>Nikmati keutamaan ibadah di bulan penuh berkah</p>
-                        <button type="button" class="gallery-view-all-btn" data-program="ramadhan">Lihat semua galeri
-                            pada program ini</button>
                     </div>
                 </div>
                 <div class="gallery-card ar-11 reveal reveal-delay-4">
@@ -605,10 +598,7 @@
                         onload="this.classList.add('is-loaded');this.closest('.gallery-card').classList.add('img-loaded')"
                         onerror="this.parentElement.style.display='none'" />
                     <div class="cap">
-                        <h3>Umroh Plus Dubai</h3>
                         <p>Saksikan gemerlap kota modern di tengah gurun</p>
-                        <button type="button" class="gallery-view-all-btn" data-program="dubai">Lihat semua galeri pada
-                            program ini</button>
                     </div>
                 </div>
                 <div class="gallery-card ar-11 reveal reveal-delay-4">
@@ -616,10 +606,7 @@
                         onload="this.classList.add('is-loaded');this.closest('.gallery-card').classList.add('img-loaded')"
                         onerror="this.parentElement.style.display='none'" />
                     <div class="cap">
-                        <h3>Umroh Plus Oman</h3>
                         <p>Nikmati pesona Wahiba Sands dan kemegahan Masjid Sultan Qaboos</p>
-                        <button type="button" class="gallery-view-all-btn" data-program="oman">Lihat semua galeri pada
-                            program ini</button>
                     </div>
                 </div>
                 <div class="gallery-card ar-43 reveal reveal-delay-1">
@@ -627,10 +614,7 @@
                         onload="this.classList.add('is-loaded');this.closest('.gallery-card').classList.add('img-loaded')"
                         onerror="this.parentElement.style.display='none'" />
                     <div class="cap">
-                        <h3>Umroh Plus Mesir</h3>
                         <p>Saksikan keajaiban Piramida Giza dan Sphinx yang megah</p>
-                        <button type="button" class="gallery-view-all-btn" data-program="mesir">Lihat semua galeri pada
-                            program ini</button>
                     </div>
                 </div>
 
@@ -639,10 +623,7 @@
                         onload="this.classList.add('is-loaded');this.closest('.gallery-card').classList.add('img-loaded')"
                         onerror="this.parentElement.style.display='none'" />
                     <div class="cap">
-                        <h3>Umroh Plus Andalusia</h3>
                         <p>Kagumi jejak peradaban Islam di Cordoba dan Granada</p>
-                        <button type="button" class="gallery-view-all-btn" data-program="andalusia">Lihat semua galeri
-                            pada program ini</button>
                     </div>
                 </div>
 
@@ -651,20 +632,10 @@
                         onload="this.classList.add('is-loaded');this.closest('.gallery-card').classList.add('img-loaded')"
                         onerror="this.parentElement.style.display='none'" />
                     <div class="cap">
-                        <h3>Umroh Plus Uzbekistan</h3>
                         <p>Telusuri jejak peradaban Islam di Samarkand dan Bukhara</p>
-                        <button type="button" class="gallery-view-all-btn" data-program="uzbekistan">Lihat semua galeri
-                            pada program ini</button>
                     </div>
                 </div>
             </div>
-
-            <!-- ================= MODAL: LIHAT SEMUA GALERI PROGRAM =================
-                 TODO PENTING: foto di bawah ini masih memakai kumpulan foto umum (placeholder)
-                 yang dipakai bersama untuk semua program, karena belum ada set foto dokumentasi
-                 per-destinasi yang terpisah. Silakan ganti path gambar pada objek `programGalleries`
-                 di bagian <script> (cari "DATA GALERI PER PROGRAM") dengan foto asli tiap program
-                 (Thaif, Turki, Dubai, Oman, Mesir, Andalusia, Uzbekistan, Ramadhan) agar sesuai. -->
             <div class="program-gallery-modal-overlay" id="programGalleryOverlay">
                 <div class="program-gallery-modal" role="dialog" aria-modal="true"
                     aria-labelledby="programGalleryTitle">
@@ -1533,8 +1504,7 @@
                         Penyelenggara Umroh & Haji Khusus berizin resmi Kementerian Agama RI, melayani jamaah dengan
                         amanah dan profesional.
                     </p>
-                    <!-- TODO: ganti XXX/2024 dengan nomor izin PPIU resmi dari SK Kemenag -->
-                    <p class="footer-license">No. Izin PPIU Kemenag RI: <strong>XXX/2024</strong></p>
+                    <p class="footer-license">No. Izin PPIU Kemenag RI: <strong>PPIU No U2842020</strong></p>
 
                     <h4 class="footer-social-title">Sosial Media</h4>
                     <p class="footer-social-desc">Jangan lewatkan informasi lainnya di sosial media Khalifah Asia
@@ -1964,14 +1934,8 @@
         </div>
     </div>
 
-    <!-- ================= TEMPLATE BROSUR PDF (dipakai fitur download PDF) =================
-         Overlay ini muncul sesaat di layar user ("Menyiapkan brosur...") selagi brosur
-         di-render lalu difoto jadi PDF oleh html2canvas. Sebelumnya elemen ini disembunyikan
-         jauh di luar layar (left:-9999px), tapi itu menyebabkan html2canvas gagal memotret
-         dan hasil PDF-nya blank — makanya sekarang dirender di layar dengan overlay penutup. -->
     <div class="brosur-overlay" id="brosurOverlay">
         <div class="brosur-overlay-spinner"></div>
-        <p>Menyiapkan brosur PDF...</p>
         <div id="brosurTemplate" class="brosur-template" aria-hidden="true"></div>
     </div>
 
@@ -2430,25 +2394,18 @@
             });
         })();
 
-        // ========== HERO VIDEO CAROUSEL ==========
-        // Semua video ada di folder "Video Carosel" (satu folder dengan file index.html ini).
-        // Setiap video akan tampil selama 8 detik lalu crossfade halus ke video berikutnya.
         (function () {
             const videos = [
                 "Video Carosel/khalifahasiabekasianimasi.mp4",
                 "Video Carosel/hero2masjidnabawi.mp4.mp4",
                 "Video Carosel/hero3masjidilharam.mp4.mp4",
                 "Video Carosel/hero4jamaahberdoa.mp4.mp4",
-                "Video Carosel/hero5kaabah.mp4.mp4"
+                "Video Carosel/hero5kaabah.mp4.mp4",
             ];
-            const DURATION = 8000; // 8 detik per video
+            const DURATION = 8000;
             const vidA = document.querySelector(".hero-video-a");
             const vidB = document.querySelector(".hero-video-b");
             if (!vidA || !vidB || videos.length === 0) return;
-
-            // Hormati preferensi "reduced motion" & mode hemat data (mis. Data Saver di
-            // browser/koneksi lambat): jangan putar carousel video, cukup tampilkan
-            // poster diam agar tidak membebani perangkat/kuota pengguna.
             const prefersReducedMotion = window.matchMedia &&
                 window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             const conn = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
