@@ -38,6 +38,11 @@
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
 
+    <!-- ================= SUPABASE + REFERRAL CAPTURE (untuk sistem komisi Agent) ================= -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-client.js"></script>
+    <script src="assets/js/referral-capture.js"></script>
+
     <!-- ================= GOOGLE ANALYTICS 4 (GA4) =================
          Cara pasang:
          1. Buka analytics.google.com -> buat Property baru -> catat "Measurement ID"
@@ -100,6 +105,27 @@
             .article-grid-4 {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* ---------- BADGE: "Direferensikan oleh Agent ..." di dalam modal WhatsApp ---------- */
+        .wa-referral-badge {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            margin: 4px auto 0;
+            padding: 8px 14px;
+            background: var(--gold-pale, #fbead0);
+            color: var(--gold-deep, #a9760b);
+            border-radius: var(--radius-full, 999px);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-align: center;
+            width: fit-content;
+            max-width: 100%;
+        }
+
+        .wa-referral-badge.show {
+            display: flex;
         }
     </style>
 
@@ -1649,6 +1675,7 @@
                 <h3 id="waModalTitle">Isi Data Diri Anda</h3>
                 <p class="wa-modal-sub" id="waModalSub">Lengkapi data berikut agar tim kami dapat membantu Anda
                     dengan lebih baik.</p>
+                <p class="wa-referral-badge" id="waReferralBadge"></p>
             </div>
 
             <div class="wa-modal-scroll">
@@ -2123,6 +2150,8 @@
             const waSub = document.getElementById('waModalSub');
             const waTargetNumber = '62817843531';
             const charCountEl = document.getElementById('waCharCount');
+            const waReferralBadge = document.getElementById('waReferralBadge');
+            let currentPrefillPaket = null;
 
             const waFields = {
                 nama: {
@@ -2182,6 +2211,24 @@
                 waForm.reset();
                 charCountEl.textContent = '0/300';
                 if (waFields.layanan.input) waFields.layanan.input.value = 'Konsultasi Paket Umroh';
+
+                // Simpan nama paket (kalau ada) untuk dicatat sebagai referral saat submit nanti.
+                currentPrefillPaket = prefill.paket || null;
+
+                // Tampilkan badge "Direferensikan oleh Agent ..." kalau customer datang lewat link referral Agent.
+                if (waReferralBadge) {
+                    waReferralBadge.classList.remove('show');
+                    waReferralBadge.textContent = '';
+                    if (window.KhalifahReferral && typeof window.KhalifahReferral.getAgentName === 'function') {
+                        window.KhalifahReferral.getAgentName((nama, kode) => {
+                            if (!kode) return;
+                            waReferralBadge.textContent = nama ?
+                                `🎉 Anda direferensikan oleh Agent ${nama}` :
+                                `🎉 Anda direferensikan oleh Agent (kode ${kode})`;
+                            waReferralBadge.classList.add('show');
+                        });
+                    }
+                }
 
                 // Jika dipanggil dari tombol "Booking" paket, isi otomatis pesan
                 // dengan nama paket/tanggal/harga supaya user tidak perlu ketik ulang.
@@ -2338,7 +2385,8 @@
                     layanan: layanan,
                     jumlahJamaah: jumlah,
                     rencanaKeberangkatan: rencana,
-                    pesan: pesan
+                    pesan: pesan,
+                    kodeReferral: (window.KhalifahReferral && window.KhalifahReferral.getCode()) || ''
                 });
 
                 // Event standar GA4 "generate_lead" & Meta Pixel "Lead" — ini yang dipakai
@@ -2347,9 +2395,33 @@
                 try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: waContext, layanan: layanan }); } catch (err) { }
                 try { if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: layanan, content_category: waContext }); } catch (err) { }
 
-                const waUrl = `https://wa.me/${waTargetNumber}?text=${encodeURIComponent(pesanTemplate)}`;
-                window.open(waUrl, '_blank', 'noopener,noreferrer');
-                closeWaModal();
+                // Kalau ini booking paket (bukan sekadar konsultasi) dan customer datang lewat
+                // link referral Agent, catat sebagai referral di database supaya masuk ke
+                // dashboard & progres komisi Agent tersebut.
+                if (waContext === 'booking' && window.KhalifahReferral && typeof window.KhalifahReferral.saveBookingReferral === 'function') {
+                    window.KhalifahReferral.saveBookingReferral({
+                        nama: nama,
+                        whatsapp: phone,
+                        email: email,
+                        paket: currentPrefillPaket || layanan
+                    });
+                }
+
+                function bukaWhatsApp(pesanFinal) {
+                    const waUrl = `https://wa.me/${waTargetNumber}?text=${encodeURIComponent(pesanFinal)}`;
+                    window.open(waUrl, '_blank', 'noopener,noreferrer');
+                    closeWaModal();
+                }
+
+                // Sisipkan otomatis nama Agent (kalau customer datang lewat link referral)
+                // ke bagian akhir pesan WhatsApp, tepat sebelum tab WhatsApp terbuka.
+                if (window.KhalifahReferral && typeof window.KhalifahReferral.getMessageSuffix === 'function') {
+                    window.KhalifahReferral.getMessageSuffix((suffix) => {
+                        bukaWhatsApp(pesanTemplate + suffix);
+                    });
+                } else {
+                    bukaWhatsApp(pesanTemplate);
+                }
             });
 
             document.querySelectorAll('[data-wa-trigger]').forEach(btn => {
