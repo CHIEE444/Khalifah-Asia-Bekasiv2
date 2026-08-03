@@ -5690,7 +5690,10 @@ object {
    ========================================================= */
 .page-header {
   position: relative;
-  padding: 170px 0 70px;
+  min-height: 640px;
+  padding: 190px 0 100px;
+  display: flex;
+  align-items: center;
   background: var(--color-heading);
   overflow: hidden;
 }
@@ -5698,7 +5701,6 @@ object {
 .page-header-bg {
   position: absolute;
   inset: 0;
-  background-image: rgba(10, 40, 35, 0.14);
   pointer-events: none;
 }
 
@@ -5727,7 +5729,12 @@ object {
 .page-header-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(7, 4, 2, 0.9);
+  background: linear-gradient(
+    180deg,
+    rgba(3, 12, 10, 0.35) 0%,
+    rgba(3, 12, 10, 0.25) 45%,
+    rgba(3, 12, 10, 0.5) 100%
+  );
 }
 
 .page-header-overlay::after {
@@ -5784,6 +5791,7 @@ object {
   color: var(--color-on-dark);
   margin: 14px 0 16px;
   line-height: 1.15;
+  text-shadow: 0 2px 20px rgba(3, 12, 10, 0.55);
 }
 
 .page-header-title-gold {
@@ -5795,9 +5803,10 @@ object {
 }
 
 .page-header-inner p {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1.02rem;
   line-height: 1.7;
+  text-shadow: 0 1px 14px rgba(3, 12, 10, 0.5);
 }
 
 .page-header .section-eyebrow {
@@ -6055,7 +6064,8 @@ object {
     grid-template-columns: 1fr;
   }
   .page-header {
-    padding: 140px 0 50px;
+    min-height: 480px;
+    padding: 140px 0 60px;
   }
   .kontak-form-wrap {
     padding: 30px 22px;

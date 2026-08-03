@@ -15,28 +15,6 @@
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <style>
-        /* ---------- Page Hero Video Background (seirama dengan hero video di Beranda/Agent/Tentang) ---------- */
-        .page-header-video-bg {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-
-        .page-header-video {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1.2s var(--ease-out);
-        }
-
-        .page-header-video.is-active {
-            opacity: 1;
-        }
-    </style>
 </head>
 
 <body>
@@ -134,30 +112,35 @@
         </ul>
     </div>
 
-    <!-- ================= PAGE HEADER ================= -->
-    <section class="hero" id="home">
+    <!-- ================= PAGE HEADER (Carousel Foto) ================= -->
+    <section class="page-header" id="home">
 
-        <!-- Background Foto -->
-        <div class="hero-bg"></div>
+        <!-- Tint dasar -->
+        <div class="page-header-bg"></div>
 
-        <!-- Efek Partikel -->
-        <div class="hero-particles" id="heroParticles"></div>
+        <!-- Carousel Foto (slide diisi otomatis oleh script di bawah) -->
+        <div class="page-header-carousel" id="pageHeaderCarousel"></div>
 
-        <!-- Konten Hero -->
-        <div class="hero-inner">
-            <div class="hero-content">
+        <!-- Overlay gelap agar teks tetap terbaca -->
+        <div class="page-header-overlay"></div>
+
+        <div class="container">
+            <div class="page-header-inner">
+                <span class="section-eyebrow">Hubungi Kami</span>
                 <h1>
-                    Hubungi <span>Khalifah Asia Bekasi</span>
+                    Hubungi <span class="page-header-title-gold">Khalifah Asia Bekasi</span>
                 </h1>
 
-                <p class="hero-desc">
+                <p>
                     Kami siap membantu Anda mendapatkan informasi seputar perjalanan
                     Umrah dan Haji Khusus. Hubungi tim Khalifah Asia Bekasi untuk
                     mendapatkan pelayanan dan informasi terbaik untuk perjalanan ibadah Anda.
                 </p>
-
             </div>
         </div>
+
+        <!-- Dots navigasi carousel (diisi otomatis) -->
+        <div class="page-header-dots" id="pageHeaderDots"></div>
 
     </section>
 
@@ -236,7 +219,7 @@
     </section>
 
     <!-- ================= PETA LOKASI KANTOR ================= -->
-    <section class="section section-dark">
+    <section class="section">
         <div class="container">
             <div class="section-head reveal">
                 <h2>Kunjungi Kantor Kami</h2>
@@ -620,50 +603,60 @@
             });
         })();
 
-        // ========== HERO VIDEO BACKGROUND ==========
-        // Sama persis seperti hero video di Beranda/Agent/Tentang, supaya seirama.
+        // ========== PAGE HEADER PHOTO CAROUSEL ==========
+        // Ganti daftar foto di bawah ini sesuai foto yang ingin ditampilkan.
         (function () {
-            const videos = [
-                "Video Carosel/khalifahasiabekasianimasi.mp4",
-                "Video Carosel/hero2masjidnabawi.mp4.mp4",
-                "Video Carosel/hero3masjidilharam.mp4.mp4",
-                "Video Carosel/hero4jamaahberdoa.mp4.mp4",
-                "Video Carosel/hero5kaabah.mp4.mp4"
+            const images = [
+                "Image/fotbar1.jpeg"
             ];
-            const DURATION = 8000; // 8 detik per video
-            const vidA = document.querySelector(".page-header-video-a");
-            const vidB = document.querySelector(".page-header-video-b");
-            if (!vidA || !vidB || videos.length === 0) return;
+            const DURATION = 5000; // 5 detik per foto
+            const carousel = document.getElementById("pageHeaderCarousel");
+            const dotsWrap = document.getElementById("pageHeaderDots");
+            if (!carousel || !dotsWrap || images.length === 0) return;
 
+            images.forEach((src, i) => {
+                const slide = document.createElement("div");
+                slide.className = "page-header-slide" + (i === 0 ? " active" : "");
+                slide.style.backgroundImage = `url("${src}")`;
+                carousel.appendChild(slide);
+
+                const dot = document.createElement("button");
+                dot.type = "button";
+                dot.className = "page-header-dot" + (i === 0 ? " active" : "");
+                dot.setAttribute("aria-label", `Foto ${i + 1}`);
+                dot.addEventListener("click", () => goToSlide(i));
+                dotsWrap.appendChild(dot);
+            });
+
+            const slides = carousel.querySelectorAll(".page-header-slide");
+            const dots = dotsWrap.querySelectorAll(".page-header-dot");
             let index = 0;
-            let showingA = true;
+            let timer;
 
-            function setSource(videoEl, src) {
-                videoEl.innerHTML = "";
-                const source = document.createElement("source");
-                source.src = src;
-                source.type = "video/mp4";
-                videoEl.appendChild(source);
-                videoEl.onerror = () => console.error("Hero video gagal dimuat, cek path:", src);
-                source.onerror = () => console.error("Hero video gagal dimuat, cek path:", src);
-                videoEl.load();
-                videoEl.play().catch((err) => console.warn("Autoplay video hero diblokir/gagal:", src, err));
+            // Sembunyikan dots kalau cuma ada satu foto (tidak ada yang perlu dipilih)
+            if (images.length <= 1) {
+                dotsWrap.style.display = "none";
             }
 
-            setSource(vidA, videos[0]);
-            vidA.classList.add("is-active");
-
-            if (videos.length > 1) {
-                setInterval(() => {
-                    index = (index + 1) % videos.length;
-                    const nextVideo = showingA ? vidB : vidA;
-                    const currentVideo = showingA ? vidA : vidB;
-                    setSource(nextVideo, videos[index]);
-                    nextVideo.classList.add("is-active");
-                    currentVideo.classList.remove("is-active");
-                    showingA = !showingA;
-                }, DURATION);
+            function goToSlide(i) {
+                slides[index].classList.remove("active");
+                dots[index].classList.remove("active");
+                index = i;
+                slides[index].classList.add("active");
+                dots[index].classList.add("active");
+                resetTimer();
             }
+
+            function nextSlide() {
+                goToSlide((index + 1) % slides.length);
+            }
+
+            function resetTimer() {
+                clearInterval(timer);
+                if (slides.length > 1) timer = setInterval(nextSlide, DURATION);
+            }
+
+            resetTimer();
         })();
 
         const header = document.getElementById('header');
