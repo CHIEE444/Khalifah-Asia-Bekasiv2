@@ -5788,18 +5788,14 @@ object {
 .page-header-inner h1 {
   font-size: clamp(2.1rem, 4vw, 3rem);
   font-weight: 800;
-  color: var(--color-on-dark);
+  color: var(--palette-amber);
   margin: 14px 0 16px;
   line-height: 1.15;
   text-shadow: 0 2px 20px rgba(3, 12, 10, 0.55);
 }
 
 .page-header-title-gold {
-  background: var(--color-heading);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: var(--color-highlight);
-  -webkit-text-fill-color: transparent;
+  color: var(--palette-teal-soft);
 }
 
 .page-header-inner p {
