@@ -314,6 +314,8 @@
     <section class="hero" id="home">
         <!-- Hero Video Carousel Background (video berganti tiap 8 detik, crossfade halus) -->
         <div class="hero-bg">
+            <video class="hero-video-backdrop hero-video-backdrop-a" autoplay muted playsinline loop preload="auto"></video>
+            <video class="hero-video-backdrop hero-video-backdrop-b" muted playsinline loop preload="none"></video>
             <video class="hero-video hero-video-a" autoplay muted playsinline loop preload="auto"></video>
             <video class="hero-video hero-video-b" muted playsinline loop preload="none"></video>
         </div>
@@ -515,55 +517,88 @@
         <div class="container">
             <div class="section-head reveal">
                 <h2>Benefit yang Anda dapatkan</h2>
-                <p>Layanan lengkap dan transparan untuk kenyamanan ibadah Anda</p>
+                <p>Alasan ribuan jamaah mempercayakan ibadahnya kepada Khalifah Asia</p>
             </div>
 
             <div class="benefit-grid">
-                <div class="benefit-card reveal reveal-delay-1">
-                    <span class="benefit-index">01</span>
-                    <div class="benefit-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 12.5l2.2 2.2L16 9.5" />
-                            <circle cx="12" cy="12" r="9.5" />
-                        </svg>
+                <div class="benefit-card reveal reveal-delay-1" tabindex="0">
+                    <div class="benefit-card-inner">
+                        <div class="benefit-card-front">
+                            <div class="benefit-icon">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2.5l8 3.2v5.3c0 5-3.4 8.9-8 10.5-4.6-1.6-8-5.5-8-10.5V5.7z" />
+                                    <path d="M9 12l2.2 2.2L15.5 9.5" />
+                                </svg>
+                            </div>
+                            <h3>Resmi &amp; Terpercaya</h3>
+                            <span class="benefit-flip-hint">Sentuh untuk detail</span>
+                        </div>
+                        <div class="benefit-card-back">
+                            <p>Berizin resmi Kemenag &amp; PPIU — legalitas jelas, aman untuk perjalanan ibadah
+                                Anda.</p>
+                        </div>
                     </div>
-                    <h3>Kenapa Khalifah Asia?</h3>
-                    <p>Khalifah Asia hadir sebagai pilihan terpercaya dalam perjalanan ibadah Umroh dengan mengutamakan
-                        pelayanan yang amanah, pembimbingan yang profesional, serta kenyamanan jamaah dari persiapan
-                        hingga kembali ke tanah air.</p>
                 </div>
 
-                <div class="benefit-card reveal reveal-delay-2">
-                    <span class="benefit-index">02</span>
-                    <div class="benefit-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 11l3 3L22 4" />
-                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11" />
-                        </svg>
+                <div class="benefit-card reveal reveal-delay-2" tabindex="0">
+                    <div class="benefit-card-inner">
+                        <div class="benefit-card-front">
+                            <div class="benefit-icon">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="8" r="3.4" />
+                                    <path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" />
+                                </svg>
+                            </div>
+                            <h3>Dibimbing Ustadz Berpengalaman</h3>
+                            <span class="benefit-flip-hint">Sentuh untuk detail</span>
+                        </div>
+                        <div class="benefit-card-back">
+                            <p>Didampingi ustadz profesional sejak keberangkatan, selama di Tanah Suci, hingga
+                                kembali ke Indonesia.</p>
+                        </div>
                     </div>
-                    <h3>Sejarah Singkat Khalifah Asia</h3>
-                    <p>Berawal dari komitmen untuk memberikan pelayanan perjalanan ibadah yang aman dan nyaman, Khalifah
-                        Asia terus berkembang dalam mendampingi jamaah menunaikan ibadah Umroh dengan pelayanan yang
-                        berorientasi pada kepuasan dan kekhusyukan beribadah.
-                    </p>
                 </div>
 
-                <div class="benefit-card reveal reveal-delay-3">
-                    <span class="benefit-index">03</span>
-                    <div class="benefit-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2.5l8 3.2v5.3c0 5-3.4 8.9-8 10.5-4.6-1.6-8-5.5-8-10.5V5.7z" />
-                            <path d="M9 12l2.2 2.2L15.5 9.5" />
-                        </svg>
+                <div class="benefit-card reveal reveal-delay-3" tabindex="0">
+                    <div class="benefit-card-inner">
+                        <div class="benefit-card-front">
+                            <div class="benefit-icon">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2.5" y="6" width="19" height="13" rx="2.2" />
+                                    <path d="M2.5 10.5h19" />
+                                    <path d="M6.5 14.5h4" />
+                                </svg>
+                            </div>
+                            <h3>Harga Transparan</h3>
+                            <span class="benefit-flip-hint">Sentuh untuk detail</span>
+                        </div>
+                        <div class="benefit-card-back">
+                            <p>Tanpa biaya tersembunyi — semua sudah sesuai paket yang disepakati sejak awal.</p>
+                        </div>
                     </div>
-                    <h3>Pencapaian Khalifah Asia</h3>
-                    <p>Kepercayaan jamaah menjadi pencapaian terbesar bagi Khalifah Asia. Dengan terus meningkatkan
-                        kualitas pelayanan dan pendampingan, kami berkomitmen untuk melayani lebih banyak jamaah dalam
-                        mewujudkan impian beribadah ke Tanah Suci dengan perjalanan yang aman, nyaman, dan berkesan.
-                    </p>
+                </div>
+
+                <div class="benefit-card reveal reveal-delay-4" tabindex="0">
+                    <div class="benefit-card-inner">
+                        <div class="benefit-card-front">
+                            <div class="benefit-icon">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="9.5" />
+                                    <path d="M12 7v5l3.2 2" />
+                                </svg>
+                            </div>
+                            <h3>Siap Bantu 24 Jam</h3>
+                            <span class="benefit-flip-hint">Sentuh untuk detail</span>
+                        </div>
+                        <div class="benefit-card-back">
+                            <p>Tim kami siaga penuh waktu untuk mendampingi &amp; membantu kendala Anda selama
+                                perjalanan.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -767,7 +802,7 @@
                 <div class="video-testi-cta video-testi-cta-multi reveal">
                     <button type="button" class="video-testi-btn" id="testimoniVideoBtn"
                         data-video="Testimoni Jamaah/testimoni1.mp4" data-poster="Image/fotbar1.jpeg"
-                        data-title="Testimoni Jamaah Umroh Reguler ">
+                        data-title="Testimoni Jamaah Umroh Kami">
                         <span class="video-testi-btn-icon">
                             <span class="video-testi-radar"></span>
                             <span class="video-testi-radar video-testi-radar-2"></span>
@@ -828,6 +863,7 @@
                     <label for="filterBulanJadwal">Bulan Keberangkatan</label>
                     <select id="filterBulanJadwal">
                         <option value="">Semua Bulan</option>
+                        <option value="januari">Januari</option>
                         <option value="februari">Februari</option>
                         <option value="maret">Maret</option>
                         <option value="april">April</option>
@@ -845,11 +881,9 @@
                     <label for="filterJenisJadwal">Jenis Paket</label>
                     <select id="filterJenisJadwal">
                         <option value="">Semua Jenis</option>
-                        <option value="turki">Plus Turki</option>
                         <option value="maulid">Special Maulid Nabi</option>
+                        <option value="turki">Plus Turki</option>
                         <option value="thaif">Plus Thaif</option>
-                        <option value="dubai">Plus Dubai</option>
-                        <option value="mesir">Plus Mesir</option>
                         <option value="reguler">Reguler Ekonomis</option>
                     </select>
                 </div>
@@ -1922,11 +1956,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         (function () {
             const videos = [
+                
                 "Video Carosel/animasikhalifahasiav3.mp4",
             ];
             const DURATION = 10000;
             const vidA = document.querySelector(".hero-video-a");
             const vidB = document.querySelector(".hero-video-b");
+            const bdA = document.querySelector(".hero-video-backdrop-a");
+            const bdB = document.querySelector(".hero-video-backdrop-b");
             if (!vidA || !vidB || videos.length === 0) return;
             const prefersReducedMotion = window.matchMedia &&
                 window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1936,6 +1973,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (prefersReducedMotion || prefersLessData) {
                 vidA.removeAttribute("autoplay");
                 vidA.classList.add("is-active");
+                if (bdA) bdA.classList.add("is-active");
                 return;
             }
 
@@ -1943,6 +1981,7 @@ document.addEventListener('DOMContentLoaded', function () {
             let showingA = true;
 
             function setSource(videoEl, src) {
+                if (!videoEl) return;
                 videoEl.innerHTML = "";
                 const source = document.createElement("source");
                 source.src = src;
@@ -1956,15 +1995,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
             setSource(vidA, videos[0]);
             vidA.classList.add("is-active");
+            setSource(bdA, videos[0]);
+            if (bdA) bdA.classList.add("is-active");
 
             if (videos.length > 1) {
                 setInterval(() => {
                     index = (index + 1) % videos.length;
                     const nextVideo = showingA ? vidB : vidA;
                     const currentVideo = showingA ? vidA : vidB;
+                    const nextBackdrop = showingA ? bdB : bdA;
+                    const currentBackdrop = showingA ? bdA : bdB;
                     setSource(nextVideo, videos[index]);
+                    setSource(nextBackdrop, videos[index]);
                     nextVideo.classList.add("is-active");
                     currentVideo.classList.remove("is-active");
+                    if (nextBackdrop) nextBackdrop.classList.add("is-active");
+                    if (currentBackdrop) currentBackdrop.classList.remove("is-active");
                     showingA = !showingA;
                 }, DURATION);
             }
@@ -1986,6 +2032,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 p.style.height = p.style.width;
                 container.appendChild(p);
             }
+        })();
+
+        // ========== BENEFIT CARDS: tap-to-flip (untuk device sentuh) ==========
+        (function () {
+            const cards = document.querySelectorAll('.benefit-card');
+            cards.forEach((card) => {
+                card.addEventListener('click', () => {
+                    const wasOpen = card.classList.contains('is-flipped');
+                    cards.forEach((c) => c.classList.remove('is-flipped'));
+                    if (!wasOpen) card.classList.add('is-flipped');
+                });
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        card.click();
+                    }
+                });
+            });
         })();
 
         // ========== HEADER SCROLL (rAF-throttled agar smooth, tidak lemot) ==========

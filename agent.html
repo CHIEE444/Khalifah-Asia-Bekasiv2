@@ -36,7 +36,141 @@
         /* ---------- Warna emas untuk "Khalifah Asia Bekasi" di hero ---------- */
         
         .hero h1 span {
-            color: var(--gold-light);
+            color: var(--color-primary);
+        }
+
+        /* ================= BENEFIT AGENT — kartu didesain ulang ================= */
+        /* Kartu benefit di halaman Agent punya struktur HTML berbeda dari kartu
+           flip-card di Beranda (tanpa .benefit-card-inner/front/back), jadi di sini
+           diberi tampilan kartu sendiri: kaca transparan lembut, teks kontras jelas
+           (bukan putih di atas putih), dan kartu highlight dengan warna solid asli
+           brand (bukan variabel warna yang belum terdefinisi). */
+        #benefit .benefit-grid {
+            align-items: stretch;
+        }
+
+        #benefit .benefit-card {
+            position: relative;
+            height: auto;
+            min-height: 100%;
+            perspective: none;
+            cursor: default;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            padding: 32px 26px;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: var(--r-lg);
+            backdrop-filter: blur(18px) saturate(160%);
+            -webkit-backdrop-filter: blur(18px) saturate(160%);
+            box-shadow: var(--shadow-soft);
+            transition:
+                transform 0.4s var(--ease-smooth),
+                box-shadow 0.4s var(--ease-smooth),
+                border-color 0.4s var(--ease-smooth);
+        }
+
+        #benefit .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(160, 214, 180, 0.6);
+        }
+
+        #benefit .benefit-index {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: var(--color-secondary);
+            opacity: 0.55;
+            margin-bottom: 8px;
+        }
+
+        #benefit .benefit-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(160, 214, 180, 0.16);
+            border: 1px solid rgba(160, 214, 180, 0.3);
+            color: var(--color-secondary);
+            margin-bottom: 16px;
+            transition: transform 0.35s var(--ease-smooth);
+        }
+
+        #benefit .benefit-card:hover .benefit-icon {
+            transform: scale(1.08) rotate(-4deg);
+        }
+
+        #benefit .benefit-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: var(--color-heading);
+            margin: 0 0 8px;
+        }
+
+        #benefit .benefit-card p {
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: var(--color-text-soft);
+            margin: 0;
+        }
+
+        /* Kartu highlight: aksen gelap tosca solid + teks emas/putih kontras jelas */
+        #benefit .benefit-card.highlight {
+            grid-column: span 2;
+            background: var(--palette-teal);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        #benefit .benefit-card.highlight .benefit-index {
+            color: var(--palette-gold);
+            opacity: 0.85;
+        }
+
+        #benefit .benefit-card.highlight .benefit-icon {
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 255, 255, 0.25);
+            color: var(--palette-gold);
+        }
+
+        #benefit .benefit-card.highlight h3 {
+            color: var(--palette-gold);
+        }
+
+        #benefit .benefit-card.highlight p {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        #benefit .benefit-card.highlight strong {
+            color: var(--palette-gold);
+            font-weight: 700;
+        }
+
+        @media (max-width: 1024px) {
+            #benefit .benefit-card.highlight {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #benefit .benefit-card {
+                height: auto;
+            }
+            #benefit .benefit-card.highlight {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 380px) {
+            #benefit .benefit-card {
+                padding: 26px 20px;
+            }
         }
         /* ---------- Selaraskan ikon caret pada Beranda & FAQ (tanpa dropdown) ---------- */
         
@@ -49,10 +183,43 @@
         
         .poster-paket {
             padding: 70px 0 60px;
+            background: var(--white, #fff) !important;
+        }
+        
+        .poster-paket::before {
+            display: none;
         }
         
         .footer {
             margin-top: 0;
+        }
+        /* ---------- TOMBOL "TANYA DULU VIA WHATSAPP" — dibuat menyala kuning agar jelas terlihat ---------- */
+        
+        .btn-wa-glow {
+            background: linear-gradient(135deg, var(--palette-gold, #ffc000) 0%, #ffb300 100%) !important;
+            color: var(--palette-ink-deep, #17201d) !important;
+            border: none !important;
+            box-shadow: 0 14px 34px rgba(255, 192, 0, 0.45);
+            animation: waGlowPulse 2.4s ease-in-out infinite;
+        }
+        
+        .btn-wa-glow:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+            box-shadow: 0 20px 46px rgba(255, 192, 0, 0.55);
+        }
+        
+        .btn-wa-glow svg {
+            flex-shrink: 0;
+        }
+        
+        @keyframes waGlowPulse {
+            0%, 100% {
+                box-shadow: 0 14px 34px rgba(255, 192, 0, 0.45);
+            }
+            50% {
+                box-shadow: 0 14px 40px rgba(255, 192, 0, 0.7);
+            }
         }
         /* ---------- QUOTE STRIP ---------- */
         
@@ -218,40 +385,107 @@
         
         .dash-panel-list {
             list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
             margin-top: 22px;
         }
         
         .dash-panel-list li {
+            position: relative;
             display: flex;
-            gap: 14px;
+            flex-direction: column;
             align-items: flex-start;
-            padding: 18px 20px;
-            background: var(--paper-warm);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-md);
+            gap: 12px;
+            padding: 26px 22px 22px;
+            background: var(--white, #fff);
+            border: 1px solid var(--line, #ece6d9);
+            border-radius: var(--radius-lg, 18px);
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(20, 14, 8, 0.03);
+            transition:
+                transform 0.35s var(--ease-out, ease),
+                box-shadow 0.35s var(--ease-out, ease),
+                border-color 0.35s var(--ease-out, ease);
+        }
+        
+        .dash-panel-list li::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--palette-gold, #ffc000);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s var(--ease-out, ease);
+        }
+        
+        .dash-panel-list li:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 34px rgba(20, 14, 8, 0.08);
+            border-color: rgba(255, 192, 0, 0.4);
+        }
+        
+        .dash-panel-list li:hover::before {
+            transform: scaleX(1);
         }
         
         .dash-panel-list .num {
             flex-shrink: 0;
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            color: var(--ink);
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--palette-gold, #ffc000);
+            color: var(--palette-ink-deep, #17201d);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
+            box-shadow: 0 8px 16px rgba(255, 192, 0, 0.35);
         }
         
         .dash-panel-list p {
             margin: 0;
             font-size: 0.94rem;
             line-height: 1.75;
+        }
+        
+        /* ---------- Variasi warna aksen per kartu, biar tidak monoton semua kuning ---------- */
+        .dash-panel-list li:nth-child(3n+2)::before {
+            background: var(--palette-teal, #1f6e6e);
+        }
+        
+        .dash-panel-list li:nth-child(3n+2) .num {
+            background: var(--palette-teal, #1f6e6e);
+            color: #fff;
+            box-shadow: 0 8px 16px rgba(31, 110, 110, 0.3);
+        }
+        
+        .dash-panel-list li:nth-child(3n+2):hover {
+            border-color: rgba(31, 110, 110, 0.35);
+        }
+        
+        .dash-panel-list li:nth-child(3n+3)::before {
+            background: var(--palette-terracotta, #d9662e);
+        }
+        
+        .dash-panel-list li:nth-child(3n+3) .num {
+            background: var(--palette-terracotta, #d9662e);
+            color: #fff;
+            box-shadow: 0 8px 16px rgba(217, 102, 46, 0.3);
+        }
+        
+        .dash-panel-list li:nth-child(3n+3):hover {
+            border-color: rgba(217, 102, 46, 0.35);
+        }
+        
+        @media (max-width: 560px) {
+            .dash-panel-list {
+                grid-template-columns: 1fr;
+            }
         }
         
         .dash-panel-quote {
@@ -478,7 +712,7 @@
             position: relative;
             padding: 30px 32px 24px;
             text-align: center;
-            background: linear-gradient(140deg, var(--gold-light, #e3c064) 0%, var(--gold-deep, #a87a24) 100%);
+            background: var(--palette-gold, #ffc000);
             overflow: hidden;
             flex-shrink: 0;
         }
@@ -664,6 +898,33 @@
             outline: none;
             border-color: var(--gold-deep, #b3862c);
             box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.18);
+        }
+        
+        .wa-field-password-input {
+            padding-right: 42px !important;
+        }
+        
+        .wa-toggle-password {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background: transparent;
+            color: var(--text-muted, #8a8a8a);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+        
+        .wa-toggle-password:hover {
+            color: var(--gold-deep, #a87a24);
+            background: rgba(255, 192, 0, 0.1);
         }
         
         .wa-field input.invalid,
@@ -872,7 +1133,7 @@
         /* ================= SECTION: AKUN AGENT ================= */
         .akun-agent-section {
             padding: 90px 0 100px;
-            background: var(--paper-warm, #faf7f1);
+            background: var(--white, #fff);
         }
 
         .akun-locked {
@@ -1262,10 +1523,16 @@
 
     <!-- ================= HERO AGENT ================= -->
     <section class="hero" id="home">
-        <!-- Hero Video Carousel Background (sama persis seperti halaman Tentang Kami) -->
+        <!-- Hero Photo Carousel Background (sama seperti halaman Info Sosialisasi & Seminar) -->
         <div class="hero-bg">
-            <video class="hero-video hero-video-a" autoplay muted playsinline loop></video>
-            <video class="hero-video hero-video-b" muted playsinline loop></video>
+            <div class="page-header-carousel" id="heroPhotoCarousel">
+                <div class="page-header-slide active" style="background-image:url('Image/galerikami1.jpeg')"></div>
+                <div class="page-header-slide" style="background-image:url('Image/galerikami3.jpeg')"></div>
+                <div class="page-header-slide" style="background-image:url('Image/galerikami4.jpeg')"></div>
+                <div class="page-header-slide" style="background-image:url('Image/galerikami6.jpeg')"></div>
+                <div class="page-header-slide" style="background-image:url('Image/fotbarkeberangkatan.jpeg')"></div>
+            </div>
+            <div class="page-header-dots" id="heroPhotoDots"></div>
         </div>
         <div class="hero-particles" id="heroParticles"></div>
         <div class="hero-inner">
@@ -1340,15 +1607,15 @@
                     <p>Bermitra dengan penyelenggara Umroh & Haji Khusus berizin resmi Kemenag RI — kredibilitas yang menjadi kepercayaan calon jamaah Anda.</p>
                 </div>
 
-                <div class="benefit-card highlight reveal reveal-delay-2" style="background:linear-gradient(145deg, var(--brown-soft), var(--ink-deep)); grid-column: span 2;">
-                    <span class="benefit-index" style="color:var(--gold-light);">05</span>
-                    <div class="benefit-icon" style="background:rgba(255,255,255,0.12); color:var(--gold-light);">
+                <div class="benefit-card highlight reveal reveal-delay-2">
+                    <span class="benefit-index">05</span>
+                    <div class="benefit-icon">
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                         </svg>
                     </div>
-                    <h3 style="color:var(--gold-light);">Keuntungan Program</h3>
-                    <p style="color:rgba(255,255,255,0.82);">Agent berhak memperoleh <strong style="color:var(--gold-light);">komisi dari aktivitas program</strong>, peluang penghasilan yang terus berkembang, serta <strong style="color:var(--gold-light);">reward perjalanan
+                    <h3>Keuntungan Program</h3>
+                    <p>Agent berhak memperoleh <strong>komisi dari aktivitas program</strong>, peluang penghasilan yang terus berkembang, serta <strong>reward perjalanan
                             umroh</strong> sesuai ketentuan yang berlaku.</p>
                 </div>
             </div>
@@ -1561,7 +1828,10 @@
             <p style="color:var(--text-soft); max-width:600px; margin:0 auto 32px; line-height:1.8;">Bangun peran, kontribusi, dan manfaat bersama Khalifah Asia Bekasi dalam program umroh yang amanah.</p>
             <a href="#akun-agent" class="btn btn-primary btn-shine" style="display:inline-flex;" data-auth-trigger="register">Daftar Sekarang →</a>
             <div style="margin-top:16px;">
-                <a href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya/mendaftar%20sebagai%20Agent%20Khalifah%20Asia%20Bekasi." class="btn btn-outline" style="display:inline-flex;" target="_blank" rel="noopener noreferrer">Tanya Dulu via WhatsApp</a>
+                <a href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya/mendaftar%20sebagai%20Agent%20Khalifah%20Asia%20Bekasi." class="btn btn-wa-glow" style="display:inline-flex;" target="_blank" rel="noopener noreferrer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.09c-.24.68-1.4 1.32-1.93 1.37-.53.06-1.03.26-3.44-.72-2.9-1.19-4.77-4.13-4.92-4.32-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.13-.28.27-.12.54.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.31z"/></svg>
+                    Tanya Dulu via WhatsApp
+                </a>
             </div>
         </div>
     </section>
@@ -1701,7 +1971,11 @@
                             <label for="loginPassword">Password</label>
                             <div class="wa-input-wrap">
                                 <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-                                <input type="password" id="loginPassword" required autocomplete="current-password" placeholder="Password Anda" />
+                                <input type="password" id="loginPassword" class="wa-field-password-input" required autocomplete="current-password" placeholder="Password Anda" />
+                                <button type="button" class="wa-toggle-password" data-target="loginPassword" aria-label="Tampilkan password">
+                                    <svg class="icon-eye" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    <svg class="icon-eye-off" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a19.7 19.7 0 0 1 5.06-5.94M9.9 4.24A10.4 10.4 0 0 1 12 4c7 0 11 8 11 8a19.7 19.7 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg>
+                                </button>
                             </div>
                             <span class="wa-error"></span>
                         </div>
@@ -1738,10 +2012,71 @@
                             <span class="wa-error"></span>
                         </div>
                         <div class="wa-field full">
+                            <label for="regKota">Kota Domisili</label>
+                            <div class="wa-input-wrap">
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                                <select id="regKota" required>
+                                    <option value="" disabled selected>Pilih kota/kabupaten</option>
+                                    <option value="Kota Bekasi">Kota Bekasi</option>
+                                    <option value="Kabupaten Bekasi">Kabupaten Bekasi</option>
+                                    <option value="Kota Jakarta Timur">Kota Jakarta Timur</option>
+                                    <option value="Kota Jakarta Selatan">Kota Jakarta Selatan</option>
+                                    <option value="Kota Jakarta Pusat">Kota Jakarta Pusat</option>
+                                    <option value="Kota Jakarta Barat">Kota Jakarta Barat</option>
+                                    <option value="Kota Jakarta Utara">Kota Jakarta Utara</option>
+                                    <option value="Kota Depok">Kota Depok</option>
+                                    <option value="Kota Bogor">Kota Bogor</option>
+                                    <option value="Kabupaten Bogor">Kabupaten Bogor</option>
+                                    <option value="Kota Tangerang">Kota Tangerang</option>
+                                    <option value="Kota Tangerang Selatan">Kota Tangerang Selatan</option>
+                                    <option value="Kabupaten Tangerang">Kabupaten Tangerang</option>
+                                    <option value="Kabupaten Karawang">Kabupaten Karawang</option>
+                                    <option value="Kota Bandung">Kota Bandung</option>
+                                    <option value="Kabupaten Bandung">Kabupaten Bandung</option>
+                                    <option value="Lainnya">Lainnya (di luar daftar)</option>
+                                </select>
+                            </div>
+                            <span class="wa-error"></span>
+                        </div>
+                        <div class="wa-field full" id="regKotaLainnyaWrap" style="display:none;">
+                            <label for="regKotaLainnya">Sebutkan Kota/Kabupaten Anda</label>
+                            <div class="wa-input-wrap">
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                                <input type="text" id="regKotaLainnya" placeholder="Tulis nama kota/kabupaten" />
+                            </div>
+                            <span class="wa-error"></span>
+                        </div>
+                        <div class="wa-field full">
+                            <label for="regPekerjaan">Pekerjaan / Profesi Saat Ini</label>
+                            <div class="wa-input-wrap">
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
+                                <input type="text" id="regPekerjaan" required placeholder="Contoh: Karyawan Swasta" />
+                            </div>
+                            <span class="wa-error"></span>
+                        </div>
+                        <div class="wa-field full">
+                            <label for="regSumber">Tahu Program Ini Dari Mana?</label>
+                            <div class="wa-input-wrap">
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+                                <select id="regSumber" required>
+                                    <option value="" disabled selected>Pilih salah satu</option>
+                                    <option value="Instagram/Facebook">Instagram / Facebook</option>
+                                    <option value="WhatsApp/Teman">WhatsApp / Ajakan Teman</option>
+                                    <option value="Website Khalifah Asia">Website Khalifah Asia</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                            </div>
+                            <span class="wa-error"></span>
+                        </div>
+                        <div class="wa-field full">
                             <label for="regPassword">Buat Password</label>
                             <div class="wa-input-wrap">
                                 <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-                                <input type="password" id="regPassword" required minlength="6" autocomplete="new-password" placeholder="Minimal 6 karakter" />
+                                <input type="password" id="regPassword" class="wa-field-password-input" required minlength="6" autocomplete="new-password" placeholder="Minimal 6 karakter" />
+                                <button type="button" class="wa-toggle-password" data-target="regPassword" aria-label="Tampilkan password">
+                                    <svg class="icon-eye" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    <svg class="icon-eye-off" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a19.7 19.7 0 0 1 5.06-5.94M9.9 4.24A10.4 10.4 0 0 1 12 4c7 0 11 8 11 8a19.7 19.7 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg>
+                                </button>
                             </div>
                             <span class="wa-error"></span>
                         </div>
@@ -1814,51 +2149,54 @@
             }
         });
 
-        // ========== HERO VIDEO CAROUSEL ==========
-        // Semua video ada di folder "Video Carosel" (satu folder dengan file index.html/agent.html ini).
-        // Setiap video akan tampil selama 8 detik lalu crossfade halus ke video berikutnya.
-        (function() {
-            const videos = [
-                "Video Carosel/khalifahasiabekasianimasi.mp4",
-                "Video Carosel/hero2masjidnabawi.mp4.mp4",
-                "Video Carosel/hero3masjidilharam.mp4.mp4",
-                "Video Carosel/hero4jamaahberdoa.mp4.mp4",
-                "Video Carosel/hero5kaabah.mp4.mp4"
-            ];
-            const DURATION = 8000; // 8 detik per video
-            const vidA = document.querySelector(".hero-video-a");
-            const vidB = document.querySelector(".hero-video-b");
-            if (!vidA || !vidB || videos.length === 0) return;
+        // ========== HERO PHOTO CAROUSEL ==========
+        // Foto-foto bergantian (crossfade + Ken Burns) — pola sama seperti
+        // page-header-carousel di halaman Info Sosialisasi & Seminar.
+        (function () {
+            const track = document.getElementById("heroPhotoCarousel");
+            const dotsWrap = document.getElementById("heroPhotoDots");
+            if (!track) return;
+
+            const slides = Array.from(track.querySelectorAll(".page-header-slide"));
+            if (slides.length === 0) return;
+
+            const DURATION = 6000; // 6 detik per foto
+
+            // Bangun tombol dot navigasi
+            slides.forEach(function (_, i) {
+                const dot = document.createElement("button");
+                dot.type = "button";
+                dot.className = "page-header-dot" + (i === 0 ? " active" : "");
+                dot.setAttribute("aria-label", "Foto " + (i + 1));
+                dot.addEventListener("click", function () {
+                    goTo(i);
+                    resetTimer();
+                });
+                if (dotsWrap) dotsWrap.appendChild(dot);
+            });
+            const dots = dotsWrap ? Array.from(dotsWrap.children) : [];
 
             let index = 0;
-            let showingA = true;
+            let timer;
 
-            function setSource(videoEl, src) {
-                videoEl.innerHTML = "";
-                const source = document.createElement("source");
-                source.src = src;
-                source.type = "video/mp4";
-                videoEl.appendChild(source);
-                videoEl.onerror = () => console.error("Hero video gagal dimuat, cek path:", src);
-                source.onerror = () => console.error("Hero video gagal dimuat, cek path:", src);
-                videoEl.load();
-                videoEl.play().catch((err) => console.warn("Autoplay video hero diblokir/gagal:", src, err));
+            function goTo(i) {
+                slides[index].classList.remove("active");
+                if (dots[index]) dots[index].classList.remove("active");
+                index = i;
+                slides[index].classList.add("active");
+                if (dots[index]) dots[index].classList.add("active");
             }
 
-            setSource(vidA, videos[0]);
-            vidA.classList.add("is-active");
-
-            if (videos.length > 1) {
-                setInterval(() => {
-                    index = (index + 1) % videos.length;
-                    const nextVideo = showingA ? vidB : vidA;
-                    const currentVideo = showingA ? vidA : vidB;
-                    setSource(nextVideo, videos[index]);
-                    nextVideo.classList.add("is-active");
-                    currentVideo.classList.remove("is-active");
-                    showingA = !showingA;
-                }, DURATION);
+            function next() {
+                goTo((index + 1) % slides.length);
             }
+
+            function resetTimer() {
+                if (timer) clearInterval(timer);
+                if (slides.length > 1) timer = setInterval(next, DURATION);
+            }
+
+            resetTimer();
         })();
 
         // ========== MOBILE MENU ==========
@@ -2017,6 +2355,11 @@
             const regNama = document.getElementById('regNama');
             const regWhatsapp = document.getElementById('regWhatsapp');
             const regEmail = document.getElementById('regEmail');
+            const regKota = document.getElementById('regKota');
+            const regKotaLainnyaWrap = document.getElementById('regKotaLainnyaWrap');
+            const regKotaLainnya = document.getElementById('regKotaLainnya');
+            const regPekerjaan = document.getElementById('regPekerjaan');
+            const regSumber = document.getElementById('regSumber');
             const regPassword = document.getElementById('regPassword');
             const registerSubmitBtn = document.getElementById('registerSubmitBtn');
 
@@ -2135,7 +2478,7 @@
 
             function validateRegisterForm() {
                 let valid = true;
-                [regNama, regWhatsapp, regEmail, regPassword].forEach(clearFieldError);
+                [regNama, regWhatsapp, regEmail, regKota, regKotaLainnya, regPekerjaan, regSumber, regPassword].forEach(clearFieldError);
 
                 if (!regNama.value.trim()) {
                     markFieldError(regNama, 'Nama lengkap wajib diisi.');
@@ -2151,6 +2494,21 @@
                     markFieldError(regEmail, 'Masukkan email yang valid.');
                     valid = false;
                 }
+                if (!regKota.value) {
+                    markFieldError(regKota, 'Kota domisili wajib dipilih.');
+                    valid = false;
+                } else if (regKota.value === 'Lainnya' && !regKotaLainnya.value.trim()) {
+                    markFieldError(regKotaLainnya, 'Sebutkan nama kota/kabupaten Anda.');
+                    valid = false;
+                }
+                if (!regPekerjaan.value.trim()) {
+                    markFieldError(regPekerjaan, 'Pekerjaan / profesi wajib diisi.');
+                    valid = false;
+                }
+                if (!regSumber.value) {
+                    markFieldError(regSumber, 'Silakan pilih salah satu.');
+                    valid = false;
+                }
                 if (!regPassword.value || regPassword.value.length < 6) {
                     markFieldError(regPassword, 'Password minimal 6 karakter.');
                     valid = false;
@@ -2158,8 +2516,35 @@
                 return valid;
             }
 
-            [loginEmail, loginPassword, regNama, regWhatsapp, regEmail, regPassword].forEach(input => {
+            [loginEmail, loginPassword, regNama, regWhatsapp, regEmail, regKota, regKotaLainnya, regPekerjaan, regSumber, regPassword].forEach(input => {
                 input.addEventListener('input', () => clearFieldError(input));
+                input.addEventListener('change', () => clearFieldError(input));
+            });
+
+            // ---------- Tampilkan field manual saat kota "Lainnya" dipilih ----------
+            if (regKota && regKotaLainnyaWrap) {
+                regKota.addEventListener('change', () => {
+                    const isLainnya = regKota.value === 'Lainnya';
+                    regKotaLainnyaWrap.style.display = isLainnya ? '' : 'none';
+                    if (!isLainnya) {
+                        regKotaLainnya.value = '';
+                        clearFieldError(regKotaLainnya);
+                    }
+                });
+            }
+
+            // ---------- Tombol lihat/sembunyikan password ----------
+            document.querySelectorAll('.wa-toggle-password').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.getAttribute('data-target');
+                    const input = document.getElementById(targetId);
+                    if (!input) return;
+                    const showing = input.type === 'text';
+                    input.type = showing ? 'password' : 'text';
+                    btn.querySelector('.icon-eye').style.display = showing ? '' : 'none';
+                    btn.querySelector('.icon-eye-off').style.display = showing ? 'none' : '';
+                    btn.setAttribute('aria-label', showing ? 'Tampilkan password' : 'Sembunyikan password');
+                });
             });
 
             // ================= PESAN ERROR SUPABASE -> BAHASA INDONESIA ================= 
@@ -2200,52 +2585,43 @@
             }
 
             // ================= SUBMIT: DAFTAR JADI AGENT =================
-            registerForm.addEventListener('submit', async (e) => {
+            // SEMENTARA: form ini belum disambungkan ke database (Supabase).
+            // Setelah validasi lolos, data langsung dikirim ke WhatsApp admin.
+            // Nanti kalau sistem akun/dashboard mau diaktifkan lagi, tinggal
+            // kembalikan bagian sb.auth.signUp() + sb.from('agents').insert()
+            // yang sempat dipakai di sini.
+            registerForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 clearAuthAlert();
-                if (!sb) {
-                    showAuthAlert('error', 'Sistem akun belum terhubung ke database. Hubungi admin website.');
-                    return;
-                }
                 if (!validateRegisterForm()) return;
 
                 const nama = regNama.value.trim();
                 const whatsapp = regWhatsapp.value.trim();
                 const email = regEmail.value.trim();
-                const password = regPassword.value;
+                const kota = regKota.value === 'Lainnya' ? regKotaLainnya.value.trim() : regKota.value;
+                const pekerjaan = regPekerjaan.value.trim();
+                const sumber = regSumber.value;
 
                 setBtnLoading(registerSubmitBtn, true, 'Memproses...', 'Daftar Jadi Agent');
-                try {
-                    const { data, error } = await sb.auth.signUp({ email, password });
-                    if (error) throw error;
 
-                    const userId = data.user ? data.user.id : (data.session ? data.session.user.id : null);
-                    if (!userId) throw new Error('Gagal membuat akun, silakan coba lagi.');
+                // ---- Kirim biodata pendaftar langsung ke WhatsApp admin ----
+                const pesanWA =
+                    `Assalamualaikum, saya ingin daftar jadi Agent Khalifah Asia Bekasi. Berikut biodata diri saya:\n\n` +
+                    `Nama Lengkap: ${nama}\n` +
+                    `No. WhatsApp: ${whatsapp}\n` +
+                    `Email: ${email}\n` +
+                    `Kota Domisili: ${kota}\n` +
+                    `Pekerjaan: ${pekerjaan}\n` +
+                    `Tahu Program Dari: ${sumber}\n\n` +
+                    `Mohon informasi langkah selanjutnya. Terima kasih.`;
+                const waUrl = `https://wa.me/62817843531?text=${encodeURIComponent(pesanWA)}`;
 
-                    const kodeReferral = await generateUniqueKodeReferral(nama);
-                    const { error: insertError } = await sb.from('agents').insert({
-                        id: userId,
-                        nama,
-                        whatsapp,
-                        email,
-                        kode_referral: kodeReferral
-                    });
-                    if (insertError) throw insertError;
-
-                    if (data.session) {
-                        showAuthAlert('success', 'Pendaftaran berhasil! Selamat datang, Agent.');
-                        registerForm.reset();
-                        setTimeout(() => { closeAuthModal(); loadAgentDashboard(); }, 900);
-                    } else {
-                        showAuthAlert('success', 'Pendaftaran berhasil! Silakan cek email Anda untuk konfirmasi, lalu login.');
-                        registerForm.reset();
-                        setTimeout(() => switchAuthTab('login'), 1800);
-                    }
-                } catch (err) {
-                    showAuthAlert('error', mapAuthError(err));
-                } finally {
+                showAuthAlert('success', 'Data diterima! Mengarahkan ke WhatsApp...');
+                registerForm.reset();
+                setTimeout(() => {
                     setBtnLoading(registerSubmitBtn, false, 'Memproses...', 'Daftar Jadi Agent');
-                }
+                    window.location.href = waUrl;
+                }, 700);
             });
 
             // ================= SUBMIT: LOGIN =================
@@ -2267,7 +2643,12 @@
                     if (error) throw error;
                     showAuthAlert('success', 'Login berhasil!');
                     loginForm.reset();
-                    setTimeout(() => { closeAuthModal(); loadAgentDashboard(); }, 500);
+                    setTimeout(() => {
+                        closeAuthModal();
+                        loadAgentDashboard();
+                        const akunSection = document.getElementById('akun-agent');
+                        if (akunSection) akunSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 500);
                 } catch (err) {
                     showAuthAlert('error', mapAuthError(err));
                 } finally {

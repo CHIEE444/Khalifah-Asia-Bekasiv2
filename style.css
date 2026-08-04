@@ -5,14 +5,6 @@
 
 /* ---------- CSS VARIABLES ---------- */
 :root {
-  /* ============================================================
-     LAPISAN 1 — PALET DASAR (raw color tokens)
-     Redesign: Teal & Terracotta — teal sebagai warna dominan
-     (dipakai luas: ikon, hover, badge), terracotta sebagai aksen
-     CTA (dipakai terbatas supaya tombol tetap menonjol) — ditambah
-     token netral & sistem (danger, surface).
-     JANGAN dipakai langsung di komponen, gunakan token Lapisan 2.
-     ============================================================ */
   --palette-teal: #1f6e6e;
   --palette-teal-deep: #14504f;
   --palette-teal-soft: #4e9490;
@@ -747,6 +739,13 @@ ol {
 }
 
 /* ---------- HERO SECTION ---------- */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100svh;
+    min-height: 100dvh;
+  }
+}
+
 .hero {
   position: relative;
   min-height: 100vh;
@@ -803,12 +802,46 @@ ol {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   position: absolute;
   inset: 0;
   z-index: 0;
   opacity: 0;
   background: var(--color-heading-strong);
   transition: opacity 1.2s var(--ease-smooth);
+}
+
+/* Di layar sempit/portrait, video sumbernya (landscape) akan ter-crop
+   berlebihan jika dipaksa "cover" mengisi kotak hero yang sangat tinggi.
+   Maka video di-"contain" agar benar2 mengecil & utuh menyesuaikan device. */
+@media (max-width: 768px), (max-aspect-ratio: 3/4) {
+  .hero-video {
+    object-fit: contain;
+    background: transparent;
+  }
+}
+
+/* Backdrop: salinan video yang sama, di-blur & di-zoom, mengisi seluruh
+   kotak hero (cover) di BELAKANG video utama. Jadi ruang kosong di
+   atas/bawah video utama (akibat "contain") tidak jadi bar gelap polos,
+   tapi terisi versi blur video itu sendiri — hasilnya video utama tetap
+   utuh (tidak terpotong) tapi tampilannya tetap terasa "penuh layar". */
+.hero-video-backdrop {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transform: scale(1.15);
+  filter: blur(35px) brightness(0.55) saturate(1.2);
+  transition: opacity 1.2s var(--ease-smooth);
+}
+
+.hero-video-backdrop.is-active {
+  opacity: 1;
 }
 
 .icon-circle {
@@ -1011,7 +1044,8 @@ ol {
 }
 
 @keyframes arrowStemPulse {
-  0%, 100% {
+  0%,
+  100% {
     stroke-dashoffset: 0;
   }
   50% {
@@ -1020,7 +1054,8 @@ ol {
 }
 
 @keyframes arrowHeadNudge {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0);
   }
   50% {
@@ -1285,103 +1320,261 @@ ol {
 }
 
 /* ---------- BENEFIT CARDS ----------
-   Desain minimalis & modern: tanpa tekstur pola latar, tanpa medali
-   emas yang menggantung, tanpa efek glow berlebihan. Ikon duduk rapi
-   di dalam kartu sebagai kotak lembut ber-radius, nomor urut tampil
-   sebagai angka tipis di pojok, dan aksen warna dibatasi pada satu
-   garis pemisah tipis di bawah judul — fokus pada tipografi & ruang. */
+   Kartu interaktif (flip card): sisi depan menampilkan ikon + judul
+   singkat, sisi belakang membuka detail benefit saat disentuh/hover —
+   memberi nuansa hidup & mengundang interaksi, bukan sekadar teks statis.
+   Ditambah nuansa "frosted glass": blur transparan, glow lembut yang
+   membesar saat hover, dan sapuan cahaya diagonal ala kaca. */
 .benefit-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-bottom: 32px;
-  align-items: start;
+  align-items: stretch;
+  position: relative;
+}
+
+/* Gumpalan warna lembut di belakang grid — memberi "sesuatu" untuk
+   di-blur oleh backdrop-filter kartu, memperkuat kesan kaca buram. */
+.benefit-grid::before,
+.benefit-grid::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.25;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.benefit-grid::before {
+  background: var(--palette-teal-soft);
+  top: -40px;
+  left: 4%;
+}
+
+.benefit-grid::after {
+  background: var(--palette-gold);
+  bottom: -40px;
+  right: 4%;
 }
 
 .benefit-card {
-  background: var(--color-on-dark);
-  border-radius: var(--r-lg);
-  padding: 38px 32px 34px;
-  border: 1px solid var(--color-border);
   position: relative;
-  transition:
-    transform 0.35s var(--ease-smooth),
-    box-shadow 0.35s var(--ease-smooth),
-    border-color 0.35s var(--ease-smooth);
+  perspective: 1200px;
+  height: 240px;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.5s var(--ease-smooth);
 }
 
-.benefit-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-medium);
-  border-color: rgba(160, 214, 180, 0.55);
+@media (hover: hover) {
+  .benefit-card:hover {
+    transform: translateY(-10px);
+  }
 }
 
-/* Nomor urut — angka tipis di pojok, penanda urutan cerita (kenapa
-   kami -> sejarah -> pencapaian) tanpa jadi elemen dekoratif ramai. */
-.benefit-index {
+/* Aura glow yang membesar di belakang kartu saat di-hover */
+.benefit-card::before {
+  content: "";
   position: absolute;
-  top: 30px;
-  right: 32px;
-  font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--color-text-soft);
-  opacity: 0.45;
-  z-index: 1;
-  line-height: 1;
+  inset: -4px;
+  border-radius: calc(var(--r-lg) + 4px);
+  background: rgba(160, 214, 180, 0.55);
+  opacity: 0;
+  filter: blur(16px);
+  transition: opacity 0.45s var(--ease-smooth);
+  z-index: -1;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .benefit-card:hover::before {
+    opacity: 1;
+  }
+}
+
+.benefit-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s var(--ease-smooth);
+  transform-style: preserve-3d;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.benefit-card.is-flipped .benefit-card-inner {
+  transform: rotateY(180deg);
+}
+
+@media (hover: hover) {
+  .benefit-card:hover .benefit-card-inner {
+    transform: rotateY(180deg);
+    box-shadow: var(--shadow-medium);
+  }
+}
+
+.benefit-card-front,
+.benefit-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--r-lg);
+  padding: 34px 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ---------- Sisi depan: kaca bening (frosted glass) ---------- */
+.benefit-card-front {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  transition:
+    border-color 0.35s var(--ease-smooth),
+    box-shadow 0.35s var(--ease-smooth),
+    background 0.35s var(--ease-smooth);
+}
+
+.benefit-card.is-flipped .benefit-card-front {
+  border-color: rgba(160, 214, 180, 0.6);
+}
+
+@media (hover: hover) {
+
+  .benefit-card:hover .benefit-card-front,
+  .benefit-card.is-flipped .benefit-card-front {
+    border-color: rgba(160, 214, 180, 0.6);
+    background: rgba(255, 255, 255, 0.85);
+  }
+}
+
+/* Sapuan cahaya diagonal — efek "kilau kaca" melintas saat hover */
+.benefit-card-front::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(115deg,
+      transparent,
+      rgba(255, 255, 255, 0.75),
+      transparent);
+  transform: skewX(-18deg);
+  transition: left 0.75s var(--ease-smooth);
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .benefit-card:hover .benefit-card-front::before {
+    left: 130%;
+  }
+}
+
+/* Highlight tipis di tepi atas — meniru pantulan cahaya di pinggir kaca */
+.benefit-card-front::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+  pointer-events: none;
 }
 
 .benefit-icon {
-  position: relative;
-  width: 46px;
-  height: 46px;
-  border-radius: 13px;
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(160, 214, 180, 0.14);
-  color: var(--color-heading);
-  z-index: 1;
-  margin-bottom: 22px;
+  background: rgba(160, 214, 180, 0.16);
+  border: 1px solid rgba(160, 214, 180, 0.3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--color-secondary);
+  margin-bottom: 18px;
+  box-shadow: 0 0 0 rgba(160, 214, 180, 0);
   transition:
-    background 0.35s var(--ease-smooth),
-    color 0.35s var(--ease-smooth);
+    transform 0.4s var(--ease-smooth),
+    box-shadow 0.4s var(--ease-smooth),
+    background 0.4s var(--ease-smooth);
 }
 
-.benefit-card:hover .benefit-icon {
-  background: var(--color-secondary);
-  color: var(--color-on-dark);
+@media (hover: hover) {
+  .benefit-card:hover .benefit-icon {
+    transform: scale(1.1) rotate(-4deg);
+    background: rgba(160, 214, 180, 0.28);
+    box-shadow: 0 0 22px rgba(160, 214, 180, 0.55);
+  }
 }
 
-.benefit-card h3 {
+.benefit-card-front h3 {
   font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
-  font-size: 1.18rem;
+  font-size: 1.08rem;
   color: var(--color-heading);
   margin: 0;
   font-weight: 700;
   letter-spacing: -0.01em;
-  position: relative;
-  z-index: 1;
+  line-height: 1.35;
 }
 
-/* Garis pemisah tipis di bawah judul — satu-satunya aksen warna pada kartu */
-.benefit-card h3::after {
-  content: "";
-  display: block;
-  width: 28px;
-  height: 2px;
-  margin: 14px 0 16px;
-  background: var(--color-secondary);
-}
-
-.benefit-card p {
-  position: relative;
-  z-index: 1;
-  font-size: 0.95rem;
-  font-weight: 500;
+.benefit-flip-hint {
+  margin-top: 14px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   color: var(--color-text-soft);
-  line-height: 1.7;
+  opacity: 0.6;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: opacity 0.3s var(--ease-smooth);
+}
+
+.benefit-flip-hint::after {
+  content: "↻";
+  font-size: 0.85rem;
+  display: inline-block;
+  transition: transform 0.5s var(--ease-smooth);
+}
+
+@media (hover: hover) {
+  .benefit-card:hover .benefit-flip-hint::after {
+    transform: rotate(180deg);
+  }
+}
+
+/* ---------- Sisi belakang: kaca gelap (frosted glass tosca) ---------- */
+.benefit-card-back {
+  background: rgba(31, 110, 110, 0.88);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transform: rotateY(180deg);
+  box-shadow: var(--shadow-medium);
+}
+
+.benefit-card-back p {
+  color: var(--palette-white);
+  font-size: 0.96rem;
+  font-weight: 500;
+  line-height: 1.65;
+  margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 /* Promo Cards */
@@ -4092,17 +4285,17 @@ ol {
 }
 
 /* ---- Benefit cards: 2 cols tablet, 1 col mobile ---- */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .benefit-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .benefit-grid {
     grid-template-columns: 1fr;
   }
-  .benefit-card.highlight {
-    grid-column: auto !important;
+  .benefit-card {
+    height: 210px;
   }
 }
 
