@@ -35,6 +35,43 @@
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
 
+    <style>
+        /* ---------- HERO VIDEO DI HP: PAKAI VIDEO KHUSUS HP, HERO TETAP BESAR ----------
+           Hero background TETAP dibuat besar/full-screen seperti desktop (tidak
+           dikecilkan mengikuti rasio video seperti percobaan sebelumnya). Yang
+           berbeda di HP hanya SUMBER VIDEO-nya: dipilih otomatis lewat script
+           di bawah (fungsi isMobileHero) kalau lebar layar <=900px, mengarah ke
+           "Video Carosel/animasikhalifahasiav3-mobile.mp4".
+
+           FILE INI BELUM ADA — tinggal export/rekam video versi portrait
+           (disarankan rasio 9:16, atau minimal lebih tinggi dari lebar) lalu
+           upload ke folder "Video Carosel/" dengan nama persis seperti di atas.
+           Karena rasionya sudah didesain pas untuk kotak hero HP, video akan
+           mengisi penuh tanpa perlu di-crop parah seperti kalau videonya masih
+           yang landscape punya desktop.
+
+           object-fit video di HP dikembalikan ke "cover" (bukan "contain" seperti
+           workaround lama) karena video mobile-nya sendiri yang akan didesain
+           pas, dan video blur di belakang dimatikan karena sudah tidak
+           diperlukan lagi untuk menutup celah kosong. Semua perubahan ini
+           HANYA untuk index.html, style.css tidak disentuh. */
+        @media (max-width: 900px) {
+            .hero {
+                min-height: 100vh;
+                min-height: 100dvh;
+            }
+
+            .hero-video {
+                object-fit: cover;
+                background: transparent;
+            }
+
+            .hero-video-backdrop {
+                display: none;
+            }
+        }
+    </style>
+
     <!-- ================= SUPABASE + REFERRAL CAPTURE (untuk sistem komisi Agent) ================= -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/supabase-client.js"></script>
@@ -1955,8 +1992,15 @@ document.addEventListener('DOMContentLoaded', function () {
         })();
 
         (function () {
-            const videos = [
-                
+            // Di HP (<=900px) pakai video kedua yang khusus di-export portrait,
+            // supaya hero tetap besar/full-screen tapi videonya tidak perlu
+            // di-crop dari video landscape milik desktop.
+            const isMobileHero = window.matchMedia("(max-width: 900px)").matches;
+            const videos = isMobileHero ? [
+
+                "Video Carosel/animasikhalifahasiav3-mobile.mp4",
+            ] : [
+
                 "Video Carosel/animasikhalifahasiav3.mp4",
             ];
             const DURATION = 10000;
@@ -1973,7 +2017,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if (prefersReducedMotion || prefersLessData) {
                 vidA.removeAttribute("autoplay");
                 vidA.classList.add("is-active");
-                if (bdA) bdA.classList.add("is-active");
+                // Backdrop tidak diperlukan di HP (lihat komentar CSS di <head>),
+                // jadi tidak usah ikut dimuat supaya tidak boros kuota.
+                if (!isMobileHero && bdA) {
+                    setSource(bdA, videos[0]);
+                    bdA.classList.add("is-active");
+                }
                 return;
             }
 
@@ -1995,22 +2044,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
             setSource(vidA, videos[0]);
             vidA.classList.add("is-active");
-            setSource(bdA, videos[0]);
-            if (bdA) bdA.classList.add("is-active");
+            // Video blur belakang cuma dipakai di desktop (buat nutup celah
+            // kosong dari object-fit:contain di layar lebar/aspect aneh); di HP
+            // sudah dimatikan lewat CSS jadi tidak usah ikut dimuat/di-download.
+            if (!isMobileHero) {
+                setSource(bdA, videos[0]);
+                if (bdA) bdA.classList.add("is-active");
+            }
 
             if (videos.length > 1) {
                 setInterval(() => {
                     index = (index + 1) % videos.length;
                     const nextVideo = showingA ? vidB : vidA;
                     const currentVideo = showingA ? vidA : vidB;
-                    const nextBackdrop = showingA ? bdB : bdA;
-                    const currentBackdrop = showingA ? bdA : bdB;
                     setSource(nextVideo, videos[index]);
-                    setSource(nextBackdrop, videos[index]);
                     nextVideo.classList.add("is-active");
                     currentVideo.classList.remove("is-active");
-                    if (nextBackdrop) nextBackdrop.classList.add("is-active");
-                    if (currentBackdrop) currentBackdrop.classList.remove("is-active");
+                    if (!isMobileHero) {
+                        const nextBackdrop = showingA ? bdB : bdA;
+                        const currentBackdrop = showingA ? bdA : bdB;
+                        setSource(nextBackdrop, videos[index]);
+                        if (nextBackdrop) nextBackdrop.classList.add("is-active");
+                        if (currentBackdrop) currentBackdrop.classList.remove("is-active");
+                    }
                     showingA = !showingA;
                 }, DURATION);
             }
