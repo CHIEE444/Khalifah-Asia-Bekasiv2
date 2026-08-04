@@ -331,6 +331,38 @@
             font-weight: 500;
         }
 
+        /* ---------- PENGAMAN: TEKS HERO TIDAK BOLEH OVERFLOW HORIZONTAL ----------
+           Jaga-jaga terhadap kemungkinan lebar/padding tetap (dari
+           style.css) yang lebih lebar dari layar HP kecil — jika itu
+           terjadi, teks akan terpotong kiri/kanan seperti "Berizin" jadi
+           "erizin". Aturan di bawah memaksa seluruh isi hero selalu pas
+           di dalam lebar layar berapa pun. */
+        .hero,
+        .hero-inner,
+        .hero-content {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        .hero h1,
+        .hero .hero-desc,
+        .hero p {
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        @media (max-width: 480px) {
+
+            .hero h1,
+            .hero .hero-desc,
+            .hero p {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+        }
+
         /* ---------- PROFIL PEMANDU ---------- */
 
         .pemandu-grid {
@@ -397,7 +429,7 @@
         .pemandu-name {
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: clamp(0.95rem, 3.6vw, 1.05rem);
             color: var(--brown-soft);
             margin-bottom: 8px;
         }
@@ -536,10 +568,6 @@
         }
 
         @media (max-width: 480px) {
-            .hero {
-                min-height: 420px;
-            }
-
             .about-hero {
                 padding: 140px 20px 70px;
             }
@@ -633,7 +661,7 @@
         .profil-highlight-item strong {
             display: block;
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 5.2vw, 1.5rem);
             font-weight: 700;
             color: var(--palette-teal-deep);
         }
@@ -701,6 +729,51 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            /* Warna fallback di belakang foto — dipakai saat background-size
+               berubah jadi "contain" di layar sempit, supaya area kosong di
+               sisi kiri/kanan/atas/bawah foto tidak putih polos, melainkan
+               senada dengan overlay gradasi hero. */
+            background-color: #1a130a;
+        }
+
+        /* ---------- RESPONSIVE HERO PHOTO ----------
+           Catatan riwayat: sempat dicoba background-size: contain (efeknya
+           foto jadi kecil dengan spasi kosong), lalu aspect-ratio mengikuti
+           rasio asli foto (efeknya kotak hero jadi terlalu pendek sehingga
+           judul & teks ikut kepotong). Keduanya dibatalkan.
+
+           Pendekatan yang dipakai sekarang: tinggi hero tetap dijaga cukup
+           lega untuk menampung judul + deskripsi di semua ukuran layar
+           (memakai min-height yang sama dengan desktop, hanya nilainya
+           sedikit diperkecil khusus HP kecil supaya foto tidak "diregangkan"
+           terlalu tinggi). Foto tetap pakai background-size: cover supaya
+           selalu mengisi penuh tanpa ada ruang kosong; sedikit crop di
+           tepi atas/bawah foto adalah hal yang wajar/umum untuk hero photo
+           berbentuk banner seperti ini — sama seperti hampir semua website
+           lain dengan foto latar di belakang teks. */
+        @media (max-width: 900px) {
+            .hero {
+                min-height: clamp(460px, 82vw, 520px);
+            }
+
+            .hero-bg {
+                /* Foto asli (fototentang.png) rasionya sangat lebar (960x300,
+                   ~3.2:1) sedangkan kotak hero di HP tegak (portrait).
+                   Kalau tetap pakai foto lebar itu, background-size:cover
+                   terpaksa zoom besar untuk menutupi tinggi kotak, sehingga
+                   yang kelihatan cuma potongan sempit di tengah foto (foto
+                   layar di kiri & 2 foto ustad di kanan ikut terpotong).
+
+                   Solusi: pakai foto khusus HP (fototentang-mobile.png)
+                   yang sudah disusun ulang lebih tegak — foto besar di atas,
+                   4 foto ustad jadi grid 2x2 di bawahnya. Dengan rasio yang
+                   lebih dekat ke rasio layar HP, cover hanya perlu crop
+                   sedikit di atas/bawah, jadi hampir seluruh foto tetap
+                   kelihatan penuh. */
+                background-image: url("Image/fototentang-mobile.png");
+                background-size: cover;
+                background-position: center;
+            }
         }
 
         .hero-carousel {
@@ -916,7 +989,7 @@
         .wa-modal-header h3 {
             position: relative;
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
-            font-size: 1.28rem;
+            font-size: clamp(1.08rem, 4.5vw, 1.28rem);
             font-weight: 700;
             color: #fff;
             margin-bottom: 6px;
@@ -1157,6 +1230,17 @@
 
             .wa-modal-scroll {
                 padding: 22px 20px 24px;
+            }
+
+            /* font-size di bawah 16px pada input membuat Safari iOS
+               otomatis zoom-in saat field disentuh — mengganggu di HP.
+               Dinaikkan ke 16px khusus di form supaya tidak ke-zoom,
+               ukuran visualnya tetap sama karena wa-field punya padding
+               yang menyesuaikan. */
+            .wa-field input,
+            .wa-field select,
+            .wa-field textarea {
+                font-size: 16px;
             }
         }
 
