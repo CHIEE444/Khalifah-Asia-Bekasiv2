@@ -15,6 +15,61 @@
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <style>
+        /* ---------- FOTO HERO KONTAK DI HP: UTUH & TANPA SPASI KOSONG ----------
+           Foto asli galerikami16.jpeg landscape lebar (4080x1884, rasio ~2.17:1),
+           sedangkan kotak .page-header di HP tadinya portrait (tinggi tetap,
+           lebar ikut layar) — dua bentuk itu nggak akan pernah pas dipaksa
+           satu sama lain: kalau foto dipaksa isi penuh (cover) pasti ada
+           bagian yang kepotong; kalau foto ditampilkan utuh (contain) pasti
+           ada spasi kosong di atas/bawah.
+
+           Solusinya: khusus di HP, tinggi ZONA FOTO (.page-header-media, div
+           pembungkus baru di HTML) dibuat mengikuti PERSIS rasio asli foto
+           lewat aspect-ratio — jadi foto otomatis pas 100% mengisi zonanya,
+           tanpa kepotong dan tanpa sisa spasi kosong. Konsekuensinya, judul
+           "Hubungi Khalifah Asia Bekasi" tidak lagi menumpuk di ATAS foto
+           (kotaknya jadi kependekan buat itu), melainkan dipindah ke BAWAH
+           foto sebagai teks biasa. Semua perubahan ini HANYA untuk
+           kontak.html, style.css tidak disentuh supaya halaman lain yang
+           memakai .page-header tidak ikut berubah. */
+        @media (max-width: 900px) {
+            .page-header {
+                min-height: 0;
+                display: block;
+                /* padding-top menyamai tinggi navbar (fixed di atas layar)
+                   supaya foto tidak ketutup navbar; padding-bottom jadi
+                   jarak sebelum section berikutnya */
+                padding: 76px 0 40px;
+            }
+
+            .page-header-media {
+                position: relative;
+                width: 100%;
+                aspect-ratio: 4080 / 1884;
+                overflow: hidden;
+            }
+
+            .page-header-slide {
+                background-size: cover;
+                /* rasio zona foto sudah persis sama dengan rasio foto asli,
+                   jadi "cover" di sini TIDAK memotong apa pun — hasilnya
+                   identik dengan foto tampil utuh, cuma lebih aman dari
+                   celah 1px akibat pembulatan dibanding "contain". */
+            }
+
+            .page-header .container {
+                margin-top: 26px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header {
+                padding-top: 68px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -111,14 +166,24 @@
     <!-- ================= PAGE HEADER (Carousel Foto) ================= -->
     <section class="page-header" id="home">
 
-        <!-- Tint dasar -->
-        <div class="page-header-bg"></div>
+        <!-- Pembungkus foto (dipakai supaya di HP foto bisa jadi "zona" sendiri
+             dengan tinggi mengikuti rasio foto, terpisah dari teks judul di
+             bawahnya — lihat CSS .page-header-media di <head>). Di desktop,
+             div ini tidak diberi style apa pun jadi perilakunya sama persis
+             seperti sebelumnya. -->
+        <div class="page-header-media">
+            <!-- Tint dasar -->
+            <div class="page-header-bg"></div>
 
-        <!-- Carousel Foto (slide diisi otomatis oleh script di bawah) -->
-        <div class="page-header-carousel" id="pageHeaderCarousel"></div>
+            <!-- Carousel Foto (slide diisi otomatis oleh script di bawah) -->
+            <div class="page-header-carousel" id="pageHeaderCarousel"></div>
 
-        <!-- Overlay gelap agar teks tetap terbaca -->
-        <div class="page-header-overlay"></div>
+            <!-- Overlay gelap agar teks tetap terbaca -->
+            <div class="page-header-overlay"></div>
+
+            <!-- Dots navigasi carousel (diisi otomatis) -->
+            <div class="page-header-dots" id="pageHeaderDots"></div>
+        </div>
 
         <div class="container">
             <div class="page-header-inner">
@@ -133,9 +198,6 @@
                 </p>
             </div>
         </div>
-
-        <!-- Dots navigasi carousel (diisi otomatis) -->
-        <div class="page-header-dots" id="pageHeaderDots"></div>
 
     </section>
 
@@ -206,7 +268,7 @@
                         </svg>
                     </div>
                     <h3>Jam Operasional</h3>
-                    <p>Senin – Jumat: 08.00 – 16.00 WIB<br />Sabtu: 08.00 - 12.00 WIB - Minggu & libur nasional:
+                    <p>Senin – Jumat: 08.00 – 16.00 WIB<br />Sabtu: 08.00 - 12.00 WIB<br />Minggu & libur nasional:
                         Tutup</p>
                 </div>
             </div>
