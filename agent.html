@@ -176,7 +176,7 @@
         
         .poster-paket {
             padding: 70px 0 60px;
-            background: var(--white, #fff) !important;
+            background: var(--color-surface, #fff) !important;
         }
         
         .poster-paket::before {
@@ -224,15 +224,15 @@
             max-width: 880px;
             margin: 0 auto;
             padding: 30px 34px;
-            border-left: 4px solid var(--gold);
-            background: var(--paper-warm);
-            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            border-left: 4px solid var(--palette-gold);
+            background: var(--color-surface-warm);
+            border-radius: 0 var(--r-md) var(--r-md) 0;
             font-family: "Manrope", sans-serif;
             font-style: normal;
-            color: var(--brown-soft);
+            color: var(--color-heading-strong);
             font-size: 1.08rem;
             line-height: 1.85;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-medium);
         }
         /* ---------- DASHBOARD PANEL (dipakai ulang dari halaman Tentang Kami) ---------- */
         
@@ -250,11 +250,11 @@
         .dash-sidebar {
             position: sticky;
             top: 118px;
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-lg);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--r-lg);
             padding: 14px;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-medium);
         }
         
         .dash-sidebar-label {
@@ -262,7 +262,7 @@
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--text-muted);
+            color: var(--color-text-soft);
             padding: 10px 14px 6px;
         }
         
@@ -273,15 +273,15 @@
             width: 100%;
             text-align: left;
             padding: 15px 16px;
-            border-radius: var(--radius-md);
+            border-radius: var(--r-md);
             background: transparent;
             border: none;
             font-family: inherit;
             font-size: 0.92rem;
             font-weight: 600;
-            color: var(--text-soft);
+            color: var(--color-text-soft);
             cursor: pointer;
-            transition: all 0.3s var(--ease-out);
+            transition: all 0.3s var(--ease-smooth);
             margin-bottom: 4px;
         }
         
@@ -292,33 +292,33 @@
             width: 38px;
             height: 38px;
             border-radius: 12px;
-            background: var(--paper-warm);
-            color: var(--gold-deep);
+            background: var(--color-surface-warm);
+            color: var(--palette-amber);
             flex-shrink: 0;
-            transition: all 0.3s var(--ease-out);
+            transition: all 0.3s var(--ease-smooth);
         }
         
         .dash-nav-btn:hover {
-            background: var(--paper-warm);
-            color: var(--brown-soft);
+            background: var(--color-surface-warm);
+            color: var(--color-heading-strong);
         }
         
         .dash-nav-btn.active {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            color: var(--ink);
-            box-shadow: var(--shadow-gold);
+            background: linear-gradient(135deg, var(--palette-gold), var(--palette-gold));
+            color: var(--palette-ink);
+            box-shadow: 0 12px 40px rgba(255, 192, 0, 0.25);
         }
         
         .dash-nav-btn.active .dash-nav-icon {
             background: rgba(255, 255, 255, 0.35);
-            color: var(--ink);
+            color: var(--palette-ink);
         }
         
         .dash-content {
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--r-lg);
+            box-shadow: var(--shadow-medium);
             padding: 48px;
             min-height: 380px;
             position: relative;
@@ -332,14 +332,14 @@
             left: 0;
             right: 0;
             height: 6px;
-            background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+            background: linear-gradient(90deg, var(--palette-gold), var(--palette-gold), var(--palette-gold));
             background-size: 200% auto;
             animation: gradient-shift 3s ease infinite;
         }
         
         .dash-panel {
             display: none;
-            animation: fadeInUp 0.5s var(--ease-out) both;
+            animation: fadeInUp 0.5s var(--ease-smooth) both;
         }
         
         .dash-panel.active {
@@ -354,10 +354,10 @@
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--gold-deep);
-            background: var(--gold-pale);
+            color: var(--palette-amber);
+            background: rgba(255, 192, 0, 0.15);
             padding: 7px 16px;
-            border-radius: var(--radius-full);
+            border-radius: var(--r-pill);
             margin-bottom: 20px;
         }
         
@@ -365,12 +365,12 @@
             font-family: "Manrope", sans-serif;
             font-size: clamp(1.5rem, 2.8vw, 1.9rem);
             font-weight: 700;
-            color: var(--brown-soft);
+            color: var(--color-heading-strong);
             margin-bottom: 20px;
         }
         
         .dash-panel p {
-            color: var(--text-soft);
+            color: var(--color-text-soft);
             font-size: 1rem;
             line-height: 1.85;
             margin-bottom: 16px;
@@ -391,15 +391,15 @@
             align-items: flex-start;
             gap: 12px;
             padding: 26px 22px 22px;
-            background: var(--white, #fff);
-            border: 1px solid var(--line, #ece6d9);
-            border-radius: var(--radius-lg, 18px);
+            background: var(--color-surface, #fff);
+            border: 1px solid var(--color-border, #ece6d9);
+            border-radius: var(--r-lg, 18px);
             overflow: hidden;
             box-shadow: 0 1px 2px rgba(20, 14, 8, 0.03);
             transition:
-                transform 0.35s var(--ease-out, ease),
-                box-shadow 0.35s var(--ease-out, ease),
-                border-color 0.35s var(--ease-out, ease);
+                transform 0.35s var(--ease-smooth, ease),
+                box-shadow 0.35s var(--ease-smooth, ease),
+                border-color 0.35s var(--ease-smooth, ease);
         }
         
         .dash-panel-list li::before {
@@ -412,7 +412,7 @@
             background: var(--palette-gold, #ffc000);
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.35s var(--ease-out, ease);
+            transition: transform 0.35s var(--ease-smooth, ease);
         }
         
         .dash-panel-list li:hover {
@@ -484,12 +484,12 @@
         .dash-panel-quote {
             margin-top: 26px;
             padding: 22px 24px;
-            border-left: 4px solid var(--gold);
-            background: var(--paper-warm);
-            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            border-left: 4px solid var(--palette-gold);
+            background: var(--color-surface-warm);
+            border-radius: 0 var(--r-md) var(--r-md) 0;
             font-family: "Manrope", sans-serif;
             font-style: normal;
-            color: var(--brown-soft);
+            color: var(--color-heading-strong);
             font-size: 1rem;
             line-height: 1.8;
         }
@@ -528,18 +528,18 @@
         }
         
         .pemandu-card {
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-lg, 20px);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--r-lg, 20px);
             overflow: hidden;
             text-align: center;
-            transition: all 0.4s var(--ease-out);
-            box-shadow: var(--shadow-sm);
+            transition: all 0.4s var(--ease-smooth);
+            box-shadow: var(--shadow-soft);
         }
         
         .pemandu-card:hover {
-            border-color: var(--gold-deep);
-            box-shadow: var(--shadow-lg);
+            border-color: var(--palette-amber);
+            box-shadow: var(--shadow-strong);
             transform: translateY(-6px);
         }
         
@@ -547,7 +547,7 @@
             position: relative;
             aspect-ratio: 4 / 5;
             overflow: hidden;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            background: linear-gradient(135deg, var(--palette-gold), var(--palette-gold));
         }
         
         .pemandu-photo img {
@@ -555,7 +555,7 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.5s var(--ease-out);
+            transition: transform 0.5s var(--ease-smooth);
         }
         
         .pemandu-card:hover .pemandu-photo img {
@@ -579,7 +579,7 @@
             font-family: "Manrope", sans-serif;
             font-weight: 700;
             font-size: 1.05rem;
-            color: var(--brown-soft);
+            color: var(--color-heading-strong);
             margin-bottom: 8px;
         }
         
@@ -591,23 +591,23 @@
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
-            color: var(--gold-deep);
-            background: var(--gold-pale);
+            color: var(--palette-amber);
+            background: rgba(255, 192, 0, 0.15);
             padding: 5px 14px;
-            border-radius: var(--radius-full);
+            border-radius: var(--r-pill);
         }
         
         .pemandu-desc {
             font-size: 0.88rem;
             line-height: 1.7;
-            color: var(--text-soft);
+            color: var(--color-text-soft);
             margin: 12px 0 0;
         }
         
         .pemandu-note {
             margin-top: 24px;
             font-size: 0.86rem;
-            color: var(--text-muted);
+            color: var(--color-text-soft);
             text-align: center;
         }
         
@@ -668,9 +668,10 @@
             background: rgba(20, 14, 8, 0.62);
             backdrop-filter: blur(3px);
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
-            padding: 20px;
+            padding: 96px 20px 24px;
+            overflow-y: auto;
             z-index: 999;
             opacity: 0;
             visibility: hidden;
@@ -684,15 +685,15 @@
         
         .wa-modal {
             position: relative;
-            background: var(--white);
-            border-radius: var(--radius-lg, 22px);
+            background: var(--color-surface);
+            border-radius: var(--r-lg, 22px);
             max-width: 560px;
             width: 100%;
-            max-height: 90vh;
+            max-height: 82vh;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: var(--shadow-lg, 0 24px 70px rgba(0, 0, 0, 0.35));
+            box-shadow: var(--shadow-strong, 0 24px 70px rgba(0, 0, 0, 0.35));
             transform: translateY(24px) scale(0.97);
             transition: transform 0.3s ease;
         }
@@ -703,7 +704,7 @@
         
         .wa-modal-header {
             position: relative;
-            padding: 30px 32px 24px;
+            padding: 30px 28px 20px;
             text-align: center;
             background: var(--palette-gold, #ffc000);
             overflow: hidden;
@@ -720,8 +721,8 @@
         
         .wa-modal-close {
             position: absolute;
-            top: 14px;
-            right: 14px;
+            top: 22px;
+            right: 20px;
             width: 32px;
             height: 32px;
             border-radius: 50%;
@@ -745,25 +746,25 @@
         
         .wa-modal-icon {
             position: relative;
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
             background: rgba(255, 255, 255, 0.22);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 14px;
+            margin: 0 auto 10px;
         }
         
         .wa-modal-header h3 {
             position: relative;
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
-            font-size: 1.28rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         
         .wa-modal-sub {
@@ -777,7 +778,7 @@
         
         .wa-modal-scroll {
             overflow-y: auto;
-            padding: 26px 32px 28px;
+            padding: 20px 28px 24px;
         }
         
         .wa-section-title {
@@ -796,8 +797,8 @@
             width: 24px;
             height: 24px;
             border-radius: 8px;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            color: var(--ink, #222);
+            background: linear-gradient(135deg, var(--palette-gold), var(--palette-gold));
+            color: var(--palette-ink, #222);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -810,14 +811,14 @@
             font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--gold-deep, #a87a24);
+            color: var(--palette-amber, #a87a24);
         }
         
         .wa-section-title::after {
             content: "";
             flex: 1;
             height: 1px;
-            background: var(--line, #e2dccf);
+            background: var(--color-border, #e2dccf);
         }
         
         .wa-form-grid {
@@ -838,7 +839,7 @@
             display: block;
             font-size: 0.8rem;
             font-weight: 700;
-            color: var(--brown-soft, #4a3423);
+            color: var(--color-heading-strong, #4a3423);
             margin-bottom: 6px;
         }
         
@@ -851,7 +852,7 @@
             left: 13px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--gold-deep, #a87a24);
+            color: var(--palette-amber, #a87a24);
             opacity: 0.8;
             pointer-events: none;
         }
@@ -861,12 +862,12 @@
         .wa-field textarea {
             width: 100%;
             padding: 11px 14px 11px 40px;
-            border-radius: var(--radius-md, 12px);
-            border: 1.5px solid var(--line, #e2dccf);
+            border-radius: var(--r-md, 12px);
+            border: 1.5px solid var(--color-border, #e2dccf);
             font-family: inherit;
             font-size: 0.9rem;
-            color: var(--ink, #222);
-            background: var(--paper-warm, #faf7f1);
+            color: var(--palette-ink, #222);
+            background: var(--color-surface-warm, #faf7f1);
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
             resize: vertical;
             appearance: none;
@@ -889,7 +890,7 @@
         .wa-field select:focus,
         .wa-field textarea:focus {
             outline: none;
-            border-color: var(--gold-deep, #b3862c);
+            border-color: var(--palette-amber, #b3862c);
             box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.18);
         }
         
@@ -909,14 +910,14 @@
             justify-content: center;
             border: none;
             background: transparent;
-            color: var(--text-muted, #8a8a8a);
+            color: var(--color-text-soft, #8a8a8a);
             cursor: pointer;
             border-radius: 8px;
             transition: color 0.2s ease, background 0.2s ease;
         }
         
         .wa-toggle-password:hover {
-            color: var(--gold-deep, #a87a24);
+            color: var(--palette-amber, #a87a24);
             background: rgba(255, 192, 0, 0.1);
         }
         
@@ -940,7 +941,7 @@
             display: block;
             text-align: right;
             font-size: 0.7rem;
-            color: var(--text-muted, #999);
+            color: var(--color-text-soft, #999);
             margin-top: 3px;
         }
         
@@ -950,16 +951,16 @@
             gap: 8px;
             margin-top: 14px;
             padding: 12px 14px;
-            background: var(--paper-warm, #faf7f1);
-            border-radius: var(--radius-md, 12px);
+            background: var(--color-surface-warm, #faf7f1);
+            border-radius: var(--r-md, 12px);
             font-size: 0.76rem;
-            color: var(--text-muted, #777);
+            color: var(--color-text-soft, #777);
             line-height: 1.5;
         }
         
         .wa-trust-note svg {
             flex-shrink: 0;
-            color: var(--gold-deep, #a87a24);
+            color: var(--palette-amber, #a87a24);
             margin-top: 1px;
         }
         
@@ -990,13 +991,13 @@
             gap: 8px;
             text-align: center;
             cursor: pointer;
-            border: 1.5px solid var(--line, #e2dccf);
+            border: 1.5px solid var(--color-border, #e2dccf);
             padding: 13px;
         }
         
         .btn.email-action-btn.btn-secondary {
-            background: var(--paper-warm, #faf7f1);
-            color: var(--brown-soft, #4a3423);
+            background: var(--color-surface-warm, #faf7f1);
+            color: var(--color-heading-strong, #4a3423);
         }
         
         .email-copy-msg {
@@ -1015,11 +1016,14 @@
         }
         
         @media (max-width: 480px) {
+            .wa-modal-overlay {
+                padding: 76px 12px 16px;
+            }
             .wa-modal-header {
-                padding: 26px 22px 20px;
+                padding: 20px 20px 16px;
             }
             .wa-modal-scroll {
-                padding: 22px 20px 24px;
+                padding: 18px 18px 20px;
             }
         }
         /* ---------- Pengaman ekstra untuk layar sangat kecil (HP kecil, <=380px) ---------- */
@@ -1031,11 +1035,14 @@
             .benefit-card {
                 padding: 28px 20px;
             }
+            .wa-modal-overlay {
+                padding: 64px 8px 12px;
+            }
             .wa-modal-header {
-                padding: 22px 16px 18px;
+                padding: 18px 16px 14px;
             }
             .wa-modal-scroll {
-                padding: 18px 16px 20px;
+                padding: 16px 16px 18px;
             }
             .wa-modal-icon {
                 width: 46px;
@@ -1050,8 +1057,8 @@
         .auth-tabs {
             display: flex;
             gap: 8px;
-            background: var(--paper-warm, #faf7f1);
-            border-radius: var(--radius-md, 12px);
+            background: var(--color-surface-warm, #faf7f1);
+            border-radius: var(--r-md, 12px);
             padding: 5px;
             margin-bottom: 22px;
         }
@@ -1065,15 +1072,15 @@
             font-family: inherit;
             font-size: 0.86rem;
             font-weight: 700;
-            color: var(--text-soft);
+            color: var(--color-text-soft);
             cursor: pointer;
-            transition: all 0.25s var(--ease-out);
+            transition: all 0.25s var(--ease-smooth);
         }
 
         .auth-tab-btn.active {
-            background: var(--white);
-            color: var(--gold-deep);
-            box-shadow: var(--shadow-sm);
+            background: var(--color-surface);
+            color: var(--palette-amber);
+            box-shadow: var(--shadow-soft);
         }
 
         .auth-panel {
@@ -1082,7 +1089,7 @@
 
         .auth-panel.active {
             display: block;
-            animation: fadeInUp 0.4s var(--ease-out) both;
+            animation: fadeInUp 0.4s var(--ease-smooth) both;
         }
 
         .auth-alert {
@@ -1090,7 +1097,7 @@
             align-items: flex-start;
             gap: 8px;
             padding: 12px 14px;
-            border-radius: var(--radius-md, 12px);
+            border-radius: var(--r-md, 12px);
             font-size: 0.82rem;
             line-height: 1.55;
             margin-bottom: 16px;
@@ -1113,64 +1120,64 @@
         .auth-switch-hint {
             text-align: center;
             font-size: 0.82rem;
-            color: var(--text-muted);
+            color: var(--color-text-soft);
             margin-top: 4px;
         }
 
         .auth-switch-hint a {
-            color: var(--gold-deep);
+            color: var(--palette-amber);
             font-weight: 700;
             cursor: pointer;
         }
 
         /* ================= SECTION: AKUN AGENT ================= */
         .akun-agent-section {
-            padding: 90px 0 100px;
-            background: var(--white, #fff);
+            padding: 60px 0 70px;
+            background: var(--color-surface, #fff);
         }
 
         .akun-locked {
             max-width: 640px;
             margin: 0 auto;
             text-align: center;
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-lg, 20px);
-            padding: 52px 40px;
-            box-shadow: var(--shadow-md);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--r-lg, 20px);
+            padding: 36px 32px;
+            box-shadow: var(--shadow-medium);
         }
 
         .akun-locked-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            color: var(--ink);
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--palette-gold), var(--palette-gold));
+            color: var(--palette-ink);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 14px;
         }
 
         .akun-locked h2 {
             font-family: "Manrope", sans-serif;
             font-size: clamp(1.4rem, 2.6vw, 1.8rem);
             font-weight: 700;
-            color: var(--brown-soft);
-            margin-bottom: 12px;
+            color: var(--color-heading-strong);
+            margin-bottom: 8px;
         }
 
         .akun-locked p {
-            color: var(--text-soft);
-            line-height: 1.8;
+            color: var(--color-text-soft);
+            line-height: 1.65;
             max-width: 460px;
-            margin: 0 auto 28px;
+            margin: 0 auto 20px;
         }
 
         .akun-locked-actions {
             display: flex;
             justify-content: center;
-            gap: 14px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -1194,11 +1201,11 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 14px;
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-lg, 20px);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--r-lg, 20px);
             padding: 26px 30px;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-medium);
             margin-bottom: 22px;
         }
 
@@ -1206,13 +1213,13 @@
             font-family: "Manrope", sans-serif;
             font-size: 1.2rem;
             font-weight: 700;
-            color: var(--brown-soft);
+            color: var(--color-heading-strong);
             margin-bottom: 4px;
         }
 
         .akun-greeting p {
             font-size: 0.86rem;
-            color: var(--text-muted);
+            color: var(--color-text-soft);
             margin: 0;
         }
 
@@ -1224,19 +1231,19 @@
         }
 
         .akun-stat-card {
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-md, 14px);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--r-md, 14px);
             padding: 20px 18px;
             text-align: center;
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-soft);
         }
 
         .akun-stat-num {
             font-family: "Manrope", sans-serif;
             font-size: 1.7rem;
             font-weight: 800;
-            color: var(--gold-deep);
+            color: var(--palette-amber);
             line-height: 1;
             margin-bottom: 6px;
         }
@@ -1244,17 +1251,17 @@
         .akun-stat-label {
             font-size: 0.76rem;
             font-weight: 600;
-            color: var(--text-muted);
+            color: var(--color-text-soft);
             text-transform: uppercase;
             letter-spacing: 0.04em;
         }
 
         .akun-share-box {
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-lg, 20px);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--r-lg, 20px);
             padding: 30px 32px;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-medium);
             margin-bottom: 22px;
         }
 
@@ -1262,13 +1269,13 @@
             font-family: "Manrope", sans-serif;
             font-size: 1rem;
             font-weight: 700;
-            color: var(--brown-soft);
+            color: var(--color-heading-strong);
             margin-bottom: 6px;
         }
 
         .akun-share-box>p {
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: var(--color-text-soft);
             margin-bottom: 18px;
         }
 
@@ -1289,12 +1296,12 @@
             justify-content: space-between;
             gap: 10px;
             padding: 12px 16px;
-            background: var(--paper-warm, #faf7f1);
-            border: 1.5px dashed var(--line);
-            border-radius: var(--radius-md, 12px);
+            background: var(--color-surface-warm, #faf7f1);
+            border: 1.5px dashed var(--color-border);
+            border-radius: var(--r-md, 12px);
             font-size: 0.86rem;
             font-weight: 600;
-            color: var(--ink);
+            color: var(--palette-ink);
             overflow: hidden;
         }
 
@@ -1310,13 +1317,13 @@
             align-items: center;
             gap: 6px;
             border: none;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            color: var(--ink);
+            background: linear-gradient(135deg, var(--palette-gold), var(--palette-gold));
+            color: var(--palette-ink);
             font-family: inherit;
             font-size: 0.8rem;
             font-weight: 700;
             padding: 12px 16px;
-            border-radius: var(--radius-md, 12px);
+            border-radius: var(--r-md, 12px);
             cursor: pointer;
             white-space: nowrap;
             transition: transform 0.2s ease;
@@ -1327,11 +1334,11 @@
         }
 
         .akun-referral-table-wrap {
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-lg, 20px);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--r-lg, 20px);
             padding: 26px 28px 10px;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-medium);
             margin-bottom: 22px;
             overflow-x: auto;
         }
@@ -1340,7 +1347,7 @@
             font-family: "Manrope", sans-serif;
             font-size: 1rem;
             font-weight: 700;
-            color: var(--brown-soft);
+            color: var(--color-heading-strong);
             margin-bottom: 16px;
         }
 
@@ -1353,30 +1360,30 @@
         .akun-referral-table th {
             text-align: left;
             padding: 10px 12px;
-            color: var(--text-muted);
+            color: var(--color-text-soft);
             font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 0.04em;
-            border-bottom: 1.5px solid var(--line);
+            border-bottom: 1.5px solid var(--color-border);
         }
 
         .akun-referral-table td {
             padding: 12px;
-            border-bottom: 1px solid var(--line);
-            color: var(--ink);
+            border-bottom: 1px solid var(--color-border);
+            color: var(--palette-ink);
         }
 
         .akun-referral-empty {
             text-align: center;
             padding: 30px 10px;
-            color: var(--text-muted);
+            color: var(--color-text-soft);
             font-size: 0.86rem;
         }
 
         .status-pill {
             display: inline-flex;
             padding: 4px 11px;
-            border-radius: var(--radius-full, 999px);
+            border-radius: var(--r-pill, 999px);
             font-size: 0.72rem;
             font-weight: 700;
         }
@@ -1417,7 +1424,7 @@
                 flex-direction: column;
             }
             .akun-locked {
-                padding: 40px 22px;
+                padding: 28px 20px;
             }
         }
     </style>
@@ -1526,8 +1533,8 @@
                 <p class="hero-desc">Ambil peran dalam program kemitraan umroh yang dikelola secara amanah, profesional, dan berkelanjutan - dengan sistem yang transparan dan pendampingan penuh dari tim kami.</p>
                 <div class="agent-hero-actions">
                     <a href="#benefit" class="btn btn-primary btn-shine">Lihat Benefit Agent →</a>
-                    <a href="#akun-agent" class="btn btn-outline btn-shine" data-auth-trigger="register">Login / Daftar
-                        Jadi Agent</a>
+                    <a href="#akun-agent" class="btn btn-outline btn-shine" data-auth-trigger="register">Daftar Jadi
+                        Agent</a>
                 </div>
             </div>
         </div>
@@ -1678,15 +1685,15 @@
                         <ul class="dash-panel-list">
                             <li>
                                 <span class="num">1</span>
-                                <p>Isi formulir "Daftar Jadi Agent" di halaman ini (nama, no. WhatsApp, email & password) — akun Anda langsung aktif, tanpa perlu menunggu.</p>
+                                <p>Isi formulir "Daftar Jadi Agent" di halaman ini dengan data diri Anda (nama, no. WhatsApp, email, dan lainnya).</p>
                             </li>
                             <li>
                                 <span class="num">2</span>
-                                <p>Login ke dashboard Agent Anda untuk mengambil kode & link referral pribadi yang siap dibagikan ke calon jamaah.</p>
+                                <p>Tim kami akan menghubungi Anda melalui WhatsApp untuk proses verifikasi dan pendampingan lebih lanjut.</p>
                             </li>
                             <li>
                                 <span class="num">3</span>
-                                <p>Bagikan link Anda, pantau progres referral langsung dari dashboard, dan dapatkan komisi setiap kali jamaah mendaftar lewat link Anda.</p>
+                                <p>Setelah resmi menjadi Agent, mulai referensikan calon jamaah dan dapatkan komisi setiap kali mereka mendaftar umroh.</p>
                             </li>
                         </ul>
                     </div>
@@ -1714,93 +1721,25 @@
         </div>
     </section>
 
-    <!-- ================= SECTION: AKUN AGENT (Login / Dashboard Referral Asli) ================= -->
+    <!-- ================= SECTION: AKUN AGENT (CTA Daftar) ================= -->
     <section class="section akun-agent-section" id="akun-agent">
         <div class="container">
             <div class="section-head reveal">
-                <h2>Dashboard Agent Anda</h2>
-                <p>Login untuk melihat kode referral, link, dan progres komisi Anda. Belum punya akun? Daftar dulu di bawah ini.</p>
+                <h2>Siap Jadi Agent Khalifah?</h2>
+                <p>Daftar sekarang melalui formulir singkat, tim kami akan langsung memproses pendaftaran Anda via WhatsApp.</p>
             </div>
 
-            <!-- STATE: BELUM LOGIN -->
             <div class="akun-locked reveal" id="akunLocked">
                 <div class="akun-locked-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="4" y="10" width="16" height="10" rx="2" />
-                        <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
                     </svg>
                 </div>
-                <h2>Masuk ke Akun Agent</h2>
-                <p>Login memakai email &amp; password Anda untuk mengambil link referral pribadi, atau daftar sekarang untuk mulai mendapatkan komisi dari setiap jamaah yang Anda referensikan.</p>
+                <h2>Daftar Jadi Agent</h2>
+                <p>Isi data diri Anda lewat formulir pendaftaran, lalu tim kami akan menghubungi Anda melalui WhatsApp untuk proses selanjutnya.</p>
                 <div class="akun-locked-actions">
-                    <button type="button" class="btn btn-primary btn-shine" data-auth-trigger="login">Login Agent</button>
-                    <button type="button" class="btn btn-outline btn-shine" data-auth-trigger="register">Daftar Jadi Agent</button>
+                    <button type="button" class="btn btn-primary btn-shine" data-auth-trigger="register">Daftar Jadi Agent</button>
                 </div>
-            </div>
-
-            <!-- STATE: SUDAH LOGIN -->
-            <div class="akun-unlocked" id="akunUnlocked">
-                <div class="akun-greeting">
-                    <div>
-                        <h3 id="akunNamaAgent">Halo, Agent</h3>
-                        <p>Selamat datang kembali di dashboard Agent Khalifah Asia Bekasi.</p>
-                    </div>
-                    <button type="button" class="btn btn-outline" id="btnLogoutAgent">Keluar</button>
-                </div>
-
-                <div class="akun-stats">
-                    <div class="akun-stat-card">
-                        <div class="akun-stat-num" id="statTotalReferral">0</div>
-                        <div class="akun-stat-label">Total Referral</div>
-                    </div>
-                    <div class="akun-stat-card">
-                        <div class="akun-stat-num" id="statDiproses">0</div>
-                        <div class="akun-stat-label">Sedang Diproses</div>
-                    </div>
-                    <div class="akun-stat-card">
-                        <div class="akun-stat-num" id="statDeal">0</div>
-                        <div class="akun-stat-label">Berhasil Deal</div>
-                    </div>
-                </div>
-
-                <div class="akun-share-box">
-                    <h4>Kode &amp; Link Referral Anda</h4>
-                    <p>Bagikan link ini ke calon jamaah. Setiap pendaftaran umroh lewat link ini otomatis tercatat sebagai referral Anda.</p>
-                    <div class="copy-row">
-                        <div class="copy-field"><span id="akunKodeReferral">—</span></div>
-                        <button type="button" class="copy-btn-small" id="btnCopyKode">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
-                            Salin Kode
-                        </button>
-                    </div>
-                    <div class="copy-row">
-                        <div class="copy-field"><span id="akunLinkReferral">—</span></div>
-                        <button type="button" class="copy-btn-small" id="btnCopyLink">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
-                            Salin Link
-                        </button>
-                    </div>
-                </div>
-
-                <div class="akun-referral-table-wrap">
-                    <h4>Riwayat Referral Anda</h4>
-                    <table class="akun-referral-table" id="akunReferralTable">
-                        <thead>
-                            <tr>
-                                <th>Nama Calon Jamaah</th>
-                                <th>Paket</th>
-                                <th>Tanggal</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="akunReferralTbody">
-                            <!-- diisi otomatis lewat JS -->
-                        </tbody>
-                    </table>
-                    <div class="akun-referral-empty" id="akunReferralEmpty">Belum ada calon jamaah yang mendaftar lewat link Anda.</div>
-                </div>
-
-                <p style="text-align:center; font-size:0.86rem; color:var(--text-muted);">Ada pertanyaan seputar komisi atau program? <a href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya/mendaftar%20sebagai%20Agent%20Khalifah%20Asia%20Bekasi." target="_blank" rel="noopener noreferrer" style="color:var(--gold-deep); font-weight:700;">Tanya via WhatsApp</a></p>
             </div>
         </div>
     </section>
@@ -1808,9 +1747,9 @@
     <!-- ================= CTA ================= -->
     <section class="poster-paket" style="margin-top:0; padding: 70px 0;">
         <div class="container" style="position:relative; z-index:1; text-align:center;">
-            <h2 style="font-family:'Manrope',sans-serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:700; color:var(--brown-soft); margin:14px 0 16px;">
+            <h2 style="font-family:'Manrope',sans-serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:700; color:var(--color-heading-strong); margin:14px 0 16px;">
                 Siap Menjadi Bagian dari Agent Khalifah?</h2>
-            <p style="color:var(--text-soft); max-width:600px; margin:0 auto 32px; line-height:1.8;">Bangun peran, kontribusi, dan manfaat bersama Khalifah Asia Bekasi dalam program umroh yang amanah.</p>
+            <p style="color:var(--color-text-soft); max-width:600px; margin:0 auto 32px; line-height:1.8;">Bangun peran, kontribusi, dan manfaat bersama Khalifah Asia Bekasi dalam program umroh yang amanah.</p>
             <a href="#akun-agent" class="btn btn-primary btn-shine" style="display:inline-flex;" data-auth-trigger="register">Daftar Sekarang →</a>
             <div style="margin-top:16px;">
                 <a href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya/mendaftar%20sebagai%20Agent%20Khalifah%20Asia%20Bekasi." class="btn btn-wa-glow" style="display:inline-flex;" target="_blank" rel="noopener noreferrer">
@@ -1925,52 +1864,21 @@
             <div class="wa-modal-header">
                 <button type="button" class="wa-modal-close" id="authModalClose" aria-label="Tutup">&times;</button>
                 <div class="wa-modal-icon">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="4" y="10" width="16" height="10" rx="2" />
-                        <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="8.5" cy="7" r="4" />
+                        <line x1="20" y1="8" x2="20" y2="14" />
+                        <line x1="23" y1="11" x2="17" y2="11" />
                     </svg>
                 </div>
-                <h3>Akun Agent Khalifah</h3>
-                <p class="wa-modal-sub">Login jika sudah punya akun, atau daftar untuk mulai berbagi link referral Anda.</p>
+                <h3>Daftar Jadi Agent Khalifah</h3>
+                <p class="wa-modal-sub">Isi formulir singkat berikut, tim kami akan langsung memproses pendaftaran Anda via WhatsApp.</p>
             </div>
             <div class="wa-modal-scroll">
-                <div class="auth-tabs">
-                    <button type="button" class="auth-tab-btn active" data-auth-tab="login">Login</button>
-                    <button type="button" class="auth-tab-btn" data-auth-tab="register">Daftar Jadi Agent</button>
-                </div>
-
                 <div class="auth-alert" id="authAlert"></div>
 
-                <!-- PANEL LOGIN -->
-                <div class="auth-panel active" id="authPanelLogin">
-                    <form id="loginForm" novalidate>
-                        <div class="wa-field full">
-                            <label for="loginEmail">Email</label>
-                            <div class="wa-input-wrap">
-                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="M2 7l10 6 10-6" /></svg>
-                                <input type="email" id="loginEmail" required autocomplete="email" placeholder="nama@email.com" />
-                            </div>
-                            <span class="wa-error"></span>
-                        </div>
-                        <div class="wa-field full">
-                            <label for="loginPassword">Password</label>
-                            <div class="wa-input-wrap">
-                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-                                <input type="password" id="loginPassword" class="wa-field-password-input" required autocomplete="current-password" placeholder="Password Anda" />
-                                <button type="button" class="wa-toggle-password" data-target="loginPassword" aria-label="Tampilkan password">
-                                    <svg class="icon-eye" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                                    <svg class="icon-eye-off" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a19.7 19.7 0 0 1 5.06-5.94M9.9 4.24A10.4 10.4 0 0 1 12 4c7 0 11 8 11 8a19.7 19.7 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg>
-                                </button>
-                            </div>
-                            <span class="wa-error"></span>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-shine wa-modal-submit" id="loginSubmitBtn">Login</button>
-                        <p class="auth-switch-hint">Belum punya akun? <a data-auth-tab="register">Daftar di sini</a></p>
-                    </form>
-                </div>
-
                 <!-- PANEL DAFTAR -->
-                <div class="auth-panel" id="authPanelRegister">
+                <div class="auth-panel active" id="authPanelRegister">
                     <form id="registerForm" novalidate>
                         <div class="wa-field full">
                             <label for="regNama">Nama Lengkap</label>
@@ -2053,24 +1961,11 @@
                             </div>
                             <span class="wa-error"></span>
                         </div>
-                        <div class="wa-field full">
-                            <label for="regPassword">Buat Password</label>
-                            <div class="wa-input-wrap">
-                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-                                <input type="password" id="regPassword" class="wa-field-password-input" required minlength="6" autocomplete="new-password" placeholder="Minimal 6 karakter" />
-                                <button type="button" class="wa-toggle-password" data-target="regPassword" aria-label="Tampilkan password">
-                                    <svg class="icon-eye" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                                    <svg class="icon-eye-off" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a19.7 19.7 0 0 1 5.06-5.94M9.9 4.24A10.4 10.4 0 0 1 12 4c7 0 11 8 11 8a19.7 19.7 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg>
-                                </button>
-                            </div>
-                            <span class="wa-error"></span>
-                        </div>
                         <div class="wa-trust-note">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-                            <span>Data Anda tersimpan aman dan hanya digunakan untuk keperluan program kemitraan Agent Khalifah Asia Bekasi.</span>
+                            <span>Data Anda hanya digunakan untuk keperluan pendaftaran program kemitraan Agent Khalifah Asia Bekasi.</span>
                         </div>
                         <button type="submit" class="btn btn-primary btn-shine wa-modal-submit" id="registerSubmitBtn">Daftar Jadi Agent</button>
-                        <p class="auth-switch-hint">Sudah punya akun? <a data-auth-tab="login">Login di sini</a></p>
                     </form>
                 </div>
             </div>
@@ -2322,19 +2217,10 @@
     <!-- ================= SCRIPT: AUTH AGENT (Login/Daftar) + DASHBOARD REFERRAL ================= -->
     <script>
         (function () {
-            const sb = window.supabaseClient || null;
-
-            // ---------- Referensi elemen: Modal Auth ----------
+            // ---------- Referensi elemen: Modal Daftar Agent ----------
             const authOverlay = document.getElementById('authModalOverlay');
             const authClose = document.getElementById('authModalClose');
             const authAlert = document.getElementById('authAlert');
-            const authTabBtns = document.querySelectorAll('[data-auth-tab]');
-            const authPanels = document.querySelectorAll('.auth-panel');
-
-            const loginForm = document.getElementById('loginForm');
-            const loginEmail = document.getElementById('loginEmail');
-            const loginPassword = document.getElementById('loginPassword');
-            const loginSubmitBtn = document.getElementById('loginSubmitBtn');
 
             const registerForm = document.getElementById('registerForm');
             const regNama = document.getElementById('regNama');
@@ -2345,44 +2231,21 @@
             const regKotaLainnya = document.getElementById('regKotaLainnya');
             const regPekerjaan = document.getElementById('regPekerjaan');
             const regSumber = document.getElementById('regSumber');
-            const regPassword = document.getElementById('regPassword');
             const registerSubmitBtn = document.getElementById('registerSubmitBtn');
 
-            // ---------- Referensi elemen: Dashboard Agent ----------
-            const akunLocked = document.getElementById('akunLocked');
-            const akunUnlocked = document.getElementById('akunUnlocked');
-            const akunNamaAgent = document.getElementById('akunNamaAgent');
-            const btnLogoutAgent = document.getElementById('btnLogoutAgent');
-            const statTotalReferral = document.getElementById('statTotalReferral');
-            const statDiproses = document.getElementById('statDiproses');
-            const statDeal = document.getElementById('statDeal');
-            const akunKodeReferral = document.getElementById('akunKodeReferral');
-            const akunLinkReferral = document.getElementById('akunLinkReferral');
-            const btnCopyKode = document.getElementById('btnCopyKode');
-            const btnCopyLink = document.getElementById('btnCopyLink');
-            const akunReferralTable = document.getElementById('akunReferralTable');
-            const akunReferralTbody = document.getElementById('akunReferralTbody');
-            const akunReferralEmpty = document.getElementById('akunReferralEmpty');
+            if (!authOverlay || !registerForm) return; // halaman tidak lengkap, jangan lanjut
 
-            if (!authOverlay || !loginForm || !registerForm) return; // halaman tidak lengkap, jangan lanjut
-
-            // ================= MODAL: buka / tutup / ganti tab =================
+            // ================= MODAL: buka / tutup =================
             let lastFocusedEl = null;
 
-            function switchAuthTab(tab) {
-                authTabBtns.forEach(b => b.classList.toggle('active', b.dataset.authTab === tab));
-                authPanels.forEach(p => p.classList.toggle('active', p.id === `authPanel${tab.charAt(0).toUpperCase()}${tab.slice(1)}`));
+            function openAuthModal() {
                 clearAuthAlert();
-            }
-
-            function openAuthModal(tab) {
-                switchAuthTab(tab === 'register' ? 'register' : 'login');
                 lastFocusedEl = document.activeElement;
                 authOverlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
                 setTimeout(() => {
-                    const activePanel = document.querySelector('.auth-panel.active input');
-                    if (activePanel) activePanel.focus();
+                    const firstInput = document.querySelector('.auth-panel.active input');
+                    if (firstInput) firstInput.focus();
                 }, 150);
             }
 
@@ -2396,16 +2259,7 @@
             document.querySelectorAll('[data-auth-trigger]').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    openAuthModal(btn.dataset.authTrigger);
-                });
-            });
-
-            authTabBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    switchAuthTab(btn.dataset.authTab);
-                    const activePanel = document.querySelector('.auth-panel.active input');
-                    if (activePanel) activePanel.focus();
+                    openAuthModal();
                 });
             });
 
@@ -2445,25 +2299,9 @@
                 input.classList.remove('invalid');
             }
 
-            function validateLoginForm() {
-                let valid = true;
-                clearFieldError(loginEmail);
-                clearFieldError(loginPassword);
-                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!loginEmail.value.trim() || !emailPattern.test(loginEmail.value.trim())) {
-                    markFieldError(loginEmail, 'Masukkan email yang valid.');
-                    valid = false;
-                }
-                if (!loginPassword.value) {
-                    markFieldError(loginPassword, 'Password wajib diisi.');
-                    valid = false;
-                }
-                return valid;
-            }
-
             function validateRegisterForm() {
                 let valid = true;
-                [regNama, regWhatsapp, regEmail, regKota, regKotaLainnya, regPekerjaan, regSumber, regPassword].forEach(clearFieldError);
+                [regNama, regWhatsapp, regEmail, regKota, regKotaLainnya, regPekerjaan, regSumber].forEach(clearFieldError);
 
                 if (!regNama.value.trim()) {
                     markFieldError(regNama, 'Nama lengkap wajib diisi.');
@@ -2494,14 +2332,10 @@
                     markFieldError(regSumber, 'Silakan pilih salah satu.');
                     valid = false;
                 }
-                if (!regPassword.value || regPassword.value.length < 6) {
-                    markFieldError(regPassword, 'Password minimal 6 karakter.');
-                    valid = false;
-                }
                 return valid;
             }
 
-            [loginEmail, loginPassword, regNama, regWhatsapp, regEmail, regKota, regKotaLainnya, regPekerjaan, regSumber, regPassword].forEach(input => {
+            [regNama, regWhatsapp, regEmail, regKota, regKotaLainnya, regPekerjaan, regSumber].forEach(input => {
                 input.addEventListener('input', () => clearFieldError(input));
                 input.addEventListener('change', () => clearFieldError(input));
             });
@@ -2518,63 +2352,13 @@
                 });
             }
 
-            // ---------- Tombol lihat/sembunyikan password ----------
-            document.querySelectorAll('.wa-toggle-password').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const targetId = btn.getAttribute('data-target');
-                    const input = document.getElementById(targetId);
-                    if (!input) return;
-                    const showing = input.type === 'text';
-                    input.type = showing ? 'password' : 'text';
-                    btn.querySelector('.icon-eye').style.display = showing ? '' : 'none';
-                    btn.querySelector('.icon-eye-off').style.display = showing ? 'none' : '';
-                    btn.setAttribute('aria-label', showing ? 'Tampilkan password' : 'Sembunyikan password');
-                });
-            });
-
-            // ================= PESAN ERROR SUPABASE -> BAHASA INDONESIA ================= 
-            function mapAuthError(err) {
-                const msg = (err && err.message) ? err.message : 'Terjadi kesalahan, silakan coba lagi.';
-                if (/already registered|already exists/i.test(msg)) return 'Email ini sudah terdaftar. Silakan login.';
-                if (/invalid login credentials/i.test(msg)) return 'Email atau password salah.';
-                if (/email not confirmed/i.test(msg)) return 'Email belum dikonfirmasi. Silakan cek inbox email Anda.';
-                if (/password should be at least/i.test(msg)) return 'Password minimal 6 karakter.';
-                return msg;
-            }
-
             function setBtnLoading(btn, loading, loadingText, normalText) {
                 btn.disabled = loading;
                 btn.textContent = loading ? loadingText : normalText;
             }
 
-            // ================= GENERATE KODE REFERRAL UNIK =================
-            function slugifyNama(nama) {
-                const first = nama.trim().split(/\s+/)[0] || 'AGENT';
-                const clean = first.toUpperCase().replace(/[^A-Z0-9]/g, '');
-                return (clean || 'AGENT').slice(0, 8);
-            }
-
-            async function generateUniqueKodeReferral(nama) {
-                const prefix = slugifyNama(nama);
-                for (let i = 0; i < 8; i++) {
-                    const kode = `${prefix}${Math.floor(1000 + Math.random() * 9000)}`;
-                    const { data, error } = await sb.from('agents').select('id').eq('kode_referral', kode).maybeSingle();
-                    if (!error && !data) return kode;
-                }
-                return `AGT${Date.now().toString().slice(-8)}`;
-            }
-
-            function buildReferralLink(kode) {
-                const base = window.location.href.split('agent.html')[0];
-                return `${base}index.html?ref=${encodeURIComponent(kode)}`;
-            }
-
             // ================= SUBMIT: DAFTAR JADI AGENT =================
-            // SEMENTARA: form ini belum disambungkan ke database (Supabase).
-            // Setelah validasi lolos, data langsung dikirim ke WhatsApp admin.
-            // Nanti kalau sistem akun/dashboard mau diaktifkan lagi, tinggal
-            // kembalikan bagian sb.auth.signUp() + sb.from('agents').insert()
-            // yang sempat dipakai di sini.
+            // Data pendaftar langsung dikirim ke WhatsApp admin (tanpa akun/database).
             registerForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 clearAuthAlert();
@@ -2609,172 +2393,8 @@
                 }, 700);
             });
 
-            // ================= SUBMIT: LOGIN =================
-            loginForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                clearAuthAlert();
-                if (!sb) {
-                    showAuthAlert('error', 'Sistem akun belum terhubung ke database. Hubungi admin website.');
-                    return;
-                }
-                if (!validateLoginForm()) return;
-
-                setBtnLoading(loginSubmitBtn, true, 'Memproses...', 'Login');
-                try {
-                    const { error } = await sb.auth.signInWithPassword({
-                        email: loginEmail.value.trim(),
-                        password: loginPassword.value
-                    });
-                    if (error) throw error;
-                    showAuthAlert('success', 'Login berhasil!');
-                    loginForm.reset();
-                    setTimeout(() => {
-                        closeAuthModal();
-                        loadAgentDashboard();
-                        const akunSection = document.getElementById('akun-agent');
-                        if (akunSection) akunSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 500);
-                } catch (err) {
-                    showAuthAlert('error', mapAuthError(err));
-                } finally {
-                    setBtnLoading(loginSubmitBtn, false, 'Memproses...', 'Login');
-                }
-            });
-
-            // ================= LOGOUT =================
-            if (btnLogoutAgent) {
-                btnLogoutAgent.addEventListener('click', async () => {
-                    if (!sb) return;
-                    btnLogoutAgent.disabled = true;
-                    await sb.auth.signOut();
-                    btnLogoutAgent.disabled = false;
-                    showLockedState();
-                });
-            }
-
-            // ================= TAMPILKAN STATE: BELUM LOGIN / SUDAH LOGIN =================
-            function showLockedState() {
-                if (akunLocked) akunLocked.style.display = '';
-                if (akunUnlocked) akunUnlocked.style.display = 'none';
-            }
-
-            function showUnlockedState() {
-                if (akunLocked) akunLocked.style.display = 'none';
-                if (akunUnlocked) akunUnlocked.style.display = 'block';
-            }
-
-            // ================= RENDER TABEL RIWAYAT REFERRAL =================
-            function renderReferrals(referrals) {
-                const total = referrals.length;
-                const deal = referrals.filter(r => r.status === 'deal').length;
-                const diproses = referrals.filter(r => r.status === 'diproses' || r.status === 'baru').length;
-
-                if (statTotalReferral) statTotalReferral.textContent = total;
-                if (statDiproses) statDiproses.textContent = diproses;
-                if (statDeal) statDeal.textContent = deal;
-
-                if (!akunReferralTbody) return;
-                akunReferralTbody.innerHTML = '';
-
-                if (total === 0) {
-                    if (akunReferralTable) akunReferralTable.style.display = 'none';
-                    if (akunReferralEmpty) akunReferralEmpty.style.display = '';
-                    return;
-                }
-
-                if (akunReferralTable) akunReferralTable.style.display = '';
-                if (akunReferralEmpty) akunReferralEmpty.style.display = 'none';
-
-                const statusLabel = { baru: 'Baru Masuk', diproses: 'Diproses', deal: 'Berhasil Deal', batal: 'Batal' };
-
-                referrals.forEach(r => {
-                    const tr = document.createElement('tr');
-                    const tanggal = r.created_at ? new Date(r.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
-                    const statusKey = ['baru', 'diproses', 'deal', 'batal'].includes(r.status) ? r.status : 'baru';
-                    tr.innerHTML = `
-                        <td>${escapeHtml(r.nama_calon_jamaah || '—')}</td>
-                        <td>${escapeHtml(r.paket || '—')}</td>
-                        <td>${tanggal}</td>
-                        <td><span class="status-pill ${statusKey}">${statusLabel[statusKey]}</span></td>
-                    `;
-                    akunReferralTbody.appendChild(tr);
-                });
-            }
-
-            function escapeHtml(str) {
-                const div = document.createElement('div');
-                div.textContent = str;
-                return div.innerHTML;
-            }
-
-            // ================= MUAT DASHBOARD AGENT (dipanggil saat load halaman & setelah login/daftar) =================
-            async function loadAgentDashboard() {
-                if (!sb) { showLockedState(); return; }
-
-                const { data: { session } } = await sb.auth.getSession();
-                if (!session) { showLockedState(); return; }
-
-                const { data: agent, error } = await sb.from('agents').select('*').eq('id', session.user.id).maybeSingle();
-                if (error || !agent) { showLockedState(); return; }
-
-                if (akunNamaAgent) akunNamaAgent.textContent = `Halo, ${agent.nama}`;
-                if (akunKodeReferral) akunKodeReferral.textContent = agent.kode_referral;
-                if (akunLinkReferral) akunLinkReferral.textContent = buildReferralLink(agent.kode_referral);
-
-                const { data: referrals } = await sb
-                    .from('referrals')
-                    .select('*')
-                    .eq('agent_id', agent.id)
-                    .order('created_at', { ascending: false });
-
-                renderReferrals(referrals || []);
-                showUnlockedState();
-            }
-
-            // ================= SALIN KODE / LINK =================
-            function copyText(text, btn) {
-                const originalLabel = btn.innerHTML;
-                const done = () => {
-                    btn.innerHTML = originalLabel.replace(/Salin (Kode|Link)/, 'Tersalin!');
-                    setTimeout(() => { btn.innerHTML = originalLabel; }, 2000);
-                };
-                const fallbackCopy = () => {
-                    const tmp = document.createElement('input');
-                    tmp.value = text;
-                    document.body.appendChild(tmp);
-                    tmp.select();
-                    try { document.execCommand('copy'); } catch (e) {}
-                    document.body.removeChild(tmp);
-                    done();
-                };
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(text).then(done).catch(fallbackCopy);
-                } else {
-                    fallbackCopy();
-                }
-            }
-
-            if (btnCopyKode) {
-                btnCopyKode.addEventListener('click', () => {
-                    const kode = akunKodeReferral ? akunKodeReferral.textContent.trim() : '';
-                    if (kode && kode !== '—') copyText(kode, btnCopyKode);
-                });
-            }
-            if (btnCopyLink) {
-                btnCopyLink.addEventListener('click', () => {
-                    const link = akunLinkReferral ? akunLinkReferral.textContent.trim() : '';
-                    if (link && link !== '—') copyText(link, btnCopyLink);
-                });
-            }
-
-            // ================= JALANKAN SAAT HALAMAN DIBUKA =================
-            showLockedState();
-            loadAgentDashboard();
-
-            if (sb) {
-                sb.auth.onAuthStateChange(() => loadAgentDashboard());
-            }
         })();
+
     </script>
 </body>
 
