@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Khalifah Asia Bekasi - Umroh & Haji Khusus Terpercaya</title>
-    <meta name="description"/>
+    <meta name="description" />
     <meta name="robots" content="index, follow" />
     <!-- TODO: ganti dengan domain asli setelah website live -->
     <link rel="canonical" href="https://www.khalifahasiabekasi.co.id/" />
@@ -15,7 +15,7 @@
     <meta property="og:locale" content="id_ID" />
     <meta property="og:site_name" content="Khalifah Asia Bekasi" />
     <meta property="og:title" content="Khalifah Asia Bekasi — Umroh & Haji Khusus Terpercaya" />
-    <meta property="og:description"/>
+    <meta property="og:description" />
     <meta property="og:url" content="https://www.khalifahasiabekasi.co.id/" />
     <meta property="og:image" content="https://www.khalifahasiabekasi.co.id/Image/Khalifah%20Bekasi.png" />
     <meta property="og:image:alt" content="Logo Khalifah Asia Bekasi" />
@@ -23,7 +23,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Khalifah Asia Bekasi — Umroh & Haji Khusus Terpercaya" />
-    <meta name="twitter:description"/>
+    <meta name="twitter:description" />
     <meta name="twitter:image" content="https://www.khalifahasiabekasi.co.id/Image/Khalifah%20Bekasi.png" />
 
     <link rel="icon" type="image/png" href="Image/Khalifah Bekasi.png" />
@@ -36,25 +36,6 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 
     <style>
-        /* ---------- HERO VIDEO DI HP: PAKAI VIDEO KHUSUS HP, HERO TETAP BESAR ----------
-           Hero background TETAP dibuat besar/full-screen seperti desktop (tidak
-           dikecilkan mengikuti rasio video seperti percobaan sebelumnya). Yang
-           berbeda di HP hanya SUMBER VIDEO-nya: dipilih otomatis lewat script
-           di bawah (fungsi isMobileHero) kalau lebar layar <=900px, mengarah ke
-           "Video Carosel/animasikhalifahasiav3-mobile.mp4".
-
-           FILE INI BELUM ADA — tinggal export/rekam video versi portrait
-           (disarankan rasio 9:16, atau minimal lebih tinggi dari lebar) lalu
-           upload ke folder "Video Carosel/" dengan nama persis seperti di atas.
-           Karena rasionya sudah didesain pas untuk kotak hero HP, video akan
-           mengisi penuh tanpa perlu di-crop parah seperti kalau videonya masih
-           yang landscape punya desktop.
-
-           object-fit video di HP dikembalikan ke "cover" (bukan "contain" seperti
-           workaround lama) karena video mobile-nya sendiri yang akan didesain
-           pas, dan video blur di belakang dimatikan karena sudah tidak
-           diperlukan lagi untuk menutup celah kosong. Semua perubahan ini
-           HANYA untuk index.html, style.css tidak disentuh. */
         @media (max-width: 900px) {
             .hero {
                 min-height: 100vh;
@@ -77,14 +58,6 @@
     <script src="assets/js/supabase-client.js"></script>
     <script src="assets/js/referral-capture.js"></script>
 
-    <!-- ================= GOOGLE ANALYTICS 4 (GA4) =================
-         Cara pasang:
-         1. Buka analytics.google.com -> buat Property baru -> catat "Measurement ID"
-            (formatnya G-XXXXXXXXXX).
-         2. Ganti DUA tempat tulisan G-XXXXXXXXXX di bawah ini dengan Measurement ID Anda.
-         3. Selesai — traffic & event (lead form, klik WA, download brosur, dll) otomatis
-            mulai tercatat begitu file ini di-upload ke hosting.
-    -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -93,13 +66,6 @@
         gtag('config', 'G-XXXXXXXXXX'); // <-- GANTI dengan Measurement ID GA4 Anda
     </script>
 
-    <!-- ================= META PIXEL (Facebook & Instagram Ads) =================
-         Cara pasang:
-         1. Buka business.facebook.com/events_manager -> buat Pixel baru -> catat "Pixel ID".
-         2. Ganti DUA tempat tulisan XXXXXXXXXXXXXXX di bawah ini dengan Pixel ID Anda.
-         3. Selesai — Pixel otomatis mengirim event PageView, dan event Lead saat ada yang
-            submit form konsultasi/booking (lihat fungsi trackEvent() di bagian bawah halaman).
-    -->
     <script>
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
@@ -191,10 +157,6 @@
             }
         }
         </script>
-
-    <!-- JSON-LD FAQPage — bonus SEO: berpotensi tampil sebagai rich snippet accordion
-         langsung di hasil pencarian Google. Kontennya mengikuti FAQ yang sudah ada di
-         halaman (section #faq) — kalau isi FAQ di section diubah, sesuaikan juga di sini. -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -292,6 +254,7 @@
                         <li><a href="#jadwal">Jadwal Keberangkatan</a></li>
                     </ul>
                 </li>
+                <li><a href="#haji-khusus" class="nav-link">Haji Khusus</a></li>
                 <li><a href="artikel.html" class="nav-link nav-link-artikel">Artikel &amp; Berita</a></li>
                 <li class="nav-item-dropdown">
                     <a href="tentang.html" class="nav-link">
@@ -308,7 +271,7 @@
                         <li><a href="tentang.html#pemandu">Profil Pemandu</a></li>
                     </ul>
                 </li>
-                <li><a href="infososialisasi.html" class="nav-link">Info Sosialisasi</a>
+                <li><a href="infososialisasi.html" class="nav-link">Info Sosialisasi</a></li>
                 <li><a href="kontak.html" class="nav-link">Kontak</a></li>
                 <li><a href="agent.html" class="nav-cta">Jadi Agent</a></li>
             </ul>
@@ -332,6 +295,7 @@
                 </ul>
             </li>
             <li><a href="#jadwal">Jadwal</a></li>
+            <li><a href="#haji-khusus">Haji Khusus</a></li>
             <li><a href="artikel.html">Artikel &amp; Berita</a></li>
             <li><a href="tentang.html">Tentang Kami</a></li>
             <li>
@@ -344,14 +308,17 @@
             </li>
             <li><a href="kontak.html">Kontak</a></li>
             <li><a href="agent.html" class="nav-cta-mobile">Jadi Agent</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya%20seputar%20paket%20Umroh%20%26%20Haji%20Khusus%20Khalifah%20Asia%20Bekasi.">Kontak WhatsApp</a>
+            <li><a target="_blank" rel="noopener noreferrer"
+                    href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya%20seputar%20paket%20Umroh%20%26%20Haji%20Khusus%20Khalifah%20Asia%20Bekasi.">Kontak
+                    WhatsApp</a>
             </li>
         </ul>
     </div>
     <section class="hero" id="home">
         <!-- Hero Video Carousel Background (video berganti tiap 8 detik, crossfade halus) -->
         <div class="hero-bg">
-            <video class="hero-video-backdrop hero-video-backdrop-a" autoplay muted playsinline loop preload="auto"></video>
+            <video class="hero-video-backdrop hero-video-backdrop-a" autoplay muted playsinline loop
+                preload="auto"></video>
             <video class="hero-video-backdrop hero-video-backdrop-b" muted playsinline loop preload="none"></video>
             <video class="hero-video hero-video-a" autoplay muted playsinline loop preload="auto"></video>
             <video class="hero-video hero-video-b" muted playsinline loop preload="none"></video>
@@ -365,13 +332,19 @@
                 <div class="hero-actions">
                     <a href="#jadwal" class="btn btn-primary btn-shine">
                         <span>Lihat Paket &amp; Jadwal</span>
-                        <svg class="btn-arrow-modern" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <circle class="arrow-orbit" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.3" stroke-opacity="0.25" />
-                            <path class="arrow-stem" d="M6 12H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                            <path class="arrow-head" d="M13 7.5L17.5 12L13 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg class="btn-arrow-modern" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <circle class="arrow-orbit" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.3"
+                                stroke-opacity="0.25" />
+                            <path class="arrow-stem" d="M6 12H17" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                            <path class="arrow-head" d="M13 7.5L17.5 12L13 16.5" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </a>
-                    <a target="_blank" rel="noopener noreferrer" href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya%20seputar%20paket%20Umroh%20%26%20Haji%20Khusus%20Khalifah%20Asia%20Bekasi." class="btn btn-outline btn-shine">Hubungi Tim Kami Sekarang</a>
+                    <a target="_blank" rel="noopener noreferrer"
+                        href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya%20seputar%20paket%20Umroh%20%26%20Haji%20Khusus%20Khalifah%20Asia%20Bekasi."
+                        class="btn btn-outline btn-shine">Hubungi Tim Kami Sekarang</a>
                 </div>
                 <div class="hero-stats-bar">
                     <div class="hero-stat">
@@ -838,7 +811,7 @@
 
                 <div class="video-testi-cta video-testi-cta-multi reveal">
                     <button type="button" class="video-testi-btn" id="testimoniVideoBtn"
-                        data-video="Testimoni Jamaah/testimoni1.mp4" data-poster="Image/fotbar1.jpeg"
+                        data-drive-id="1B-CcfHhF8yoxvAooI_hsGzY2SPyw8itH" data-poster="Image/fotbar1.jpeg"
                         data-title="Testimoni Jamaah Umroh Kami">
                         <span class="video-testi-btn-icon">
                             <span class="video-testi-radar"></span>
@@ -851,7 +824,7 @@
                     </button>
 
                     <button type="button" class="video-testi-btn" id="testimoniVideoBtn2"
-                        data-video="Testimoni Jamaah/testimoni3.mp4" data-poster="Image/fotbar2.jpeg"
+                        data-drive-id="1vKlDvjSmyMC4zyySUDG3b0C2EjnL0aGK" data-poster="Image/fotbar2.jpeg"
                         data-title="Testimoni Ustad Pembimbing Kami">
                         <span class="video-testi-btn-icon">
                             <span class="video-testi-radar"></span>
@@ -921,6 +894,7 @@
                         <option value="maulid">Special Maulid Nabi</option>
                         <option value="turki">Plus Turki</option>
                         <option value="thaif">Plus Thaif</option>
+                        <option value="awalmusim">Awal Musim</option>
                         <option value="reguler">Reguler Ekonomis</option>
                     </select>
                 </div>
@@ -963,7 +937,9 @@
                             onerror="this.style.display='none'" />
                         <span class="departure-badge">Best Seller</span>
                         <div class="departure-date-chip" data-day="Pilih" data-month="Sendiri">
-                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
                                 <rect x="3" y="4" width="18" height="18" rx="3" />
                                 <path d="M3 9h18M8 2v4M16 2v4" />
                             </svg>
@@ -1006,7 +982,9 @@
                             onerror="this.style.display='none'" />
                         <span class="departure-badge departure-badge-promo">Liburan Sekolah</span>
                         <div class="departure-date-chip" data-day="Pilih" data-month="Sendiri">
-                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
                                 <rect x="3" y="4" width="18" height="18" rx="3" />
                                 <path d="M3 9h18M8 2v4M16 2v4" />
                             </svg>
@@ -1041,14 +1019,17 @@
                     </div>
                 </div>
 
-                <div class="departure-card reveal reveal-delay-2" data-bulan="juli agustus september oktober november desember"
-                    data-jenis="thaif" data-harga="31.0" data-harga-quad="31.0" data-harga-triple="32.0"
-                    data-harga-double="33.8" data-itin="thaif912">
+                <div class="departure-card reveal reveal-delay-2"
+                    data-bulan="juli agustus september oktober november desember" data-jenis="thaif" data-harga="31.0"
+                    data-harga-quad="31.0" data-harga-triple="32.0" data-harga-double="33.8" data-itin="thaif912">
                     <div class="departure-media">
-                        <img src="Image/umrohthaif.jpg" alt="Umroh Plus Thaif 1448H" onerror="this.style.display='none'" />
+                        <img src="Image/umrohthaif.jpg" alt="Umroh Plus Thaif 1448H"
+                            onerror="this.style.display='none'" />
                         <span class="departure-badge">Best Seller</span>
                         <div class="departure-date-chip" data-day="Pilih" data-month="Sendiri">
-                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
                                 <rect x="3" y="4" width="18" height="18" rx="3" />
                                 <path d="M3 9h18M8 2v4M16 2v4" />
                             </svg>
@@ -1091,7 +1072,9 @@
                             onerror="this.style.display='none'" />
                         <span class="departure-badge">Best Seller</span>
                         <div class="departure-date-chip" data-day="Pilih" data-month="Sendiri">
-                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
                                 <rect x="3" y="4" width="18" height="18" rx="3" />
                                 <path d="M3 9h18M8 2v4M16 2v4" />
                             </svg>
@@ -1135,7 +1118,9 @@
                             onerror="this.style.display='none'" />
                         <span class="departure-badge">Best Seller</span>
                         <div class="departure-date-chip" data-day="Pilih" data-month="Sendiri">
-                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
                                 <rect x="3" y="4" width="18" height="18" rx="3" />
                                 <path d="M3 9h18M8 2v4M16 2v4" />
                             </svg>
@@ -1171,15 +1156,17 @@
                     </div>
                 </div>
 
-                <div class="departure-card reveal reveal-delay-5" data-bulan="juli agustus september oktober november desember"
-                    data-jenis="reguler" data-harga="28.5" data-harga-quad="28.5" data-harga-triple="29.3"
-                    data-harga-double="30.7" data-itin="hemat28">
+                <div class="departure-card reveal reveal-delay-5"
+                    data-bulan="juli agustus september oktober november desember" data-jenis="reguler" data-harga="28.5"
+                    data-harga-quad="28.5" data-harga-triple="29.3" data-harga-double="30.7" data-itin="hemat28">
                     <div class="departure-media">
                         <img src="Image/umroh28jutaaja.jpg" alt="Umroh Super Hemat 28Jt an Aja"
                             onerror="this.style.display='none'" />
                         <span class="departure-badge departure-badge-promo">Super Hemat</span>
                         <div class="departure-date-chip" data-day="Pilih" data-month="Sendiri">
-                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
                                 <rect x="3" y="4" width="18" height="18" rx="3" />
                                 <path d="M3 9h18M8 2v4M16 2v4" />
                             </svg>
@@ -1214,8 +1201,109 @@
                     </div>
                 </div>
 
+                <div class="departure-card reveal reveal-delay-3" data-bulan="desember" data-jenis="thaif"
+                    data-harga="34.7" data-harga-quad="34.7" data-harga-triple="39.2" data-harga-double="42.5"
+                    data-itin="thaifakhirtahun2026">
+                    <div class="departure-media">
+                        <img src="Image/umroh-akhirtahun-2026.jpg" alt="Umroh Akhir Tahun 2026"
+                            onerror="this.style.display='none'" />
+                        <span class="departure-badge">Best Seller</span>
+                        <div class="departure-date-chip" data-day="22-23" data-month="Des 2026">
+                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <rect x="3" y="4" width="18" height="18" rx="3" />
+                                <path d="M3 9h18M8 2v4M16 2v4" />
+                            </svg>
+                            <span class="dd-label">Tentukan<br>Keberangkatanmu</span>
+                        </div>
+                    </div>
+                    <div class="departure-body">
+                        <span class="departure-duration">9D &amp; 12D · Free Cable Car Thaif &amp; Lounge
+                            Executive</span>
+                        <h3>Umroh Akhir Tahun 2026</h3>
+                        <div class="departure-meta">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M3 13l7-1 4.5-7.5a1.5 1.5 0 0 1 2.6 1.5L14 13l6 1-2 2-4-.5-3 3 .5 2-1.5 1.5-1.5-3.5L5 16l-.5-1.5L2 13z" />
+                            </svg> Lebih nyaman &amp; bahagia bareng keluarga
+                        </div>
+                        <div class="departure-facts">
+                            <div class="dfact"><span>Durasi</span><strong>9/12 Hari</strong></div>
+                            <div class="dfact"><span>Hotel Makkah</span><strong>Nada Ajyad 4</strong></div>
+                            <div class="dfact"><span>Hotel Madinah</span><strong>Qasr Al Ansar Golden Tulip
+                                    4</strong></div>
+                            <div class="dfact"><span>Flight</span><strong>Garuda Indonesia Direct</strong></div>
+                        </div>
+                        <div class="departure-bottom">
+                            <div class="price"><span>Mulai dari</span>IDR 34.700.000</div>
+                            <div class="departure-actions">
+                                <button type="button" class="departure-detail-btn"
+                                    onclick="showDepartureDetail(this); return false;">Lihat Detail</button>
+                                <a href="#" class="departure-btn"
+                                    onclick="sendWA('Umroh Akhir Tahun 2026 (Quad Rp34,7jt / Triple Rp39,2jt / Double Rp42,5jt, Program 9 Hari) - Keberangkatan 22 &amp; 23 Desember 2026', this); return false;">Booking</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TODO: foto asli poster "Umroh Friendly Awal Musim 1448H" menyusul.
+                     Ganti div.departure-media-placeholder di bawah dengan:
+                     <img src="Image/umroh-awal-musim-1448h.jpg" alt="Umroh Friendly Awal Musim 1448H" onerror="this.style.display='none'" /> -->
+                <div class="departure-card reveal reveal-delay-4" data-bulan="juli agustus september oktober"
+                    data-jenis="awalmusim" data-harga="28.7" data-harga-quad="28.7" data-harga-triple="29.5"
+                    data-harga-double="30.9" data-itin="awalmusim1448">
+                    <div class="departure-media">
+                        <div class="departure-media-placeholder">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" />
+                                <circle cx="12" cy="13" r="3.5" />
+                            </svg>
+                            <span>Foto Umroh Awal Musim<br>1448H &mdash; Menyusul</span>
+                        </div>
+                        <span class="departure-badge departure-badge-promo">Promo Rp1 Juta*</span>
+                        <div class="departure-date-chip" data-day="Pilih" data-month="Sendiri">
+                            <svg class="dd-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <rect x="3" y="4" width="18" height="18" rx="3" />
+                                <path d="M3 9h18M8 2v4M16 2v4" />
+                            </svg>
+                            <span class="dd-label">Tentukan<br>Keberangkatanmu</span>
+                        </div>
+                    </div>
+                    <div class="departure-body">
+                        <span class="departure-duration">9D &amp; 12D · 5 Jadwal Tersedia</span>
+                        <h3>Umroh Friendly Awal Musim 1448H</h3>
+                        <div class="departure-meta">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M3 13l7-1 4.5-7.5a1.5 1.5 0 0 1 2.6 1.5L14 13l6 1-2 2-4-.5-3 3 .5 2-1.5 1.5-1.5-3.5L5 16l-.5-1.5L2 13z" />
+                            </svg> Lebih awal, lebih nyaman, lebih tenang
+                        </div>
+                        <div class="departure-facts">
+                            <div class="dfact"><span>Durasi</span><strong>9/12 Hari</strong></div>
+                            <div class="dfact"><span>Hotel Makkah</span><strong>Nada Ajyad 3</strong></div>
+                            <div class="dfact"><span>Hotel Madinah</span><strong>Mukhtara Al Gharbi 3</strong></div>
+                            <div class="dfact"><span>Flight</span><strong>Garuda Indonesia Direct</strong></div>
+                        </div>
+                        <div class="departure-bottom">
+                            <div class="price"><span>Mulai dari</span>IDR 28.700.000</div>
+                            <div class="departure-actions">
+                                <button type="button" class="departure-detail-btn"
+                                    onclick="showDepartureDetail(this); return false;">Lihat Detail</button>
+                                <a href="#" class="departure-btn"
+                                    onclick="sendWA('Umroh Friendly Awal Musim 1448H - Keberangkatan 13 Jul (9 Hari) / 12 Jul (12 Hari), serta 19 Agu, 09 Sep, 14 Okt 2026', this); return false;">Booking</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
     </section>
 
     <!-- ================= CTA PROMO (dipindah dari Benefit) ================= -->
@@ -1348,8 +1436,8 @@
                 <article class="article-card reveal reveal-delay-4">
                     <a class="article-media" href="berita-pelepasan-jamaah-juli-2026.html"
                         aria-label="Baca berita: Pelepasan Keberangkatan Jamaah Umroh Kloter Juli 2026">
-                        <img src="Image/fotbarkeberangkatan.jpeg" alt="Pelepasan Keberangkatan Jamaah Umroh Kloter Juli 2026"
-                            loading="lazy">
+                        <img src="Image/fotbarkeberangkatan.jpeg"
+                            alt="Pelepasan Keberangkatan Jamaah Umroh Kloter Juli 2026" loading="lazy">
                         <span class="article-tag news-tag">Keberangkatan</span>
                     </a>
                     <div class="article-body">
@@ -1566,7 +1654,8 @@
                                 <path d="M3 7l9 6 9-6" />
                             </svg>
                         </a>
-                        <a target="_blank" rel="noopener noreferrer" href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya%20seputar%20paket%20Umroh%20%26%20Haji%20Khusus%20Khalifah%20Asia%20Bekasi."
+                        <a target="_blank" rel="noopener noreferrer"
+                            href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya%20seputar%20paket%20Umroh%20%26%20Haji%20Khusus%20Khalifah%20Asia%20Bekasi."
                             aria-label="WhatsApp Khalifah Asia">
                             <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
                                 <path
@@ -1622,7 +1711,7 @@
             © 2026 <span>Khalifah Asia Bekasi</span>. All rights reserved.
         </div>
     </footer>
-<!-- ================= MODAL: EMAIL ================= -->
+    <!-- ================= MODAL: EMAIL ================= -->
     <div class="wa-modal-overlay" id="emailModalOverlay">
         <div class="wa-modal" role="dialog" aria-modal="true" aria-labelledby="emailModalTitle"
             style="max-width:440px;">
@@ -1764,17 +1853,16 @@
         <div id="brosurTemplate" class="brosur-template" aria-hidden="true"></div>
     </div>
 
-    <!-- ================= MODAL VIDEO TESTIMONI (video offline, upload sendiri) ================= -->
+    <!-- ================= MODAL VIDEO TESTIMONI (embed Google Drive, bukan file offline) ================= -->
     <div class="video-embed-modal-overlay" id="videoEmbedModalOverlay">
         <div class="video-embed-modal" role="dialog" aria-modal="true" aria-labelledby="videoEmbedModalTitle">
             <button type="button" class="video-embed-modal-close" id="videoEmbedModalClose"
                 aria-label="Tutup">&times;</button>
             <h3 id="videoEmbedModalTitle" class="video-embed-modal-title">Testimoni Jamaah Kami</h3>
             <div class="video-embed-modal-body" id="videoEmbedModalBody">
-                <!-- src video diisi otomatis oleh JS sesuai tombol yang diklik -->
-                <video id="testimoniVideoPlayer" controls playsinline preload="metadata">
-                    Maaf, browser Anda tidak mendukung pemutaran video ini.
-                </video>
+                <!-- src iframe diisi otomatis oleh JS sesuai tombol yang diklik -->
+                <iframe id="testimoniVideoPlayer" src="" allow="autoplay" allowfullscreen
+                    title="Testimoni Jamaah Kami"></iframe>
             </div>
         </div>
     </div>
@@ -1784,54 +1872,34 @@
         <button type="button" class="poster-lightbox-close" id="posterLightboxClose" aria-label="Tutup">&times;</button>
         <img id="posterLightboxImg" src="" alt="Poster ukuran penuh" />
     </div>
-
-    <!-- ================= STICKY CTA MOBILE ================= -->
-    <div class="mobile-sticky-cta" id="mobileStickyCta">
-        <a href="https://wa.me/62817843531?text=Assalamu%27alaikum%2C%20saya%20ingin%20bertanya%20tentang%20paket%20umroh."
-            target="_blank" class="mobile-sticky-btn mobile-sticky-btn-wa">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                    d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.85 1h.02a7.94 7.94 0 0 0 5.53-13.58zm-5.55 12.2h-.01a6.58 6.58 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.44-.16-.25a6.6 6.6 0 0 1 10.2-8.2 6.55 6.55 0 0 1 1.94 4.66 6.6 6.6 0 0 1-6.54 6.63zm3.6-4.94c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.15-.43.05-.2-.1-.83-.3-1.58-.97-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.1.2-.23.3-.35.1-.12.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.62-1.48-.16-.4-.33-.33-.45-.34h-.38c-.13 0-.35.05-.53.25-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.4 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z" />
-            </svg>
-            Chat Admin
-        </a>
-        <a href="#jadwal" class="mobile-sticky-btn mobile-sticky-btn-paket">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 6h16M4 12h16M4 18h7" />
-            </svg>
-            Lihat Paket
-        </a>
-    </div>
-
     <script>
-document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
 
-    const dropdownItem = document.querySelector('.nav-item-dropdown');
-    const dropdownToggle = dropdownItem.querySelector('.nav-link');
-    const dropdownMenu = dropdownItem.querySelector('.nav-dropdown');
+            const dropdownItem = document.querySelector('.nav-item-dropdown');
+            const dropdownToggle = dropdownItem.querySelector('.nav-link');
+            const dropdownMenu = dropdownItem.querySelector('.nav-dropdown');
 
-    // Toggle dropdown
-    dropdownToggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
+            // Toggle dropdown
+            dropdownToggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
 
-        dropdownItem.classList.toggle('active');
-    });
+                dropdownItem.classList.toggle('active');
+            });
 
-    // Klik di dalam dropdown tidak menutup dropdown
-    dropdownMenu.addEventListener('click', function (e) {
-        e.stopPropagation();
-    });
+            // Klik di dalam dropdown tidak menutup dropdown
+            dropdownMenu.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
 
-    // Klik di luar dropdown akan menutup
-    document.addEventListener('click', function (e) {
-        if (!dropdownItem.contains(e.target)) {
-            dropdownItem.classList.remove('active');
-        }
-    });
+            // Klik di luar dropdown akan menutup
+            document.addEventListener('click', function (e) {
+                if (!dropdownItem.contains(e.target)) {
+                    dropdownItem.classList.remove('active');
+                }
+            });
 
-});
+        });
 
         // ========== KONFIGURASI INTEGRASI GOOGLE SHEETS ==========
         // Cara setting: buat Google Spreadsheet baru -> Extensions > Apps Script ->
@@ -1996,13 +2064,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // supaya hero tetap besar/full-screen tapi videonya tidak perlu
             // di-crop dari video landscape milik desktop.
             const isMobileHero = window.matchMedia("(max-width: 900px)").matches;
-            const videos = isMobileHero ? [
-
-                "Video Carosel/animasikhalifahasiav3-mobile.mp4",
-            ] : [
-
-                "Video Carosel/animasikhalifahasiav3.mp4",
-            ];
+            const desktopVideos = ["Video Carosel/animasikhalifahasiav3.mp4"];
+            const mobileVideos = ["Video Carosel/animasikhalifahasiav3-mobile.mp4"];
+            const videos = isMobileHero ? mobileVideos : desktopVideos;
             const DURATION = 10000;
             const vidA = document.querySelector(".hero-video-a");
             const vidB = document.querySelector(".hero-video-b");
@@ -2029,15 +2093,26 @@ document.addEventListener('DOMContentLoaded', function () {
             let index = 0;
             let showingA = true;
 
-            function setSource(videoEl, src) {
+            // Kalau video khusus HP/tablet gagal dimuat (mis. file belum
+            // di-upload ke server / nama file beda huruf besar-kecil),
+            // otomatis pakai video desktop sebagai cadangan supaya animasi
+            // hero tetap muncul di HP/tablet, bukan malah kosong.
+            function setSource(videoEl, src, isFallbackAttempt) {
                 if (!videoEl) return;
                 videoEl.innerHTML = "";
                 const source = document.createElement("source");
                 source.src = src;
                 source.type = "video/mp4";
                 videoEl.appendChild(source);
-                videoEl.onerror = () => console.error("Hero video gagal dimuat, cek path:", src);
-                source.onerror = () => console.error("Hero video gagal dimuat, cek path:", src);
+                const handleError = () => {
+                    console.error("Hero video gagal dimuat, cek path:", src);
+                    if (isMobileHero && !isFallbackAttempt && desktopVideos[0] && desktopVideos[0] !== src) {
+                        console.warn("Mencoba fallback ke video desktop untuk HP/tablet:", desktopVideos[0]);
+                        setSource(videoEl, desktopVideos[0], true);
+                    }
+                };
+                videoEl.onerror = handleError;
+                source.onerror = handleError;
                 videoEl.load();
                 videoEl.play().catch((err) => console.warn("Autoplay video hero diblokir/gagal:", src, err));
             }
@@ -2200,22 +2275,13 @@ document.addEventListener('DOMContentLoaded', function () {
             const card = btn ? btn.closest('.departure-card') : null;
             const priceEl = card ? card.querySelector('.price') : null;
             const chipEl = card ? card.querySelector('.departure-date-chip') : null;
-            // Data tanggal diambil dari data-day/data-month (bukan dari teks yang tampil
-            // di poster) supaya pesan booking tetap rapi walau label poster diganti-ganti,
-            // misalnya jadi "Tentukan Keberangkatanmu".
             const dayTxt = chipEl ? (chipEl.dataset.day || '').trim() : '';
             const monthTxt = chipEl ? (chipEl.dataset.month || '').trim() : '';
-            // Kalau dd-day berupa angka, gabung jadi "19 Agt 2026". Kalau dd-day berupa
-            // simbol saja (mis. "✓"), cukup pakai teks bulan (mis. "Fleksibel") supaya
-            // tidak jadi "✓ Fleksibel". Kalau dd-day berupa kata (mis. "Pilih"), gabung
-            // jadi "Pilih Sendiri".
             const isSymbolOnly = dayTxt && !/[a-zA-Z0-9]/.test(dayTxt);
             const tanggal = monthTxt ? (isSymbolOnly ? monthTxt : `${dayTxt} ${monthTxt}`) : '';
             const harga = priceEl ? priceEl.textContent.replace('Harga', '').trim() : '';
 
             let pesan = `Assalamualaikum, saya ingin booking paket *${paket}*`;
-            // Hindari duplikasi tanggal kalau nama paket sudah menyebutkan detail
-            // jadwal keberangkatan sendiri (kata "Keberangkatan").
             if (tanggal && !/keberangkatan/i.test(paket)) pesan += ` (keberangkatan ${tanggal})`;
             if (harga) pesan += ` seharga ${harga}`;
             pesan += `.\n\nMohon dibantu untuk proses booking dan pendaftarannya. Jika ada info tambahan yang perlu saya lengkapi, mohon diinfokan ya. Terima kasih.`;
@@ -3253,43 +3319,34 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
         })();
-        // ========== 10. MODAL VIDEO TESTIMONI (video offline lokal, mendukung lebih dari 1 video) ==========
+        // ========== 10. MODAL VIDEO TESTIMONI (embed Google Drive, mendukung lebih dari 1 video) ==========
         (function () {
             const overlay = document.getElementById('videoEmbedModalOverlay');
             const closeBtn = document.getElementById('videoEmbedModalClose');
             const titleEl = document.getElementById('videoEmbedModalTitle');
-            const triggers = document.querySelectorAll('.video-testi-btn[data-video]');
+            const triggers = document.querySelectorAll('.video-testi-btn[data-drive-id]');
             const player = document.getElementById('testimoniVideoPlayer');
             if (!overlay || !triggers.length) return;
 
             function openVideoModal(btn) {
-                const videoSrc = btn.getAttribute('data-video');
-                const poster = btn.getAttribute('data-poster') || '';
+                const driveId = btn.getAttribute('data-drive-id');
                 const title = btn.getAttribute('data-title') || 'Testimoni Jamaah Kami';
 
                 if (titleEl) titleEl.textContent = title;
 
-                if (player) {
-                    player.pause();
-                    player.setAttribute('poster', poster);
-                    player.innerHTML = '<source src="' + videoSrc + '" type="video/mp4">Maaf, browser Anda tidak mendukung pemutaran video ini.';
-                    player.load();
+                if (player && driveId) {
+                    player.src = 'https://drive.google.com/file/d/' + driveId + '/preview?autoplay=1';
                 }
 
                 overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
                 closeBtn.focus();
-
-                if (player) {
-                    player.currentTime = 0;
-                    player.play().catch(function () { /* autoplay diblokir browser, user tinggal klik play */ });
-                }
             }
 
             function closeVideoModal() {
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
-                if (player) player.pause();
+                if (player) player.src = ''; // stop pemutaran video saat modal ditutup
             }
 
             triggers.forEach(function (trigger) {
@@ -3341,7 +3398,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 el.style.setProperty('--jc-rotation', rotation + 'deg');
                 el.innerHTML =
                     '<div class="jc-quote-icon"><svg viewBox="0 0 32 24" fill="currentColor"><path d="M0 24V14.4C0 6.4 4.8 1.2 12.8 0l1.6 3.2C9.6 4.4 6.8 7.2 6.4 11.2H12.8V24H0zM17.6 24V14.4C17.6 6.4 22.4 1.2 30.4 0L32 3.2c-4.8 1.2-7.6 4-8 8H30.4V24H17.6z"/></svg></div>' +
-                    '<div class="jc-stars">★★★★★</div>' +
+                    '<div class="jc-stars"></div>' +
                     '<div class="jc-content">' + data.content + '</div>' +
                     '<div class="jc-person">' +
                     '<div class="jc-avatar">' + data.initial + '</div>' +

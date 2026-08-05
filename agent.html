@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jadi Agent — Khalifah Asia Bekasi</title>
-    <meta name="description" content="Bergabung menjadi Agent Khalifah Asia Bekasi. Program kemitraan umroh yang amanah, profesional, dan berkelanjutan dengan komisi serta reward perjalanan umroh." />
+    <title>Jadi Agent - Khalifah Asia Bekasi</title>
+    <meta name="description"
+        content="Bergabung menjadi Agent Khalifah Asia Bekasi. Program kemitraan umroh yang amanah, profesional, dan berkelanjutan dengan komisi serta reward perjalanan umroh." />
     <link rel="icon" type="image/png" href="Image/Khalifah Bekasi.png" />
     <link rel="apple-touch-icon" href="Image/Khalifah Bekasi.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
 
-    <!-- ================= SUPABASE (Auth + Database untuk sistem Agent) ================= -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/supabase-client.js"></script>
     <script src="assets/js/referral-capture.js"></script>
 
@@ -33,11 +34,13 @@
             flex-wrap: wrap;
             margin-top: 34px;
         }
+
         /* ---------- Warna emas untuk "Khalifah Asia Bekasi" di hero ---------- */
-        
+
         .hero h1 span {
             color: var(--color-primary);
         }
+
         #benefit .benefit-grid {
             align-items: stretch;
         }
@@ -155,6 +158,7 @@
             #benefit .benefit-card {
                 height: auto;
             }
+
             #benefit .benefit-card.highlight {
                 grid-column: span 1;
             }
@@ -165,29 +169,32 @@
                 padding: 26px 20px;
             }
         }
+
         /* ---------- Selaraskan ikon caret pada Beranda & FAQ (tanpa dropdown) ---------- */
-        
+
         .nav-link {
             display: inline-flex;
             align-items: center;
             gap: 5px;
         }
+
         /* ---------- PERBAIKAN JARAK ANTAR SECTION (khusus halaman Agent) ---------- */
-        
+
         .poster-paket {
             padding: 70px 0 60px;
             background: var(--color-surface, #fff) !important;
         }
-        
+
         .poster-paket::before {
             display: none;
         }
-        
+
         .footer {
             margin-top: 0;
         }
+
         /* ---------- TOMBOL "TANYA DULU VIA WHATSAPP" — dibuat menyala kuning agar jelas terlihat ---------- */
-        
+
         .btn-wa-glow {
             background: linear-gradient(135deg, var(--palette-gold, #ffc000) 0%, #ffb300 100%) !important;
             color: var(--palette-ink-deep, #17201d) !important;
@@ -195,31 +202,35 @@
             box-shadow: 0 14px 34px rgba(255, 192, 0, 0.45);
             animation: waGlowPulse 2.4s ease-in-out infinite;
         }
-        
+
         .btn-wa-glow:hover {
             transform: translateY(-3px);
             filter: brightness(1.05);
             box-shadow: 0 20px 46px rgba(255, 192, 0, 0.55);
         }
-        
+
         .btn-wa-glow svg {
             flex-shrink: 0;
         }
-        
+
         @keyframes waGlowPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 box-shadow: 0 14px 34px rgba(255, 192, 0, 0.45);
             }
+
             50% {
                 box-shadow: 0 14px 40px rgba(255, 192, 0, 0.7);
             }
         }
+
         /* ---------- QUOTE STRIP ---------- */
-        
+
         .agent-quote-section {
             padding: 70px 0 10px;
         }
-        
+
         .agent-quote {
             max-width: 880px;
             margin: 0 auto;
@@ -234,19 +245,20 @@
             line-height: 1.85;
             box-shadow: var(--shadow-medium);
         }
+
         /* ---------- DASHBOARD PANEL (dipakai ulang dari halaman Tentang Kami) ---------- */
-        
+
         .dash-section {
             padding: 90px 0 110px;
         }
-        
+
         .dash-wrap {
             display: grid;
             grid-template-columns: 300px 1fr;
             gap: 32px;
             align-items: start;
         }
-        
+
         .dash-sidebar {
             position: sticky;
             top: 118px;
@@ -256,7 +268,7 @@
             padding: 14px;
             box-shadow: var(--shadow-medium);
         }
-        
+
         .dash-sidebar-label {
             font-size: 0.7rem;
             font-weight: 700;
@@ -265,7 +277,7 @@
             color: var(--color-text-soft);
             padding: 10px 14px 6px;
         }
-        
+
         .dash-nav-btn {
             display: flex;
             align-items: center;
@@ -284,7 +296,7 @@
             transition: all 0.3s var(--ease-smooth);
             margin-bottom: 4px;
         }
-        
+
         .dash-nav-btn .dash-nav-icon {
             display: flex;
             align-items: center;
@@ -297,23 +309,23 @@
             flex-shrink: 0;
             transition: all 0.3s var(--ease-smooth);
         }
-        
+
         .dash-nav-btn:hover {
             background: var(--color-surface-warm);
             color: var(--color-heading-strong);
         }
-        
+
         .dash-nav-btn.active {
             background: linear-gradient(135deg, var(--palette-gold), var(--palette-gold));
             color: var(--palette-ink);
             box-shadow: 0 12px 40px rgba(255, 192, 0, 0.25);
         }
-        
+
         .dash-nav-btn.active .dash-nav-icon {
             background: rgba(255, 255, 255, 0.35);
             color: var(--palette-ink);
         }
-        
+
         .dash-content {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
@@ -324,7 +336,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .dash-content::before {
             content: "";
             position: absolute;
@@ -336,16 +348,16 @@
             background-size: 200% auto;
             animation: gradient-shift 3s ease infinite;
         }
-        
+
         .dash-panel {
             display: none;
             animation: fadeInUp 0.5s var(--ease-smooth) both;
         }
-        
+
         .dash-panel.active {
             display: block;
         }
-        
+
         .dash-panel-badge {
             display: inline-flex;
             align-items: center;
@@ -360,7 +372,7 @@
             border-radius: var(--r-pill);
             margin-bottom: 20px;
         }
-        
+
         .dash-panel h2 {
             font-family: "Manrope", sans-serif;
             font-size: clamp(1.5rem, 2.8vw, 1.9rem);
@@ -368,14 +380,14 @@
             color: var(--color-heading-strong);
             margin-bottom: 20px;
         }
-        
+
         .dash-panel p {
             color: var(--color-text-soft);
             font-size: 1rem;
             line-height: 1.85;
             margin-bottom: 16px;
         }
-        
+
         .dash-panel-list {
             list-style: none;
             display: grid;
@@ -383,7 +395,7 @@
             gap: 18px;
             margin-top: 22px;
         }
-        
+
         .dash-panel-list li {
             position: relative;
             display: flex;
@@ -401,7 +413,7 @@
                 box-shadow 0.35s var(--ease-smooth, ease),
                 border-color 0.35s var(--ease-smooth, ease);
         }
-        
+
         .dash-panel-list li::before {
             content: "";
             position: absolute;
@@ -414,17 +426,17 @@
             transform-origin: left;
             transition: transform 0.35s var(--ease-smooth, ease);
         }
-        
+
         .dash-panel-list li:hover {
             transform: translateY(-6px);
             box-shadow: 0 18px 34px rgba(20, 14, 8, 0.08);
             border-color: rgba(255, 192, 0, 0.4);
         }
-        
+
         .dash-panel-list li:hover::before {
             transform: scaleX(1);
         }
-        
+
         .dash-panel-list .num {
             flex-shrink: 0;
             width: 40px;
@@ -439,48 +451,48 @@
             font-size: 0.95rem;
             box-shadow: 0 8px 16px rgba(255, 192, 0, 0.35);
         }
-        
+
         .dash-panel-list p {
             margin: 0;
             font-size: 0.94rem;
             line-height: 1.75;
         }
-        
+
         /* ---------- Variasi warna aksen per kartu, biar tidak monoton semua kuning ---------- */
         .dash-panel-list li:nth-child(3n+2)::before {
             background: var(--palette-teal, #1f6e6e);
         }
-        
+
         .dash-panel-list li:nth-child(3n+2) .num {
             background: var(--palette-teal, #1f6e6e);
             color: #fff;
             box-shadow: 0 8px 16px rgba(31, 110, 110, 0.3);
         }
-        
+
         .dash-panel-list li:nth-child(3n+2):hover {
             border-color: rgba(31, 110, 110, 0.35);
         }
-        
+
         .dash-panel-list li:nth-child(3n+3)::before {
             background: var(--palette-terracotta, #d9662e);
         }
-        
+
         .dash-panel-list li:nth-child(3n+3) .num {
             background: var(--palette-terracotta, #d9662e);
             color: #fff;
             box-shadow: 0 8px 16px rgba(217, 102, 46, 0.3);
         }
-        
+
         .dash-panel-list li:nth-child(3n+3):hover {
             border-color: rgba(217, 102, 46, 0.35);
         }
-        
+
         @media (max-width: 560px) {
             .dash-panel-list {
                 grid-template-columns: 1fr;
             }
         }
-        
+
         .dash-panel-quote {
             margin-top: 26px;
             padding: 22px 24px;
@@ -493,11 +505,12 @@
             font-size: 1rem;
             line-height: 1.8;
         }
-        
+
         @media (max-width: 900px) {
             .dash-wrap {
                 grid-template-columns: 1fr;
             }
+
             .dash-sidebar {
                 position: static;
                 display: flex;
@@ -505,28 +518,31 @@
                 gap: 4px;
                 padding: 10px;
             }
+
             .dash-content {
                 padding: 28px 22px;
             }
+
             .dash-panel-list li {
                 padding: 14px 16px;
             }
         }
-        
+
         @media (max-width: 600px) {
             .agent-hero-actions {
                 margin-top: 26px;
             }
         }
+
         /* ---------- PROFIL PEMANDU (reuse dari Tentang Kami) ---------- */
-        
+
         .pemandu-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
             margin-top: 8px;
         }
-        
+
         .pemandu-card {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
@@ -536,20 +552,20 @@
             transition: all 0.4s var(--ease-smooth);
             box-shadow: var(--shadow-soft);
         }
-        
+
         .pemandu-card:hover {
             border-color: var(--palette-amber);
             box-shadow: var(--shadow-strong);
             transform: translateY(-6px);
         }
-        
+
         .pemandu-photo {
             position: relative;
             aspect-ratio: 4 / 5;
             overflow: hidden;
             background: linear-gradient(135deg, var(--palette-gold), var(--palette-gold));
         }
-        
+
         .pemandu-photo img {
             width: 100%;
             height: 100%;
@@ -557,11 +573,11 @@
             display: block;
             transition: transform 0.5s var(--ease-smooth);
         }
-        
+
         .pemandu-card:hover .pemandu-photo img {
             transform: scale(1.06);
         }
-        
+
         .pemandu-photo::after {
             content: "";
             position: absolute;
@@ -570,11 +586,11 @@
             background: linear-gradient(180deg, rgba(20, 14, 8, 0) 0%, rgba(20, 14, 8, 0.55) 100%);
             pointer-events: none;
         }
-        
+
         .pemandu-info {
             padding: 18px 16px 22px;
         }
-        
+
         .pemandu-name {
             font-family: "Manrope", sans-serif;
             font-weight: 700;
@@ -582,7 +598,7 @@
             color: var(--color-heading-strong);
             margin-bottom: 8px;
         }
-        
+
         .pemandu-role {
             display: inline-flex;
             align-items: center;
@@ -596,72 +612,75 @@
             padding: 5px 14px;
             border-radius: var(--r-pill);
         }
-        
+
         .pemandu-desc {
             font-size: 0.88rem;
             line-height: 1.7;
             color: var(--color-text-soft);
             margin: 12px 0 0;
         }
-        
+
         .pemandu-note {
             margin-top: 24px;
             font-size: 0.86rem;
             color: var(--color-text-soft);
             text-align: center;
         }
-        
+
         @media (max-width: 760px) {
             .pemandu-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
-        
+
         @media (max-width: 480px) {
             .pemandu-grid {
                 grid-template-columns: 1fr;
             }
         }
+
         /* ---------- PENGUATAN RESPONSIF UMUM (semua elemen page ini) ---------- */
-        
+
         img,
         video,
         svg {
             max-width: 100%;
             height: auto;
         }
-        
+
         .dash-content,
         .pemandu-info {
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
-        
+
         @media (max-width: 768px) {
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 32px 20px;
             }
         }
-        
+
         @media (max-width: 600px) {
             .footer-grid {
                 grid-template-columns: 1fr;
             }
         }
-        
+
         @media (max-width: 480px) {
             .poster-paket .btn {
                 width: 100%;
                 justify-content: center;
             }
+
             .agent-hero-actions .btn {
                 width: 100%;
                 justify-content: center;
             }
         }
+
         /* ================= MODAL: FORM BIODATA & EMAIL (sama seperti tentang.html) ================= */
-        
+
         .wa-modal-overlay {
             position: fixed;
             inset: 0;
@@ -677,12 +696,12 @@
             visibility: hidden;
             transition: opacity 0.25s ease, visibility 0.25s ease;
         }
-        
+
         .wa-modal-overlay.active {
             opacity: 1;
             visibility: visible;
         }
-        
+
         .wa-modal {
             position: relative;
             background: var(--color-surface);
@@ -697,11 +716,11 @@
             transform: translateY(24px) scale(0.97);
             transition: transform 0.3s ease;
         }
-        
+
         .wa-modal-overlay.active .wa-modal {
             transform: translateY(0) scale(1);
         }
-        
+
         .wa-modal-header {
             position: relative;
             padding: 30px 28px 20px;
@@ -710,7 +729,7 @@
             overflow: hidden;
             flex-shrink: 0;
         }
-        
+
         .wa-modal-header::before {
             content: "";
             position: absolute;
@@ -718,7 +737,7 @@
             background: radial-gradient(ellipse at 20% 15%, rgba(255, 255, 255, 0.16) 0%, transparent 45%), radial-gradient(ellipse at 85% 85%, rgba(255, 255, 255, 0.12) 0%, transparent 45%);
             pointer-events: none;
         }
-        
+
         .wa-modal-close {
             position: absolute;
             top: 22px;
@@ -738,12 +757,12 @@
             transition: background 0.2s ease, transform 0.2s ease;
             z-index: 2;
         }
-        
+
         .wa-modal-close:hover {
             background: rgba(255, 255, 255, 0.36);
             transform: rotate(90deg);
         }
-        
+
         .wa-modal-icon {
             position: relative;
             width: 48px;
@@ -757,7 +776,7 @@
             justify-content: center;
             margin: 0 auto 10px;
         }
-        
+
         .wa-modal-header h3 {
             position: relative;
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
@@ -766,7 +785,7 @@
             color: #fff;
             margin-bottom: 4px;
         }
-        
+
         .wa-modal-sub {
             position: relative;
             font-size: 0.88rem;
@@ -775,23 +794,23 @@
             max-width: 400px;
             margin: 0 auto;
         }
-        
+
         .wa-modal-scroll {
             overflow-y: auto;
             padding: 20px 28px 24px;
         }
-        
+
         .wa-section-title {
             display: flex;
             align-items: center;
             gap: 10px;
             margin: 0 0 16px;
         }
-        
+
         .wa-section-title:not(:first-child) {
             margin-top: 22px;
         }
-        
+
         .wa-section-title .num {
             flex-shrink: 0;
             width: 24px;
@@ -805,7 +824,7 @@
             font-weight: 800;
             font-size: 0.72rem;
         }
-        
+
         .wa-section-title span.label {
             font-size: 0.72rem;
             font-weight: 800;
@@ -813,28 +832,28 @@
             text-transform: uppercase;
             color: var(--palette-amber, #a87a24);
         }
-        
+
         .wa-section-title::after {
             content: "";
             flex: 1;
             height: 1px;
             background: var(--color-border, #e2dccf);
         }
-        
+
         .wa-form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0 14px;
         }
-        
+
         .wa-field {
             margin-bottom: 15px;
         }
-        
+
         .wa-field.full {
             grid-column: 1 / -1;
         }
-        
+
         .wa-field label {
             display: block;
             font-size: 0.8rem;
@@ -842,11 +861,11 @@
             color: var(--color-heading-strong, #4a3423);
             margin-bottom: 6px;
         }
-        
+
         .wa-input-wrap {
             position: relative;
         }
-        
+
         .wa-field-icon {
             position: absolute;
             left: 13px;
@@ -856,7 +875,7 @@
             opacity: 0.8;
             pointer-events: none;
         }
-        
+
         .wa-field input,
         .wa-field select,
         .wa-field textarea {
@@ -872,12 +891,12 @@
             resize: vertical;
             appearance: none;
         }
-        
+
         .wa-field textarea {
             padding-left: 14px;
             min-height: 78px;
         }
-        
+
         .wa-field select {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a87a24' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
@@ -885,7 +904,7 @@
             padding-right: 34px;
             cursor: pointer;
         }
-        
+
         .wa-field input:focus,
         .wa-field select:focus,
         .wa-field textarea:focus {
@@ -893,11 +912,11 @@
             border-color: var(--palette-amber, #b3862c);
             box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.18);
         }
-        
+
         .wa-field-password-input {
             padding-right: 42px !important;
         }
-        
+
         .wa-toggle-password {
             position: absolute;
             right: 6px;
@@ -915,19 +934,19 @@
             border-radius: 8px;
             transition: color 0.2s ease, background 0.2s ease;
         }
-        
+
         .wa-toggle-password:hover {
             color: var(--palette-amber, #a87a24);
             background: rgba(255, 192, 0, 0.1);
         }
-        
+
         .wa-field input.invalid,
         .wa-field select.invalid,
         .wa-field textarea.invalid {
             border-color: #d34d3f;
             background: #fdf2f1;
         }
-        
+
         .wa-error {
             display: block;
             min-height: 16px;
@@ -936,7 +955,7 @@
             margin-top: 4px;
             font-weight: 600;
         }
-        
+
         .wa-char-count {
             display: block;
             text-align: right;
@@ -944,7 +963,7 @@
             color: var(--color-text-soft, #999);
             margin-top: 3px;
         }
-        
+
         .wa-trust-note {
             display: flex;
             align-items: flex-start;
@@ -957,13 +976,13 @@
             color: var(--color-text-soft, #777);
             line-height: 1.5;
         }
-        
+
         .wa-trust-note svg {
             flex-shrink: 0;
             color: var(--palette-amber, #a87a24);
             margin-top: 1px;
         }
-        
+
         .wa-modal-submit {
             width: 100%;
             justify-content: center;
@@ -976,13 +995,13 @@
             padding: 14px;
             font-size: 0.98rem;
         }
-        
+
         .email-modal-actions {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
-        
+
         .email-action-btn {
             width: 100%;
             justify-content: center;
@@ -994,12 +1013,12 @@
             border: 1.5px solid var(--color-border, #e2dccf);
             padding: 13px;
         }
-        
+
         .btn.email-action-btn.btn-secondary {
             background: var(--color-surface-warm, #faf7f1);
             color: var(--color-heading-strong, #4a3423);
         }
-        
+
         .email-copy-msg {
             display: block;
             text-align: center;
@@ -1008,46 +1027,55 @@
             font-weight: 600;
             min-height: 18px;
         }
-        
+
         @media (max-width: 560px) {
             .wa-form-grid {
                 grid-template-columns: 1fr;
             }
         }
-        
+
         @media (max-width: 480px) {
             .wa-modal-overlay {
                 padding: 76px 12px 16px;
             }
+
             .wa-modal-header {
                 padding: 20px 20px 16px;
             }
+
             .wa-modal-scroll {
                 padding: 18px 18px 20px;
             }
         }
+
         /* ---------- Pengaman ekstra untuk layar sangat kecil (HP kecil, <=380px) ---------- */
-        
+
         @media (max-width: 380px) {
             .dash-content {
                 padding: 22px 16px;
             }
+
             .benefit-card {
                 padding: 28px 20px;
             }
+
             .wa-modal-overlay {
                 padding: 64px 8px 12px;
             }
+
             .wa-modal-header {
                 padding: 18px 16px 14px;
             }
+
             .wa-modal-scroll {
                 padding: 16px 16px 18px;
             }
+
             .wa-modal-icon {
                 width: 46px;
                 height: 46px;
             }
+
             .hero h1 {
                 font-size: 1.7rem;
             }
@@ -1416,13 +1444,16 @@
             .akun-stats {
                 grid-template-columns: 1fr;
             }
+
             .akun-greeting {
                 flex-direction: column;
                 align-items: flex-start;
             }
+
             .copy-row {
                 flex-direction: column;
             }
+
             .akun-locked {
                 padding: 28px 20px;
             }
@@ -1439,7 +1470,7 @@
                 <span class="logo-text">
                     Khalifah
                     <span>Asia</span>
-                <span class="logo-text-bekasi">Bekasi</span>
+                    <span class="logo-text-bekasi">Bekasi</span>
                 </span>
             </a>
 
@@ -1530,7 +1561,8 @@
         <div class="hero-inner">
             <div class="hero-content">
                 <h1>Jadi Agent <span>Khalifah Asia Bekasi</span></h1>
-                <p class="hero-desc">Ambil peran dalam program kemitraan umroh yang dikelola secara amanah, profesional, dan berkelanjutan - dengan sistem yang transparan dan pendampingan penuh dari tim kami.</p>
+                <p class="hero-desc">Ambil peran dalam program kemitraan umroh yang dikelola secara amanah, profesional,
+                    dan berkelanjutan - dengan sistem yang transparan dan pendampingan penuh dari tim kami.</p>
                 <div class="agent-hero-actions">
                     <a href="#benefit" class="btn btn-primary btn-shine">Lihat Benefit Agent →</a>
                     <a href="#akun-agent" class="btn btn-outline btn-shine" data-auth-trigger="register">Daftar Jadi
@@ -1545,7 +1577,8 @@
         <div class="container">
             <div class="section-head reveal">
                 <h2>Benefit Agent Khalifah</h2>
-                <p>Program kemitraan yang memberikan nilai jangka panjang, pertumbuhan, dan manfaat nyata bagi setiap agent.
+                <p>Program kemitraan yang memberikan nilai jangka panjang, pertumbuhan, dan manfaat nyata bagi setiap
+                    agent.
                 </p>
             </div>
 
@@ -1553,31 +1586,36 @@
                 <div class="benefit-card reveal reveal-delay-1">
                     <span class="benefit-index">01</span>
                     <div class="benefit-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M9 12.5l2.2 2.2L16 9.5" />
                             <circle cx="12" cy="12" r="9.5" />
                         </svg>
                     </div>
                     <h3>Peran Resmi</h3>
-                    <p>Menjadi bagian dari jaringan resmi Khalifah Asia Bekasi dengan peran dan tanggung jawab yang jelas sejak hari pertama bergabung.</p>
+                    <p>Menjadi bagian dari jaringan resmi Khalifah Asia Bekasi dengan peran dan tanggung jawab yang
+                        jelas sejak hari pertama bergabung.</p>
                 </div>
 
                 <div class="benefit-card reveal reveal-delay-2">
                     <span class="benefit-index">02</span>
                     <div class="benefit-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M8 3h8l3 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7z" />
                             <path d="M9 11h6M9 15h6" />
                         </svg>
                     </div>
                     <h3>Sistem Profesional</h3>
-                    <p>Didukung sistem kerja yang transparan, terukur, dan pendampingan berkelanjutan dari tim Khalifah Asia Bekasi.</p>
+                    <p>Didukung sistem kerja yang transparan, terukur, dan pendampingan berkelanjutan dari tim Khalifah
+                        Asia Bekasi.</p>
                 </div>
 
                 <div class="benefit-card reveal reveal-delay-3">
                     <span class="benefit-index">03</span>
                     <div class="benefit-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                             <circle cx="9" cy="7" r="4" />
                             <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -1585,29 +1623,34 @@
                         </svg>
                     </div>
                     <h3>Jaringan Berkembang</h3>
-                    <p>Peluang membangun dan mengembangkan jaringan agent secara terstruktur, dengan dukungan penuh dari kantor pusat maupun cabang.</p>
+                    <p>Peluang membangun dan mengembangkan jaringan agent secara terstruktur, dengan dukungan penuh dari
+                        kantor pusat maupun cabang.</p>
                 </div>
 
                 <div class="benefit-card reveal reveal-delay-1">
                     <span class="benefit-index">04</span>
                     <div class="benefit-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2.5l8 3.2v5.3c0 5-3.4 8.9-8 10.5-4.6-1.6-8-5.5-8-10.5V5.7z" />
                         </svg>
                     </div>
                     <h3>Amanah & Berizin Resmi</h3>
-                    <p>Bermitra dengan penyelenggara Umroh & Haji Khusus berizin resmi Kemenag RI — kredibilitas yang menjadi kepercayaan calon jamaah Anda.</p>
+                    <p>Bermitra dengan penyelenggara Umroh & Haji Khusus berizin resmi Kemenag RI — kredibilitas yang
+                        menjadi kepercayaan calon jamaah Anda.</p>
                 </div>
 
                 <div class="benefit-card highlight reveal reveal-delay-2">
                     <span class="benefit-index">05</span>
                     <div class="benefit-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                         </svg>
                     </div>
                     <h3>Keuntungan Program</h3>
-                    <p>Agent berhak memperoleh <strong>komisi dari aktivitas program</strong>, peluang penghasilan yang terus berkembang, serta <strong>reward perjalanan
+                    <p>Agent berhak memperoleh <strong>komisi dari aktivitas program</strong>, peluang penghasilan yang
+                        terus berkembang, serta <strong>reward perjalanan
                             umroh</strong> sesuai ketentuan yang berlaku.</p>
                 </div>
             </div>
@@ -1660,17 +1703,21 @@
                 <div class="dash-content">
                     <div class="dash-panel active" id="panel-keuntungan">
                         <h2>Apa yang Anda dapatkan sebagai Agent</h2>
-                        <p>Sebagai Agent resmi Khalifah Asia Bekasi, Anda tidak hanya berperan membantu calon jamaah menemukan paket yang sesuai, tetapi juga memperoleh manfaat nyata dari setiap aktivitas program.
+                        <p>Sebagai Agent resmi Khalifah Asia Bekasi, Anda tidak hanya berperan membantu calon jamaah
+                            menemukan paket yang sesuai, tetapi juga memperoleh manfaat nyata dari setiap aktivitas
+                            program.
                         </p>
                         <ul class="dash-panel-list">
                             <li>
                                 <span class="num">1</span>
-                                <p>Komisi dari setiap aktivitas program sesuai ketentuan yang berlaku, dibayarkan secara transparan.
+                                <p>Komisi dari setiap aktivitas program sesuai ketentuan yang berlaku, dibayarkan secara
+                                    transparan.
                                 </p>
                             </li>
                             <li>
                                 <span class="num">2</span>
-                                <p>Peluang penghasilan yang terus berkembang seiring jaringan dan aktivitas yang Anda bangun.
+                                <p>Peluang penghasilan yang terus berkembang seiring jaringan dan aktivitas yang Anda
+                                    bangun.
                                 </p>
                             </li>
                             <li>
@@ -1685,15 +1732,18 @@
                         <ul class="dash-panel-list">
                             <li>
                                 <span class="num">1</span>
-                                <p>Isi formulir "Daftar Jadi Agent" di halaman ini dengan data diri Anda (nama, no. WhatsApp, email, dan lainnya).</p>
+                                <p>Isi formulir "Daftar Jadi Agent" di halaman ini dengan data diri Anda (nama, no.
+                                    WhatsApp, email, dan lainnya).</p>
                             </li>
                             <li>
                                 <span class="num">2</span>
-                                <p>Tim kami akan menghubungi Anda melalui WhatsApp untuk proses verifikasi dan pendampingan lebih lanjut.</p>
+                                <p>Tim kami akan menghubungi Anda melalui WhatsApp untuk proses verifikasi dan
+                                    pendampingan lebih lanjut.</p>
                             </li>
                             <li>
                                 <span class="num">3</span>
-                                <p>Setelah resmi menjadi Agent, mulai referensikan calon jamaah dan dapatkan komisi setiap kali mereka mendaftar umroh.</p>
+                                <p>Setelah resmi menjadi Agent, mulai referensikan calon jamaah dan dapatkan komisi
+                                    setiap kali mereka mendaftar umroh.</p>
                             </li>
                         </ul>
                     </div>
@@ -1703,16 +1753,19 @@
                         <ul class="dash-panel-list">
                             <li>
                                 <span class="num">1</span>
-                                <p>Warga Negara Indonesia berusia minimal 18 tahun dan memiliki identitas diri yang sah (KTP).
+                                <p>Warga Negara Indonesia berusia minimal 18 tahun dan memiliki identitas diri yang sah
+                                    (KTP).
                                 </p>
                             </li>
                             <li>
                                 <span class="num">2</span>
-                                <p>Bersedia mengikuti sistem kerja, kode etik, serta ketentuan komisi dan reward yang berlaku di Khalifah Asia Bekasi.</p>
+                                <p>Bersedia mengikuti sistem kerja, kode etik, serta ketentuan komisi dan reward yang
+                                    berlaku di Khalifah Asia Bekasi.</p>
                             </li>
                             <li>
                                 <span class="num">3</span>
-                                <p>Memiliki nomor WhatsApp aktif untuk keperluan komunikasi dan pendampingan program secara berkelanjutan.</p>
+                                <p>Memiliki nomor WhatsApp aktif untuk keperluan komunikasi dan pendampingan program
+                                    secara berkelanjutan.</p>
                             </li>
                         </ul>
                     </div>
@@ -1726,19 +1779,24 @@
         <div class="container">
             <div class="section-head reveal">
                 <h2>Siap Jadi Agent Khalifah?</h2>
-                <p>Daftar sekarang melalui formulir singkat, tim kami akan langsung memproses pendaftaran Anda via WhatsApp.</p>
+                <p>Daftar sekarang melalui formulir singkat, tim kami akan langsung memproses pendaftaran Anda via
+                    WhatsApp.</p>
             </div>
 
             <div class="akun-locked reveal" id="akunLocked">
                 <div class="akun-locked-icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
                     </svg>
                 </div>
                 <h2>Daftar Jadi Agent</h2>
-                <p>Isi data diri Anda lewat formulir pendaftaran, lalu tim kami akan menghubungi Anda melalui WhatsApp untuk proses selanjutnya.</p>
+                <p>Isi data diri Anda lewat formulir pendaftaran, lalu tim kami akan menghubungi Anda melalui WhatsApp
+                    untuk proses selanjutnya.</p>
                 <div class="akun-locked-actions">
-                    <button type="button" class="btn btn-primary btn-shine" data-auth-trigger="register">Daftar Jadi Agent</button>
+                    <button type="button" class="btn btn-primary btn-shine" data-auth-trigger="register">Daftar Jadi
+                        Agent</button>
                 </div>
             </div>
         </div>
@@ -1747,18 +1805,39 @@
     <!-- ================= CTA ================= -->
     <section class="poster-paket" style="margin-top:0; padding: 70px 0;">
         <div class="container" style="position:relative; z-index:1; text-align:center;">
-            <h2 style="font-family:'Manrope',sans-serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:700; color:var(--color-heading-strong); margin:14px 0 16px;">
+            <h2
+                style="font-family:'Manrope',sans-serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:700; color:var(--color-heading-strong); margin:14px 0 16px;">
                 Siap Menjadi Bagian dari Agent Khalifah?</h2>
-            <p style="color:var(--color-text-soft); max-width:600px; margin:0 auto 32px; line-height:1.8;">Bangun peran, kontribusi, dan manfaat bersama Khalifah Asia Bekasi dalam program umroh yang amanah.</p>
-            <a href="#akun-agent" class="btn btn-primary btn-shine" style="display:inline-flex;" data-auth-trigger="register">Daftar Sekarang →</a>
+            <p style="color:var(--color-text-soft); max-width:600px; margin:0 auto 32px; line-height:1.8;">Bangun peran,
+                kontribusi, dan manfaat bersama Khalifah Asia Bekasi dalam program umroh yang amanah.</p>
+            <a href="#akun-agent" class="btn btn-primary btn-shine" style="display:inline-flex;"
+                data-auth-trigger="register">Daftar Sekarang →</a>
             <div style="margin-top:16px;">
-                <a href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya/mendaftar%20sebagai%20Agent%20Khalifah%20Asia%20Bekasi." class="btn btn-wa-glow" style="display:inline-flex;" target="_blank" rel="noopener noreferrer">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.09c-.24.68-1.4 1.32-1.93 1.37-.53.06-1.03.26-3.44-.72-2.9-1.19-4.77-4.13-4.92-4.32-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.13-.28.27-.12.54.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.31z"/></svg>
+                <a href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya/mendaftar%20sebagai%20Agent%20Khalifah%20Asia%20Bekasi."
+                    class="btn btn-wa-glow" style="display:inline-flex;" target="_blank" rel="noopener noreferrer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.09c-.24.68-1.4 1.32-1.93 1.37-.53.06-1.03.26-3.44-.72-2.9-1.19-4.77-4.13-4.92-4.32-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.13-.28.27-.12.54.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.31z" />
+                    </svg>
                     Tanya Dulu via WhatsApp
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- ================= FLOATING WHATSAPP BUTTON (langsung ke WhatsApp, tanpa panel admin) ================= -->
+    <div class="livechat-widget" id="livechatWidget">
+        <a href="https://wa.me/62817843531?text=Assalamu%27alaikum%2C%20saya%20ingin%20bertanya%20seputar%20paket%20Umroh%20%26%20Haji%20Khusus"
+            class="livechat-toggle" id="livechatToggle" target="_blank" rel="noopener noreferrer"
+            aria-label="Chat WhatsApp Khalifah Asia">
+            <span class="livechat-toggle-label" aria-hidden="true">Chat via WhatsApp</span>
+            <span class="livechat-toggle-badge">1</span>
+            <svg class="livechat-icon-chat" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.28-1.39a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.15-4.9-4.34-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.29.57-.36.76-.36h.55c.18 0 .41-.07.64.49.24.58.81 2 .88 2.14.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.82.86.27.13.45.2.51.31.07.11.07.63-.17 1.31z" />
+            </svg>
+        </a>
+    </div>
 
     <!-- ================= FOOTER ================= -->
     <footer class="footer">
@@ -1773,44 +1852,53 @@
                     </div>
 
                     <p>
-                        Penyelenggara Umroh & Haji Khusus berizin resmi Kementerian Agama RI, melayani jamaah dengan amanah dan profesional.
+                        Penyelenggara Umroh & Haji Khusus berizin resmi Kementerian Agama RI, melayani jamaah dengan
+                        amanah dan profesional.
                     </p>
 
                     <h4 class="footer-social-title">Sosial Media</h4>
                     <p class="footer-social-desc">Jangan lewatkan informasi lainnya di sosial media Khalifah Asia</p>
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/khalifahasiabekasi" target="_blank" rel="noopener noreferrer" aria-label="Facebook Khalifah Asia">
+                        <a href="https://www.facebook.com/khalifahasiabekasi" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook Khalifah Asia">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5h1.65V3.7C15.9 3.6 15 3.5 13.9 3.5c-2.3 0-3.9 1.4-3.9 4v2.4H7.3v3.1h2.7v8h3.5z" />
                             </svg>
                         </a>
-                        <a href="https://www.youtube.com/@khalifahasiabekasi" target="_blank" rel="noopener noreferrer" aria-label="YouTube Khalifah Asia">
+                        <a href="https://www.youtube.com/@khalifahasiabekasi" target="_blank" rel="noopener noreferrer"
+                            aria-label="YouTube Khalifah Asia">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M22 12s0-3.2-.4-4.7c-.24-.87-.93-1.56-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.5c-.87.24-1.56.93-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.24.87.93 1.56 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.5c.87-.24 1.56-.93 1.8-1.8.4-1.5.4-4.7.4-4.7zM10 15V9l5.2 3-5.2 3z" />
                             </svg>
                         </a>
-                        <a href="https://www.instagram.com/khalifahasiabekasi" target="_blank" rel="noopener noreferrer" aria-label="Instagram Khalifah Asia">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <a href="https://www.instagram.com/khalifahasiabekasi" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram Khalifah Asia">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8">
                                 <rect x="3" y="3" width="18" height="18" rx="5" />
                                 <circle cx="12" cy="12" r="4" />
                                 <circle cx="17.2" cy="6.8" r="1" />
                             </svg>
                         </a>
-                        <a href="https://www.tiktok.com/@khalifahasiabekasi" target="_blank" rel="noopener noreferrer" aria-label="TikTok Khalifah Asia">
+                        <a href="https://www.tiktok.com/@khalifahasiabekasi" target="_blank" rel="noopener noreferrer"
+                            aria-label="TikTok Khalifah Asia">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M16.6 5.82c-.9-.85-1.46-2.04-1.46-3.32h-3.28v13.7c0 1.5-1.22 2.72-2.72 2.72a2.72 2.72 0 0 1 0-5.44c.27 0 .53.04.78.11V10.5a5.86 5.86 0 0 0-.78-.05A5.99 5.99 0 0 0 3.15 16.4 5.99 5.99 0 0 0 9.14 22.4c3.3 0 5.99-2.68 5.99-5.99V9.36a8.2 8.2 0 0 0 4.78 1.53V7.6a4.85 4.85 0 0 1-3.31-1.78z" />
                             </svg>
                         </a>
-                        <a href="mailto:info@khalifahasia.co.id" data-email-trigger="true" aria-label="Email Khalifah Asia">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <a href="mailto:info@khalifahasia.co.id" data-email-trigger="true"
+                            aria-label="Email Khalifah Asia">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8">
                                 <rect x="3" y="5" width="18" height="14" rx="2" />
                                 <path d="M3 7l9 6 9-6" />
                             </svg>
                         </a>
-                        <a href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya/mendaftar%20sebagai%20Agent%20Khalifah%20Asia%20Bekasi." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Khalifah Asia">
+                        <a href="https://wa.me/62817843531?text=Assalamualaikum%2C%20saya%20ingin%20bertanya/mendaftar%20sebagai%20Agent%20Khalifah%20Asia%20Bekasi."
+                            target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Khalifah Asia">
                             <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.28-1.39a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.15-4.9-4.34-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.29.57-.36.76-.36h.55c.18 0 .41-.07.64.49.24.58.81 2 .88 2.14.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.82.86.27.13.45.2.51.31.07.11.07.63-.17 1.31z" />
@@ -1835,7 +1923,8 @@
                         <li>
                             Jl. Prof. Dr. Hamka No.R02, RT.007/RW.001, Gaga, Kec. Larangan, Kota Tangerang, Banten 15154
                         </li>
-                        <li><a href="https://khalifahasia.co.id/" target="_blank" rel="noopener noreferrer">khalifahasia.co.id</a></li>
+                        <li><a href="https://khalifahasia.co.id/" target="_blank"
+                                rel="noopener noreferrer">khalifahasia.co.id</a></li>
                     </ul>
                 </div>
 
@@ -1845,8 +1934,10 @@
                         <li>
                             Ruko Cortez Blok B23 No.6, Simpangan, Cikarang Utara, Kabupaten Bekasi, Jawa Barat 17530
                         </li>
-                        <li><a href="https://wa.me/62817843531" target="_blank" rel="noopener noreferrer">0817-843-531</a></li>
-                        <li><a href="https://khalifahasia.com/" target="_blank" rel="noopener noreferrer">khalifahasia.com</a></li>
+                        <li><a href="https://wa.me/62817843531" target="_blank"
+                                rel="noopener noreferrer">0817-843-531</a></li>
+                        <li><a href="https://khalifahasia.com/" target="_blank"
+                                rel="noopener noreferrer">khalifahasia.com</a></li>
                     </ul>
                 </div>
 
@@ -1864,7 +1955,8 @@
             <div class="wa-modal-header">
                 <button type="button" class="wa-modal-close" id="authModalClose" aria-label="Tutup">&times;</button>
                 <div class="wa-modal-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                         <circle cx="8.5" cy="7" r="4" />
                         <line x1="20" y1="8" x2="20" y2="14" />
@@ -1872,7 +1964,8 @@
                     </svg>
                 </div>
                 <h3>Daftar Jadi Agent Khalifah</h3>
-                <p class="wa-modal-sub">Isi formulir singkat berikut, tim kami akan langsung memproses pendaftaran Anda via WhatsApp.</p>
+                <p class="wa-modal-sub">Isi formulir singkat berikut, tim kami akan langsung memproses pendaftaran Anda
+                    via WhatsApp.</p>
             </div>
             <div class="wa-modal-scroll">
                 <div class="auth-alert" id="authAlert"></div>
@@ -1883,7 +1976,12 @@
                         <div class="wa-field full">
                             <label for="regNama">Nama Lengkap</label>
                             <div class="wa-input-wrap">
-                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 4-6 8-6s8 2 8 6" /></svg>
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="8" r="4" />
+                                    <path d="M4 21c0-4 4-6 8-6s8 2 8 6" />
+                                </svg>
                                 <input type="text" id="regNama" required placeholder="Nama sesuai KTP" />
                             </div>
                             <span class="wa-error"></span>
@@ -1891,7 +1989,12 @@
                         <div class="wa-field full">
                             <label for="regWhatsapp">No. WhatsApp</label>
                             <div class="wa-input-wrap">
-                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
                                 <input type="tel" id="regWhatsapp" required placeholder="08xxxxxxxxxx" />
                             </div>
                             <span class="wa-error"></span>
@@ -1899,15 +2002,25 @@
                         <div class="wa-field full">
                             <label for="regEmail">Email</label>
                             <div class="wa-input-wrap">
-                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="M2 7l10 6 10-6" /></svg>
-                                <input type="email" id="regEmail" required autocomplete="email" placeholder="nama@email.com" />
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                    <path d="M2 7l10 6 10-6" />
+                                </svg>
+                                <input type="email" id="regEmail" required autocomplete="email"
+                                    placeholder="nama@email.com" />
                             </div>
                             <span class="wa-error"></span>
                         </div>
                         <div class="wa-field full">
                             <label for="regKota">Kota Domisili</label>
                             <div class="wa-input-wrap">
-                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
                                 <select id="regKota" required>
                                     <option value="" disabled selected>Pilih kota/kabupaten</option>
                                     <option value="Kota Bekasi">Kota Bekasi</option>
@@ -1934,7 +2047,11 @@
                         <div class="wa-field full" id="regKotaLainnyaWrap" style="display:none;">
                             <label for="regKotaLainnya">Sebutkan Kota/Kabupaten Anda</label>
                             <div class="wa-input-wrap">
-                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
                                 <input type="text" id="regKotaLainnya" placeholder="Tulis nama kota/kabupaten" />
                             </div>
                             <span class="wa-error"></span>
@@ -1942,7 +2059,12 @@
                         <div class="wa-field full">
                             <label for="regPekerjaan">Pekerjaan / Profesi Saat Ini</label>
                             <div class="wa-input-wrap">
-                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" />
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                                </svg>
                                 <input type="text" id="regPekerjaan" required placeholder="Contoh: Karyawan Swasta" />
                             </div>
                             <span class="wa-error"></span>
@@ -1950,7 +2072,12 @@
                         <div class="wa-field full">
                             <label for="regSumber">Tahu Program Ini Dari Mana?</label>
                             <div class="wa-input-wrap">
-                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+                                <svg class="wa-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M12 16v-4M12 8h.01" />
+                                </svg>
                                 <select id="regSumber" required>
                                     <option value="" disabled selected>Pilih salah satu</option>
                                     <option value="Instagram/Facebook">Instagram / Facebook</option>
@@ -1962,10 +2089,15 @@
                             <span class="wa-error"></span>
                         </div>
                         <div class="wa-trust-note">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-                            <span>Data Anda hanya digunakan untuk keperluan pendaftaran program kemitraan Agent Khalifah Asia Bekasi.</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                            <span>Data Anda hanya digunakan untuk keperluan pendaftaran program kemitraan Agent Khalifah
+                                Asia Bekasi.</span>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-shine wa-modal-submit" id="registerSubmitBtn">Daftar Jadi Agent</button>
+                        <button type="submit" class="btn btn-primary btn-shine wa-modal-submit"
+                            id="registerSubmitBtn">Daftar Jadi Agent</button>
                     </form>
                 </div>
             </div>
@@ -1974,29 +2106,35 @@
 
     <!-- ================= MODAL: EMAIL ================= -->
     <div class="wa-modal-overlay" id="emailModalOverlay">
-        <div class="wa-modal" role="dialog" aria-modal="true" aria-labelledby="emailModalTitle" style="max-width:440px;">
+        <div class="wa-modal" role="dialog" aria-modal="true" aria-labelledby="emailModalTitle"
+            style="max-width:440px;">
             <div class="wa-modal-header email-header">
                 <button type="button" class="wa-modal-close" id="emailModalClose" aria-label="Tutup">×</button>
                 <div class="wa-modal-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8">
                         <rect x="3" y="5" width="18" height="14" rx="2" />
                         <path d="M3 7l9 6 9-6" />
                     </svg>
                 </div>
                 <h3 id="emailModalTitle">Hubungi via Email</h3>
                 <p class="wa-modal-sub">Pilih salah satu cara di bawah untuk mengirim email ke
-                    <strong>info@khalifahasia.co.id</strong></p>
+                    <strong>info@khalifahasia.co.id</strong>
+                </p>
             </div>
             <div class="wa-modal-scroll">
                 <div class="email-modal-actions">
                     <a href="#" id="mailtoLink" class="btn btn-primary email-action-btn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <rect x="3" y="5" width="18" height="14" rx="2" />
                             <path d="M3 7l9 6 9-6" />
                         </svg> Buka Aplikasi Email
                     </a>
-                    <a href="#" id="gmailWebLink" target="_blank" rel="noopener noreferrer" class="btn email-action-btn btn-secondary">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <a href="#" id="gmailWebLink" target="_blank" rel="noopener noreferrer"
+                        class="btn email-action-btn btn-secondary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <path
                                 d="M22 12s0-3.2-.4-4.7c-.24-.87-.93-1.56-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.5c-.87.24-1.56.93-1.8 1.8C2 8.8 2 12 2 12" />
                             <path
@@ -2143,7 +2281,7 @@
         handleHash();
 
         // ========== MODAL: EMAIL (Footer) ==========
-        (function() {
+        (function () {
             const emailOverlay = document.getElementById('emailModalOverlay');
             const emailClose = document.getElementById('emailModalClose');
             const copyBtn = document.getElementById('copyEmailBtn');
@@ -2189,7 +2327,7 @@
                     tmp.select();
                     try {
                         document.execCommand('copy');
-                    } catch (err) {}
+                    } catch (err) { }
                     document.body.removeChild(tmp);
                     showCopyMsg();
                 };

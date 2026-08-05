@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kontak Kami — Khalifah Asia Bekasi | Umroh & Haji Khusus</title>
+    <title>Kontak Kami - Khalifah Asia Bekasi | Umroh & Haji Khusus</title>
     <meta name="description"
         content="Hubungi Khalifah Asia Bekasi. Kunjungi kantor pusat di Tangerang & kantor cabang Bekasi, atau hubungi tim kami langsung melalui WhatsApp, telepon, dan email." />
     <link rel="icon" type="image/png" href="Image/Khalifah Bekasi.png" />
@@ -17,30 +17,10 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 
     <style>
-        /* ---------- FOTO HERO KONTAK DI HP: UTUH & TANPA SPASI KOSONG ----------
-           Foto asli galerikami16.jpeg landscape lebar (4080x1884, rasio ~2.17:1),
-           sedangkan kotak .page-header di HP tadinya portrait (tinggi tetap,
-           lebar ikut layar) — dua bentuk itu nggak akan pernah pas dipaksa
-           satu sama lain: kalau foto dipaksa isi penuh (cover) pasti ada
-           bagian yang kepotong; kalau foto ditampilkan utuh (contain) pasti
-           ada spasi kosong di atas/bawah.
-
-           Solusinya: khusus di HP, tinggi ZONA FOTO (.page-header-media, div
-           pembungkus baru di HTML) dibuat mengikuti PERSIS rasio asli foto
-           lewat aspect-ratio — jadi foto otomatis pas 100% mengisi zonanya,
-           tanpa kepotong dan tanpa sisa spasi kosong. Konsekuensinya, judul
-           "Hubungi Khalifah Asia Bekasi" tidak lagi menumpuk di ATAS foto
-           (kotaknya jadi kependekan buat itu), melainkan dipindah ke BAWAH
-           foto sebagai teks biasa. Semua perubahan ini HANYA untuk
-           kontak.html, style.css tidak disentuh supaya halaman lain yang
-           memakai .page-header tidak ikut berubah. */
         @media (max-width: 900px) {
             .page-header {
                 min-height: 0;
                 display: block;
-                /* padding-top menyamai tinggi navbar (fixed di atas layar)
-                   supaya foto tidak ketutup navbar; padding-bottom jadi
-                   jarak sebelum section berikutnya */
                 padding: 76px 0 40px;
             }
 
@@ -53,10 +33,6 @@
 
             .page-header-slide {
                 background-size: cover;
-                /* rasio zona foto sudah persis sama dengan rasio foto asli,
-                   jadi "cover" di sini TIDAK memotong apa pun — hasilnya
-                   identik dengan foto tampil utuh, cuma lebih aman dari
-                   celah 1px akibat pembulatan dibanding "contain". */
             }
 
             .page-header .container {
