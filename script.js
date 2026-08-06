@@ -1723,13 +1723,22 @@ if (document.body.dataset.page === "index") {
                 const titleEl = document.getElementById('videoEmbedModalTitle');
                 const triggers = document.querySelectorAll('.video-testi-btn[data-drive-id]');
                 const player = document.getElementById('testimoniVideoPlayer');
+                const playerBody = player ? player.closest('.video-embed-modal-body') : null;
                 if (!overlay || !triggers.length) return;
 
                 function openVideoModal(btn) {
                     const driveId = btn.getAttribute('data-drive-id');
                     const title = btn.getAttribute('data-title') || 'Testimoni Jamaah Kami';
+                    // data-orientation="portrait" untuk video rekaman HP (vertikal),
+                    // default landscape kalau atribut ini tidak diisi.
+                    const orientation = btn.getAttribute('data-orientation') === 'portrait' ? 'portrait' : 'landscape';
 
                     if (titleEl) titleEl.textContent = title;
+
+                    if (playerBody) {
+                        playerBody.classList.toggle('is-portrait', orientation === 'portrait');
+                        playerBody.classList.toggle('is-landscape', orientation === 'landscape');
+                    }
 
                     if (player && driveId) {
                         player.src = 'https://drive.google.com/file/d/' + driveId + '/preview?autoplay=1';

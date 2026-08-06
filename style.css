@@ -99,6 +99,8 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -7862,6 +7864,16 @@ object {
   background: #000;
 }
 
+/* Video rekaman HP (vertikal) diberi class ini via JS (data-orientation="portrait"
+   pada tombolnya) supaya kotak modal tidak memaksa 16:9 & muncul bar hitam. */
+.video-embed-modal-body.is-portrait {
+  aspect-ratio: 9 / 16;
+  max-height: 78vh;
+  max-width: 100%;
+  width: auto;
+  margin: 0 auto;
+}
+
 .video-embed-modal-body video,
 .video-embed-modal-body iframe {
   position: absolute;
@@ -9325,64 +9337,43 @@ object {
    ============================================================ */
 /* ===== Blok style #1 dari index.html ===== */
 @media (max-width: 900px) {
-            .hero {
+            body[data-page="index"] .hero{
                 min-height: 100vh;
                 min-height: 100dvh;
             }
 
-            .hero-video {
-                object-fit: cover;
+            body[data-page="index"] .hero-video{
+                object-fit: contain;
                 background: transparent;
             }
 
-            .hero-video-backdrop {
+            body[data-page="index"] .hero-video-backdrop{
                 display: none;
             }
         }
 
 /* ===== Blok style #2 dari index.html ===== */
-.article-grid-4 {
+body[data-page="index"] .article-grid-4{
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
         }
 
         @media (max-width: 1100px) {
-            .article-grid-4 {
+            body[data-page="index"] .article-grid-4{
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 640px) {
-            .article-grid-4 {
+            body[data-page="index"] .article-grid-4{
                 grid-template-columns: 1fr;
             }
         }
 
-        /* ---------- BADGE: "Direferensikan oleh Agent ..." di dalam modal WhatsApp ---------- */
-        .wa-referral-badge {
-            display: none;
-            align-items: center;
-            gap: 8px;
-            margin: 4px auto 0;
-            padding: 8px 14px;
-            background: var(--gold-pale, #fbead0);
-            color: var(--gold-deep, #a9760b);
-            border-radius: var(--radius-full, 999px);
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-align: center;
-            width: fit-content;
-            max-width: 100%;
-        }
-
-        .wa-referral-badge.show {
-            display: flex;
-        }
-
         /* ================= MODAL: BOOKING ONLINE ================= */
         /* Dipaksa selalu di atas navbar/header situs & tidak boleh terpotong, berapapun z-index header aslinya */
-        #bookingModalOverlay.wa-modal-overlay {
+        body[data-page="index"] #bookingModalOverlay.wa-modal-overlay{
             z-index: 999999 !important;
             align-items: center !important;
             padding: 30px 16px !important;
@@ -9390,7 +9381,7 @@ object {
             box-sizing: border-box;
         }
 
-        .booking-modal {
+        body[data-page="index"] .booking-modal{
             max-width: 620px;
             width: 100%;
             max-height: calc(100vh - 60px);
@@ -9400,31 +9391,31 @@ object {
         }
 
         @media (max-width: 640px) {
-            #bookingModalOverlay.wa-modal-overlay {
+            body[data-page="index"] #bookingModalOverlay.wa-modal-overlay{
                 padding: 24px 12px !important;
             }
 
-            .booking-modal {
+            body[data-page="index"] .booking-modal{
                 max-height: calc(100vh - 48px);
             }
         }
 
-        .booking-modal .wa-modal-scroll {
+        body[data-page="index"] .booking-modal .wa-modal-scroll{
             padding: 22px 26px 26px;
             overflow-y: auto;
             flex: 1 1 auto;
             min-height: 0;
         }
 
-        .bk-section {
+        body[data-page="index"] .bk-section{
             margin-bottom: 24px;
         }
 
-        .bk-section:last-of-type {
+        body[data-page="index"] .bk-section:last-of-type{
             margin-bottom: 8px;
         }
 
-        .bk-section-title {
+        body[data-page="index"] .bk-section-title{
             display: flex;
             align-items: center;
             gap: 10px;
@@ -9434,7 +9425,7 @@ object {
             margin: 0 0 14px;
         }
 
-        .bk-section-title .bk-step-num {
+        body[data-page="index"] .bk-section-title .bk-step-num{
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -9448,39 +9439,39 @@ object {
             flex-shrink: 0;
         }
 
-        .bk-grid-2 {
+        body[data-page="index"] .bk-grid-2{
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 14px;
         }
 
         @media (max-width: 560px) {
-            .bk-grid-2 {
+            body[data-page="index"] .bk-grid-2{
                 grid-template-columns: 1fr;
             }
         }
 
-        .bk-field {
+        body[data-page="index"] .bk-field{
             display: flex;
             flex-direction: column;
             gap: 6px;
             margin-bottom: 14px;
         }
 
-        .bk-field label {
+        body[data-page="index"] .bk-field label{
             font-size: 0.82rem;
             font-weight: 600;
             color: #4a5468;
         }
 
-        .bk-field label .bk-optional {
+        body[data-page="index"] .bk-field label .bk-optional{
             font-weight: 400;
             color: #98a1b3;
         }
 
-        .bk-field input,
-        .bk-field select,
-        .bk-field textarea {
+        body[data-page="index"] .bk-field input,
+        body[data-page="index"] .bk-field select,
+        body[data-page="index"] .bk-field textarea{
             width: 100%;
             padding: 11px 13px;
             border: 1.5px solid #e2e5ec;
@@ -9492,49 +9483,49 @@ object {
             transition: border-color .18s ease, background .18s ease;
         }
 
-        .bk-field input:focus,
-        .bk-field select:focus,
-        .bk-field textarea:focus {
+        body[data-page="index"] .bk-field input:focus,
+        body[data-page="index"] .bk-field select:focus,
+        body[data-page="index"] .bk-field textarea:focus{
             outline: none;
             border-color: var(--gold-deep, #a9760b);
             background: #fff;
         }
 
-        .bk-field textarea {
+        body[data-page="index"] .bk-field textarea{
             resize: vertical;
             min-height: 70px;
         }
 
-        .bk-hint {
+        body[data-page="index"] .bk-hint{
             font-size: 0.74rem;
             color: #98a1b3;
         }
 
-        .bk-room-options {
+        body[data-page="index"] .bk-room-options{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
         }
 
         @media (max-width: 560px) {
-            .bk-room-options {
+            body[data-page="index"] .bk-room-options{
                 grid-template-columns: 1fr;
             }
         }
 
-        .bk-room-card {
+        body[data-page="index"] .bk-room-card{
             position: relative;
             display: block;
             cursor: pointer;
         }
 
-        .bk-room-card input {
+        body[data-page="index"] .bk-room-card input{
             position: absolute;
             opacity: 0;
             pointer-events: none;
         }
 
-        .bk-room-card .bk-room-inner {
+        body[data-page="index"] .bk-room-card .bk-room-inner{
             border: 1.5px solid #e2e5ec;
             border-radius: 12px;
             padding: 12px 12px 14px;
@@ -9543,7 +9534,7 @@ object {
             background: #fbfbfd;
         }
 
-        .bk-room-card .bk-room-name {
+        body[data-page="index"] .bk-room-card .bk-room-name{
             display: block;
             font-weight: 700;
             font-size: 0.86rem;
@@ -9551,31 +9542,31 @@ object {
             margin-bottom: 4px;
         }
 
-        .bk-room-card .bk-room-price {
+        body[data-page="index"] .bk-room-card .bk-room-price{
             display: block;
             font-size: 0.8rem;
             color: var(--gold-deep, #a9760b);
             font-weight: 700;
         }
 
-        .bk-room-card .bk-room-price:empty::after {
+        body[data-page="index"] .bk-room-card .bk-room-price:empty::after{
             content: '—';
             color: #c3c8d4;
             font-weight: 400;
         }
 
-        .bk-room-card input:checked+.bk-room-inner {
+        body[data-page="index"] .bk-room-card input:checked+.bk-room-inner{
             border-color: var(--gold-deep, #a9760b);
             background: var(--gold-pale, #fbead0);
             box-shadow: 0 0 0 2px rgba(169, 118, 11, 0.15);
         }
 
-        .bk-room-card.bk-room-disabled {
+        body[data-page="index"] .bk-room-card.bk-room-disabled{
             opacity: 0.4;
             pointer-events: none;
         }
 
-        .bk-paket-display {
+        body[data-page="index"] .bk-paket-display{
             display: flex;
             align-items: center;
             gap: 10px;
@@ -9589,20 +9580,20 @@ object {
             background: var(--gold-pale, #fbead0);
         }
 
-        .bk-paket-display.bk-empty {
+        body[data-page="index"] .bk-paket-display.bk-empty{
             border-color: #e2e5ec;
             color: #98a1b3;
             font-weight: 500;
             background: #fbfbfd;
         }
 
-        .bk-submit-btn {
+        body[data-page="index"] .bk-submit-btn{
             width: 100%;
             justify-content: center;
             margin-top: 6px;
         }
 
-        .bk-error-msg {
+        body[data-page="index"] .bk-error-msg{
             display: none;
             color: #c0392b;
             font-size: 0.8rem;
@@ -9610,7 +9601,7 @@ object {
             margin: -8px 0 14px;
         }
 
-        .bk-error-msg.show {
+        body[data-page="index"] .bk-error-msg.show{
             display: block;
         }
 
@@ -9619,7 +9610,7 @@ object {
    ============================================================ */
 /* ===== Blok style #1 dari tentang.html ===== */
 /* ================= TENTANG KAMI — PAGE STYLES ================= */
-        :root {
+        body[data-page="tentang"]{
             --white: var(--color-surface);
             --line: var(--color-border);
             --radius-lg: var(--r-lg);
@@ -9643,26 +9634,26 @@ object {
             --ease-out: var(--ease-smooth);
         }
 
-        a {
+        body[data-page="tentang"] a{
             color: inherit;
         }
 
-        a:visited {
+        body[data-page="tentang"] a:visited{
             color: inherit;
         }
 
-        button:focus-visible,
-        a:focus-visible {
+        body[data-page="tentang"] button:focus-visible,
+        body[data-page="tentang"] a:focus-visible{
             outline: 2px solid var(--gold-deep);
             outline-offset: 2px;
         }
 
         /* ---------- Crop hero jadi strip atas (senada dengan page-header di Info Manasik & Kontak) ---------- */
-        .hero {
+        body[data-page="tentang"] .hero{
             min-height: 640px;
         }
 
-        .about-hero {
+        body[data-page="tentang"] .about-hero{
             position: relative;
             overflow: hidden;
             background: linear-gradient(155deg, var(--ink-deep) 0%, var(--brown) 55%, var(--brown-soft) 100%);
@@ -9670,7 +9661,7 @@ object {
             text-align: center;
         }
 
-        .about-hero::before {
+        body[data-page="tentang"] .about-hero::before{
             content: "";
             position: absolute;
             inset: 0;
@@ -9678,24 +9669,24 @@ object {
             pointer-events: none;
         }
 
-        .about-hero-inner {
+        body[data-page="tentang"] .about-hero-inner{
             position: relative;
             z-index: 2;
             max-width: 760px;
             margin: 0 auto;
         }
 
-        .about-hero .section-eyebrow {
+        body[data-page="tentang"] .about-hero .section-eyebrow{
             color: var(--gold-light);
             justify-content: center;
         }
 
-        .about-hero .section-eyebrow::before,
-        .about-hero .section-eyebrow::after {
+        body[data-page="tentang"] .about-hero .section-eyebrow::before,
+        body[data-page="tentang"] .about-hero .section-eyebrow::after{
             background: linear-gradient(90deg, var(--gold), transparent);
         }
 
-        .about-hero h1 {
+        body[data-page="tentang"] .about-hero h1{
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-weight: 700;
             font-size: clamp(2.4rem, 4.6vw, 3.6rem);
@@ -9704,13 +9695,13 @@ object {
             line-height: 1.15;
         }
 
-        .about-hero h1 span {
+        body[data-page="tentang"] .about-hero h1 span{
             color: var(--gold-light);
             font-style: italic;
             font-weight: 500;
         }
 
-        .about-hero p {
+        body[data-page="tentang"] .about-hero p{
             color: rgba(255, 255, 255, 0.8);
             font-size: 1.08rem;
             line-height: 1.8;
@@ -9718,7 +9709,7 @@ object {
             margin: 0 auto;
         }
 
-        .about-hero-stats {
+        body[data-page="tentang"] .about-hero-stats{
             display: flex;
             justify-content: center;
             gap: 48px;
@@ -9726,7 +9717,7 @@ object {
             flex-wrap: wrap;
         }
 
-        .about-hero-stat strong {
+        body[data-page="tentang"] .about-hero-stat strong{
             display: block;
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-size: 1.8rem;
@@ -9734,7 +9725,7 @@ object {
             color: var(--gold-light);
         }
 
-        .about-hero-stat span {
+        body[data-page="tentang"] .about-hero-stat span{
             font-size: 0.72rem;
             letter-spacing: 0.06em;
             text-transform: uppercase;
@@ -9743,20 +9734,13 @@ object {
 
         /* ---------- DASHBOARD PANEL ---------- */
 
-        .dash-section {
+        body[data-page="tentang"] .dash-section{
             padding: clamp(50px, 8vw, 100px) 0;
             /* Alias warna sudah dipindah ke :root di bagian atas file supaya
                seluruh halaman (bukan cuma dashboard) seirama. */
         }
 
-        .dash-sidebar {
-            position: static;
-            display: flex;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-
-        .dash-sidebar {
+        body[data-page="tentang"] .dash-sidebar{
             position: sticky;
             top: 118px;
             background: var(--white);
@@ -9766,7 +9750,7 @@ object {
             box-shadow: var(--shadow-md);
         }
 
-        .dash-sidebar-label {
+        body[data-page="tentang"] .dash-sidebar-label{
             font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 0.1em;
@@ -9775,7 +9759,7 @@ object {
             padding: 10px 14px 6px;
         }
 
-        .dash-nav-btn {
+        body[data-page="tentang"] .dash-nav-btn{
             display: flex;
             align-items: center;
             gap: 12px;
@@ -9794,7 +9778,7 @@ object {
             margin-bottom: 4px;
         }
 
-        .dash-nav-btn .dash-nav-icon {
+        body[data-page="tentang"] .dash-nav-btn .dash-nav-icon{
             display: flex;
             align-items: center;
             justify-content: center;
@@ -9807,23 +9791,23 @@ object {
             transition: all 0.3s var(--ease-out);
         }
 
-        .dash-nav-btn:hover {
+        body[data-page="tentang"] .dash-nav-btn:hover{
             background: var(--paper-warm);
             color: var(--brown-soft);
         }
 
-        .dash-nav-btn.active {
+        body[data-page="tentang"] .dash-nav-btn.active{
             background: var(--palette-gold);
             color: var(--ink);
             box-shadow: var(--shadow-gold);
         }
 
-        .dash-nav-btn.active .dash-nav-icon {
+        body[data-page="tentang"] .dash-nav-btn.active .dash-nav-icon{
             background: rgba(255, 255, 255, 0.35);
             color: var(--ink);
         }
 
-        .dash-content {
+        body[data-page="tentang"] .dash-content{
             background: var(--white);
             border: 1px solid var(--line);
             border-radius: var(--radius-lg);
@@ -9834,16 +9818,16 @@ object {
             overflow: hidden;
         }
 
-        .dash-panel {
+        body[data-page="tentang"] .dash-panel{
             display: none;
             animation: fadeInUp 0.5s var(--ease-out) both;
         }
 
-        .dash-panel.active {
+        body[data-page="tentang"] .dash-panel.active{
             display: block;
         }
 
-        .dash-panel h2 {
+        body[data-page="tentang"] .dash-panel h2{
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-size: clamp(1.6rem, 3vw, 2.1rem);
             font-weight: 700;
@@ -9851,14 +9835,14 @@ object {
             margin-bottom: 20px;
         }
 
-        .dash-panel p {
+        body[data-page="tentang"] .dash-panel p{
             color: var(--text-soft);
             font-size: 1rem;
             line-height: 1.85;
             margin-bottom: 16px;
         }
 
-        .dash-panel-list {
+        body[data-page="tentang"] .dash-panel-list{
             list-style: none;
             display: flex;
             flex-direction: column;
@@ -9866,7 +9850,7 @@ object {
             margin-top: 28px;
         }
 
-        .dash-panel-list li {
+        body[data-page="tentang"] .dash-panel-list li{
             display: flex;
             gap: 14px;
             align-items: flex-start;
@@ -9876,7 +9860,7 @@ object {
             border-radius: var(--radius-md);
         }
 
-        .dash-panel-list .num {
+        body[data-page="tentang"] .dash-panel-list .num{
             flex-shrink: 0;
             width: 32px;
             height: 32px;
@@ -9890,13 +9874,13 @@ object {
             font-size: 0.85rem;
         }
 
-        .dash-panel-list p {
+        body[data-page="tentang"] .dash-panel-list p{
             margin: 0;
             font-size: 0.94rem;
             line-height: 1.75;
         }
 
-        .dash-panel-quote {
+        body[data-page="tentang"] .dash-panel-quote{
             margin-top: 28px;
             padding: 24px 26px;
             border-left: 4px solid var(--gold);
@@ -9908,21 +9892,21 @@ object {
             line-height: 1.8;
         }
 
-        .hero h1 span {
+        body[data-page="tentang"] .hero h1 span{
             color: var(--palette-gold);
             font-style: italic;
             font-weight: 500;
         }
 
-        .hero-inner,
-        .hero-content {
+        body[data-page="tentang"] .hero-inner,
+        body[data-page="tentang"] .hero-content{
             max-width: 100vw;
             overflow-x: hidden;
         }
 
-        .hero h1,
-        .hero .hero-desc,
-        .hero p {
+        body[data-page="tentang"] .hero h1,
+        body[data-page="tentang"] .hero .hero-desc,
+        body[data-page="tentang"] .hero p{
             max-width: 100%;
             box-sizing: border-box;
             overflow-wrap: break-word;
@@ -9931,9 +9915,9 @@ object {
 
         @media (max-width: 480px) {
 
-            .hero h1,
-            .hero .hero-desc,
-            .hero p {
+            body[data-page="tentang"] .hero h1,
+        body[data-page="tentang"] .hero .hero-desc,
+        body[data-page="tentang"] .hero p{
                 padding-left: 12px;
                 padding-right: 12px;
             }
@@ -9941,7 +9925,7 @@ object {
 
         /* ---------- PROFIL PEMANDU ---------- */
 
-        .pemandu-grid {
+        body[data-page="tentang"] .pemandu-grid{
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -9949,12 +9933,12 @@ object {
             margin-top: 8px;
         }
 
-        .pemandu-card {
+        body[data-page="tentang"] .pemandu-card{
             flex: 1 1 calc(33.333% - 16px);
             max-width: calc(33.333% - 16px);
         }
 
-        .pemandu-card {
+        body[data-page="tentang"] .pemandu-card{
             background: var(--white);
             border: 1px solid var(--line);
             border-radius: var(--radius-lg, 20px);
@@ -9964,20 +9948,20 @@ object {
             box-shadow: var(--shadow-sm);
         }
 
-        .pemandu-card:hover {
+        body[data-page="tentang"] .pemandu-card:hover{
             border-color: var(--gold-deep);
             box-shadow: var(--shadow-lg);
             transform: translateY(-6px);
         }
 
-        .pemandu-photo {
+        body[data-page="tentang"] .pemandu-photo{
             position: relative;
             aspect-ratio: 4 / 5;
             overflow: hidden;
             background: linear-gradient(135deg, var(--gold-light), var(--gold));
         }
 
-        .pemandu-photo img {
+        body[data-page="tentang"] .pemandu-photo img{
             width: 100%;
             height: auto;
             object-fit: cover;
@@ -9985,11 +9969,11 @@ object {
             transition: transform 0.5s var(--ease-out);
         }
 
-        .pemandu-card:hover .pemandu-photo img {
+        body[data-page="tentang"] .pemandu-card:hover .pemandu-photo img{
             transform: scale(1.06);
         }
 
-        .pemandu-photo::after {
+        body[data-page="tentang"] .pemandu-photo::after{
             content: "";
             position: absolute;
             inset: auto 0 0 0;
@@ -9998,11 +9982,11 @@ object {
             pointer-events: none;
         }
 
-        .pemandu-info {
+        body[data-page="tentang"] .pemandu-info{
             padding: 18px 16px 16px;
         }
 
-        .pemandu-name {
+        body[data-page="tentang"] .pemandu-name{
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-weight: 700;
             font-size: clamp(0.95rem, 3.6vw, 1.05rem);
@@ -10010,7 +9994,7 @@ object {
             margin-bottom: 8px;
         }
 
-        .pemandu-role {
+        body[data-page="tentang"] .pemandu-role{
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -10024,21 +10008,21 @@ object {
             border-radius: var(--radius-full);
         }
 
-        .pemandu-role svg {
+        body[data-page="tentang"] .pemandu-role svg{
             width: 14px;
             height: 14px;
             stroke-width: 2.4;
             flex-shrink: 0;
         }
 
-        .pemandu-desc {
+        body[data-page="tentang"] .pemandu-desc{
             font-size: 0.88rem;
             line-height: 1.7;
             color: var(--text-soft);
             margin: 12px 0 4px;
         }
 
-        .pemandu-note {
+        body[data-page="tentang"] .pemandu-note{
             margin-top: 24px;
             font-size: 0.86rem;
             color: var(--text-muted);
@@ -10048,7 +10032,7 @@ object {
         /* ---------- RESPONSIVE: TABLET (<=1024px) ---------- */
 
         @media (max-width: 1024px) {
-            .pemandu-card {
+            body[data-page="tentang"] .pemandu-card{
                 flex: 1 1 calc(50% - 12px);
                 max-width: calc(50% - 12px);
             }
@@ -10057,17 +10041,17 @@ object {
         /* ---------- RESPONSIVE: TABLET KECIL & MOBILE (<=768px) ---------- */
 
         @media (max-width: 768px) {
-            .pemandu-card {
+            body[data-page="tentang"] .pemandu-card{
                 flex: 1 1 100%;
                 max-width: 100%;
             }
 
-            .dash-wrap {
+            body[data-page="tentang"] .dash-wrap{
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
 
-            .dash-sidebar {
+            body[data-page="tentang"] .dash-sidebar{
                 position: static;
                 display: flex;
                 overflow-x: auto;
@@ -10076,11 +10060,11 @@ object {
                 -webkit-overflow-scrolling: touch;
             }
 
-            .dash-sidebar-label {
+            body[data-page="tentang"] .dash-sidebar-label{
                 display: none;
             }
 
-            .dash-nav-btn {
+            body[data-page="tentang"] .dash-nav-btn{
                 flex-direction: column;
                 text-align: center;
                 gap: 6px;
@@ -10090,28 +10074,28 @@ object {
                 margin-bottom: 0;
             }
 
-            .dash-nav-btn .dash-nav-icon {
+            body[data-page="tentang"] .dash-nav-btn .dash-nav-icon{
                 width: 34px;
                 height: 34px;
             }
 
-            .dash-content {
+            body[data-page="tentang"] .dash-content{
                 padding: 30px 24px;
             }
 
-            .about-hero {
+            body[data-page="tentang"] .about-hero{
                 padding: 150px 24px 80px;
             }
 
-            .about-hero-stats {
+            body[data-page="tentang"] .about-hero-stats{
                 gap: 32px;
             }
 
-            .profil-izin-box {
+            body[data-page="tentang"] .profil-izin-box{
                 gap: 10px;
             }
 
-            .footer-grid {
+            body[data-page="tentang"] .footer-grid{
                 grid-template-columns: 1fr 1fr;
                 gap: 32px 20px;
             }
@@ -10120,67 +10104,67 @@ object {
         /* ---------- RESPONSIVE: HP KECIL (<=600px) ---------- */
 
         @media (max-width: 600px) {
-            .footer-grid {
+            body[data-page="tentang"] .footer-grid{
                 grid-template-columns: 1fr;
             }
 
-            .about-hero-stats {
+            body[data-page="tentang"] .about-hero-stats{
                 gap: 24px;
                 justify-content: space-between;
             }
 
-            .about-hero-stat strong {
+            body[data-page="tentang"] .about-hero-stat strong{
                 font-size: 1.5rem;
             }
 
-            .dash-panel h2 {
+            body[data-page="tentang"] .dash-panel h2{
                 font-size: 1.4rem;
             }
 
-            .dash-panel-quote {
+            body[data-page="tentang"] .dash-panel-quote{
                 padding: 18px 18px;
                 font-size: 0.95rem;
             }
         }
 
         @media (max-width: 480px) {
-            .about-hero {
+            body[data-page="tentang"] .about-hero{
                 padding: 140px 20px 70px;
             }
 
-            .about-hero-stats {
+            body[data-page="tentang"] .about-hero-stats{
                 gap: 28px;
             }
 
-            .dash-content {
+            body[data-page="tentang"] .dash-content{
                 padding: 24px 18px;
             }
 
-            .dash-panel-list li {
+            body[data-page="tentang"] .dash-panel-list li{
                 padding: 14px 16px;
             }
         }
 
         /* ---------- PERBAIKAN JARAK ANTAR SECTION (khusus halaman Tentang) ---------- */
 
-        .poster-paket {
+        body[data-page="tentang"] .poster-paket{
             padding: 70px 0 60px;
         }
 
-        .footer {
+        body[data-page="tentang"] .footer{
             margin-top: 0;
         }
 
         /* ---------- PROFIL PERUSAHAAN: BADGE IZIN RESMI ---------- */
 
-        .profil-izin-box {
+        body[data-page="tentang"] .profil-izin-box{
             display: flex;
             flex-wrap: wrap;
             gap: 14px;
             margin: 22px 0 28px;
         }
 
-        .profil-izin-badge {
+        body[data-page="tentang"] .profil-izin-badge{
             display: flex;
             align-items: center;
             gap: 12px;
@@ -10191,12 +10175,12 @@ object {
             flex: 1 1 240px;
         }
 
-        .profil-izin-badge svg {
+        body[data-page="tentang"] .profil-izin-badge svg{
             flex-shrink: 0;
             color: var(--gold-deep);
         }
 
-        .profil-izin-badge .izin-label {
+        body[data-page="tentang"] .profil-izin-badge .izin-label{
             display: block;
             font-size: 0.68rem;
             font-weight: 700;
@@ -10206,27 +10190,27 @@ object {
             margin-bottom: 2px;
         }
 
-        .profil-izin-badge .izin-value {
+        body[data-page="tentang"] .profil-izin-badge .izin-value{
             display: block;
             font-size: 0.92rem;
             font-weight: 700;
             color: var(--brown-soft);
         }
 
-        .profil-izin-badge .izin-value.placeholder {
+        body[data-page="tentang"] .profil-izin-badge .izin-value.placeholder{
             color: #b3452f;
             font-weight: 600;
             font-style: italic;
         }
 
-        .profil-highlight-grid {
+        body[data-page="tentang"] .profil-highlight-grid{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
             margin: 28px 0 8px;
         }
 
-        .profil-highlight-item {
+        body[data-page="tentang"] .profil-highlight-item{
             background: var(--paper-warm);
             border: 1px solid var(--line);
             border-radius: var(--radius-md);
@@ -10234,7 +10218,7 @@ object {
             text-align: center;
         }
 
-        .profil-highlight-item strong {
+        body[data-page="tentang"] .profil-highlight-item strong{
             display: block;
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-size: clamp(1.2rem, 5.2vw, 1.5rem);
@@ -10242,23 +10226,23 @@ object {
             color: var(--palette-teal-deep);
         }
 
-        .profil-highlight-item span {
+        body[data-page="tentang"] .profil-highlight-item span{
             font-size: 0.78rem;
             color: var(--text-muted);
         }
 
         @media (max-width: 640px) {
-            .profil-highlight-grid {
+            body[data-page="tentang"] .profil-highlight-grid{
                 grid-template-columns: 1fr 1fr;
             }
 
-            .profil-izin-badge {
+            body[data-page="tentang"] .profil-izin-badge{
                 flex: 1 1 100%;
             }
         }
 
         @media (max-width: 400px) {
-            .profil-highlight-grid {
+            body[data-page="tentang"] .profil-highlight-grid{
                 grid-template-columns: 1fr;
             }
         }
@@ -10266,34 +10250,34 @@ object {
         /* ---------- PENGUATAN RESPONSIF TAMBAHAN ---------- */
 
         @media (max-width: 1024px) and (min-width: 901px) {
-            .dash-content {
+            body[data-page="tentang"] .dash-content{
                 padding: 36px 30px;
             }
         }
 
         @media (max-width: 360px) {
-            .about-hero {
+            body[data-page="tentang"] .about-hero{
                 padding: 130px 20px 70px;
             }
 
-            .profil-izin-badge {
+            body[data-page="tentang"] .profil-izin-badge{
                 padding: 10px 14px;
             }
 
-            .pemandu-info {
+            body[data-page="tentang"] .pemandu-info{
                 padding: 14px 12px 18px;
             }
         }
 
         @media (max-width: 900px) {
-            .dash-nav-btn {
+            body[data-page="tentang"] .dash-nav-btn{
                 min-width: 92px;
             }
         }
 
         /* ---------- HERO PHOTO CAROUSEL (pengganti hero video background) ---------- */
 
-        .hero-bg {
+        body[data-page="tentang"] .hero-bg{
             position: absolute;
             background-image: url("Image/fototentang.png");
             overflow: hidden;
@@ -10328,11 +10312,11 @@ object {
            berbentuk banner seperti ini — sama seperti hampir semua website
            lain dengan foto latar di belakang teks. */
         @media (max-width: 900px) {
-            .hero {
+            body[data-page="tentang"] .hero{
                 min-height: 480px;
             }
 
-            .hero-bg {
+            body[data-page="tentang"] .hero-bg{
                 /* Foto asli (fototentang.png) rasionya sangat lebar (960x300,
                    ~3.2:1) sedangkan kotak hero di HP tegak (portrait).
                    Kalau tetap pakai foto lebar itu, background-size:cover
@@ -10352,13 +10336,13 @@ object {
             }
         }
 
-        .hero-carousel {
+        body[data-page="tentang"] .hero-carousel{
             position: relative;
             width: 100%;
             height: 100%;
         }
 
-        .hero-slide {
+        body[data-page="tentang"] .hero-slide{
             position: absolute;
             inset: 0;
             background-size: cover;
@@ -10369,12 +10353,12 @@ object {
             will-change: opacity, transform;
         }
 
-        .hero-slide.is-active {
+        body[data-page="tentang"] .hero-slide.is-active{
             opacity: 1;
             transform: scale(1);
         }
 
-        .hero-bg::after {
+        body[data-page="tentang"] .hero-bg::after{
             content: "";
             position: absolute;
             inset: 0;
@@ -10382,7 +10366,7 @@ object {
             z-index: 1;
         }
 
-        .hero-carousel-dots {
+        body[data-page="tentang"] .hero-carousel-dots{
             position: absolute;
             left: 50%;
             bottom: 22px;
@@ -10392,7 +10376,7 @@ object {
             z-index: 3;
         }
 
-        .hero-carousel-dots button {
+        body[data-page="tentang"] .hero-carousel-dots button{
             width: 8px;
             height: 8px;
             border-radius: 50%;
@@ -10403,7 +10387,7 @@ object {
             transition: all 0.3s var(--ease-out, ease);
         }
 
-        .hero-carousel-dots button.is-active {
+        body[data-page="tentang"] .hero-carousel-dots button.is-active{
             width: 22px;
             border-radius: 5px;
             background: var(--gold-light, #e4c77a);
@@ -10411,57 +10395,57 @@ object {
 
         /* ---------- PENGUATAN RESPONSIF UMUM (semua elemen page ini) ---------- */
 
-        img,
-        video,
-        svg {
+        body[data-page="tentang"] img,
+        body[data-page="tentang"] video,
+        body[data-page="tentang"] svg{
             max-width: 100%;
             height: auto;
         }
 
-        .about-hero,
-        .dash-content,
-        .pemandu-info {
+        body[data-page="tentang"] .about-hero,
+        body[data-page="tentang"] .dash-content,
+        body[data-page="tentang"] .pemandu-info{
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
 
         @media (max-width: 480px) {
-            .profil-izin-box {
+            body[data-page="tentang"] .profil-izin-box{
                 flex-direction: column;
             }
 
-            .profil-izin-badge {
+            body[data-page="tentang"] .profil-izin-badge{
                 flex: 1 1 100%;
                 width: 100%;
             }
 
-            .poster-paket .btn {
+            body[data-page="tentang"] .poster-paket .btn{
                 width: 100%;
                 justify-content: center;
             }
 
-            .about-hero h1 {
+            body[data-page="tentang"] .about-hero h1{
                 font-size: clamp(1.9rem, 7vw, 2.6rem);
             }
 
-            .about-hero p {
+            body[data-page="tentang"] .about-hero p{
                 font-size: 0.98rem;
             }
         }
 
         @media (max-width: 360px) {
-            .footer-grid {
+            body[data-page="tentang"] .footer-grid{
                 grid-template-columns: 1fr;
             }
 
-            .about-hero-stats {
+            body[data-page="tentang"] .about-hero-stats{
                 gap: 18px;
             }
         }
 
         /* ================= MODAL: FORM BIODATA & EMAIL ================= */
 
-        .wa-modal-overlay {
+        body[data-page="tentang"] .wa-modal-overlay{
             position: fixed;
             inset: 0;
             background: rgba(20, 14, 8, 0.62);
@@ -10476,12 +10460,12 @@ object {
             transition: opacity 0.25s ease, visibility 0.25s ease;
         }
 
-        .wa-modal-overlay.active {
+        body[data-page="tentang"] .wa-modal-overlay.active{
             opacity: 1;
             visibility: visible;
         }
 
-        .wa-modal {
+        body[data-page="tentang"] .wa-modal{
             position: relative;
             background: var(--white);
             border-radius: var(--radius-lg, 22px);
@@ -10496,13 +10480,13 @@ object {
             transition: transform 0.3s ease;
         }
 
-        .wa-modal-overlay.active .wa-modal {
+        body[data-page="tentang"] .wa-modal-overlay.active .wa-modal{
             transform: translateY(0) scale(1);
         }
 
         /* ---- Header banner (bagian atas berwarna) ---- */
 
-        .wa-modal-header {
+        body[data-page="tentang"] .wa-modal-header{
             position: relative;
             padding: 30px 32px 24px;
             text-align: center;
@@ -10511,7 +10495,7 @@ object {
             flex-shrink: 0;
         }
 
-        .wa-modal-header::before {
+        body[data-page="tentang"] .wa-modal-header::before{
             content: "";
             position: absolute;
             inset: 0;
@@ -10519,11 +10503,11 @@ object {
             pointer-events: none;
         }
 
-        .wa-modal-header.email-header {
+        body[data-page="tentang"] .wa-modal-header.email-header{
             background: linear-gradient(140deg, var(--gold-light, #e3c064) 0%, var(--gold-deep, #a87a24) 100%);
         }
 
-        .wa-modal-close {
+        body[data-page="tentang"] .wa-modal-close{
             position: absolute;
             top: 14px;
             right: 14px;
@@ -10543,12 +10527,12 @@ object {
             z-index: 2;
         }
 
-        .wa-modal-close:hover {
+        body[data-page="tentang"] .wa-modal-close:hover{
             background: rgba(255, 255, 255, 0.36);
             transform: rotate(90deg);
         }
 
-        .wa-modal-icon {
+        body[data-page="tentang"] .wa-modal-icon{
             position: relative;
             width: 56px;
             height: 56px;
@@ -10562,7 +10546,7 @@ object {
             margin: 0 auto 14px;
         }
 
-        .wa-modal-header h3 {
+        body[data-page="tentang"] .wa-modal-header h3{
             position: relative;
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-size: clamp(1.08rem, 4.5vw, 1.28rem);
@@ -10571,7 +10555,7 @@ object {
             margin-bottom: 6px;
         }
 
-        .wa-modal-sub {
+        body[data-page="tentang"] .wa-modal-sub{
             position: relative;
             font-size: 0.88rem;
             color: rgba(255, 255, 255, 0.88);
@@ -10582,23 +10566,23 @@ object {
 
         /* ---- Body / scroll area ---- */
 
-        .wa-modal-scroll {
+        body[data-page="tentang"] .wa-modal-scroll{
             overflow-y: auto;
             padding: 26px 32px 28px;
         }
 
-        .wa-section-title {
+        body[data-page="tentang"] .wa-section-title{
             display: flex;
             align-items: center;
             gap: 10px;
             margin: 0 0 16px;
         }
 
-        .wa-section-title:not(:first-child) {
+        body[data-page="tentang"] .wa-section-title:not(:first-child){
             margin-top: 22px;
         }
 
-        .wa-section-title .num {
+        body[data-page="tentang"] .wa-section-title .num{
             flex-shrink: 0;
             width: 24px;
             height: 24px;
@@ -10612,7 +10596,7 @@ object {
             font-size: 0.72rem;
         }
 
-        .wa-section-title span.label {
+        body[data-page="tentang"] .wa-section-title span.label{
             font-size: 0.72rem;
             font-weight: 800;
             letter-spacing: 0.08em;
@@ -10620,28 +10604,28 @@ object {
             color: var(--gold-deep, #a87a24);
         }
 
-        .wa-section-title::after {
+        body[data-page="tentang"] .wa-section-title::after{
             content: "";
             flex: 1;
             height: 1px;
             background: var(--line, #e2dccf);
         }
 
-        .wa-form-grid {
+        body[data-page="tentang"] .wa-form-grid{
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0 14px;
         }
 
-        .wa-field {
+        body[data-page="tentang"] .wa-field{
             margin-bottom: 15px;
         }
 
-        .wa-field.full {
+        body[data-page="tentang"] .wa-field.full{
             grid-column: 1 / -1;
         }
 
-        .wa-field label {
+        body[data-page="tentang"] .wa-field label{
             display: block;
             font-size: 0.8rem;
             font-weight: 700;
@@ -10649,11 +10633,11 @@ object {
             margin-bottom: 6px;
         }
 
-        .wa-input-wrap {
+        body[data-page="tentang"] .wa-input-wrap{
             position: relative;
         }
 
-        .wa-field-icon {
+        body[data-page="tentang"] .wa-field-icon{
             position: absolute;
             left: 13px;
             top: 50%;
@@ -10663,9 +10647,9 @@ object {
             pointer-events: none;
         }
 
-        .wa-field input,
-        .wa-field select,
-        .wa-field textarea {
+        body[data-page="tentang"] .wa-field input,
+        body[data-page="tentang"] .wa-field select,
+        body[data-page="tentang"] .wa-field textarea{
             width: 100%;
             padding: 11px 14px 11px 40px;
             border-radius: var(--radius-md, 12px);
@@ -10679,17 +10663,17 @@ object {
             appearance: none;
         }
 
-        .wa-field textarea {
+        body[data-page="tentang"] .wa-field textarea{
             padding-left: 14px;
             min-height: 78px;
         }
 
-        .wa-field textarea+.wa-field-icon,
-        .wa-input-wrap textarea~.wa-field-icon {
+        body[data-page="tentang"] .wa-field textarea+.wa-field-icon,
+        body[data-page="tentang"] .wa-input-wrap textarea~.wa-field-icon{
             display: none;
         }
 
-        .wa-field select {
+        body[data-page="tentang"] .wa-field select{
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a87a24' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 14px center;
@@ -10697,22 +10681,22 @@ object {
             cursor: pointer;
         }
 
-        .wa-field input:focus,
-        .wa-field select:focus,
-        .wa-field textarea:focus {
+        body[data-page="tentang"] .wa-field input:focus,
+        body[data-page="tentang"] .wa-field select:focus,
+        body[data-page="tentang"] .wa-field textarea:focus{
             outline: none;
             border-color: var(--gold-deep, #b3862c);
             box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.18);
         }
 
-        .wa-field input.invalid,
-        .wa-field select.invalid,
-        .wa-field textarea.invalid {
+        body[data-page="tentang"] .wa-field input.invalid,
+        body[data-page="tentang"] .wa-field select.invalid,
+        body[data-page="tentang"] .wa-field textarea.invalid{
             border-color: #d34d3f;
             background: #fdf2f1;
         }
 
-        .wa-error {
+        body[data-page="tentang"] .wa-error{
             display: block;
             min-height: 16px;
             font-size: 0.74rem;
@@ -10721,7 +10705,7 @@ object {
             font-weight: 600;
         }
 
-        .wa-char-count {
+        body[data-page="tentang"] .wa-char-count{
             display: block;
             text-align: right;
             font-size: 0.7rem;
@@ -10729,7 +10713,7 @@ object {
             margin-top: 3px;
         }
 
-        .wa-trust-note {
+        body[data-page="tentang"] .wa-trust-note{
             display: flex;
             align-items: flex-start;
             gap: 8px;
@@ -10742,13 +10726,13 @@ object {
             line-height: 1.5;
         }
 
-        .wa-trust-note svg {
+        body[data-page="tentang"] .wa-trust-note svg{
             flex-shrink: 0;
             color: var(--gold-deep, #a87a24);
             margin-top: 1px;
         }
 
-        .wa-modal-submit {
+        body[data-page="tentang"] .wa-modal-submit{
             width: 100%;
             justify-content: center;
             display: flex;
@@ -10761,13 +10745,13 @@ object {
             font-size: 0.98rem;
         }
 
-        .email-modal-actions {
+        body[data-page="tentang"] .email-modal-actions{
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        .email-action-btn {
+        body[data-page="tentang"] .email-action-btn{
             width: 100%;
             justify-content: center;
             display: flex;
@@ -10779,12 +10763,12 @@ object {
             padding: 13px;
         }
 
-        .btn.email-action-btn.btn-secondary {
+        body[data-page="tentang"] .btn.email-action-btn.btn-secondary{
             background: var(--paper-warm, #faf7f1);
             color: var(--brown-soft, #4a3423);
         }
 
-        .email-copy-msg {
+        body[data-page="tentang"] .email-copy-msg{
             display: block;
             text-align: center;
             font-size: 0.82rem;
@@ -10794,17 +10778,17 @@ object {
         }
 
         @media (max-width: 560px) {
-            .wa-form-grid {
+            body[data-page="tentang"] .wa-form-grid{
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 480px) {
-            .wa-modal-header {
+            body[data-page="tentang"] .wa-modal-header{
                 padding: 26px 22px 20px;
             }
 
-            .wa-modal-scroll {
+            body[data-page="tentang"] .wa-modal-scroll{
                 padding: 22px 20px 24px;
             }
 
@@ -10813,20 +10797,20 @@ object {
                Dinaikkan ke 16px khusus di form supaya tidak ke-zoom,
                ukuran visualnya tetap sama karena wa-field punya padding
                yang menyesuaikan. */
-            .wa-field input,
-            .wa-field select,
-            .wa-field textarea {
+            body[data-page="tentang"] .wa-field input,
+        body[data-page="tentang"] .wa-field select,
+        body[data-page="tentang"] .wa-field textarea{
                 font-size: 16px;
             }
         }
 
         /* ---------- TOMBOL GALERI DI KARTU USTAD ---------- */
 
-        .pemandu-card-footer {
+        body[data-page="tentang"] .pemandu-card-footer{
             padding: 0 16px 20px;
         }
 
-        .pemandu-gallery-btn {
+        body[data-page="tentang"] .pemandu-gallery-btn{
             display: flex;
             align-items: center;
             justify-content: center;
@@ -10845,7 +10829,7 @@ object {
             transition: all 0.3s var(--ease-out);
         }
 
-        .pemandu-gallery-btn .pemandu-gallery-icon {
+        body[data-page="tentang"] .pemandu-gallery-btn .pemandu-gallery-icon{
             display: flex;
             align-items: center;
             justify-content: center;
@@ -10858,12 +10842,12 @@ object {
             transition: all 0.3s var(--ease-out);
         }
 
-        .pemandu-gallery-btn svg {
+        body[data-page="tentang"] .pemandu-gallery-btn svg{
             flex-shrink: 0;
         }
 
-        .pemandu-gallery-btn:hover,
-        .pemandu-gallery-btn:focus-visible {
+        body[data-page="tentang"] .pemandu-gallery-btn:hover,
+        body[data-page="tentang"] .pemandu-gallery-btn:focus-visible{
             border-color: var(--gold-deep);
             background: var(--gold-deep);
             color: #fff;
@@ -10871,15 +10855,15 @@ object {
             transform: translateY(-2px);
         }
 
-        .pemandu-gallery-btn:hover .pemandu-gallery-icon,
-        .pemandu-gallery-btn:focus-visible .pemandu-gallery-icon {
+        body[data-page="tentang"] .pemandu-gallery-btn:hover .pemandu-gallery-icon,
+        body[data-page="tentang"] .pemandu-gallery-btn:focus-visible .pemandu-gallery-icon{
             background: var(--white);
             color: var(--gold-deep);
         }
 
         /* ---------- MODAL GALERI FOTO USTAD & JAMAAH ---------- */
 
-        #galleryModalOverlay {
+        body[data-page="tentang"] #galleryModalOverlay{
             align-items: flex-start;
             overflow-y: auto;
             padding: 44px 20px;
@@ -10889,24 +10873,24 @@ object {
             z-index: 10000;
         }
 
-        #galleryModalOverlay .wa-modal {
+        body[data-page="tentang"] #galleryModalOverlay .wa-modal{
             max-width: 900px;
             max-height: none;
             margin: auto;
         }
 
-        .gallery-modal-scroll {
+        body[data-page="tentang"] .gallery-modal-scroll{
             overflow-y: visible;
             padding: 34px 48px 48px;
         }
 
-        .ustad-gallery-grid {
+        body[data-page="tentang"] .ustad-gallery-grid{
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 32px 32px;
         }
 
-        .gallery-grid-item {
+        body[data-page="tentang"] .gallery-grid-item{
             position: relative;
             min-width: 0;
             border-radius: var(--radius-md, 16px);
@@ -10917,12 +10901,12 @@ object {
             transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
         }
 
-        .gallery-grid-item:hover {
+        body[data-page="tentang"] .gallery-grid-item:hover{
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg, 0 18px 34px rgba(0, 0, 0, 0.16));
         }
 
-        .gallery-grid-photo {
+        body[data-page="tentang"] .gallery-grid-photo{
             position: relative;
             width: 100%;
             aspect-ratio: 4 / 3;
@@ -10930,8 +10914,8 @@ object {
             background: var(--paper-warm);
         }
 
-        .gallery-grid-photo img,
-        .gallery-grid-photo .gallery-fallback {
+        body[data-page="tentang"] .gallery-grid-photo img,
+        body[data-page="tentang"] .gallery-grid-photo .gallery-fallback{
             position: absolute;
             top: 0;
             left: 0;
@@ -10939,17 +10923,17 @@ object {
             height: 100%;
         }
 
-        .gallery-grid-item img {
+        body[data-page="tentang"] .gallery-grid-item img{
             object-fit: cover;
             display: block;
             transition: transform 0.4s var(--ease-out);
         }
 
-        .gallery-grid-item:hover img {
+        body[data-page="tentang"] .gallery-grid-item:hover img{
             transform: scale(1.06);
         }
 
-        .gallery-fallback {
+        body[data-page="tentang"] .gallery-fallback{
             width: 100%;
             height: 100%;
             display: flex;
@@ -10958,7 +10942,7 @@ object {
             background: linear-gradient(135deg, var(--gold-light), var(--gold));
         }
 
-        .gallery-fallback span {
+        body[data-page="tentang"] .gallery-fallback span{
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -10971,11 +10955,11 @@ object {
             margin: 12px;
         }
 
-        .gallery-fallback svg {
+        body[data-page="tentang"] .gallery-fallback svg{
             display: none;
         }
 
-        .gallery-empty-note {
+        body[data-page="tentang"] .gallery-empty-note{
             display: none;
             text-align: center;
             font-size: 0.86rem;
@@ -10984,36 +10968,36 @@ object {
         }
 
         @media (max-width: 900px) {
-            .ustad-gallery-grid {
+            body[data-page="tentang"] .ustad-gallery-grid{
                 gap: 24px 20px;
             }
         }
 
         @media (max-width: 720px) {
-            #galleryModalOverlay .wa-modal {
+            body[data-page="tentang"] #galleryModalOverlay .wa-modal{
                 max-width: 620px;
             }
 
-            .gallery-modal-scroll {
+            body[data-page="tentang"] .gallery-modal-scroll{
                 padding: 28px 26px 32px;
             }
 
-            .ustad-gallery-grid {
+            body[data-page="tentang"] .ustad-gallery-grid{
                 grid-template-columns: 1fr;
                 gap: 22px;
             }
         }
 
         @media (max-width: 480px) {
-            #galleryModalOverlay {
+            body[data-page="tentang"] #galleryModalOverlay{
                 padding: 24px 14px;
             }
 
-            .gallery-modal-scroll {
+            body[data-page="tentang"] .gallery-modal-scroll{
                 padding: 24px 18px 28px;
             }
 
-            .ustad-gallery-grid {
+            body[data-page="tentang"] .ustad-gallery-grid{
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
@@ -11024,30 +11008,30 @@ object {
    ============================================================ */
 /* ===== Blok style #1 dari kontak.html ===== */
 @media (max-width: 900px) {
-            .page-header {
+            body[data-page="kontak"] .page-header{
                 min-height: 0;
                 display: block;
                 padding: 76px 0 40px;
             }
 
-            .page-header-media {
+            body[data-page="kontak"] .page-header-media{
                 position: relative;
                 width: 100%;
                 aspect-ratio: 4080 / 1884;
                 overflow: hidden;
             }
 
-            .page-header-slide {
+            body[data-page="kontak"] .page-header-slide{
                 background-size: cover;
             }
 
-            .page-header .container {
+            body[data-page="kontak"] .page-header .container{
                 margin-top: 26px;
             }
         }
 
         @media (max-width: 480px) {
-            .page-header {
+            body[data-page="kontak"] .page-header{
                 padding-top: 68px;
             }
         }
@@ -11059,17 +11043,17 @@ object {
 /* ================= AGENT — PAGE STYLES ================= */
 
         /* ---------- Crop hero jadi strip atas (senada dengan page-header di Info Manasik & Kontak) ---------- */
-        .hero {
+        body[data-page="agent"] .hero{
             min-height: 640px;
         }
 
         @media (max-width: 900px) {
-            .hero {
+            body[data-page="agent"] .hero{
                 min-height: 480px;
             }
         }
 
-        .agent-hero-actions {
+        body[data-page="agent"] .agent-hero-actions{
             display: flex;
             justify-content: center;
             gap: 14px;
@@ -11079,15 +11063,15 @@ object {
 
         /* ---------- Warna emas untuk "Khalifah Asia Bekasi" di hero ---------- */
 
-        .hero h1 span {
+        body[data-page="agent"] .hero h1 span{
             color: var(--color-primary);
         }
 
-        #benefit .benefit-grid {
+        body[data-page="agent"] #benefit .benefit-grid{
             align-items: stretch;
         }
 
-        #benefit .benefit-card {
+        body[data-page="agent"] #benefit .benefit-card{
             position: relative;
             height: auto;
             min-height: 100%;
@@ -11110,13 +11094,13 @@ object {
                 border-color 0.4s var(--ease-smooth);
         }
 
-        #benefit .benefit-card:hover {
+        body[data-page="agent"] #benefit .benefit-card:hover{
             transform: translateY(-8px);
             box-shadow: var(--shadow-medium);
             border-color: rgba(160, 214, 180, 0.6);
         }
 
-        #benefit .benefit-index {
+        body[data-page="agent"] #benefit .benefit-index{
             display: block;
             font-size: 0.78rem;
             font-weight: 800;
@@ -11126,7 +11110,7 @@ object {
             margin-bottom: 8px;
         }
 
-        #benefit .benefit-icon {
+        body[data-page="agent"] #benefit .benefit-icon{
             width: 52px;
             height: 52px;
             border-radius: 15px;
@@ -11140,11 +11124,11 @@ object {
             transition: transform 0.35s var(--ease-smooth);
         }
 
-        #benefit .benefit-card:hover .benefit-icon {
+        body[data-page="agent"] #benefit .benefit-card:hover .benefit-icon{
             transform: scale(1.08) rotate(-4deg);
         }
 
-        #benefit .benefit-card h3 {
+        body[data-page="agent"] #benefit .benefit-card h3{
             font-size: 1.1rem;
             font-weight: 700;
             letter-spacing: -0.01em;
@@ -11152,7 +11136,7 @@ object {
             margin: 0 0 8px;
         }
 
-        #benefit .benefit-card p {
+        body[data-page="agent"] #benefit .benefit-card p{
             font-size: 0.92rem;
             line-height: 1.65;
             color: var(--color-text-soft);
@@ -11160,61 +11144,61 @@ object {
         }
 
         /* Kartu highlight: aksen gelap tosca solid + teks emas/putih kontras jelas */
-        #benefit .benefit-card.highlight {
+        body[data-page="agent"] #benefit .benefit-card.highlight{
             grid-column: span 2;
             background: var(--palette-teal);
             border-color: rgba(255, 255, 255, 0.18);
         }
 
-        #benefit .benefit-card.highlight .benefit-index {
+        body[data-page="agent"] #benefit .benefit-card.highlight .benefit-index{
             color: var(--palette-gold);
             opacity: 0.85;
         }
 
-        #benefit .benefit-card.highlight .benefit-icon {
+        body[data-page="agent"] #benefit .benefit-card.highlight .benefit-icon{
             background: rgba(255, 255, 255, 0.14);
             border-color: rgba(255, 255, 255, 0.25);
             color: var(--palette-gold);
         }
 
-        #benefit .benefit-card.highlight h3 {
+        body[data-page="agent"] #benefit .benefit-card.highlight h3{
             color: var(--palette-gold);
         }
 
-        #benefit .benefit-card.highlight p {
+        body[data-page="agent"] #benefit .benefit-card.highlight p{
             color: rgba(255, 255, 255, 0.85);
         }
 
-        #benefit .benefit-card.highlight strong {
+        body[data-page="agent"] #benefit .benefit-card.highlight strong{
             color: var(--palette-gold);
             font-weight: 700;
         }
 
         @media (max-width: 1024px) {
-            #benefit .benefit-card.highlight {
+            body[data-page="agent"] #benefit .benefit-card.highlight{
                 grid-column: span 2;
             }
         }
 
         @media (max-width: 480px) {
-            #benefit .benefit-card {
+            body[data-page="agent"] #benefit .benefit-card{
                 height: auto;
             }
 
-            #benefit .benefit-card.highlight {
+            body[data-page="agent"] #benefit .benefit-card.highlight{
                 grid-column: span 1;
             }
         }
 
         @media (max-width: 380px) {
-            #benefit .benefit-card {
+            body[data-page="agent"] #benefit .benefit-card{
                 padding: 26px 20px;
             }
         }
 
         /* ---------- Selaraskan ikon caret pada Beranda & FAQ (tanpa dropdown) ---------- */
 
-        .nav-link {
+        body[data-page="agent"] .nav-link{
             display: inline-flex;
             align-items: center;
             gap: 5px;
@@ -11222,22 +11206,22 @@ object {
 
         /* ---------- PERBAIKAN JARAK ANTAR SECTION (khusus halaman Agent) ---------- */
 
-        .poster-paket {
+        body[data-page="agent"] .poster-paket{
             padding: 70px 0 60px;
             background: var(--color-surface, #fff) !important;
         }
 
-        .poster-paket::before {
+        body[data-page="agent"] .poster-paket::before{
             display: none;
         }
 
-        .footer {
+        body[data-page="agent"] .footer{
             margin-top: 0;
         }
 
         /* ---------- TOMBOL "TANYA DULU VIA WHATSAPP" — dibuat menyala kuning agar jelas terlihat ---------- */
 
-        .btn-wa-glow {
+        body[data-page="agent"] .btn-wa-glow{
             background: linear-gradient(135deg, var(--palette-gold, #ffc000) 0%, #ffb300 100%) !important;
             color: var(--palette-ink-deep, #17201d) !important;
             border: none !important;
@@ -11245,13 +11229,13 @@ object {
             animation: waGlowPulse 2.4s ease-in-out infinite;
         }
 
-        .btn-wa-glow:hover {
+        body[data-page="agent"] .btn-wa-glow:hover{
             transform: translateY(-3px);
             filter: brightness(1.05);
             box-shadow: 0 20px 46px rgba(255, 192, 0, 0.55);
         }
 
-        .btn-wa-glow svg {
+        body[data-page="agent"] .btn-wa-glow svg{
             flex-shrink: 0;
         }
 
@@ -11269,11 +11253,11 @@ object {
 
         /* ---------- QUOTE STRIP ---------- */
 
-        .agent-quote-section {
+        body[data-page="agent"] .agent-quote-section{
             padding: 70px 0 10px;
         }
 
-        .agent-quote {
+        body[data-page="agent"] .agent-quote{
             max-width: 880px;
             margin: 0 auto;
             padding: 30px 34px;
@@ -11290,18 +11274,18 @@ object {
 
         /* ---------- DASHBOARD PANEL (dipakai ulang dari halaman Tentang Kami) ---------- */
 
-        .dash-section {
+        body[data-page="agent"] .dash-section{
             padding: 90px 0 110px;
         }
 
-        .dash-wrap {
+        body[data-page="agent"] .dash-wrap{
             display: grid;
             grid-template-columns: 300px 1fr;
             gap: 32px;
             align-items: start;
         }
 
-        .dash-sidebar {
+        body[data-page="agent"] .dash-sidebar{
             position: sticky;
             top: 118px;
             background: var(--color-surface);
@@ -11311,7 +11295,7 @@ object {
             box-shadow: var(--shadow-medium);
         }
 
-        .dash-sidebar-label {
+        body[data-page="agent"] .dash-sidebar-label{
             font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 0.1em;
@@ -11320,7 +11304,7 @@ object {
             padding: 10px 14px 6px;
         }
 
-        .dash-nav-btn {
+        body[data-page="agent"] .dash-nav-btn{
             display: flex;
             align-items: center;
             gap: 12px;
@@ -11339,7 +11323,7 @@ object {
             margin-bottom: 4px;
         }
 
-        .dash-nav-btn .dash-nav-icon {
+        body[data-page="agent"] .dash-nav-btn .dash-nav-icon{
             display: flex;
             align-items: center;
             justify-content: center;
@@ -11352,23 +11336,23 @@ object {
             transition: all 0.3s var(--ease-smooth);
         }
 
-        .dash-nav-btn:hover {
+        body[data-page="agent"] .dash-nav-btn:hover{
             background: var(--color-surface-warm);
             color: var(--color-heading-strong);
         }
 
-        .dash-nav-btn.active {
+        body[data-page="agent"] .dash-nav-btn.active{
             background: linear-gradient(135deg, var(--palette-gold), var(--palette-gold));
             color: var(--palette-ink);
             box-shadow: 0 12px 40px rgba(255, 192, 0, 0.25);
         }
 
-        .dash-nav-btn.active .dash-nav-icon {
+        body[data-page="agent"] .dash-nav-btn.active .dash-nav-icon{
             background: rgba(255, 255, 255, 0.35);
             color: var(--palette-ink);
         }
 
-        .dash-content {
+        body[data-page="agent"] .dash-content{
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--r-lg);
@@ -11379,7 +11363,7 @@ object {
             overflow: hidden;
         }
 
-        .dash-content::before {
+        body[data-page="agent"] .dash-content::before{
             content: "";
             position: absolute;
             top: 0;
@@ -11391,16 +11375,16 @@ object {
             animation: gradient-shift 3s ease infinite;
         }
 
-        .dash-panel {
+        body[data-page="agent"] .dash-panel{
             display: none;
             animation: fadeInUp 0.5s var(--ease-smooth) both;
         }
 
-        .dash-panel.active {
+        body[data-page="agent"] .dash-panel.active{
             display: block;
         }
 
-        .dash-panel-badge {
+        body[data-page="agent"] .dash-panel-badge{
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -11415,7 +11399,7 @@ object {
             margin-bottom: 20px;
         }
 
-        .dash-panel h2 {
+        body[data-page="agent"] .dash-panel h2{
             font-family: "Manrope", sans-serif;
             font-size: clamp(1.5rem, 2.8vw, 1.9rem);
             font-weight: 700;
@@ -11423,14 +11407,14 @@ object {
             margin-bottom: 20px;
         }
 
-        .dash-panel p {
+        body[data-page="agent"] .dash-panel p{
             color: var(--color-text-soft);
             font-size: 1rem;
             line-height: 1.85;
             margin-bottom: 16px;
         }
 
-        .dash-panel-list {
+        body[data-page="agent"] .dash-panel-list{
             list-style: none;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -11438,7 +11422,7 @@ object {
             margin-top: 22px;
         }
 
-        .dash-panel-list li {
+        body[data-page="agent"] .dash-panel-list li{
             position: relative;
             display: flex;
             flex-direction: column;
@@ -11456,7 +11440,7 @@ object {
                 border-color 0.35s var(--ease-smooth, ease);
         }
 
-        .dash-panel-list li::before {
+        body[data-page="agent"] .dash-panel-list li::before{
             content: "";
             position: absolute;
             top: 0;
@@ -11469,17 +11453,17 @@ object {
             transition: transform 0.35s var(--ease-smooth, ease);
         }
 
-        .dash-panel-list li:hover {
+        body[data-page="agent"] .dash-panel-list li:hover{
             transform: translateY(-6px);
             box-shadow: 0 18px 34px rgba(20, 14, 8, 0.08);
             border-color: rgba(255, 192, 0, 0.4);
         }
 
-        .dash-panel-list li:hover::before {
+        body[data-page="agent"] .dash-panel-list li:hover::before{
             transform: scaleX(1);
         }
 
-        .dash-panel-list .num {
+        body[data-page="agent"] .dash-panel-list .num{
             flex-shrink: 0;
             width: 40px;
             height: 40px;
@@ -11494,48 +11478,48 @@ object {
             box-shadow: 0 8px 16px rgba(255, 192, 0, 0.35);
         }
 
-        .dash-panel-list p {
+        body[data-page="agent"] .dash-panel-list p{
             margin: 0;
             font-size: 0.94rem;
             line-height: 1.75;
         }
 
         /* ---------- Variasi warna aksen per kartu, biar tidak monoton semua kuning ---------- */
-        .dash-panel-list li:nth-child(3n+2)::before {
+        body[data-page="agent"] .dash-panel-list li:nth-child(3n+2)::before{
             background: var(--palette-teal, #1f6e6e);
         }
 
-        .dash-panel-list li:nth-child(3n+2) .num {
+        body[data-page="agent"] .dash-panel-list li:nth-child(3n+2) .num{
             background: var(--palette-teal, #1f6e6e);
             color: #fff;
             box-shadow: 0 8px 16px rgba(31, 110, 110, 0.3);
         }
 
-        .dash-panel-list li:nth-child(3n+2):hover {
+        body[data-page="agent"] .dash-panel-list li:nth-child(3n+2):hover{
             border-color: rgba(31, 110, 110, 0.35);
         }
 
-        .dash-panel-list li:nth-child(3n+3)::before {
+        body[data-page="agent"] .dash-panel-list li:nth-child(3n+3)::before{
             background: var(--palette-terracotta, #d9662e);
         }
 
-        .dash-panel-list li:nth-child(3n+3) .num {
+        body[data-page="agent"] .dash-panel-list li:nth-child(3n+3) .num{
             background: var(--palette-terracotta, #d9662e);
             color: #fff;
             box-shadow: 0 8px 16px rgba(217, 102, 46, 0.3);
         }
 
-        .dash-panel-list li:nth-child(3n+3):hover {
+        body[data-page="agent"] .dash-panel-list li:nth-child(3n+3):hover{
             border-color: rgba(217, 102, 46, 0.35);
         }
 
         @media (max-width: 560px) {
-            .dash-panel-list {
+            body[data-page="agent"] .dash-panel-list{
                 grid-template-columns: 1fr;
             }
         }
 
-        .dash-panel-quote {
+        body[data-page="agent"] .dash-panel-quote{
             margin-top: 26px;
             padding: 22px 24px;
             border-left: 4px solid var(--palette-gold);
@@ -11549,11 +11533,11 @@ object {
         }
 
         @media (max-width: 900px) {
-            .dash-wrap {
+            body[data-page="agent"] .dash-wrap{
                 grid-template-columns: 1fr;
             }
 
-            .dash-sidebar {
+            body[data-page="agent"] .dash-sidebar{
                 position: static;
                 display: flex;
                 overflow-x: auto;
@@ -11561,56 +11545,56 @@ object {
                 padding: 10px;
             }
 
-            .dash-content {
+            body[data-page="agent"] .dash-content{
                 padding: 28px 22px;
             }
 
-            .dash-panel-list li {
+            body[data-page="agent"] .dash-panel-list li{
                 padding: 14px 16px;
             }
         }
 
         @media (max-width: 600px) {
-            .agent-hero-actions {
+            body[data-page="agent"] .agent-hero-actions{
                 margin-top: 26px;
             }
         }
 
         /* ---------- PENGUATAN RESPONSIF UMUM (semua elemen page ini) ---------- */
 
-        img,
-        video,
-        svg {
+        body[data-page="agent"] img,
+        body[data-page="agent"] video,
+        body[data-page="agent"] svg{
             max-width: 100%;
             height: auto;
         }
 
-        .dash-content,
-        .pemandu-info {
+        body[data-page="agent"] .dash-content,
+        body[data-page="agent"] .pemandu-info{
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
 
         @media (max-width: 768px) {
-            .footer-grid {
+            body[data-page="agent"] .footer-grid{
                 grid-template-columns: 1fr 1fr;
                 gap: 32px 20px;
             }
         }
 
         @media (max-width: 600px) {
-            .footer-grid {
+            body[data-page="agent"] .footer-grid{
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 480px) {
-            .poster-paket .btn {
+            body[data-page="agent"] .poster-paket .btn{
                 width: 100%;
                 justify-content: center;
             }
 
-            .agent-hero-actions .btn {
+            body[data-page="agent"] .agent-hero-actions .btn{
                 width: 100%;
                 justify-content: center;
             }
@@ -11618,7 +11602,7 @@ object {
 
         /* ================= MODAL: FORM BIODATA & EMAIL (sama seperti tentang.html) ================= */
 
-        .wa-modal-overlay {
+        body[data-page="agent"] .wa-modal-overlay{
             position: fixed;
             inset: 0;
             background: rgba(20, 14, 8, 0.62);
@@ -11634,12 +11618,12 @@ object {
             transition: opacity 0.25s ease, visibility 0.25s ease;
         }
 
-        .wa-modal-overlay.active {
+        body[data-page="agent"] .wa-modal-overlay.active{
             opacity: 1;
             visibility: visible;
         }
 
-        .wa-modal {
+        body[data-page="agent"] .wa-modal{
             position: relative;
             background: var(--color-surface);
             border-radius: var(--r-lg, 22px);
@@ -11654,11 +11638,11 @@ object {
             transition: transform 0.3s ease;
         }
 
-        .wa-modal-overlay.active .wa-modal {
+        body[data-page="agent"] .wa-modal-overlay.active .wa-modal{
             transform: translateY(0) scale(1);
         }
 
-        .wa-modal-header {
+        body[data-page="agent"] .wa-modal-header{
             position: relative;
             padding: 30px 28px 20px;
             text-align: center;
@@ -11667,7 +11651,7 @@ object {
             flex-shrink: 0;
         }
 
-        .wa-modal-header::before {
+        body[data-page="agent"] .wa-modal-header::before{
             content: "";
             position: absolute;
             inset: 0;
@@ -11675,7 +11659,7 @@ object {
             pointer-events: none;
         }
 
-        .wa-modal-close {
+        body[data-page="agent"] .wa-modal-close{
             position: absolute;
             top: 22px;
             right: 20px;
@@ -11695,12 +11679,12 @@ object {
             z-index: 2;
         }
 
-        .wa-modal-close:hover {
+        body[data-page="agent"] .wa-modal-close:hover{
             background: rgba(255, 255, 255, 0.36);
             transform: rotate(90deg);
         }
 
-        .wa-modal-icon {
+        body[data-page="agent"] .wa-modal-icon{
             position: relative;
             width: 48px;
             height: 48px;
@@ -11714,7 +11698,7 @@ object {
             margin: 0 auto 10px;
         }
 
-        .wa-modal-header h3 {
+        body[data-page="agent"] .wa-modal-header h3{
             position: relative;
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-size: 1.2rem;
@@ -11723,7 +11707,7 @@ object {
             margin-bottom: 4px;
         }
 
-        .wa-modal-sub {
+        body[data-page="agent"] .wa-modal-sub{
             position: relative;
             font-size: 0.88rem;
             color: rgba(255, 255, 255, 0.88);
@@ -11732,23 +11716,23 @@ object {
             margin: 0 auto;
         }
 
-        .wa-modal-scroll {
+        body[data-page="agent"] .wa-modal-scroll{
             overflow-y: auto;
             padding: 20px 28px 24px;
         }
 
-        .wa-section-title {
+        body[data-page="agent"] .wa-section-title{
             display: flex;
             align-items: center;
             gap: 10px;
             margin: 0 0 16px;
         }
 
-        .wa-section-title:not(:first-child) {
+        body[data-page="agent"] .wa-section-title:not(:first-child){
             margin-top: 22px;
         }
 
-        .wa-section-title .num {
+        body[data-page="agent"] .wa-section-title .num{
             flex-shrink: 0;
             width: 24px;
             height: 24px;
@@ -11762,7 +11746,7 @@ object {
             font-size: 0.72rem;
         }
 
-        .wa-section-title span.label {
+        body[data-page="agent"] .wa-section-title span.label{
             font-size: 0.72rem;
             font-weight: 800;
             letter-spacing: 0.08em;
@@ -11770,28 +11754,28 @@ object {
             color: var(--palette-amber, #a87a24);
         }
 
-        .wa-section-title::after {
+        body[data-page="agent"] .wa-section-title::after{
             content: "";
             flex: 1;
             height: 1px;
             background: var(--color-border, #e2dccf);
         }
 
-        .wa-form-grid {
+        body[data-page="agent"] .wa-form-grid{
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0 14px;
         }
 
-        .wa-field {
+        body[data-page="agent"] .wa-field{
             margin-bottom: 15px;
         }
 
-        .wa-field.full {
+        body[data-page="agent"] .wa-field.full{
             grid-column: 1 / -1;
         }
 
-        .wa-field label {
+        body[data-page="agent"] .wa-field label{
             display: block;
             font-size: 0.8rem;
             font-weight: 700;
@@ -11799,11 +11783,11 @@ object {
             margin-bottom: 6px;
         }
 
-        .wa-input-wrap {
+        body[data-page="agent"] .wa-input-wrap{
             position: relative;
         }
 
-        .wa-field-icon {
+        body[data-page="agent"] .wa-field-icon{
             position: absolute;
             left: 13px;
             top: 50%;
@@ -11813,9 +11797,9 @@ object {
             pointer-events: none;
         }
 
-        .wa-field input,
-        .wa-field select,
-        .wa-field textarea {
+        body[data-page="agent"] .wa-field input,
+        body[data-page="agent"] .wa-field select,
+        body[data-page="agent"] .wa-field textarea{
             width: 100%;
             padding: 11px 14px 11px 40px;
             border-radius: var(--r-md, 12px);
@@ -11829,12 +11813,12 @@ object {
             appearance: none;
         }
 
-        .wa-field textarea {
+        body[data-page="agent"] .wa-field textarea{
             padding-left: 14px;
             min-height: 78px;
         }
 
-        .wa-field select {
+        body[data-page="agent"] .wa-field select{
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a87a24' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 14px center;
@@ -11842,19 +11826,19 @@ object {
             cursor: pointer;
         }
 
-        .wa-field input:focus,
-        .wa-field select:focus,
-        .wa-field textarea:focus {
+        body[data-page="agent"] .wa-field input:focus,
+        body[data-page="agent"] .wa-field select:focus,
+        body[data-page="agent"] .wa-field textarea:focus{
             outline: none;
             border-color: var(--palette-amber, #b3862c);
             box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.18);
         }
 
-        .wa-field-password-input {
+        body[data-page="agent"] .wa-field-password-input{
             padding-right: 42px !important;
         }
 
-        .wa-toggle-password {
+        body[data-page="agent"] .wa-toggle-password{
             position: absolute;
             right: 6px;
             top: 50%;
@@ -11872,19 +11856,19 @@ object {
             transition: color 0.2s ease, background 0.2s ease;
         }
 
-        .wa-toggle-password:hover {
+        body[data-page="agent"] .wa-toggle-password:hover{
             color: var(--palette-amber, #a87a24);
             background: rgba(255, 192, 0, 0.1);
         }
 
-        .wa-field input.invalid,
-        .wa-field select.invalid,
-        .wa-field textarea.invalid {
+        body[data-page="agent"] .wa-field input.invalid,
+        body[data-page="agent"] .wa-field select.invalid,
+        body[data-page="agent"] .wa-field textarea.invalid{
             border-color: #d34d3f;
             background: #fdf2f1;
         }
 
-        .wa-error {
+        body[data-page="agent"] .wa-error{
             display: block;
             min-height: 16px;
             font-size: 0.74rem;
@@ -11893,7 +11877,7 @@ object {
             font-weight: 600;
         }
 
-        .wa-char-count {
+        body[data-page="agent"] .wa-char-count{
             display: block;
             text-align: right;
             font-size: 0.7rem;
@@ -11901,7 +11885,7 @@ object {
             margin-top: 3px;
         }
 
-        .wa-trust-note {
+        body[data-page="agent"] .wa-trust-note{
             display: flex;
             align-items: flex-start;
             gap: 8px;
@@ -11914,13 +11898,13 @@ object {
             line-height: 1.5;
         }
 
-        .wa-trust-note svg {
+        body[data-page="agent"] .wa-trust-note svg{
             flex-shrink: 0;
             color: var(--palette-amber, #a87a24);
             margin-top: 1px;
         }
 
-        .wa-modal-submit {
+        body[data-page="agent"] .wa-modal-submit{
             width: 100%;
             justify-content: center;
             display: flex;
@@ -11933,13 +11917,13 @@ object {
             font-size: 0.98rem;
         }
 
-        .email-modal-actions {
+        body[data-page="agent"] .email-modal-actions{
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        .email-action-btn {
+        body[data-page="agent"] .email-action-btn{
             width: 100%;
             justify-content: center;
             display: flex;
@@ -11951,12 +11935,12 @@ object {
             padding: 13px;
         }
 
-        .btn.email-action-btn.btn-secondary {
+        body[data-page="agent"] .btn.email-action-btn.btn-secondary{
             background: var(--color-surface-warm, #faf7f1);
             color: var(--color-heading-strong, #4a3423);
         }
 
-        .email-copy-msg {
+        body[data-page="agent"] .email-copy-msg{
             display: block;
             text-align: center;
             font-size: 0.82rem;
@@ -11966,21 +11950,21 @@ object {
         }
 
         @media (max-width: 560px) {
-            .wa-form-grid {
+            body[data-page="agent"] .wa-form-grid{
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 480px) {
-            .wa-modal-overlay {
+            body[data-page="agent"] .wa-modal-overlay{
                 padding: 76px 12px 16px;
             }
 
-            .wa-modal-header {
+            body[data-page="agent"] .wa-modal-header{
                 padding: 20px 20px 16px;
             }
 
-            .wa-modal-scroll {
+            body[data-page="agent"] .wa-modal-scroll{
                 padding: 18px 18px 20px;
             }
         }
@@ -11988,38 +11972,38 @@ object {
         /* ---------- Pengaman ekstra untuk layar sangat kecil (HP kecil, <=380px) ---------- */
 
         @media (max-width: 380px) {
-            .dash-content {
+            body[data-page="agent"] .dash-content{
                 padding: 22px 16px;
             }
 
-            .benefit-card {
+            body[data-page="agent"] .benefit-card{
                 padding: 28px 20px;
             }
 
-            .wa-modal-overlay {
+            body[data-page="agent"] .wa-modal-overlay{
                 padding: 64px 8px 12px;
             }
 
-            .wa-modal-header {
+            body[data-page="agent"] .wa-modal-header{
                 padding: 18px 16px 14px;
             }
 
-            .wa-modal-scroll {
+            body[data-page="agent"] .wa-modal-scroll{
                 padding: 16px 16px 18px;
             }
 
-            .wa-modal-icon {
+            body[data-page="agent"] .wa-modal-icon{
                 width: 46px;
                 height: 46px;
             }
 
-            .hero h1 {
+            body[data-page="agent"] .hero h1{
                 font-size: 1.7rem;
             }
         }
 
         /* ================= AUTH MODAL (Login / Daftar Agent) ================= */
-        .auth-tabs {
+        body[data-page="agent"] .auth-tabs{
             display: flex;
             gap: 8px;
             background: var(--color-surface-warm, #faf7f1);
@@ -12028,7 +12012,7 @@ object {
             margin-bottom: 22px;
         }
 
-        .auth-tab-btn {
+        body[data-page="agent"] .auth-tab-btn{
             flex: 1;
             border: none;
             background: transparent;
@@ -12042,22 +12026,22 @@ object {
             transition: all 0.25s var(--ease-smooth);
         }
 
-        .auth-tab-btn.active {
+        body[data-page="agent"] .auth-tab-btn.active{
             background: var(--color-surface);
             color: var(--palette-amber);
             box-shadow: var(--shadow-soft);
         }
 
-        .auth-panel {
+        body[data-page="agent"] .auth-panel{
             display: none;
         }
 
-        .auth-panel.active {
+        body[data-page="agent"] .auth-panel.active{
             display: block;
             animation: fadeInUp 0.4s var(--ease-smooth) both;
         }
 
-        .auth-alert {
+        body[data-page="agent"] .auth-alert{
             display: none;
             align-items: flex-start;
             gap: 8px;
@@ -12068,40 +12052,40 @@ object {
             margin-bottom: 16px;
         }
 
-        .auth-alert.show {
+        body[data-page="agent"] .auth-alert.show{
             display: flex;
         }
 
-        .auth-alert.error {
+        body[data-page="agent"] .auth-alert.error{
             background: #fdf2f1;
             color: #b8382a;
         }
 
-        .auth-alert.success {
+        body[data-page="agent"] .auth-alert.success{
             background: #eef7f0;
             color: #2e7d4f;
         }
 
-        .auth-switch-hint {
+        body[data-page="agent"] .auth-switch-hint{
             text-align: center;
             font-size: 0.82rem;
             color: var(--color-text-soft);
             margin-top: 4px;
         }
 
-        .auth-switch-hint a {
+        body[data-page="agent"] .auth-switch-hint a{
             color: var(--palette-amber);
             font-weight: 700;
             cursor: pointer;
         }
 
         /* ================= SECTION: AKUN AGENT ================= */
-        .akun-agent-section {
+        body[data-page="agent"] .akun-agent-section{
             padding: 60px 0 70px;
             background: var(--color-surface, #fff);
         }
 
-        .akun-locked {
+        body[data-page="agent"] .akun-locked{
             max-width: 640px;
             margin: 0 auto;
             text-align: center;
@@ -12112,7 +12096,7 @@ object {
             box-shadow: var(--shadow-medium);
         }
 
-        .akun-locked-icon {
+        body[data-page="agent"] .akun-locked-icon{
             width: 56px;
             height: 56px;
             border-radius: 16px;
@@ -12124,7 +12108,7 @@ object {
             margin: 0 auto 14px;
         }
 
-        .akun-locked h2 {
+        body[data-page="agent"] .akun-locked h2{
             font-family: "Manrope", sans-serif;
             font-size: clamp(1.4rem, 2.6vw, 1.8rem);
             font-weight: 700;
@@ -12132,35 +12116,35 @@ object {
             margin-bottom: 8px;
         }
 
-        .akun-locked p {
+        body[data-page="agent"] .akun-locked p{
             color: var(--color-text-soft);
             line-height: 1.65;
             max-width: 460px;
             margin: 0 auto 20px;
         }
 
-        .akun-locked-actions {
+        body[data-page="agent"] .akun-locked-actions{
             display: flex;
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
         }
 
-        .akun-unlocked {
+        body[data-page="agent"] .akun-unlocked{
             display: none;
             max-width: 880px;
             margin: 0 auto;
         }
 
-        .akun-unlocked.show {
+        body[data-page="agent"] .akun-unlocked.show{
             display: block;
         }
 
-        .akun-locked.hide {
+        body[data-page="agent"] .akun-locked.hide{
             display: none;
         }
 
-        .akun-greeting {
+        body[data-page="agent"] .akun-greeting{
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -12174,7 +12158,7 @@ object {
             margin-bottom: 22px;
         }
 
-        .akun-greeting h3 {
+        body[data-page="agent"] .akun-greeting h3{
             font-family: "Manrope", sans-serif;
             font-size: 1.2rem;
             font-weight: 700;
@@ -12182,20 +12166,20 @@ object {
             margin-bottom: 4px;
         }
 
-        .akun-greeting p {
+        body[data-page="agent"] .akun-greeting p{
             font-size: 0.86rem;
             color: var(--color-text-soft);
             margin: 0;
         }
 
-        .akun-stats {
+        body[data-page="agent"] .akun-stats{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
             margin-bottom: 22px;
         }
 
-        .akun-stat-card {
+        body[data-page="agent"] .akun-stat-card{
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--r-md, 14px);
@@ -12204,7 +12188,7 @@ object {
             box-shadow: var(--shadow-soft);
         }
 
-        .akun-stat-num {
+        body[data-page="agent"] .akun-stat-num{
             font-family: "Manrope", sans-serif;
             font-size: 1.7rem;
             font-weight: 800;
@@ -12213,7 +12197,7 @@ object {
             margin-bottom: 6px;
         }
 
-        .akun-stat-label {
+        body[data-page="agent"] .akun-stat-label{
             font-size: 0.76rem;
             font-weight: 600;
             color: var(--color-text-soft);
@@ -12221,7 +12205,7 @@ object {
             letter-spacing: 0.04em;
         }
 
-        .akun-share-box {
+        body[data-page="agent"] .akun-share-box{
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--r-lg, 20px);
@@ -12230,7 +12214,7 @@ object {
             margin-bottom: 22px;
         }
 
-        .akun-share-box h4 {
+        body[data-page="agent"] .akun-share-box h4{
             font-family: "Manrope", sans-serif;
             font-size: 1rem;
             font-weight: 700;
@@ -12238,23 +12222,23 @@ object {
             margin-bottom: 6px;
         }
 
-        .akun-share-box>p {
+        body[data-page="agent"] .akun-share-box>p{
             font-size: 0.85rem;
             color: var(--color-text-soft);
             margin-bottom: 18px;
         }
 
-        .copy-row {
+        body[data-page="agent"] .copy-row{
             display: flex;
             gap: 10px;
             margin-bottom: 14px;
         }
 
-        .copy-row:last-child {
+        body[data-page="agent"] .copy-row:last-child{
             margin-bottom: 0;
         }
 
-        .copy-field {
+        body[data-page="agent"] .copy-field{
             flex: 1;
             display: flex;
             align-items: center;
@@ -12270,13 +12254,13 @@ object {
             overflow: hidden;
         }
 
-        .copy-field span {
+        body[data-page="agent"] .copy-field span{
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
 
-        .copy-btn-small {
+        body[data-page="agent"] .copy-btn-small{
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -12294,11 +12278,11 @@ object {
             transition: transform 0.2s ease;
         }
 
-        .copy-btn-small:hover {
+        body[data-page="agent"] .copy-btn-small:hover{
             transform: translateY(-2px);
         }
 
-        .akun-referral-table-wrap {
+        body[data-page="agent"] .akun-referral-table-wrap{
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--r-lg, 20px);
@@ -12308,7 +12292,7 @@ object {
             overflow-x: auto;
         }
 
-        .akun-referral-table-wrap h4 {
+        body[data-page="agent"] .akun-referral-table-wrap h4{
             font-family: "Manrope", sans-serif;
             font-size: 1rem;
             font-weight: 700;
@@ -12316,13 +12300,13 @@ object {
             margin-bottom: 16px;
         }
 
-        .akun-referral-table {
+        body[data-page="agent"] .akun-referral-table{
             width: 100%;
             border-collapse: collapse;
             font-size: 0.84rem;
         }
 
-        .akun-referral-table th {
+        body[data-page="agent"] .akun-referral-table th{
             text-align: left;
             padding: 10px 12px;
             color: var(--color-text-soft);
@@ -12332,20 +12316,20 @@ object {
             border-bottom: 1.5px solid var(--color-border);
         }
 
-        .akun-referral-table td {
+        body[data-page="agent"] .akun-referral-table td{
             padding: 12px;
             border-bottom: 1px solid var(--color-border);
             color: var(--palette-ink);
         }
 
-        .akun-referral-empty {
+        body[data-page="agent"] .akun-referral-empty{
             text-align: center;
             padding: 30px 10px;
             color: var(--color-text-soft);
             font-size: 0.86rem;
         }
 
-        .status-pill {
+        body[data-page="agent"] .status-pill{
             display: inline-flex;
             padding: 4px 11px;
             border-radius: var(--r-pill, 999px);
@@ -12353,45 +12337,45 @@ object {
             font-weight: 700;
         }
 
-        .status-pill.baru {
+        body[data-page="agent"] .status-pill.baru{
             background: #eef2fb;
             color: #3357a8;
         }
 
-        .status-pill.diproses {
+        body[data-page="agent"] .status-pill.diproses{
             background: #fff4de;
             color: #9a6a00;
         }
 
-        .status-pill.deal {
+        body[data-page="agent"] .status-pill.deal{
             background: #eef7f0;
             color: #2e7d4f;
         }
 
-        .status-pill.batal {
+        body[data-page="agent"] .status-pill.batal{
             background: #fdf2f1;
             color: #b8382a;
         }
 
-        .akun-logout-row {
+        body[data-page="agent"] .akun-logout-row{
             text-align: center;
         }
 
         @media (max-width: 700px) {
-            .akun-stats {
+            body[data-page="agent"] .akun-stats{
                 grid-template-columns: 1fr;
             }
 
-            .akun-greeting {
+            body[data-page="agent"] .akun-greeting{
                 flex-direction: column;
                 align-items: flex-start;
             }
 
-            .copy-row {
+            body[data-page="agent"] .copy-row{
                 flex-direction: column;
             }
 
-            .akun-locked {
+            body[data-page="agent"] .akun-locked{
                 padding: 28px 20px;
             }
         }
@@ -12401,7 +12385,7 @@ object {
    ============================================================ */
 /* ===== Blok style #1 dari infososialisasi.html ===== */
 /* Judul hero "Seminar & Sosialisasi Umroh" dibuat putih */
-        .page-header-title-gold {
+        body[data-page="infososialisasi"] .page-header-title-gold{
             background: none !important;
             -webkit-background-clip: unset !important;
             background-clip: unset !important;
@@ -12409,7 +12393,7 @@ object {
             color: #fff !important;
         }
 
-        .im-scope {
+        body[data-page="infososialisasi"] .im-scope{
             --im-primary: var(--ink, #1f2023);
             --im-primary-dark: var(--ink, #0d0805);
             --im-gold: var(--gold, #367588);
@@ -12420,7 +12404,7 @@ object {
         }
 
         /* Page Hero dan Breadcumb */
-        .im-pagehero-curve {
+        body[data-page="infososialisasi"] .im-pagehero-curve{
             position: absolute;
             left: 50%;
             bottom: -1px;
@@ -12434,13 +12418,13 @@ object {
         }
 
         /* Page Hero Photo Carousel Background */
-        .page-header-photo-bg {
+        body[data-page="infososialisasi"] .page-header-photo-bg{
             position: absolute;
             inset: 0;
             overflow: hidden;
         }
 
-        .page-header-photo {
+        body[data-page="infososialisasi"] .page-header-photo{
             position: absolute;
             inset: 0;
             width: 100%;
@@ -12452,30 +12436,30 @@ object {
             transition: opacity 1.2s var(--ease-out);
         }
 
-        .page-header-photo.is-active {
+        body[data-page="infososialisasi"] .page-header-photo.is-active{
             opacity: 1;
         }
 
         /* Foto hero (fotoseminar.jpeg) landscape lebar - atur titik fokus per device supaya Ka'bah & jamaah tetap kelihatan, tidak terpotong parah */
         @media (min-width: 1025px) {
-            .page-header-photo {
+            body[data-page="infososialisasi"] .page-header-photo{
                 background-position: center 40%;
             }
         }
 
         @media (min-width: 641px) and (max-width: 1024px) {
-            .page-header-photo {
+            body[data-page="infososialisasi"] .page-header-photo{
                 background-position: center 35%;
             }
         }
 
         @media (max-width: 640px) {
-            .page-header-photo {
+            body[data-page="infososialisasi"] .page-header-photo{
                 background-position: 42% center;
             }
         }
 
-        .im-breadcrumb {
+        body[data-page="infososialisasi"] .im-breadcrumb{
             display: flex;
             align-items: center;
             gap: 8px;
@@ -12487,32 +12471,32 @@ object {
             margin-bottom: 18px;
         }
 
-        .im-breadcrumb:empty {
+        body[data-page="infososialisasi"] .im-breadcrumb:empty{
             display: none;
             margin-bottom: 0;
         }
 
-        .im-breadcrumb a {
+        body[data-page="infososialisasi"] .im-breadcrumb a{
             color: rgba(255, 255, 255, .68);
             text-decoration: none;
             transition: color .2s ease;
         }
 
-        .im-breadcrumb a:hover {
+        body[data-page="infososialisasi"] .im-breadcrumb a:hover{
             color: #fff;
         }
 
-        .im-breadcrumb span[aria-current] {
+        body[data-page="infososialisasi"] .im-breadcrumb span[aria-current]{
             color: var(--im-gold);
         }
 
         /* Intro ringkas */
-        .im-intro {
+        body[data-page="infososialisasi"] .im-intro{
             background: #fff;
             padding: 8px 0 8px;
         }
 
-        .im-intro-row {
+        body[data-page="infososialisasi"] .im-intro-row{
             display: flex;
             flex-wrap: wrap;
             gap: 40px;
@@ -12521,11 +12505,11 @@ object {
             border-bottom: 1px solid var(--im-line);
         }
 
-        .im-intro-text {
+        body[data-page="infososialisasi"] .im-intro-text{
             flex: 1 1 420px;
         }
 
-        .im-intro-text p {
+        body[data-page="infososialisasi"] .im-intro-text p{
             font-family: 'Manrope', sans-serif;
             font-size: 15.5px;
             line-height: 1.8;
@@ -12534,7 +12518,7 @@ object {
             margin: 0;
         }
 
-        .im-intro-chips {
+        body[data-page="infososialisasi"] .im-intro-chips{
             flex: 0 0 auto;
             display: flex;
             flex-direction: column;
@@ -12542,7 +12526,7 @@ object {
             min-width: 240px;
         }
 
-        .im-chip {
+        body[data-page="infososialisasi"] .im-chip{
             display: flex;
             align-items: center;
             gap: 10px;
@@ -12556,13 +12540,13 @@ object {
             border-radius: 999px;
         }
 
-        .im-chip svg {
+        body[data-page="infososialisasi"] .im-chip svg{
             flex-shrink: 0;
             color: var(--im-primary);
         }
 
         /* Catatan / note bar ringkas */
-        .im-note {
+        body[data-page="infososialisasi"] .im-note{
             display: flex;
             align-items: center;
             gap: 14px;
@@ -12577,42 +12561,42 @@ object {
             color: var(--im-muted);
         }
 
-        .im-note svg {
+        body[data-page="infososialisasi"] .im-note svg{
             flex-shrink: 0;
             color: var(--im-gold);
             margin-top: 2px;
         }
 
-        .im-note strong {
+        body[data-page="infososialisasi"] .im-note strong{
             color: var(--im-ink);
         }
 
         /* Mini FAQ */
-        .im-faq-section {
+        body[data-page="infososialisasi"] .im-faq-section{
             background: #fff;
             padding: 12px 0 96px;
         }
 
         /* ---------- Tombol "Tanyakan Jadwal Terbaru" — kuning ----------*/
-        .im-scope .im-btn-yellow {
+        body[data-page="infososialisasi"] .im-scope .im-btn-yellow{
             background: #FFC107;
             border-color: #FFC107;
             color: #1f2023;
         }
 
-        .im-scope .im-btn-yellow:hover {
+        body[data-page="infososialisasi"] .im-scope .im-btn-yellow:hover{
             background: #FFCD38;
             border-color: #FFCD38;
             color: #1f2023;
         }
 
         /* ---------- Badge "Jadwal Terdekat" ---------- */
-        .im-scope .manasik-card[data-manasik-next="true"] {
+        body[data-page="infososialisasi"] .im-scope .manasik-card[data-manasik-next="true"]{
             outline: 2px solid var(--im-gold);
             outline-offset: 3px;
         }
 
-        .im-badge-next {
+        body[data-page="infososialisasi"] .im-badge-next{
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -12628,12 +12612,12 @@ object {
             margin-bottom: 10px;
         }
 
-        .im-badge-next svg {
+        body[data-page="infososialisasi"] .im-badge-next svg{
             flex-shrink: 0;
         }
 
         @media (max-width: 720px) {
-            .im-intro-row {
+            body[data-page="infososialisasi"] .im-intro-row{
                 gap: 22px;
             }
         }
@@ -12642,7 +12626,7 @@ object {
    HALAMAN: artikel.html
    ============================================================ */
 /* ===== Blok style #1 dari artikel.html ===== */
-.article-tabs {
+body[data-page="artikel"] .article-tabs{
             display: flex;
             justify-content: center;
             gap: 12px;
@@ -12650,7 +12634,7 @@ object {
             margin: 0 0 44px;
         }
 
-        .article-tab-btn {
+        body[data-page="artikel"] .article-tab-btn{
             font-family: inherit;
             font-size: 15px;
             font-weight: 600;
@@ -12663,20 +12647,20 @@ object {
             transition: all .25s ease;
         }
 
-        .article-tab-btn:hover {
+        body[data-page="artikel"] .article-tab-btn:hover{
             border-color: rgba(0, 0, 0, 0.35);
         }
 
-        .article-tab-btn.active {
+        body[data-page="artikel"] .article-tab-btn.active{
             background: #1a1a1a;
             border-color: #1a1a1a;
             color: #fff;
         }
 
-        .article-tab-panel {
+        body[data-page="artikel"] .article-tab-panel{
             display: none;
         }
 
-        .article-tab-panel.active {
+        body[data-page="artikel"] .article-tab-panel.active{
             display: block;
         }
