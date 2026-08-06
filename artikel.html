@@ -27,49 +27,9 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 
     <!-- Style tambahan untuk tab Artikel Terbaru / Berita Terbaru -->
-    <style>
-        .article-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin: 0 0 44px;
-        }
-
-        .article-tab-btn {
-            font-family: inherit;
-            font-size: 15px;
-            font-weight: 600;
-            padding: 12px 30px;
-            border-radius: 999px;
-            border: 1.5px solid rgba(0, 0, 0, 0.15);
-            background: #fff;
-            color: #1a1a1a;
-            cursor: pointer;
-            transition: all .25s ease;
-        }
-
-        .article-tab-btn:hover {
-            border-color: rgba(0, 0, 0, 0.35);
-        }
-
-        .article-tab-btn.active {
-            background: #1a1a1a;
-            border-color: #1a1a1a;
-            color: #fff;
-        }
-
-        .article-tab-panel {
-            display: none;
-        }
-
-        .article-tab-panel.active {
-            display: block;
-        }
-    </style>
 </head>
 
-<body>
+<body data-page="artikel">
     <a href="#konten" class="skip-link">Langsung ke konten utama</a>
     <!-- HEADER -->
     <header class="header" id="header">
@@ -494,38 +454,6 @@
         </div>
     </section>
 
-    <script>
-        // Tab switcher: Artikel Terbaru / Berita Terbaru
-        (function () {
-            var btns = document.querySelectorAll('.article-tab-btn');
-            var panels = {
-                artikel: document.getElementById('tabArtikel'),
-                berita: document.getElementById('tabBerita')
-            };
-
-            function activate(tab) {
-                btns.forEach(function (b) {
-                    var isActive = b.getAttribute('data-tab') === tab;
-                    b.classList.toggle('active', isActive);
-                    b.setAttribute('aria-selected', isActive ? 'true' : 'false');
-                });
-                Object.keys(panels).forEach(function (key) {
-                    panels[key].classList.toggle('active', key === tab);
-                });
-            }
-
-            btns.forEach(function (b) {
-                b.addEventListener('click', function () {
-                    var tab = b.getAttribute('data-tab');
-                    activate(tab);
-                    history.replaceState(null, '', '#' + tab);
-                });
-            });
-
-            var hash = window.location.hash.replace('#', '');
-            activate(hash === 'berita' ? 'berita' : 'artikel');
-        })();
-    </script>
 
     <!-- ================= FOOTER ================= -->
     <footer class="footer">
@@ -670,23 +598,7 @@
             <svg class="livechat-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
         </button>
     </div>
-    <script>
-        // ========== SCROLL REVEAL ==========
-        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -30px 0px'
-        });
-        revealElements.forEach(el => revealObserver.observe(el));
-    </script>
-    <script src="common-widgets.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

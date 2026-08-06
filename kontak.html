@@ -16,39 +16,9 @@
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
 
-    <style>
-        @media (max-width: 900px) {
-            .page-header {
-                min-height: 0;
-                display: block;
-                padding: 76px 0 40px;
-            }
-
-            .page-header-media {
-                position: relative;
-                width: 100%;
-                aspect-ratio: 4080 / 1884;
-                overflow: hidden;
-            }
-
-            .page-header-slide {
-                background-size: cover;
-            }
-
-            .page-header .container {
-                margin-top: 26px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .page-header {
-                padding-top: 68px;
-            }
-        }
-    </style>
 </head>
 
-<body>
+<body data-page="kontak">
     <header class="header" id="header">
         <nav class="nav-main">
             <a href="index.html" class="logo">
@@ -60,11 +30,10 @@
                 </span>
             </a>
 
-            <ul class="nav-links">
-                <li class="nav-item-dropdown"><a href="index.html" class="nav-link">Beranda</a>
-                </li>
+             <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Beranda</a></li>
                 <li class="nav-item-dropdown">
-                    <a href="#paket" class="nav-link">
+                    <a href="index.html#paket" class="nav-link">
                         Paket Umroh
                         <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -73,12 +42,11 @@
                     </a>
 
                     <ul class="nav-dropdown">
-                        <li><a href="#paket">Semua Paket Umroh</a></li>
-                        <li><a href="#paket-thaif">Umroh Plus Thaif</a></li>
-                        <li><a href="#jadwal">Jadwal Keberangkatan</a></li>
+                        <li><a href="index.html#paket">Semua Paket Umroh</a></li>
+                        <li><a href="index.html#paket-thaif">Umroh Plus Thaif</a></li>
+                        <li><a href="index.html#jadwal">Jadwal Keberangkatan</a></li>
                     </ul>
                 </li>
-
                 <li class="nav-item-dropdown">
                     <a href="tentang.html" class="nav-link">
                         Tentang Kami
@@ -88,9 +56,10 @@
                         </svg>
                     </a>
                     <ul class="nav-dropdown">
-                        <li><a href="#visi">Visi</a></li>
-                        <li><a href="#misi">Misi</a></li>
-                        <li><a href="#profilpemandu">Profile Pemandu</a></li>
+                        <li><a href="tentang.html#profil">Profil Perusahaan</a></li>
+                        <li><a href="tentang.html#visi">Visi</a></li>
+                        <li><a href="tentang.html#misi">Misi</a></li>
+                        <li><a href="tentang.html#pemandu">Profil Pemandu</a></li>
                     </ul>
                 </li>
 
@@ -560,257 +529,7 @@
         </button>
     </div>
 
-    <script>
-
-        // ========== MODAL: EMAIL (Footer) ==========
-        (function () {
-            const emailOverlay = document.getElementById('emailModalOverlay');
-            const emailClose = document.getElementById('emailModalClose');
-            const copyBtn = document.getElementById('copyEmailBtn');
-            const copyMsg = document.getElementById('emailCopyMsg');
-            const gmailLink = document.getElementById('gmailWebLink');
-            const mailtoLink = document.getElementById('mailtoLink');
-
-            const emailAddress = 'info@khalifahasia.co.id';
-            const subject = 'Pendaftaran Agent Khalifah Asia Bekasi';
-            const body = 'Assalamualaikum, saya ingin bertanya/mendaftar sebagai Agent Khalifah Asia Bekasi.';
-
-            mailtoLink.href = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            gmailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-            let lastFocusedEl = null;
-
-            function openEmailModal(e) {
-                e.preventDefault();
-                lastFocusedEl = document.activeElement;
-                emailOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeEmailModal() {
-                emailOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                if (lastFocusedEl) lastFocusedEl.focus();
-            }
-
-            emailClose.addEventListener('click', closeEmailModal);
-            emailOverlay.addEventListener('click', (e) => {
-                if (e.target === emailOverlay) closeEmailModal();
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && emailOverlay.classList.contains('active')) closeEmailModal();
-            });
-
-            copyBtn.addEventListener('click', () => {
-                const fallbackCopy = () => {
-                    const tmp = document.createElement('input');
-                    tmp.value = emailAddress;
-                    document.body.appendChild(tmp);
-                    tmp.select();
-                    try {
-                        document.execCommand('copy');
-                    } catch (err) { }
-                    document.body.removeChild(tmp);
-                    showCopyMsg();
-                };
-
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(emailAddress).then(showCopyMsg).catch(fallbackCopy);
-                } else {
-                    fallbackCopy();
-                }
-            });
-
-            function showCopyMsg() {
-                copyMsg.textContent = 'Alamat email berhasil disalin!';
-                setTimeout(() => {
-                    copyMsg.textContent = '';
-                }, 3000);
-            }
-
-            document.querySelectorAll('[data-email-trigger]').forEach(btn => {
-                btn.addEventListener('click', openEmailModal);
-            });
-        })();
-
-        // ========== PAGE HEADER PHOTO CAROUSEL ==========
-        (function () {
-            const images = [
-                "Image/galerikami16.jpeg"
-            ];
-            const DURATION = 9000; // 5 detik per foto
-            const carousel = document.getElementById("pageHeaderCarousel");
-            const dotsWrap = document.getElementById("pageHeaderDots");
-            if (!carousel || !dotsWrap || images.length === 0) return;
-
-            images.forEach((src, i) => {
-                const slide = document.createElement("div");
-                slide.className = "page-header-slide" + (i === 0 ? " active" : "");
-                slide.style.backgroundImage = `url("${src}")`;
-                carousel.appendChild(slide);
-
-                const dot = document.createElement("button");
-                dot.type = "button";
-                dot.className = "page-header-dot" + (i === 0 ? " active" : "");
-                dot.setAttribute("aria-label", `Foto ${i + 1}`);
-                dot.addEventListener("click", () => goToSlide(i));
-                dotsWrap.appendChild(dot);
-            });
-
-            const slides = carousel.querySelectorAll(".page-header-slide");
-            const dots = dotsWrap.querySelectorAll(".page-header-dot");
-            let index = 0;
-            let timer;
-
-            // Sembunyikan dots kalau cuma ada satu foto (tidak ada yang perlu dipilih)
-            if (images.length <= 1) {
-                dotsWrap.style.display = "none";
-            }
-
-            function goToSlide(i) {
-                slides[index].classList.remove("active");
-                dots[index].classList.remove("active");
-                index = i;
-                slides[index].classList.add("active");
-                dots[index].classList.add("active");
-                resetTimer();
-            }
-
-            function nextSlide() {
-                goToSlide((index + 1) % slides.length);
-            }
-
-            function resetTimer() {
-                clearInterval(timer);
-                if (slides.length > 1) timer = setInterval(nextSlide, DURATION);
-            }
-
-            resetTimer();
-        })();
-
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // ========== MOBILE MENU ==========
-        const hamburger = document.getElementById('hamburger');
-        const drawer = document.getElementById('mobileDrawer');
-        const overlay = document.getElementById('mobileOverlay');
-
-        function toggleMenu() {
-            const isOpen = drawer.classList.toggle('active');
-            hamburger.classList.toggle('active');
-            overlay.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded', isOpen);
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-        }
-
-        hamburger.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
-        drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', toggleMenu));
-
-        // ========== SCROLL REVEAL ==========
-        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -30px 0px'
-        });
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // ========== BACK TO TOP ==========
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // ========== WA BUTTON (pakai WhatsApp wa.me) ==========
-        // Nomor WhatsApp per kantor. GANTI '62XXXXXXXXXXX' dengan nomor WA Kantor Pusat yang benar.
-        const WA_NUMBERS = {
-            'Kantor Pusat - Tangerang': '62XXXXXXXXXXX',
-            'Kantor Cabang - Bekasi': '62817843531'
-        };
-        const WA_DEFAULT = WA_NUMBERS['Kantor Cabang - Bekasi'];
-
-        function openWhatsApp(message, phone) {
-            const targetPhone = phone || WA_DEFAULT;
-            const url = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
-
-        document.addEventListener('click', (e) => {
-            const waBtn = e.target.closest('.btn-wa');
-            if (waBtn) {
-                const msg = waBtn.getAttribute('data-wa-text') || 'Halo Khalifah Asia Bekasi, saya ingin konsultasi.';
-                openWhatsApp(msg);
-            }
-        });
-
-        (function () {
-            const widget = document.getElementById('livechatWidget');
-            const toggleBtn = document.getElementById('livechatToggle');
-            const closeBtn = document.getElementById('livechatClose');
-            const panel = document.getElementById('livechatPanel');
-            if (!widget || !toggleBtn) return;
-
-            function openChat() {
-                widget.classList.add('open');
-                toggleBtn.setAttribute('aria-expanded', 'true');
-                if (panel) panel.setAttribute('aria-hidden', 'false');
-            }
-
-            function closeChat() {
-                widget.classList.remove('open');
-                toggleBtn.setAttribute('aria-expanded', 'false');
-                if (panel) panel.setAttribute('aria-hidden', 'true');
-            }
-
-            toggleBtn.addEventListener('click', function () {
-                widget.classList.contains('open') ? closeChat() : openChat();
-            });
-            if (closeBtn) closeBtn.addEventListener('click', closeChat);
-
-            document.addEventListener('click', function (e) {
-                if (widget.classList.contains('open') && !widget.contains(e.target)) {
-                    closeChat();
-                }
-            });
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') closeChat();
-            });
-
-            // Auto-buka sekali setelah beberapa saat untuk menarik perhatian (hanya sekali per sesi)
-            if (!sessionStorage.getItem('livechatAutoShown')) {
-                setTimeout(function () {
-                    if (!widget.classList.contains('open')) {
-                        toggleBtn.classList.add('livechat-attention');
-                    }
-                    sessionStorage.setItem('livechatAutoShown', '1');
-                }, 6000);
-            }
-        })();
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
