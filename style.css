@@ -99,8 +99,6 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  width: 100%;
 }
 
 body {
@@ -7864,16 +7862,6 @@ object {
   background: #000;
 }
 
-/* Video rekaman HP (vertikal) diberi class ini via JS (data-orientation="portrait"
-   pada tombolnya) supaya kotak modal tidak memaksa 16:9 & muncul bar hitam. */
-.video-embed-modal-body.is-portrait {
-  aspect-ratio: 9 / 16;
-  max-height: 78vh;
-  max-width: 100%;
-  width: auto;
-  margin: 0 auto;
-}
-
 .video-embed-modal-body video,
 .video-embed-modal-body iframe {
   position: absolute;
@@ -9337,43 +9325,64 @@ object {
    ============================================================ */
 /* ===== Blok style #1 dari index.html ===== */
 @media (max-width: 900px) {
-            body[data-page="index"] .hero{
+            .hero {
                 min-height: 100vh;
                 min-height: 100dvh;
             }
 
-            body[data-page="index"] .hero-video{
-                object-fit: contain;
+            .hero-video {
+                object-fit: cover;
                 background: transparent;
             }
 
-            body[data-page="index"] .hero-video-backdrop{
+            .hero-video-backdrop {
                 display: none;
             }
         }
 
 /* ===== Blok style #2 dari index.html ===== */
-body[data-page="index"] .article-grid-4{
+.article-grid-4 {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
         }
 
         @media (max-width: 1100px) {
-            body[data-page="index"] .article-grid-4{
+            .article-grid-4 {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 640px) {
-            body[data-page="index"] .article-grid-4{
+            .article-grid-4 {
                 grid-template-columns: 1fr;
             }
         }
 
+        /* ---------- BADGE: "Direferensikan oleh Agent ..." di dalam modal WhatsApp ---------- */
+        .wa-referral-badge {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            margin: 4px auto 0;
+            padding: 8px 14px;
+            background: var(--gold-pale, #fbead0);
+            color: var(--gold-deep, #a9760b);
+            border-radius: var(--radius-full, 999px);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-align: center;
+            width: fit-content;
+            max-width: 100%;
+        }
+
+        .wa-referral-badge.show {
+            display: flex;
+        }
+
         /* ================= MODAL: BOOKING ONLINE ================= */
         /* Dipaksa selalu di atas navbar/header situs & tidak boleh terpotong, berapapun z-index header aslinya */
-        body[data-page="index"] #bookingModalOverlay.wa-modal-overlay{
+        #bookingModalOverlay.wa-modal-overlay {
             z-index: 999999 !important;
             align-items: center !important;
             padding: 30px 16px !important;
@@ -9381,7 +9390,7 @@ body[data-page="index"] .article-grid-4{
             box-sizing: border-box;
         }
 
-        body[data-page="index"] .booking-modal{
+        .booking-modal {
             max-width: 620px;
             width: 100%;
             max-height: calc(100vh - 60px);
@@ -9391,31 +9400,31 @@ body[data-page="index"] .article-grid-4{
         }
 
         @media (max-width: 640px) {
-            body[data-page="index"] #bookingModalOverlay.wa-modal-overlay{
+            #bookingModalOverlay.wa-modal-overlay {
                 padding: 24px 12px !important;
             }
 
-            body[data-page="index"] .booking-modal{
+            .booking-modal {
                 max-height: calc(100vh - 48px);
             }
         }
 
-        body[data-page="index"] .booking-modal .wa-modal-scroll{
+        .booking-modal .wa-modal-scroll {
             padding: 22px 26px 26px;
             overflow-y: auto;
             flex: 1 1 auto;
             min-height: 0;
         }
 
-        body[data-page="index"] .bk-section{
+        .bk-section {
             margin-bottom: 24px;
         }
 
-        body[data-page="index"] .bk-section:last-of-type{
+        .bk-section:last-of-type {
             margin-bottom: 8px;
         }
 
-        body[data-page="index"] .bk-section-title{
+        .bk-section-title {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -9425,7 +9434,7 @@ body[data-page="index"] .article-grid-4{
             margin: 0 0 14px;
         }
 
-        body[data-page="index"] .bk-section-title .bk-step-num{
+        .bk-section-title .bk-step-num {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -9439,39 +9448,39 @@ body[data-page="index"] .article-grid-4{
             flex-shrink: 0;
         }
 
-        body[data-page="index"] .bk-grid-2{
+        .bk-grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 14px;
         }
 
         @media (max-width: 560px) {
-            body[data-page="index"] .bk-grid-2{
+            .bk-grid-2 {
                 grid-template-columns: 1fr;
             }
         }
 
-        body[data-page="index"] .bk-field{
+        .bk-field {
             display: flex;
             flex-direction: column;
             gap: 6px;
             margin-bottom: 14px;
         }
 
-        body[data-page="index"] .bk-field label{
+        .bk-field label {
             font-size: 0.82rem;
             font-weight: 600;
             color: #4a5468;
         }
 
-        body[data-page="index"] .bk-field label .bk-optional{
+        .bk-field label .bk-optional {
             font-weight: 400;
             color: #98a1b3;
         }
 
-        body[data-page="index"] .bk-field input,
-        body[data-page="index"] .bk-field select,
-        body[data-page="index"] .bk-field textarea{
+        .bk-field input,
+        .bk-field select,
+        .bk-field textarea {
             width: 100%;
             padding: 11px 13px;
             border: 1.5px solid #e2e5ec;
@@ -9483,49 +9492,49 @@ body[data-page="index"] .article-grid-4{
             transition: border-color .18s ease, background .18s ease;
         }
 
-        body[data-page="index"] .bk-field input:focus,
-        body[data-page="index"] .bk-field select:focus,
-        body[data-page="index"] .bk-field textarea:focus{
+        .bk-field input:focus,
+        .bk-field select:focus,
+        .bk-field textarea:focus {
             outline: none;
             border-color: var(--gold-deep, #a9760b);
             background: #fff;
         }
 
-        body[data-page="index"] .bk-field textarea{
+        .bk-field textarea {
             resize: vertical;
             min-height: 70px;
         }
 
-        body[data-page="index"] .bk-hint{
+        .bk-hint {
             font-size: 0.74rem;
             color: #98a1b3;
         }
 
-        body[data-page="index"] .bk-room-options{
+        .bk-room-options {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
         }
 
         @media (max-width: 560px) {
-            body[data-page="index"] .bk-room-options{
+            .bk-room-options {
                 grid-template-columns: 1fr;
             }
         }
 
-        body[data-page="index"] .bk-room-card{
+        .bk-room-card {
             position: relative;
             display: block;
             cursor: pointer;
         }
 
-        body[data-page="index"] .bk-room-card input{
+        .bk-room-card input {
             position: absolute;
             opacity: 0;
             pointer-events: none;
         }
 
-        body[data-page="index"] .bk-room-card .bk-room-inner{
+        .bk-room-card .bk-room-inner {
             border: 1.5px solid #e2e5ec;
             border-radius: 12px;
             padding: 12px 12px 14px;
@@ -9534,7 +9543,7 @@ body[data-page="index"] .article-grid-4{
             background: #fbfbfd;
         }
 
-        body[data-page="index"] .bk-room-card .bk-room-name{
+        .bk-room-card .bk-room-name {
             display: block;
             font-weight: 700;
             font-size: 0.86rem;
@@ -9542,31 +9551,31 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 4px;
         }
 
-        body[data-page="index"] .bk-room-card .bk-room-price{
+        .bk-room-card .bk-room-price {
             display: block;
             font-size: 0.8rem;
             color: var(--gold-deep, #a9760b);
             font-weight: 700;
         }
 
-        body[data-page="index"] .bk-room-card .bk-room-price:empty::after{
+        .bk-room-card .bk-room-price:empty::after {
             content: '—';
             color: #c3c8d4;
             font-weight: 400;
         }
 
-        body[data-page="index"] .bk-room-card input:checked+.bk-room-inner{
+        .bk-room-card input:checked+.bk-room-inner {
             border-color: var(--gold-deep, #a9760b);
             background: var(--gold-pale, #fbead0);
             box-shadow: 0 0 0 2px rgba(169, 118, 11, 0.15);
         }
 
-        body[data-page="index"] .bk-room-card.bk-room-disabled{
+        .bk-room-card.bk-room-disabled {
             opacity: 0.4;
             pointer-events: none;
         }
 
-        body[data-page="index"] .bk-paket-display{
+        .bk-paket-display {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -9580,20 +9589,20 @@ body[data-page="index"] .article-grid-4{
             background: var(--gold-pale, #fbead0);
         }
 
-        body[data-page="index"] .bk-paket-display.bk-empty{
+        .bk-paket-display.bk-empty {
             border-color: #e2e5ec;
             color: #98a1b3;
             font-weight: 500;
             background: #fbfbfd;
         }
 
-        body[data-page="index"] .bk-submit-btn{
+        .bk-submit-btn {
             width: 100%;
             justify-content: center;
             margin-top: 6px;
         }
 
-        body[data-page="index"] .bk-error-msg{
+        .bk-error-msg {
             display: none;
             color: #c0392b;
             font-size: 0.8rem;
@@ -9601,7 +9610,7 @@ body[data-page="index"] .article-grid-4{
             margin: -8px 0 14px;
         }
 
-        body[data-page="index"] .bk-error-msg.show{
+        .bk-error-msg.show {
             display: block;
         }
 
@@ -9610,7 +9619,7 @@ body[data-page="index"] .article-grid-4{
    ============================================================ */
 /* ===== Blok style #1 dari tentang.html ===== */
 /* ================= TENTANG KAMI — PAGE STYLES ================= */
-        body[data-page="tentang"]{
+        :root {
             --white: var(--color-surface);
             --line: var(--color-border);
             --radius-lg: var(--r-lg);
@@ -9634,26 +9643,26 @@ body[data-page="index"] .article-grid-4{
             --ease-out: var(--ease-smooth);
         }
 
-        body[data-page="tentang"] a{
+        a {
             color: inherit;
         }
 
-        body[data-page="tentang"] a:visited{
+        a:visited {
             color: inherit;
         }
 
-        body[data-page="tentang"] button:focus-visible,
-        body[data-page="tentang"] a:focus-visible{
+        button:focus-visible,
+        a:focus-visible {
             outline: 2px solid var(--gold-deep);
             outline-offset: 2px;
         }
 
         /* ---------- Crop hero jadi strip atas (senada dengan page-header di Info Manasik & Kontak) ---------- */
-        body[data-page="tentang"] .hero{
+        .hero {
             min-height: 640px;
         }
 
-        body[data-page="tentang"] .about-hero{
+        .about-hero {
             position: relative;
             overflow: hidden;
             background: linear-gradient(155deg, var(--ink-deep) 0%, var(--brown) 55%, var(--brown-soft) 100%);
@@ -9661,7 +9670,7 @@ body[data-page="index"] .article-grid-4{
             text-align: center;
         }
 
-        body[data-page="tentang"] .about-hero::before{
+        .about-hero::before {
             content: "";
             position: absolute;
             inset: 0;
@@ -9669,24 +9678,24 @@ body[data-page="index"] .article-grid-4{
             pointer-events: none;
         }
 
-        body[data-page="tentang"] .about-hero-inner{
+        .about-hero-inner {
             position: relative;
             z-index: 2;
             max-width: 760px;
             margin: 0 auto;
         }
 
-        body[data-page="tentang"] .about-hero .section-eyebrow{
+        .about-hero .section-eyebrow {
             color: var(--gold-light);
             justify-content: center;
         }
 
-        body[data-page="tentang"] .about-hero .section-eyebrow::before,
-        body[data-page="tentang"] .about-hero .section-eyebrow::after{
+        .about-hero .section-eyebrow::before,
+        .about-hero .section-eyebrow::after {
             background: linear-gradient(90deg, var(--gold), transparent);
         }
 
-        body[data-page="tentang"] .about-hero h1{
+        .about-hero h1 {
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-weight: 700;
             font-size: clamp(2.4rem, 4.6vw, 3.6rem);
@@ -9695,13 +9704,13 @@ body[data-page="index"] .article-grid-4{
             line-height: 1.15;
         }
 
-        body[data-page="tentang"] .about-hero h1 span{
+        .about-hero h1 span {
             color: var(--gold-light);
             font-style: italic;
             font-weight: 500;
         }
 
-        body[data-page="tentang"] .about-hero p{
+        .about-hero p {
             color: rgba(255, 255, 255, 0.8);
             font-size: 1.08rem;
             line-height: 1.8;
@@ -9709,7 +9718,7 @@ body[data-page="index"] .article-grid-4{
             margin: 0 auto;
         }
 
-        body[data-page="tentang"] .about-hero-stats{
+        .about-hero-stats {
             display: flex;
             justify-content: center;
             gap: 48px;
@@ -9717,7 +9726,7 @@ body[data-page="index"] .article-grid-4{
             flex-wrap: wrap;
         }
 
-        body[data-page="tentang"] .about-hero-stat strong{
+        .about-hero-stat strong {
             display: block;
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-size: 1.8rem;
@@ -9725,7 +9734,7 @@ body[data-page="index"] .article-grid-4{
             color: var(--gold-light);
         }
 
-        body[data-page="tentang"] .about-hero-stat span{
+        .about-hero-stat span {
             font-size: 0.72rem;
             letter-spacing: 0.06em;
             text-transform: uppercase;
@@ -9734,13 +9743,20 @@ body[data-page="index"] .article-grid-4{
 
         /* ---------- DASHBOARD PANEL ---------- */
 
-        body[data-page="tentang"] .dash-section{
+        .dash-section {
             padding: clamp(50px, 8vw, 100px) 0;
             /* Alias warna sudah dipindah ke :root di bagian atas file supaya
                seluruh halaman (bukan cuma dashboard) seirama. */
         }
 
-        body[data-page="tentang"] .dash-sidebar{
+        .dash-sidebar {
+            position: static;
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .dash-sidebar {
             position: sticky;
             top: 118px;
             background: var(--white);
@@ -9750,7 +9766,7 @@ body[data-page="index"] .article-grid-4{
             box-shadow: var(--shadow-md);
         }
 
-        body[data-page="tentang"] .dash-sidebar-label{
+        .dash-sidebar-label {
             font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 0.1em;
@@ -9759,7 +9775,7 @@ body[data-page="index"] .article-grid-4{
             padding: 10px 14px 6px;
         }
 
-        body[data-page="tentang"] .dash-nav-btn{
+        .dash-nav-btn {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -9778,7 +9794,7 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 4px;
         }
 
-        body[data-page="tentang"] .dash-nav-btn .dash-nav-icon{
+        .dash-nav-btn .dash-nav-icon {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -9791,23 +9807,23 @@ body[data-page="index"] .article-grid-4{
             transition: all 0.3s var(--ease-out);
         }
 
-        body[data-page="tentang"] .dash-nav-btn:hover{
+        .dash-nav-btn:hover {
             background: var(--paper-warm);
             color: var(--brown-soft);
         }
 
-        body[data-page="tentang"] .dash-nav-btn.active{
+        .dash-nav-btn.active {
             background: var(--palette-gold);
             color: var(--ink);
             box-shadow: var(--shadow-gold);
         }
 
-        body[data-page="tentang"] .dash-nav-btn.active .dash-nav-icon{
+        .dash-nav-btn.active .dash-nav-icon {
             background: rgba(255, 255, 255, 0.35);
             color: var(--ink);
         }
 
-        body[data-page="tentang"] .dash-content{
+        .dash-content {
             background: var(--white);
             border: 1px solid var(--line);
             border-radius: var(--radius-lg);
@@ -9818,16 +9834,16 @@ body[data-page="index"] .article-grid-4{
             overflow: hidden;
         }
 
-        body[data-page="tentang"] .dash-panel{
+        .dash-panel {
             display: none;
             animation: fadeInUp 0.5s var(--ease-out) both;
         }
 
-        body[data-page="tentang"] .dash-panel.active{
+        .dash-panel.active {
             display: block;
         }
 
-        body[data-page="tentang"] .dash-panel h2{
+        .dash-panel h2 {
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-size: clamp(1.6rem, 3vw, 2.1rem);
             font-weight: 700;
@@ -9835,14 +9851,14 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 20px;
         }
 
-        body[data-page="tentang"] .dash-panel p{
+        .dash-panel p {
             color: var(--text-soft);
             font-size: 1rem;
             line-height: 1.85;
             margin-bottom: 16px;
         }
 
-        body[data-page="tentang"] .dash-panel-list{
+        .dash-panel-list {
             list-style: none;
             display: flex;
             flex-direction: column;
@@ -9850,7 +9866,7 @@ body[data-page="index"] .article-grid-4{
             margin-top: 28px;
         }
 
-        body[data-page="tentang"] .dash-panel-list li{
+        .dash-panel-list li {
             display: flex;
             gap: 14px;
             align-items: flex-start;
@@ -9860,7 +9876,7 @@ body[data-page="index"] .article-grid-4{
             border-radius: var(--radius-md);
         }
 
-        body[data-page="tentang"] .dash-panel-list .num{
+        .dash-panel-list .num {
             flex-shrink: 0;
             width: 32px;
             height: 32px;
@@ -9874,13 +9890,13 @@ body[data-page="index"] .article-grid-4{
             font-size: 0.85rem;
         }
 
-        body[data-page="tentang"] .dash-panel-list p{
+        .dash-panel-list p {
             margin: 0;
             font-size: 0.94rem;
             line-height: 1.75;
         }
 
-        body[data-page="tentang"] .dash-panel-quote{
+        .dash-panel-quote {
             margin-top: 28px;
             padding: 24px 26px;
             border-left: 4px solid var(--gold);
@@ -9892,21 +9908,21 @@ body[data-page="index"] .article-grid-4{
             line-height: 1.8;
         }
 
-        body[data-page="tentang"] .hero h1 span{
+        .hero h1 span {
             color: var(--palette-gold);
             font-style: italic;
             font-weight: 500;
         }
 
-        body[data-page="tentang"] .hero-inner,
-        body[data-page="tentang"] .hero-content{
+        .hero-inner,
+        .hero-content {
             max-width: 100vw;
             overflow-x: hidden;
         }
 
-        body[data-page="tentang"] .hero h1,
-        body[data-page="tentang"] .hero .hero-desc,
-        body[data-page="tentang"] .hero p{
+        .hero h1,
+        .hero .hero-desc,
+        .hero p {
             max-width: 100%;
             box-sizing: border-box;
             overflow-wrap: break-word;
@@ -9915,9 +9931,9 @@ body[data-page="index"] .article-grid-4{
 
         @media (max-width: 480px) {
 
-            body[data-page="tentang"] .hero h1,
-        body[data-page="tentang"] .hero .hero-desc,
-        body[data-page="tentang"] .hero p{
+            .hero h1,
+            .hero .hero-desc,
+            .hero p {
                 padding-left: 12px;
                 padding-right: 12px;
             }
@@ -9925,7 +9941,7 @@ body[data-page="index"] .article-grid-4{
 
         /* ---------- PROFIL PEMANDU ---------- */
 
-        body[data-page="tentang"] .pemandu-grid{
+        .pemandu-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -9933,12 +9949,12 @@ body[data-page="index"] .article-grid-4{
             margin-top: 8px;
         }
 
-        body[data-page="tentang"] .pemandu-card{
+        .pemandu-card {
             flex: 1 1 calc(33.333% - 16px);
             max-width: calc(33.333% - 16px);
         }
 
-        body[data-page="tentang"] .pemandu-card{
+        .pemandu-card {
             background: var(--white);
             border: 1px solid var(--line);
             border-radius: var(--radius-lg, 20px);
@@ -9948,20 +9964,20 @@ body[data-page="index"] .article-grid-4{
             box-shadow: var(--shadow-sm);
         }
 
-        body[data-page="tentang"] .pemandu-card:hover{
+        .pemandu-card:hover {
             border-color: var(--gold-deep);
             box-shadow: var(--shadow-lg);
             transform: translateY(-6px);
         }
 
-        body[data-page="tentang"] .pemandu-photo{
+        .pemandu-photo {
             position: relative;
             aspect-ratio: 4 / 5;
             overflow: hidden;
             background: linear-gradient(135deg, var(--gold-light), var(--gold));
         }
 
-        body[data-page="tentang"] .pemandu-photo img{
+        .pemandu-photo img {
             width: 100%;
             height: auto;
             object-fit: cover;
@@ -9969,11 +9985,11 @@ body[data-page="index"] .article-grid-4{
             transition: transform 0.5s var(--ease-out);
         }
 
-        body[data-page="tentang"] .pemandu-card:hover .pemandu-photo img{
+        .pemandu-card:hover .pemandu-photo img {
             transform: scale(1.06);
         }
 
-        body[data-page="tentang"] .pemandu-photo::after{
+        .pemandu-photo::after {
             content: "";
             position: absolute;
             inset: auto 0 0 0;
@@ -9982,11 +9998,11 @@ body[data-page="index"] .article-grid-4{
             pointer-events: none;
         }
 
-        body[data-page="tentang"] .pemandu-info{
+        .pemandu-info {
             padding: 18px 16px 16px;
         }
 
-        body[data-page="tentang"] .pemandu-name{
+        .pemandu-name {
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-weight: 700;
             font-size: clamp(0.95rem, 3.6vw, 1.05rem);
@@ -9994,7 +10010,7 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 8px;
         }
 
-        body[data-page="tentang"] .pemandu-role{
+        .pemandu-role {
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -10008,21 +10024,21 @@ body[data-page="index"] .article-grid-4{
             border-radius: var(--radius-full);
         }
 
-        body[data-page="tentang"] .pemandu-role svg{
+        .pemandu-role svg {
             width: 14px;
             height: 14px;
             stroke-width: 2.4;
             flex-shrink: 0;
         }
 
-        body[data-page="tentang"] .pemandu-desc{
+        .pemandu-desc {
             font-size: 0.88rem;
             line-height: 1.7;
             color: var(--text-soft);
             margin: 12px 0 4px;
         }
 
-        body[data-page="tentang"] .pemandu-note{
+        .pemandu-note {
             margin-top: 24px;
             font-size: 0.86rem;
             color: var(--text-muted);
@@ -10032,7 +10048,7 @@ body[data-page="index"] .article-grid-4{
         /* ---------- RESPONSIVE: TABLET (<=1024px) ---------- */
 
         @media (max-width: 1024px) {
-            body[data-page="tentang"] .pemandu-card{
+            .pemandu-card {
                 flex: 1 1 calc(50% - 12px);
                 max-width: calc(50% - 12px);
             }
@@ -10041,17 +10057,17 @@ body[data-page="index"] .article-grid-4{
         /* ---------- RESPONSIVE: TABLET KECIL & MOBILE (<=768px) ---------- */
 
         @media (max-width: 768px) {
-            body[data-page="tentang"] .pemandu-card{
+            .pemandu-card {
                 flex: 1 1 100%;
                 max-width: 100%;
             }
 
-            body[data-page="tentang"] .dash-wrap{
+            .dash-wrap {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
 
-            body[data-page="tentang"] .dash-sidebar{
+            .dash-sidebar {
                 position: static;
                 display: flex;
                 overflow-x: auto;
@@ -10060,11 +10076,11 @@ body[data-page="index"] .article-grid-4{
                 -webkit-overflow-scrolling: touch;
             }
 
-            body[data-page="tentang"] .dash-sidebar-label{
+            .dash-sidebar-label {
                 display: none;
             }
 
-            body[data-page="tentang"] .dash-nav-btn{
+            .dash-nav-btn {
                 flex-direction: column;
                 text-align: center;
                 gap: 6px;
@@ -10074,28 +10090,28 @@ body[data-page="index"] .article-grid-4{
                 margin-bottom: 0;
             }
 
-            body[data-page="tentang"] .dash-nav-btn .dash-nav-icon{
+            .dash-nav-btn .dash-nav-icon {
                 width: 34px;
                 height: 34px;
             }
 
-            body[data-page="tentang"] .dash-content{
+            .dash-content {
                 padding: 30px 24px;
             }
 
-            body[data-page="tentang"] .about-hero{
+            .about-hero {
                 padding: 150px 24px 80px;
             }
 
-            body[data-page="tentang"] .about-hero-stats{
+            .about-hero-stats {
                 gap: 32px;
             }
 
-            body[data-page="tentang"] .profil-izin-box{
+            .profil-izin-box {
                 gap: 10px;
             }
 
-            body[data-page="tentang"] .footer-grid{
+            .footer-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 32px 20px;
             }
@@ -10104,67 +10120,67 @@ body[data-page="index"] .article-grid-4{
         /* ---------- RESPONSIVE: HP KECIL (<=600px) ---------- */
 
         @media (max-width: 600px) {
-            body[data-page="tentang"] .footer-grid{
+            .footer-grid {
                 grid-template-columns: 1fr;
             }
 
-            body[data-page="tentang"] .about-hero-stats{
+            .about-hero-stats {
                 gap: 24px;
                 justify-content: space-between;
             }
 
-            body[data-page="tentang"] .about-hero-stat strong{
+            .about-hero-stat strong {
                 font-size: 1.5rem;
             }
 
-            body[data-page="tentang"] .dash-panel h2{
+            .dash-panel h2 {
                 font-size: 1.4rem;
             }
 
-            body[data-page="tentang"] .dash-panel-quote{
+            .dash-panel-quote {
                 padding: 18px 18px;
                 font-size: 0.95rem;
             }
         }
 
         @media (max-width: 480px) {
-            body[data-page="tentang"] .about-hero{
+            .about-hero {
                 padding: 140px 20px 70px;
             }
 
-            body[data-page="tentang"] .about-hero-stats{
+            .about-hero-stats {
                 gap: 28px;
             }
 
-            body[data-page="tentang"] .dash-content{
+            .dash-content {
                 padding: 24px 18px;
             }
 
-            body[data-page="tentang"] .dash-panel-list li{
+            .dash-panel-list li {
                 padding: 14px 16px;
             }
         }
 
         /* ---------- PERBAIKAN JARAK ANTAR SECTION (khusus halaman Tentang) ---------- */
 
-        body[data-page="tentang"] .poster-paket{
+        .poster-paket {
             padding: 70px 0 60px;
         }
 
-        body[data-page="tentang"] .footer{
+        .footer {
             margin-top: 0;
         }
 
         /* ---------- PROFIL PERUSAHAAN: BADGE IZIN RESMI ---------- */
 
-        body[data-page="tentang"] .profil-izin-box{
+        .profil-izin-box {
             display: flex;
             flex-wrap: wrap;
             gap: 14px;
             margin: 22px 0 28px;
         }
 
-        body[data-page="tentang"] .profil-izin-badge{
+        .profil-izin-badge {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -10175,12 +10191,12 @@ body[data-page="index"] .article-grid-4{
             flex: 1 1 240px;
         }
 
-        body[data-page="tentang"] .profil-izin-badge svg{
+        .profil-izin-badge svg {
             flex-shrink: 0;
             color: var(--gold-deep);
         }
 
-        body[data-page="tentang"] .profil-izin-badge .izin-label{
+        .profil-izin-badge .izin-label {
             display: block;
             font-size: 0.68rem;
             font-weight: 700;
@@ -10190,27 +10206,27 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 2px;
         }
 
-        body[data-page="tentang"] .profil-izin-badge .izin-value{
+        .profil-izin-badge .izin-value {
             display: block;
             font-size: 0.92rem;
             font-weight: 700;
             color: var(--brown-soft);
         }
 
-        body[data-page="tentang"] .profil-izin-badge .izin-value.placeholder{
+        .profil-izin-badge .izin-value.placeholder {
             color: #b3452f;
             font-weight: 600;
             font-style: italic;
         }
 
-        body[data-page="tentang"] .profil-highlight-grid{
+        .profil-highlight-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
             margin: 28px 0 8px;
         }
 
-        body[data-page="tentang"] .profil-highlight-item{
+        .profil-highlight-item {
             background: var(--paper-warm);
             border: 1px solid var(--line);
             border-radius: var(--radius-md);
@@ -10218,7 +10234,7 @@ body[data-page="index"] .article-grid-4{
             text-align: center;
         }
 
-        body[data-page="tentang"] .profil-highlight-item strong{
+        .profil-highlight-item strong {
             display: block;
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-size: clamp(1.2rem, 5.2vw, 1.5rem);
@@ -10226,23 +10242,23 @@ body[data-page="index"] .article-grid-4{
             color: var(--palette-teal-deep);
         }
 
-        body[data-page="tentang"] .profil-highlight-item span{
+        .profil-highlight-item span {
             font-size: 0.78rem;
             color: var(--text-muted);
         }
 
         @media (max-width: 640px) {
-            body[data-page="tentang"] .profil-highlight-grid{
+            .profil-highlight-grid {
                 grid-template-columns: 1fr 1fr;
             }
 
-            body[data-page="tentang"] .profil-izin-badge{
+            .profil-izin-badge {
                 flex: 1 1 100%;
             }
         }
 
         @media (max-width: 400px) {
-            body[data-page="tentang"] .profil-highlight-grid{
+            .profil-highlight-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -10250,34 +10266,34 @@ body[data-page="index"] .article-grid-4{
         /* ---------- PENGUATAN RESPONSIF TAMBAHAN ---------- */
 
         @media (max-width: 1024px) and (min-width: 901px) {
-            body[data-page="tentang"] .dash-content{
+            .dash-content {
                 padding: 36px 30px;
             }
         }
 
         @media (max-width: 360px) {
-            body[data-page="tentang"] .about-hero{
+            .about-hero {
                 padding: 130px 20px 70px;
             }
 
-            body[data-page="tentang"] .profil-izin-badge{
+            .profil-izin-badge {
                 padding: 10px 14px;
             }
 
-            body[data-page="tentang"] .pemandu-info{
+            .pemandu-info {
                 padding: 14px 12px 18px;
             }
         }
 
         @media (max-width: 900px) {
-            body[data-page="tentang"] .dash-nav-btn{
+            .dash-nav-btn {
                 min-width: 92px;
             }
         }
 
         /* ---------- HERO PHOTO CAROUSEL (pengganti hero video background) ---------- */
 
-        body[data-page="tentang"] .hero-bg{
+        .hero-bg {
             position: absolute;
             background-image: url("Image/fototentang.png");
             overflow: hidden;
@@ -10312,11 +10328,11 @@ body[data-page="index"] .article-grid-4{
            berbentuk banner seperti ini — sama seperti hampir semua website
            lain dengan foto latar di belakang teks. */
         @media (max-width: 900px) {
-            body[data-page="tentang"] .hero{
+            .hero {
                 min-height: 480px;
             }
 
-            body[data-page="tentang"] .hero-bg{
+            .hero-bg {
                 /* Foto asli (fototentang.png) rasionya sangat lebar (960x300,
                    ~3.2:1) sedangkan kotak hero di HP tegak (portrait).
                    Kalau tetap pakai foto lebar itu, background-size:cover
@@ -10336,13 +10352,13 @@ body[data-page="index"] .article-grid-4{
             }
         }
 
-        body[data-page="tentang"] .hero-carousel{
+        .hero-carousel {
             position: relative;
             width: 100%;
             height: 100%;
         }
 
-        body[data-page="tentang"] .hero-slide{
+        .hero-slide {
             position: absolute;
             inset: 0;
             background-size: cover;
@@ -10353,12 +10369,12 @@ body[data-page="index"] .article-grid-4{
             will-change: opacity, transform;
         }
 
-        body[data-page="tentang"] .hero-slide.is-active{
+        .hero-slide.is-active {
             opacity: 1;
             transform: scale(1);
         }
 
-        body[data-page="tentang"] .hero-bg::after{
+        .hero-bg::after {
             content: "";
             position: absolute;
             inset: 0;
@@ -10366,7 +10382,7 @@ body[data-page="index"] .article-grid-4{
             z-index: 1;
         }
 
-        body[data-page="tentang"] .hero-carousel-dots{
+        .hero-carousel-dots {
             position: absolute;
             left: 50%;
             bottom: 22px;
@@ -10376,7 +10392,7 @@ body[data-page="index"] .article-grid-4{
             z-index: 3;
         }
 
-        body[data-page="tentang"] .hero-carousel-dots button{
+        .hero-carousel-dots button {
             width: 8px;
             height: 8px;
             border-radius: 50%;
@@ -10387,7 +10403,7 @@ body[data-page="index"] .article-grid-4{
             transition: all 0.3s var(--ease-out, ease);
         }
 
-        body[data-page="tentang"] .hero-carousel-dots button.is-active{
+        .hero-carousel-dots button.is-active {
             width: 22px;
             border-radius: 5px;
             background: var(--gold-light, #e4c77a);
@@ -10395,57 +10411,57 @@ body[data-page="index"] .article-grid-4{
 
         /* ---------- PENGUATAN RESPONSIF UMUM (semua elemen page ini) ---------- */
 
-        body[data-page="tentang"] img,
-        body[data-page="tentang"] video,
-        body[data-page="tentang"] svg{
+        img,
+        video,
+        svg {
             max-width: 100%;
             height: auto;
         }
 
-        body[data-page="tentang"] .about-hero,
-        body[data-page="tentang"] .dash-content,
-        body[data-page="tentang"] .pemandu-info{
+        .about-hero,
+        .dash-content,
+        .pemandu-info {
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
 
         @media (max-width: 480px) {
-            body[data-page="tentang"] .profil-izin-box{
+            .profil-izin-box {
                 flex-direction: column;
             }
 
-            body[data-page="tentang"] .profil-izin-badge{
+            .profil-izin-badge {
                 flex: 1 1 100%;
                 width: 100%;
             }
 
-            body[data-page="tentang"] .poster-paket .btn{
+            .poster-paket .btn {
                 width: 100%;
                 justify-content: center;
             }
 
-            body[data-page="tentang"] .about-hero h1{
+            .about-hero h1 {
                 font-size: clamp(1.9rem, 7vw, 2.6rem);
             }
 
-            body[data-page="tentang"] .about-hero p{
+            .about-hero p {
                 font-size: 0.98rem;
             }
         }
 
         @media (max-width: 360px) {
-            body[data-page="tentang"] .footer-grid{
+            .footer-grid {
                 grid-template-columns: 1fr;
             }
 
-            body[data-page="tentang"] .about-hero-stats{
+            .about-hero-stats {
                 gap: 18px;
             }
         }
 
         /* ================= MODAL: FORM BIODATA & EMAIL ================= */
 
-        body[data-page="tentang"] .wa-modal-overlay{
+        .wa-modal-overlay {
             position: fixed;
             inset: 0;
             background: rgba(20, 14, 8, 0.62);
@@ -10460,12 +10476,12 @@ body[data-page="index"] .article-grid-4{
             transition: opacity 0.25s ease, visibility 0.25s ease;
         }
 
-        body[data-page="tentang"] .wa-modal-overlay.active{
+        .wa-modal-overlay.active {
             opacity: 1;
             visibility: visible;
         }
 
-        body[data-page="tentang"] .wa-modal{
+        .wa-modal {
             position: relative;
             background: var(--white);
             border-radius: var(--radius-lg, 22px);
@@ -10480,13 +10496,13 @@ body[data-page="index"] .article-grid-4{
             transition: transform 0.3s ease;
         }
 
-        body[data-page="tentang"] .wa-modal-overlay.active .wa-modal{
+        .wa-modal-overlay.active .wa-modal {
             transform: translateY(0) scale(1);
         }
 
         /* ---- Header banner (bagian atas berwarna) ---- */
 
-        body[data-page="tentang"] .wa-modal-header{
+        .wa-modal-header {
             position: relative;
             padding: 30px 32px 24px;
             text-align: center;
@@ -10495,7 +10511,7 @@ body[data-page="index"] .article-grid-4{
             flex-shrink: 0;
         }
 
-        body[data-page="tentang"] .wa-modal-header::before{
+        .wa-modal-header::before {
             content: "";
             position: absolute;
             inset: 0;
@@ -10503,11 +10519,11 @@ body[data-page="index"] .article-grid-4{
             pointer-events: none;
         }
 
-        body[data-page="tentang"] .wa-modal-header.email-header{
+        .wa-modal-header.email-header {
             background: linear-gradient(140deg, var(--gold-light, #e3c064) 0%, var(--gold-deep, #a87a24) 100%);
         }
 
-        body[data-page="tentang"] .wa-modal-close{
+        .wa-modal-close {
             position: absolute;
             top: 14px;
             right: 14px;
@@ -10527,12 +10543,12 @@ body[data-page="index"] .article-grid-4{
             z-index: 2;
         }
 
-        body[data-page="tentang"] .wa-modal-close:hover{
+        .wa-modal-close:hover {
             background: rgba(255, 255, 255, 0.36);
             transform: rotate(90deg);
         }
 
-        body[data-page="tentang"] .wa-modal-icon{
+        .wa-modal-icon {
             position: relative;
             width: 56px;
             height: 56px;
@@ -10546,7 +10562,7 @@ body[data-page="index"] .article-grid-4{
             margin: 0 auto 14px;
         }
 
-        body[data-page="tentang"] .wa-modal-header h3{
+        .wa-modal-header h3 {
             position: relative;
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-size: clamp(1.08rem, 4.5vw, 1.28rem);
@@ -10555,7 +10571,7 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 6px;
         }
 
-        body[data-page="tentang"] .wa-modal-sub{
+        .wa-modal-sub {
             position: relative;
             font-size: 0.88rem;
             color: rgba(255, 255, 255, 0.88);
@@ -10566,23 +10582,23 @@ body[data-page="index"] .article-grid-4{
 
         /* ---- Body / scroll area ---- */
 
-        body[data-page="tentang"] .wa-modal-scroll{
+        .wa-modal-scroll {
             overflow-y: auto;
             padding: 26px 32px 28px;
         }
 
-        body[data-page="tentang"] .wa-section-title{
+        .wa-section-title {
             display: flex;
             align-items: center;
             gap: 10px;
             margin: 0 0 16px;
         }
 
-        body[data-page="tentang"] .wa-section-title:not(:first-child){
+        .wa-section-title:not(:first-child) {
             margin-top: 22px;
         }
 
-        body[data-page="tentang"] .wa-section-title .num{
+        .wa-section-title .num {
             flex-shrink: 0;
             width: 24px;
             height: 24px;
@@ -10596,7 +10612,7 @@ body[data-page="index"] .article-grid-4{
             font-size: 0.72rem;
         }
 
-        body[data-page="tentang"] .wa-section-title span.label{
+        .wa-section-title span.label {
             font-size: 0.72rem;
             font-weight: 800;
             letter-spacing: 0.08em;
@@ -10604,28 +10620,28 @@ body[data-page="index"] .article-grid-4{
             color: var(--gold-deep, #a87a24);
         }
 
-        body[data-page="tentang"] .wa-section-title::after{
+        .wa-section-title::after {
             content: "";
             flex: 1;
             height: 1px;
             background: var(--line, #e2dccf);
         }
 
-        body[data-page="tentang"] .wa-form-grid{
+        .wa-form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0 14px;
         }
 
-        body[data-page="tentang"] .wa-field{
+        .wa-field {
             margin-bottom: 15px;
         }
 
-        body[data-page="tentang"] .wa-field.full{
+        .wa-field.full {
             grid-column: 1 / -1;
         }
 
-        body[data-page="tentang"] .wa-field label{
+        .wa-field label {
             display: block;
             font-size: 0.8rem;
             font-weight: 700;
@@ -10633,11 +10649,11 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 6px;
         }
 
-        body[data-page="tentang"] .wa-input-wrap{
+        .wa-input-wrap {
             position: relative;
         }
 
-        body[data-page="tentang"] .wa-field-icon{
+        .wa-field-icon {
             position: absolute;
             left: 13px;
             top: 50%;
@@ -10647,9 +10663,9 @@ body[data-page="index"] .article-grid-4{
             pointer-events: none;
         }
 
-        body[data-page="tentang"] .wa-field input,
-        body[data-page="tentang"] .wa-field select,
-        body[data-page="tentang"] .wa-field textarea{
+        .wa-field input,
+        .wa-field select,
+        .wa-field textarea {
             width: 100%;
             padding: 11px 14px 11px 40px;
             border-radius: var(--radius-md, 12px);
@@ -10663,17 +10679,17 @@ body[data-page="index"] .article-grid-4{
             appearance: none;
         }
 
-        body[data-page="tentang"] .wa-field textarea{
+        .wa-field textarea {
             padding-left: 14px;
             min-height: 78px;
         }
 
-        body[data-page="tentang"] .wa-field textarea+.wa-field-icon,
-        body[data-page="tentang"] .wa-input-wrap textarea~.wa-field-icon{
+        .wa-field textarea+.wa-field-icon,
+        .wa-input-wrap textarea~.wa-field-icon {
             display: none;
         }
 
-        body[data-page="tentang"] .wa-field select{
+        .wa-field select {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a87a24' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 14px center;
@@ -10681,22 +10697,22 @@ body[data-page="index"] .article-grid-4{
             cursor: pointer;
         }
 
-        body[data-page="tentang"] .wa-field input:focus,
-        body[data-page="tentang"] .wa-field select:focus,
-        body[data-page="tentang"] .wa-field textarea:focus{
+        .wa-field input:focus,
+        .wa-field select:focus,
+        .wa-field textarea:focus {
             outline: none;
             border-color: var(--gold-deep, #b3862c);
             box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.18);
         }
 
-        body[data-page="tentang"] .wa-field input.invalid,
-        body[data-page="tentang"] .wa-field select.invalid,
-        body[data-page="tentang"] .wa-field textarea.invalid{
+        .wa-field input.invalid,
+        .wa-field select.invalid,
+        .wa-field textarea.invalid {
             border-color: #d34d3f;
             background: #fdf2f1;
         }
 
-        body[data-page="tentang"] .wa-error{
+        .wa-error {
             display: block;
             min-height: 16px;
             font-size: 0.74rem;
@@ -10705,7 +10721,7 @@ body[data-page="index"] .article-grid-4{
             font-weight: 600;
         }
 
-        body[data-page="tentang"] .wa-char-count{
+        .wa-char-count {
             display: block;
             text-align: right;
             font-size: 0.7rem;
@@ -10713,7 +10729,7 @@ body[data-page="index"] .article-grid-4{
             margin-top: 3px;
         }
 
-        body[data-page="tentang"] .wa-trust-note{
+        .wa-trust-note {
             display: flex;
             align-items: flex-start;
             gap: 8px;
@@ -10726,13 +10742,13 @@ body[data-page="index"] .article-grid-4{
             line-height: 1.5;
         }
 
-        body[data-page="tentang"] .wa-trust-note svg{
+        .wa-trust-note svg {
             flex-shrink: 0;
             color: var(--gold-deep, #a87a24);
             margin-top: 1px;
         }
 
-        body[data-page="tentang"] .wa-modal-submit{
+        .wa-modal-submit {
             width: 100%;
             justify-content: center;
             display: flex;
@@ -10745,13 +10761,13 @@ body[data-page="index"] .article-grid-4{
             font-size: 0.98rem;
         }
 
-        body[data-page="tentang"] .email-modal-actions{
+        .email-modal-actions {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        body[data-page="tentang"] .email-action-btn{
+        .email-action-btn {
             width: 100%;
             justify-content: center;
             display: flex;
@@ -10763,12 +10779,12 @@ body[data-page="index"] .article-grid-4{
             padding: 13px;
         }
 
-        body[data-page="tentang"] .btn.email-action-btn.btn-secondary{
+        .btn.email-action-btn.btn-secondary {
             background: var(--paper-warm, #faf7f1);
             color: var(--brown-soft, #4a3423);
         }
 
-        body[data-page="tentang"] .email-copy-msg{
+        .email-copy-msg {
             display: block;
             text-align: center;
             font-size: 0.82rem;
@@ -10778,17 +10794,17 @@ body[data-page="index"] .article-grid-4{
         }
 
         @media (max-width: 560px) {
-            body[data-page="tentang"] .wa-form-grid{
+            .wa-form-grid {
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 480px) {
-            body[data-page="tentang"] .wa-modal-header{
+            .wa-modal-header {
                 padding: 26px 22px 20px;
             }
 
-            body[data-page="tentang"] .wa-modal-scroll{
+            .wa-modal-scroll {
                 padding: 22px 20px 24px;
             }
 
@@ -10797,20 +10813,20 @@ body[data-page="index"] .article-grid-4{
                Dinaikkan ke 16px khusus di form supaya tidak ke-zoom,
                ukuran visualnya tetap sama karena wa-field punya padding
                yang menyesuaikan. */
-            body[data-page="tentang"] .wa-field input,
-        body[data-page="tentang"] .wa-field select,
-        body[data-page="tentang"] .wa-field textarea{
+            .wa-field input,
+            .wa-field select,
+            .wa-field textarea {
                 font-size: 16px;
             }
         }
 
         /* ---------- TOMBOL GALERI DI KARTU USTAD ---------- */
 
-        body[data-page="tentang"] .pemandu-card-footer{
+        .pemandu-card-footer {
             padding: 0 16px 20px;
         }
 
-        body[data-page="tentang"] .pemandu-gallery-btn{
+        .pemandu-gallery-btn {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -10829,7 +10845,7 @@ body[data-page="index"] .article-grid-4{
             transition: all 0.3s var(--ease-out);
         }
 
-        body[data-page="tentang"] .pemandu-gallery-btn .pemandu-gallery-icon{
+        .pemandu-gallery-btn .pemandu-gallery-icon {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -10842,12 +10858,12 @@ body[data-page="index"] .article-grid-4{
             transition: all 0.3s var(--ease-out);
         }
 
-        body[data-page="tentang"] .pemandu-gallery-btn svg{
+        .pemandu-gallery-btn svg {
             flex-shrink: 0;
         }
 
-        body[data-page="tentang"] .pemandu-gallery-btn:hover,
-        body[data-page="tentang"] .pemandu-gallery-btn:focus-visible{
+        .pemandu-gallery-btn:hover,
+        .pemandu-gallery-btn:focus-visible {
             border-color: var(--gold-deep);
             background: var(--gold-deep);
             color: #fff;
@@ -10855,15 +10871,15 @@ body[data-page="index"] .article-grid-4{
             transform: translateY(-2px);
         }
 
-        body[data-page="tentang"] .pemandu-gallery-btn:hover .pemandu-gallery-icon,
-        body[data-page="tentang"] .pemandu-gallery-btn:focus-visible .pemandu-gallery-icon{
+        .pemandu-gallery-btn:hover .pemandu-gallery-icon,
+        .pemandu-gallery-btn:focus-visible .pemandu-gallery-icon {
             background: var(--white);
             color: var(--gold-deep);
         }
 
         /* ---------- MODAL GALERI FOTO USTAD & JAMAAH ---------- */
 
-        body[data-page="tentang"] #galleryModalOverlay{
+        #galleryModalOverlay {
             align-items: flex-start;
             overflow-y: auto;
             padding: 44px 20px;
@@ -10873,24 +10889,24 @@ body[data-page="index"] .article-grid-4{
             z-index: 10000;
         }
 
-        body[data-page="tentang"] #galleryModalOverlay .wa-modal{
+        #galleryModalOverlay .wa-modal {
             max-width: 900px;
             max-height: none;
             margin: auto;
         }
 
-        body[data-page="tentang"] .gallery-modal-scroll{
+        .gallery-modal-scroll {
             overflow-y: visible;
             padding: 34px 48px 48px;
         }
 
-        body[data-page="tentang"] .ustad-gallery-grid{
+        .ustad-gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 32px 32px;
         }
 
-        body[data-page="tentang"] .gallery-grid-item{
+        .gallery-grid-item {
             position: relative;
             min-width: 0;
             border-radius: var(--radius-md, 16px);
@@ -10901,12 +10917,12 @@ body[data-page="index"] .article-grid-4{
             transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
         }
 
-        body[data-page="tentang"] .gallery-grid-item:hover{
+        .gallery-grid-item:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg, 0 18px 34px rgba(0, 0, 0, 0.16));
         }
 
-        body[data-page="tentang"] .gallery-grid-photo{
+        .gallery-grid-photo {
             position: relative;
             width: 100%;
             aspect-ratio: 4 / 3;
@@ -10914,8 +10930,8 @@ body[data-page="index"] .article-grid-4{
             background: var(--paper-warm);
         }
 
-        body[data-page="tentang"] .gallery-grid-photo img,
-        body[data-page="tentang"] .gallery-grid-photo .gallery-fallback{
+        .gallery-grid-photo img,
+        .gallery-grid-photo .gallery-fallback {
             position: absolute;
             top: 0;
             left: 0;
@@ -10923,17 +10939,17 @@ body[data-page="index"] .article-grid-4{
             height: 100%;
         }
 
-        body[data-page="tentang"] .gallery-grid-item img{
+        .gallery-grid-item img {
             object-fit: cover;
             display: block;
             transition: transform 0.4s var(--ease-out);
         }
 
-        body[data-page="tentang"] .gallery-grid-item:hover img{
+        .gallery-grid-item:hover img {
             transform: scale(1.06);
         }
 
-        body[data-page="tentang"] .gallery-fallback{
+        .gallery-fallback {
             width: 100%;
             height: 100%;
             display: flex;
@@ -10942,7 +10958,7 @@ body[data-page="index"] .article-grid-4{
             background: linear-gradient(135deg, var(--gold-light), var(--gold));
         }
 
-        body[data-page="tentang"] .gallery-fallback span{
+        .gallery-fallback span {
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -10955,11 +10971,11 @@ body[data-page="index"] .article-grid-4{
             margin: 12px;
         }
 
-        body[data-page="tentang"] .gallery-fallback svg{
+        .gallery-fallback svg {
             display: none;
         }
 
-        body[data-page="tentang"] .gallery-empty-note{
+        .gallery-empty-note {
             display: none;
             text-align: center;
             font-size: 0.86rem;
@@ -10968,36 +10984,36 @@ body[data-page="index"] .article-grid-4{
         }
 
         @media (max-width: 900px) {
-            body[data-page="tentang"] .ustad-gallery-grid{
+            .ustad-gallery-grid {
                 gap: 24px 20px;
             }
         }
 
         @media (max-width: 720px) {
-            body[data-page="tentang"] #galleryModalOverlay .wa-modal{
+            #galleryModalOverlay .wa-modal {
                 max-width: 620px;
             }
 
-            body[data-page="tentang"] .gallery-modal-scroll{
+            .gallery-modal-scroll {
                 padding: 28px 26px 32px;
             }
 
-            body[data-page="tentang"] .ustad-gallery-grid{
+            .ustad-gallery-grid {
                 grid-template-columns: 1fr;
                 gap: 22px;
             }
         }
 
         @media (max-width: 480px) {
-            body[data-page="tentang"] #galleryModalOverlay{
+            #galleryModalOverlay {
                 padding: 24px 14px;
             }
 
-            body[data-page="tentang"] .gallery-modal-scroll{
+            .gallery-modal-scroll {
                 padding: 24px 18px 28px;
             }
 
-            body[data-page="tentang"] .ustad-gallery-grid{
+            .ustad-gallery-grid {
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
@@ -11008,30 +11024,30 @@ body[data-page="index"] .article-grid-4{
    ============================================================ */
 /* ===== Blok style #1 dari kontak.html ===== */
 @media (max-width: 900px) {
-            body[data-page="kontak"] .page-header{
+            .page-header {
                 min-height: 0;
                 display: block;
                 padding: 76px 0 40px;
             }
 
-            body[data-page="kontak"] .page-header-media{
+            .page-header-media {
                 position: relative;
                 width: 100%;
                 aspect-ratio: 4080 / 1884;
                 overflow: hidden;
             }
 
-            body[data-page="kontak"] .page-header-slide{
+            .page-header-slide {
                 background-size: cover;
             }
 
-            body[data-page="kontak"] .page-header .container{
+            .page-header .container {
                 margin-top: 26px;
             }
         }
 
         @media (max-width: 480px) {
-            body[data-page="kontak"] .page-header{
+            .page-header {
                 padding-top: 68px;
             }
         }
@@ -11043,17 +11059,17 @@ body[data-page="index"] .article-grid-4{
 /* ================= AGENT — PAGE STYLES ================= */
 
         /* ---------- Crop hero jadi strip atas (senada dengan page-header di Info Manasik & Kontak) ---------- */
-        body[data-page="agent"] .hero{
+        .hero {
             min-height: 640px;
         }
 
         @media (max-width: 900px) {
-            body[data-page="agent"] .hero{
+            .hero {
                 min-height: 480px;
             }
         }
 
-        body[data-page="agent"] .agent-hero-actions{
+        .agent-hero-actions {
             display: flex;
             justify-content: center;
             gap: 14px;
@@ -11063,15 +11079,15 @@ body[data-page="index"] .article-grid-4{
 
         /* ---------- Warna emas untuk "Khalifah Asia Bekasi" di hero ---------- */
 
-        body[data-page="agent"] .hero h1 span{
+        .hero h1 span {
             color: var(--color-primary);
         }
 
-        body[data-page="agent"] #benefit .benefit-grid{
+        #benefit .benefit-grid {
             align-items: stretch;
         }
 
-        body[data-page="agent"] #benefit .benefit-card{
+        #benefit .benefit-card {
             position: relative;
             height: auto;
             min-height: 100%;
@@ -11094,13 +11110,13 @@ body[data-page="index"] .article-grid-4{
                 border-color 0.4s var(--ease-smooth);
         }
 
-        body[data-page="agent"] #benefit .benefit-card:hover{
+        #benefit .benefit-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-medium);
             border-color: rgba(160, 214, 180, 0.6);
         }
 
-        body[data-page="agent"] #benefit .benefit-index{
+        #benefit .benefit-index {
             display: block;
             font-size: 0.78rem;
             font-weight: 800;
@@ -11110,7 +11126,7 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 8px;
         }
 
-        body[data-page="agent"] #benefit .benefit-icon{
+        #benefit .benefit-icon {
             width: 52px;
             height: 52px;
             border-radius: 15px;
@@ -11124,11 +11140,11 @@ body[data-page="index"] .article-grid-4{
             transition: transform 0.35s var(--ease-smooth);
         }
 
-        body[data-page="agent"] #benefit .benefit-card:hover .benefit-icon{
+        #benefit .benefit-card:hover .benefit-icon {
             transform: scale(1.08) rotate(-4deg);
         }
 
-        body[data-page="agent"] #benefit .benefit-card h3{
+        #benefit .benefit-card h3 {
             font-size: 1.1rem;
             font-weight: 700;
             letter-spacing: -0.01em;
@@ -11136,7 +11152,7 @@ body[data-page="index"] .article-grid-4{
             margin: 0 0 8px;
         }
 
-        body[data-page="agent"] #benefit .benefit-card p{
+        #benefit .benefit-card p {
             font-size: 0.92rem;
             line-height: 1.65;
             color: var(--color-text-soft);
@@ -11144,61 +11160,61 @@ body[data-page="index"] .article-grid-4{
         }
 
         /* Kartu highlight: aksen gelap tosca solid + teks emas/putih kontras jelas */
-        body[data-page="agent"] #benefit .benefit-card.highlight{
+        #benefit .benefit-card.highlight {
             grid-column: span 2;
             background: var(--palette-teal);
             border-color: rgba(255, 255, 255, 0.18);
         }
 
-        body[data-page="agent"] #benefit .benefit-card.highlight .benefit-index{
+        #benefit .benefit-card.highlight .benefit-index {
             color: var(--palette-gold);
             opacity: 0.85;
         }
 
-        body[data-page="agent"] #benefit .benefit-card.highlight .benefit-icon{
+        #benefit .benefit-card.highlight .benefit-icon {
             background: rgba(255, 255, 255, 0.14);
             border-color: rgba(255, 255, 255, 0.25);
             color: var(--palette-gold);
         }
 
-        body[data-page="agent"] #benefit .benefit-card.highlight h3{
+        #benefit .benefit-card.highlight h3 {
             color: var(--palette-gold);
         }
 
-        body[data-page="agent"] #benefit .benefit-card.highlight p{
+        #benefit .benefit-card.highlight p {
             color: rgba(255, 255, 255, 0.85);
         }
 
-        body[data-page="agent"] #benefit .benefit-card.highlight strong{
+        #benefit .benefit-card.highlight strong {
             color: var(--palette-gold);
             font-weight: 700;
         }
 
         @media (max-width: 1024px) {
-            body[data-page="agent"] #benefit .benefit-card.highlight{
+            #benefit .benefit-card.highlight {
                 grid-column: span 2;
             }
         }
 
         @media (max-width: 480px) {
-            body[data-page="agent"] #benefit .benefit-card{
+            #benefit .benefit-card {
                 height: auto;
             }
 
-            body[data-page="agent"] #benefit .benefit-card.highlight{
+            #benefit .benefit-card.highlight {
                 grid-column: span 1;
             }
         }
 
         @media (max-width: 380px) {
-            body[data-page="agent"] #benefit .benefit-card{
+            #benefit .benefit-card {
                 padding: 26px 20px;
             }
         }
 
         /* ---------- Selaraskan ikon caret pada Beranda & FAQ (tanpa dropdown) ---------- */
 
-        body[data-page="agent"] .nav-link{
+        .nav-link {
             display: inline-flex;
             align-items: center;
             gap: 5px;
@@ -11206,22 +11222,22 @@ body[data-page="index"] .article-grid-4{
 
         /* ---------- PERBAIKAN JARAK ANTAR SECTION (khusus halaman Agent) ---------- */
 
-        body[data-page="agent"] .poster-paket{
+        .poster-paket {
             padding: 70px 0 60px;
             background: var(--color-surface, #fff) !important;
         }
 
-        body[data-page="agent"] .poster-paket::before{
+        .poster-paket::before {
             display: none;
         }
 
-        body[data-page="agent"] .footer{
+        .footer {
             margin-top: 0;
         }
 
         /* ---------- TOMBOL "TANYA DULU VIA WHATSAPP" — dibuat menyala kuning agar jelas terlihat ---------- */
 
-        body[data-page="agent"] .btn-wa-glow{
+        .btn-wa-glow {
             background: linear-gradient(135deg, var(--palette-gold, #ffc000) 0%, #ffb300 100%) !important;
             color: var(--palette-ink-deep, #17201d) !important;
             border: none !important;
@@ -11229,13 +11245,13 @@ body[data-page="index"] .article-grid-4{
             animation: waGlowPulse 2.4s ease-in-out infinite;
         }
 
-        body[data-page="agent"] .btn-wa-glow:hover{
+        .btn-wa-glow:hover {
             transform: translateY(-3px);
             filter: brightness(1.05);
             box-shadow: 0 20px 46px rgba(255, 192, 0, 0.55);
         }
 
-        body[data-page="agent"] .btn-wa-glow svg{
+        .btn-wa-glow svg {
             flex-shrink: 0;
         }
 
@@ -11253,11 +11269,11 @@ body[data-page="index"] .article-grid-4{
 
         /* ---------- QUOTE STRIP ---------- */
 
-        body[data-page="agent"] .agent-quote-section{
+        .agent-quote-section {
             padding: 70px 0 10px;
         }
 
-        body[data-page="agent"] .agent-quote{
+        .agent-quote {
             max-width: 880px;
             margin: 0 auto;
             padding: 30px 34px;
@@ -11274,18 +11290,18 @@ body[data-page="index"] .article-grid-4{
 
         /* ---------- DASHBOARD PANEL (dipakai ulang dari halaman Tentang Kami) ---------- */
 
-        body[data-page="agent"] .dash-section{
+        .dash-section {
             padding: 90px 0 110px;
         }
 
-        body[data-page="agent"] .dash-wrap{
+        .dash-wrap {
             display: grid;
             grid-template-columns: 300px 1fr;
             gap: 32px;
             align-items: start;
         }
 
-        body[data-page="agent"] .dash-sidebar{
+        .dash-sidebar {
             position: sticky;
             top: 118px;
             background: var(--color-surface);
@@ -11295,7 +11311,7 @@ body[data-page="index"] .article-grid-4{
             box-shadow: var(--shadow-medium);
         }
 
-        body[data-page="agent"] .dash-sidebar-label{
+        .dash-sidebar-label {
             font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 0.1em;
@@ -11304,7 +11320,7 @@ body[data-page="index"] .article-grid-4{
             padding: 10px 14px 6px;
         }
 
-        body[data-page="agent"] .dash-nav-btn{
+        .dash-nav-btn {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -11323,7 +11339,7 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 4px;
         }
 
-        body[data-page="agent"] .dash-nav-btn .dash-nav-icon{
+        .dash-nav-btn .dash-nav-icon {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -11336,23 +11352,23 @@ body[data-page="index"] .article-grid-4{
             transition: all 0.3s var(--ease-smooth);
         }
 
-        body[data-page="agent"] .dash-nav-btn:hover{
+        .dash-nav-btn:hover {
             background: var(--color-surface-warm);
             color: var(--color-heading-strong);
         }
 
-        body[data-page="agent"] .dash-nav-btn.active{
+        .dash-nav-btn.active {
             background: linear-gradient(135deg, var(--palette-gold), var(--palette-gold));
             color: var(--palette-ink);
             box-shadow: 0 12px 40px rgba(255, 192, 0, 0.25);
         }
 
-        body[data-page="agent"] .dash-nav-btn.active .dash-nav-icon{
+        .dash-nav-btn.active .dash-nav-icon {
             background: rgba(255, 255, 255, 0.35);
             color: var(--palette-ink);
         }
 
-        body[data-page="agent"] .dash-content{
+        .dash-content {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--r-lg);
@@ -11363,7 +11379,7 @@ body[data-page="index"] .article-grid-4{
             overflow: hidden;
         }
 
-        body[data-page="agent"] .dash-content::before{
+        .dash-content::before {
             content: "";
             position: absolute;
             top: 0;
@@ -11375,16 +11391,16 @@ body[data-page="index"] .article-grid-4{
             animation: gradient-shift 3s ease infinite;
         }
 
-        body[data-page="agent"] .dash-panel{
+        .dash-panel {
             display: none;
             animation: fadeInUp 0.5s var(--ease-smooth) both;
         }
 
-        body[data-page="agent"] .dash-panel.active{
+        .dash-panel.active {
             display: block;
         }
 
-        body[data-page="agent"] .dash-panel-badge{
+        .dash-panel-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -11399,7 +11415,7 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 20px;
         }
 
-        body[data-page="agent"] .dash-panel h2{
+        .dash-panel h2 {
             font-family: "Manrope", sans-serif;
             font-size: clamp(1.5rem, 2.8vw, 1.9rem);
             font-weight: 700;
@@ -11407,14 +11423,14 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 20px;
         }
 
-        body[data-page="agent"] .dash-panel p{
+        .dash-panel p {
             color: var(--color-text-soft);
             font-size: 1rem;
             line-height: 1.85;
             margin-bottom: 16px;
         }
 
-        body[data-page="agent"] .dash-panel-list{
+        .dash-panel-list {
             list-style: none;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -11422,7 +11438,7 @@ body[data-page="index"] .article-grid-4{
             margin-top: 22px;
         }
 
-        body[data-page="agent"] .dash-panel-list li{
+        .dash-panel-list li {
             position: relative;
             display: flex;
             flex-direction: column;
@@ -11440,7 +11456,7 @@ body[data-page="index"] .article-grid-4{
                 border-color 0.35s var(--ease-smooth, ease);
         }
 
-        body[data-page="agent"] .dash-panel-list li::before{
+        .dash-panel-list li::before {
             content: "";
             position: absolute;
             top: 0;
@@ -11453,17 +11469,17 @@ body[data-page="index"] .article-grid-4{
             transition: transform 0.35s var(--ease-smooth, ease);
         }
 
-        body[data-page="agent"] .dash-panel-list li:hover{
+        .dash-panel-list li:hover {
             transform: translateY(-6px);
             box-shadow: 0 18px 34px rgba(20, 14, 8, 0.08);
             border-color: rgba(255, 192, 0, 0.4);
         }
 
-        body[data-page="agent"] .dash-panel-list li:hover::before{
+        .dash-panel-list li:hover::before {
             transform: scaleX(1);
         }
 
-        body[data-page="agent"] .dash-panel-list .num{
+        .dash-panel-list .num {
             flex-shrink: 0;
             width: 40px;
             height: 40px;
@@ -11478,48 +11494,48 @@ body[data-page="index"] .article-grid-4{
             box-shadow: 0 8px 16px rgba(255, 192, 0, 0.35);
         }
 
-        body[data-page="agent"] .dash-panel-list p{
+        .dash-panel-list p {
             margin: 0;
             font-size: 0.94rem;
             line-height: 1.75;
         }
 
         /* ---------- Variasi warna aksen per kartu, biar tidak monoton semua kuning ---------- */
-        body[data-page="agent"] .dash-panel-list li:nth-child(3n+2)::before{
+        .dash-panel-list li:nth-child(3n+2)::before {
             background: var(--palette-teal, #1f6e6e);
         }
 
-        body[data-page="agent"] .dash-panel-list li:nth-child(3n+2) .num{
+        .dash-panel-list li:nth-child(3n+2) .num {
             background: var(--palette-teal, #1f6e6e);
             color: #fff;
             box-shadow: 0 8px 16px rgba(31, 110, 110, 0.3);
         }
 
-        body[data-page="agent"] .dash-panel-list li:nth-child(3n+2):hover{
+        .dash-panel-list li:nth-child(3n+2):hover {
             border-color: rgba(31, 110, 110, 0.35);
         }
 
-        body[data-page="agent"] .dash-panel-list li:nth-child(3n+3)::before{
+        .dash-panel-list li:nth-child(3n+3)::before {
             background: var(--palette-terracotta, #d9662e);
         }
 
-        body[data-page="agent"] .dash-panel-list li:nth-child(3n+3) .num{
+        .dash-panel-list li:nth-child(3n+3) .num {
             background: var(--palette-terracotta, #d9662e);
             color: #fff;
             box-shadow: 0 8px 16px rgba(217, 102, 46, 0.3);
         }
 
-        body[data-page="agent"] .dash-panel-list li:nth-child(3n+3):hover{
+        .dash-panel-list li:nth-child(3n+3):hover {
             border-color: rgba(217, 102, 46, 0.35);
         }
 
         @media (max-width: 560px) {
-            body[data-page="agent"] .dash-panel-list{
+            .dash-panel-list {
                 grid-template-columns: 1fr;
             }
         }
 
-        body[data-page="agent"] .dash-panel-quote{
+        .dash-panel-quote {
             margin-top: 26px;
             padding: 22px 24px;
             border-left: 4px solid var(--palette-gold);
@@ -11533,11 +11549,11 @@ body[data-page="index"] .article-grid-4{
         }
 
         @media (max-width: 900px) {
-            body[data-page="agent"] .dash-wrap{
+            .dash-wrap {
                 grid-template-columns: 1fr;
             }
 
-            body[data-page="agent"] .dash-sidebar{
+            .dash-sidebar {
                 position: static;
                 display: flex;
                 overflow-x: auto;
@@ -11545,56 +11561,56 @@ body[data-page="index"] .article-grid-4{
                 padding: 10px;
             }
 
-            body[data-page="agent"] .dash-content{
+            .dash-content {
                 padding: 28px 22px;
             }
 
-            body[data-page="agent"] .dash-panel-list li{
+            .dash-panel-list li {
                 padding: 14px 16px;
             }
         }
 
         @media (max-width: 600px) {
-            body[data-page="agent"] .agent-hero-actions{
+            .agent-hero-actions {
                 margin-top: 26px;
             }
         }
 
         /* ---------- PENGUATAN RESPONSIF UMUM (semua elemen page ini) ---------- */
 
-        body[data-page="agent"] img,
-        body[data-page="agent"] video,
-        body[data-page="agent"] svg{
+        img,
+        video,
+        svg {
             max-width: 100%;
             height: auto;
         }
 
-        body[data-page="agent"] .dash-content,
-        body[data-page="agent"] .pemandu-info{
+        .dash-content,
+        .pemandu-info {
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
 
         @media (max-width: 768px) {
-            body[data-page="agent"] .footer-grid{
+            .footer-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 32px 20px;
             }
         }
 
         @media (max-width: 600px) {
-            body[data-page="agent"] .footer-grid{
+            .footer-grid {
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 480px) {
-            body[data-page="agent"] .poster-paket .btn{
+            .poster-paket .btn {
                 width: 100%;
                 justify-content: center;
             }
 
-            body[data-page="agent"] .agent-hero-actions .btn{
+            .agent-hero-actions .btn {
                 width: 100%;
                 justify-content: center;
             }
@@ -11602,7 +11618,7 @@ body[data-page="index"] .article-grid-4{
 
         /* ================= MODAL: FORM BIODATA & EMAIL (sama seperti tentang.html) ================= */
 
-        body[data-page="agent"] .wa-modal-overlay{
+        .wa-modal-overlay {
             position: fixed;
             inset: 0;
             background: rgba(20, 14, 8, 0.62);
@@ -11618,12 +11634,12 @@ body[data-page="index"] .article-grid-4{
             transition: opacity 0.25s ease, visibility 0.25s ease;
         }
 
-        body[data-page="agent"] .wa-modal-overlay.active{
+        .wa-modal-overlay.active {
             opacity: 1;
             visibility: visible;
         }
 
-        body[data-page="agent"] .wa-modal{
+        .wa-modal {
             position: relative;
             background: var(--color-surface);
             border-radius: var(--r-lg, 22px);
@@ -11638,11 +11654,11 @@ body[data-page="index"] .article-grid-4{
             transition: transform 0.3s ease;
         }
 
-        body[data-page="agent"] .wa-modal-overlay.active .wa-modal{
+        .wa-modal-overlay.active .wa-modal {
             transform: translateY(0) scale(1);
         }
 
-        body[data-page="agent"] .wa-modal-header{
+        .wa-modal-header {
             position: relative;
             padding: 30px 28px 20px;
             text-align: center;
@@ -11651,7 +11667,7 @@ body[data-page="index"] .article-grid-4{
             flex-shrink: 0;
         }
 
-        body[data-page="agent"] .wa-modal-header::before{
+        .wa-modal-header::before {
             content: "";
             position: absolute;
             inset: 0;
@@ -11659,7 +11675,7 @@ body[data-page="index"] .article-grid-4{
             pointer-events: none;
         }
 
-        body[data-page="agent"] .wa-modal-close{
+        .wa-modal-close {
             position: absolute;
             top: 22px;
             right: 20px;
@@ -11679,12 +11695,12 @@ body[data-page="index"] .article-grid-4{
             z-index: 2;
         }
 
-        body[data-page="agent"] .wa-modal-close:hover{
+        .wa-modal-close:hover {
             background: rgba(255, 255, 255, 0.36);
             transform: rotate(90deg);
         }
 
-        body[data-page="agent"] .wa-modal-icon{
+        .wa-modal-icon {
             position: relative;
             width: 48px;
             height: 48px;
@@ -11698,7 +11714,7 @@ body[data-page="index"] .article-grid-4{
             margin: 0 auto 10px;
         }
 
-        body[data-page="agent"] .wa-modal-header h3{
+        .wa-modal-header h3 {
             position: relative;
             font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
             font-size: 1.2rem;
@@ -11707,7 +11723,7 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 4px;
         }
 
-        body[data-page="agent"] .wa-modal-sub{
+        .wa-modal-sub {
             position: relative;
             font-size: 0.88rem;
             color: rgba(255, 255, 255, 0.88);
@@ -11716,23 +11732,23 @@ body[data-page="index"] .article-grid-4{
             margin: 0 auto;
         }
 
-        body[data-page="agent"] .wa-modal-scroll{
+        .wa-modal-scroll {
             overflow-y: auto;
             padding: 20px 28px 24px;
         }
 
-        body[data-page="agent"] .wa-section-title{
+        .wa-section-title {
             display: flex;
             align-items: center;
             gap: 10px;
             margin: 0 0 16px;
         }
 
-        body[data-page="agent"] .wa-section-title:not(:first-child){
+        .wa-section-title:not(:first-child) {
             margin-top: 22px;
         }
 
-        body[data-page="agent"] .wa-section-title .num{
+        .wa-section-title .num {
             flex-shrink: 0;
             width: 24px;
             height: 24px;
@@ -11746,7 +11762,7 @@ body[data-page="index"] .article-grid-4{
             font-size: 0.72rem;
         }
 
-        body[data-page="agent"] .wa-section-title span.label{
+        .wa-section-title span.label {
             font-size: 0.72rem;
             font-weight: 800;
             letter-spacing: 0.08em;
@@ -11754,28 +11770,28 @@ body[data-page="index"] .article-grid-4{
             color: var(--palette-amber, #a87a24);
         }
 
-        body[data-page="agent"] .wa-section-title::after{
+        .wa-section-title::after {
             content: "";
             flex: 1;
             height: 1px;
             background: var(--color-border, #e2dccf);
         }
 
-        body[data-page="agent"] .wa-form-grid{
+        .wa-form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0 14px;
         }
 
-        body[data-page="agent"] .wa-field{
+        .wa-field {
             margin-bottom: 15px;
         }
 
-        body[data-page="agent"] .wa-field.full{
+        .wa-field.full {
             grid-column: 1 / -1;
         }
 
-        body[data-page="agent"] .wa-field label{
+        .wa-field label {
             display: block;
             font-size: 0.8rem;
             font-weight: 700;
@@ -11783,11 +11799,11 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 6px;
         }
 
-        body[data-page="agent"] .wa-input-wrap{
+        .wa-input-wrap {
             position: relative;
         }
 
-        body[data-page="agent"] .wa-field-icon{
+        .wa-field-icon {
             position: absolute;
             left: 13px;
             top: 50%;
@@ -11797,9 +11813,9 @@ body[data-page="index"] .article-grid-4{
             pointer-events: none;
         }
 
-        body[data-page="agent"] .wa-field input,
-        body[data-page="agent"] .wa-field select,
-        body[data-page="agent"] .wa-field textarea{
+        .wa-field input,
+        .wa-field select,
+        .wa-field textarea {
             width: 100%;
             padding: 11px 14px 11px 40px;
             border-radius: var(--r-md, 12px);
@@ -11813,12 +11829,12 @@ body[data-page="index"] .article-grid-4{
             appearance: none;
         }
 
-        body[data-page="agent"] .wa-field textarea{
+        .wa-field textarea {
             padding-left: 14px;
             min-height: 78px;
         }
 
-        body[data-page="agent"] .wa-field select{
+        .wa-field select {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a87a24' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 14px center;
@@ -11826,19 +11842,19 @@ body[data-page="index"] .article-grid-4{
             cursor: pointer;
         }
 
-        body[data-page="agent"] .wa-field input:focus,
-        body[data-page="agent"] .wa-field select:focus,
-        body[data-page="agent"] .wa-field textarea:focus{
+        .wa-field input:focus,
+        .wa-field select:focus,
+        .wa-field textarea:focus {
             outline: none;
             border-color: var(--palette-amber, #b3862c);
             box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.18);
         }
 
-        body[data-page="agent"] .wa-field-password-input{
+        .wa-field-password-input {
             padding-right: 42px !important;
         }
 
-        body[data-page="agent"] .wa-toggle-password{
+        .wa-toggle-password {
             position: absolute;
             right: 6px;
             top: 50%;
@@ -11856,19 +11872,19 @@ body[data-page="index"] .article-grid-4{
             transition: color 0.2s ease, background 0.2s ease;
         }
 
-        body[data-page="agent"] .wa-toggle-password:hover{
+        .wa-toggle-password:hover {
             color: var(--palette-amber, #a87a24);
             background: rgba(255, 192, 0, 0.1);
         }
 
-        body[data-page="agent"] .wa-field input.invalid,
-        body[data-page="agent"] .wa-field select.invalid,
-        body[data-page="agent"] .wa-field textarea.invalid{
+        .wa-field input.invalid,
+        .wa-field select.invalid,
+        .wa-field textarea.invalid {
             border-color: #d34d3f;
             background: #fdf2f1;
         }
 
-        body[data-page="agent"] .wa-error{
+        .wa-error {
             display: block;
             min-height: 16px;
             font-size: 0.74rem;
@@ -11877,7 +11893,7 @@ body[data-page="index"] .article-grid-4{
             font-weight: 600;
         }
 
-        body[data-page="agent"] .wa-char-count{
+        .wa-char-count {
             display: block;
             text-align: right;
             font-size: 0.7rem;
@@ -11885,7 +11901,7 @@ body[data-page="index"] .article-grid-4{
             margin-top: 3px;
         }
 
-        body[data-page="agent"] .wa-trust-note{
+        .wa-trust-note {
             display: flex;
             align-items: flex-start;
             gap: 8px;
@@ -11898,13 +11914,13 @@ body[data-page="index"] .article-grid-4{
             line-height: 1.5;
         }
 
-        body[data-page="agent"] .wa-trust-note svg{
+        .wa-trust-note svg {
             flex-shrink: 0;
             color: var(--palette-amber, #a87a24);
             margin-top: 1px;
         }
 
-        body[data-page="agent"] .wa-modal-submit{
+        .wa-modal-submit {
             width: 100%;
             justify-content: center;
             display: flex;
@@ -11917,13 +11933,13 @@ body[data-page="index"] .article-grid-4{
             font-size: 0.98rem;
         }
 
-        body[data-page="agent"] .email-modal-actions{
+        .email-modal-actions {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        body[data-page="agent"] .email-action-btn{
+        .email-action-btn {
             width: 100%;
             justify-content: center;
             display: flex;
@@ -11935,12 +11951,12 @@ body[data-page="index"] .article-grid-4{
             padding: 13px;
         }
 
-        body[data-page="agent"] .btn.email-action-btn.btn-secondary{
+        .btn.email-action-btn.btn-secondary {
             background: var(--color-surface-warm, #faf7f1);
             color: var(--color-heading-strong, #4a3423);
         }
 
-        body[data-page="agent"] .email-copy-msg{
+        .email-copy-msg {
             display: block;
             text-align: center;
             font-size: 0.82rem;
@@ -11950,21 +11966,21 @@ body[data-page="index"] .article-grid-4{
         }
 
         @media (max-width: 560px) {
-            body[data-page="agent"] .wa-form-grid{
+            .wa-form-grid {
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 480px) {
-            body[data-page="agent"] .wa-modal-overlay{
+            .wa-modal-overlay {
                 padding: 76px 12px 16px;
             }
 
-            body[data-page="agent"] .wa-modal-header{
+            .wa-modal-header {
                 padding: 20px 20px 16px;
             }
 
-            body[data-page="agent"] .wa-modal-scroll{
+            .wa-modal-scroll {
                 padding: 18px 18px 20px;
             }
         }
@@ -11972,38 +11988,38 @@ body[data-page="index"] .article-grid-4{
         /* ---------- Pengaman ekstra untuk layar sangat kecil (HP kecil, <=380px) ---------- */
 
         @media (max-width: 380px) {
-            body[data-page="agent"] .dash-content{
+            .dash-content {
                 padding: 22px 16px;
             }
 
-            body[data-page="agent"] .benefit-card{
+            .benefit-card {
                 padding: 28px 20px;
             }
 
-            body[data-page="agent"] .wa-modal-overlay{
+            .wa-modal-overlay {
                 padding: 64px 8px 12px;
             }
 
-            body[data-page="agent"] .wa-modal-header{
+            .wa-modal-header {
                 padding: 18px 16px 14px;
             }
 
-            body[data-page="agent"] .wa-modal-scroll{
+            .wa-modal-scroll {
                 padding: 16px 16px 18px;
             }
 
-            body[data-page="agent"] .wa-modal-icon{
+            .wa-modal-icon {
                 width: 46px;
                 height: 46px;
             }
 
-            body[data-page="agent"] .hero h1{
+            .hero h1 {
                 font-size: 1.7rem;
             }
         }
 
         /* ================= AUTH MODAL (Login / Daftar Agent) ================= */
-        body[data-page="agent"] .auth-tabs{
+        .auth-tabs {
             display: flex;
             gap: 8px;
             background: var(--color-surface-warm, #faf7f1);
@@ -12012,7 +12028,7 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 22px;
         }
 
-        body[data-page="agent"] .auth-tab-btn{
+        .auth-tab-btn {
             flex: 1;
             border: none;
             background: transparent;
@@ -12026,22 +12042,22 @@ body[data-page="index"] .article-grid-4{
             transition: all 0.25s var(--ease-smooth);
         }
 
-        body[data-page="agent"] .auth-tab-btn.active{
+        .auth-tab-btn.active {
             background: var(--color-surface);
             color: var(--palette-amber);
             box-shadow: var(--shadow-soft);
         }
 
-        body[data-page="agent"] .auth-panel{
+        .auth-panel {
             display: none;
         }
 
-        body[data-page="agent"] .auth-panel.active{
+        .auth-panel.active {
             display: block;
             animation: fadeInUp 0.4s var(--ease-smooth) both;
         }
 
-        body[data-page="agent"] .auth-alert{
+        .auth-alert {
             display: none;
             align-items: flex-start;
             gap: 8px;
@@ -12052,40 +12068,40 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 16px;
         }
 
-        body[data-page="agent"] .auth-alert.show{
+        .auth-alert.show {
             display: flex;
         }
 
-        body[data-page="agent"] .auth-alert.error{
+        .auth-alert.error {
             background: #fdf2f1;
             color: #b8382a;
         }
 
-        body[data-page="agent"] .auth-alert.success{
+        .auth-alert.success {
             background: #eef7f0;
             color: #2e7d4f;
         }
 
-        body[data-page="agent"] .auth-switch-hint{
+        .auth-switch-hint {
             text-align: center;
             font-size: 0.82rem;
             color: var(--color-text-soft);
             margin-top: 4px;
         }
 
-        body[data-page="agent"] .auth-switch-hint a{
+        .auth-switch-hint a {
             color: var(--palette-amber);
             font-weight: 700;
             cursor: pointer;
         }
 
         /* ================= SECTION: AKUN AGENT ================= */
-        body[data-page="agent"] .akun-agent-section{
+        .akun-agent-section {
             padding: 60px 0 70px;
             background: var(--color-surface, #fff);
         }
 
-        body[data-page="agent"] .akun-locked{
+        .akun-locked {
             max-width: 640px;
             margin: 0 auto;
             text-align: center;
@@ -12096,7 +12112,7 @@ body[data-page="index"] .article-grid-4{
             box-shadow: var(--shadow-medium);
         }
 
-        body[data-page="agent"] .akun-locked-icon{
+        .akun-locked-icon {
             width: 56px;
             height: 56px;
             border-radius: 16px;
@@ -12108,7 +12124,7 @@ body[data-page="index"] .article-grid-4{
             margin: 0 auto 14px;
         }
 
-        body[data-page="agent"] .akun-locked h2{
+        .akun-locked h2 {
             font-family: "Manrope", sans-serif;
             font-size: clamp(1.4rem, 2.6vw, 1.8rem);
             font-weight: 700;
@@ -12116,35 +12132,35 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 8px;
         }
 
-        body[data-page="agent"] .akun-locked p{
+        .akun-locked p {
             color: var(--color-text-soft);
             line-height: 1.65;
             max-width: 460px;
             margin: 0 auto 20px;
         }
 
-        body[data-page="agent"] .akun-locked-actions{
+        .akun-locked-actions {
             display: flex;
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
         }
 
-        body[data-page="agent"] .akun-unlocked{
+        .akun-unlocked {
             display: none;
             max-width: 880px;
             margin: 0 auto;
         }
 
-        body[data-page="agent"] .akun-unlocked.show{
+        .akun-unlocked.show {
             display: block;
         }
 
-        body[data-page="agent"] .akun-locked.hide{
+        .akun-locked.hide {
             display: none;
         }
 
-        body[data-page="agent"] .akun-greeting{
+        .akun-greeting {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -12158,7 +12174,7 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 22px;
         }
 
-        body[data-page="agent"] .akun-greeting h3{
+        .akun-greeting h3 {
             font-family: "Manrope", sans-serif;
             font-size: 1.2rem;
             font-weight: 700;
@@ -12166,20 +12182,20 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 4px;
         }
 
-        body[data-page="agent"] .akun-greeting p{
+        .akun-greeting p {
             font-size: 0.86rem;
             color: var(--color-text-soft);
             margin: 0;
         }
 
-        body[data-page="agent"] .akun-stats{
+        .akun-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
             margin-bottom: 22px;
         }
 
-        body[data-page="agent"] .akun-stat-card{
+        .akun-stat-card {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--r-md, 14px);
@@ -12188,7 +12204,7 @@ body[data-page="index"] .article-grid-4{
             box-shadow: var(--shadow-soft);
         }
 
-        body[data-page="agent"] .akun-stat-num{
+        .akun-stat-num {
             font-family: "Manrope", sans-serif;
             font-size: 1.7rem;
             font-weight: 800;
@@ -12197,7 +12213,7 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 6px;
         }
 
-        body[data-page="agent"] .akun-stat-label{
+        .akun-stat-label {
             font-size: 0.76rem;
             font-weight: 600;
             color: var(--color-text-soft);
@@ -12205,7 +12221,7 @@ body[data-page="index"] .article-grid-4{
             letter-spacing: 0.04em;
         }
 
-        body[data-page="agent"] .akun-share-box{
+        .akun-share-box {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--r-lg, 20px);
@@ -12214,7 +12230,7 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 22px;
         }
 
-        body[data-page="agent"] .akun-share-box h4{
+        .akun-share-box h4 {
             font-family: "Manrope", sans-serif;
             font-size: 1rem;
             font-weight: 700;
@@ -12222,23 +12238,23 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 6px;
         }
 
-        body[data-page="agent"] .akun-share-box>p{
+        .akun-share-box>p {
             font-size: 0.85rem;
             color: var(--color-text-soft);
             margin-bottom: 18px;
         }
 
-        body[data-page="agent"] .copy-row{
+        .copy-row {
             display: flex;
             gap: 10px;
             margin-bottom: 14px;
         }
 
-        body[data-page="agent"] .copy-row:last-child{
+        .copy-row:last-child {
             margin-bottom: 0;
         }
 
-        body[data-page="agent"] .copy-field{
+        .copy-field {
             flex: 1;
             display: flex;
             align-items: center;
@@ -12254,13 +12270,13 @@ body[data-page="index"] .article-grid-4{
             overflow: hidden;
         }
 
-        body[data-page="agent"] .copy-field span{
+        .copy-field span {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
 
-        body[data-page="agent"] .copy-btn-small{
+        .copy-btn-small {
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -12278,11 +12294,11 @@ body[data-page="index"] .article-grid-4{
             transition: transform 0.2s ease;
         }
 
-        body[data-page="agent"] .copy-btn-small:hover{
+        .copy-btn-small:hover {
             transform: translateY(-2px);
         }
 
-        body[data-page="agent"] .akun-referral-table-wrap{
+        .akun-referral-table-wrap {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--r-lg, 20px);
@@ -12292,7 +12308,7 @@ body[data-page="index"] .article-grid-4{
             overflow-x: auto;
         }
 
-        body[data-page="agent"] .akun-referral-table-wrap h4{
+        .akun-referral-table-wrap h4 {
             font-family: "Manrope", sans-serif;
             font-size: 1rem;
             font-weight: 700;
@@ -12300,13 +12316,13 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 16px;
         }
 
-        body[data-page="agent"] .akun-referral-table{
+        .akun-referral-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.84rem;
         }
 
-        body[data-page="agent"] .akun-referral-table th{
+        .akun-referral-table th {
             text-align: left;
             padding: 10px 12px;
             color: var(--color-text-soft);
@@ -12316,20 +12332,20 @@ body[data-page="index"] .article-grid-4{
             border-bottom: 1.5px solid var(--color-border);
         }
 
-        body[data-page="agent"] .akun-referral-table td{
+        .akun-referral-table td {
             padding: 12px;
             border-bottom: 1px solid var(--color-border);
             color: var(--palette-ink);
         }
 
-        body[data-page="agent"] .akun-referral-empty{
+        .akun-referral-empty {
             text-align: center;
             padding: 30px 10px;
             color: var(--color-text-soft);
             font-size: 0.86rem;
         }
 
-        body[data-page="agent"] .status-pill{
+        .status-pill {
             display: inline-flex;
             padding: 4px 11px;
             border-radius: var(--r-pill, 999px);
@@ -12337,45 +12353,45 @@ body[data-page="index"] .article-grid-4{
             font-weight: 700;
         }
 
-        body[data-page="agent"] .status-pill.baru{
+        .status-pill.baru {
             background: #eef2fb;
             color: #3357a8;
         }
 
-        body[data-page="agent"] .status-pill.diproses{
+        .status-pill.diproses {
             background: #fff4de;
             color: #9a6a00;
         }
 
-        body[data-page="agent"] .status-pill.deal{
+        .status-pill.deal {
             background: #eef7f0;
             color: #2e7d4f;
         }
 
-        body[data-page="agent"] .status-pill.batal{
+        .status-pill.batal {
             background: #fdf2f1;
             color: #b8382a;
         }
 
-        body[data-page="agent"] .akun-logout-row{
+        .akun-logout-row {
             text-align: center;
         }
 
         @media (max-width: 700px) {
-            body[data-page="agent"] .akun-stats{
+            .akun-stats {
                 grid-template-columns: 1fr;
             }
 
-            body[data-page="agent"] .akun-greeting{
+            .akun-greeting {
                 flex-direction: column;
                 align-items: flex-start;
             }
 
-            body[data-page="agent"] .copy-row{
+            .copy-row {
                 flex-direction: column;
             }
 
-            body[data-page="agent"] .akun-locked{
+            .akun-locked {
                 padding: 28px 20px;
             }
         }
@@ -12385,7 +12401,7 @@ body[data-page="index"] .article-grid-4{
    ============================================================ */
 /* ===== Blok style #1 dari infososialisasi.html ===== */
 /* Judul hero "Seminar & Sosialisasi Umroh" dibuat putih */
-        body[data-page="infososialisasi"] .page-header-title-gold{
+        .page-header-title-gold {
             background: none !important;
             -webkit-background-clip: unset !important;
             background-clip: unset !important;
@@ -12393,7 +12409,7 @@ body[data-page="index"] .article-grid-4{
             color: #fff !important;
         }
 
-        body[data-page="infososialisasi"] .im-scope{
+        .im-scope {
             --im-primary: var(--ink, #1f2023);
             --im-primary-dark: var(--ink, #0d0805);
             --im-gold: var(--gold, #367588);
@@ -12404,7 +12420,7 @@ body[data-page="index"] .article-grid-4{
         }
 
         /* Page Hero dan Breadcumb */
-        body[data-page="infososialisasi"] .im-pagehero-curve{
+        .im-pagehero-curve {
             position: absolute;
             left: 50%;
             bottom: -1px;
@@ -12418,13 +12434,13 @@ body[data-page="index"] .article-grid-4{
         }
 
         /* Page Hero Photo Carousel Background */
-        body[data-page="infososialisasi"] .page-header-photo-bg{
+        .page-header-photo-bg {
             position: absolute;
             inset: 0;
             overflow: hidden;
         }
 
-        body[data-page="infososialisasi"] .page-header-photo{
+        .page-header-photo {
             position: absolute;
             inset: 0;
             width: 100%;
@@ -12436,30 +12452,30 @@ body[data-page="index"] .article-grid-4{
             transition: opacity 1.2s var(--ease-out);
         }
 
-        body[data-page="infososialisasi"] .page-header-photo.is-active{
+        .page-header-photo.is-active {
             opacity: 1;
         }
 
         /* Foto hero (fotoseminar.jpeg) landscape lebar - atur titik fokus per device supaya Ka'bah & jamaah tetap kelihatan, tidak terpotong parah */
         @media (min-width: 1025px) {
-            body[data-page="infososialisasi"] .page-header-photo{
+            .page-header-photo {
                 background-position: center 40%;
             }
         }
 
         @media (min-width: 641px) and (max-width: 1024px) {
-            body[data-page="infososialisasi"] .page-header-photo{
+            .page-header-photo {
                 background-position: center 35%;
             }
         }
 
         @media (max-width: 640px) {
-            body[data-page="infososialisasi"] .page-header-photo{
+            .page-header-photo {
                 background-position: 42% center;
             }
         }
 
-        body[data-page="infososialisasi"] .im-breadcrumb{
+        .im-breadcrumb {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -12471,32 +12487,32 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 18px;
         }
 
-        body[data-page="infososialisasi"] .im-breadcrumb:empty{
+        .im-breadcrumb:empty {
             display: none;
             margin-bottom: 0;
         }
 
-        body[data-page="infososialisasi"] .im-breadcrumb a{
+        .im-breadcrumb a {
             color: rgba(255, 255, 255, .68);
             text-decoration: none;
             transition: color .2s ease;
         }
 
-        body[data-page="infososialisasi"] .im-breadcrumb a:hover{
+        .im-breadcrumb a:hover {
             color: #fff;
         }
 
-        body[data-page="infososialisasi"] .im-breadcrumb span[aria-current]{
+        .im-breadcrumb span[aria-current] {
             color: var(--im-gold);
         }
 
         /* Intro ringkas */
-        body[data-page="infososialisasi"] .im-intro{
+        .im-intro {
             background: #fff;
             padding: 8px 0 8px;
         }
 
-        body[data-page="infososialisasi"] .im-intro-row{
+        .im-intro-row {
             display: flex;
             flex-wrap: wrap;
             gap: 40px;
@@ -12505,11 +12521,11 @@ body[data-page="index"] .article-grid-4{
             border-bottom: 1px solid var(--im-line);
         }
 
-        body[data-page="infososialisasi"] .im-intro-text{
+        .im-intro-text {
             flex: 1 1 420px;
         }
 
-        body[data-page="infososialisasi"] .im-intro-text p{
+        .im-intro-text p {
             font-family: 'Manrope', sans-serif;
             font-size: 15.5px;
             line-height: 1.8;
@@ -12518,7 +12534,7 @@ body[data-page="index"] .article-grid-4{
             margin: 0;
         }
 
-        body[data-page="infososialisasi"] .im-intro-chips{
+        .im-intro-chips {
             flex: 0 0 auto;
             display: flex;
             flex-direction: column;
@@ -12526,7 +12542,7 @@ body[data-page="index"] .article-grid-4{
             min-width: 240px;
         }
 
-        body[data-page="infososialisasi"] .im-chip{
+        .im-chip {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -12540,13 +12556,13 @@ body[data-page="index"] .article-grid-4{
             border-radius: 999px;
         }
 
-        body[data-page="infososialisasi"] .im-chip svg{
+        .im-chip svg {
             flex-shrink: 0;
             color: var(--im-primary);
         }
 
         /* Catatan / note bar ringkas */
-        body[data-page="infososialisasi"] .im-note{
+        .im-note {
             display: flex;
             align-items: center;
             gap: 14px;
@@ -12561,42 +12577,42 @@ body[data-page="index"] .article-grid-4{
             color: var(--im-muted);
         }
 
-        body[data-page="infososialisasi"] .im-note svg{
+        .im-note svg {
             flex-shrink: 0;
             color: var(--im-gold);
             margin-top: 2px;
         }
 
-        body[data-page="infososialisasi"] .im-note strong{
+        .im-note strong {
             color: var(--im-ink);
         }
 
         /* Mini FAQ */
-        body[data-page="infososialisasi"] .im-faq-section{
+        .im-faq-section {
             background: #fff;
             padding: 12px 0 96px;
         }
 
         /* ---------- Tombol "Tanyakan Jadwal Terbaru" — kuning ----------*/
-        body[data-page="infososialisasi"] .im-scope .im-btn-yellow{
+        .im-scope .im-btn-yellow {
             background: #FFC107;
             border-color: #FFC107;
             color: #1f2023;
         }
 
-        body[data-page="infososialisasi"] .im-scope .im-btn-yellow:hover{
+        .im-scope .im-btn-yellow:hover {
             background: #FFCD38;
             border-color: #FFCD38;
             color: #1f2023;
         }
 
         /* ---------- Badge "Jadwal Terdekat" ---------- */
-        body[data-page="infososialisasi"] .im-scope .manasik-card[data-manasik-next="true"]{
+        .im-scope .manasik-card[data-manasik-next="true"] {
             outline: 2px solid var(--im-gold);
             outline-offset: 3px;
         }
 
-        body[data-page="infososialisasi"] .im-badge-next{
+        .im-badge-next {
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -12612,12 +12628,12 @@ body[data-page="index"] .article-grid-4{
             margin-bottom: 10px;
         }
 
-        body[data-page="infososialisasi"] .im-badge-next svg{
+        .im-badge-next svg {
             flex-shrink: 0;
         }
 
         @media (max-width: 720px) {
-            body[data-page="infososialisasi"] .im-intro-row{
+            .im-intro-row {
                 gap: 22px;
             }
         }
@@ -12626,7 +12642,7 @@ body[data-page="index"] .article-grid-4{
    HALAMAN: artikel.html
    ============================================================ */
 /* ===== Blok style #1 dari artikel.html ===== */
-body[data-page="artikel"] .article-tabs{
+.article-tabs {
             display: flex;
             justify-content: center;
             gap: 12px;
@@ -12634,7 +12650,7 @@ body[data-page="artikel"] .article-tabs{
             margin: 0 0 44px;
         }
 
-        body[data-page="artikel"] .article-tab-btn{
+        .article-tab-btn {
             font-family: inherit;
             font-size: 15px;
             font-weight: 600;
@@ -12647,20 +12663,20 @@ body[data-page="artikel"] .article-tabs{
             transition: all .25s ease;
         }
 
-        body[data-page="artikel"] .article-tab-btn:hover{
+        .article-tab-btn:hover {
             border-color: rgba(0, 0, 0, 0.35);
         }
 
-        body[data-page="artikel"] .article-tab-btn.active{
+        .article-tab-btn.active {
             background: #1a1a1a;
             border-color: #1a1a1a;
             color: #fff;
         }
 
-        body[data-page="artikel"] .article-tab-panel{
+        .article-tab-panel {
             display: none;
         }
 
-        body[data-page="artikel"] .article-tab-panel.active{
+        .article-tab-panel.active {
             display: block;
         }
