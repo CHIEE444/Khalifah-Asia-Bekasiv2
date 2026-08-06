@@ -9750,13 +9750,6 @@ object {
         }
 
         .dash-sidebar {
-            position: static;
-            display: flex;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-
-        .dash-sidebar {
             position: sticky;
             top: 118px;
             background: var(--white);
@@ -10082,6 +10075,8 @@ object {
 
             .dash-nav-btn {
                 flex-direction: column;
+                flex: 0 0 auto;
+                width: auto;
                 text-align: center;
                 gap: 6px;
                 white-space: nowrap;
@@ -11559,6 +11554,14 @@ object {
                 overflow-x: auto;
                 gap: 4px;
                 padding: 10px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .dash-nav-btn {
+                flex: 0 0 auto;
+                width: auto;
+                white-space: nowrap;
+                margin-bottom: 0;
             }
 
             .dash-content {
