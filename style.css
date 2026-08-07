@@ -4281,6 +4281,40 @@ ol {
   }
 }
 
+/* ---- FIX: chip "Gratis & terbuka", "Dibawakan ustadz...", dll
+   keluar dari layar di HP kecil (<=480px). Penyebab: .im-intro-chips
+   pakai "flex: 0 0 auto" sehingga tidak bisa menyempit mengikuti lebar
+   layar. Di layar sempit dipaksa full-width supaya teks di dalam chip
+   bisa wrap normal. ---- */
+@media (max-width: 480px) {
+  .im-intro-chips {
+    flex: 1 1 100%;
+    min-width: 0;
+    width: 100%;
+  }
+  .im-chip {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* ---- FIX: ikon sosial media & nama brand di footer terpotong/keluar
+   layar di HP kecil (<=480px). Penyebab: .footer-social tidak
+   flex-wrap, dan .footer-brand .logo-text pakai font-size 30px tetap
+   tanpa penyesuaian mobile. ---- */
+.footer-social {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .footer-brand .logo-text {
+    font-size: 22px;
+    white-space: normal;
+    flex-wrap: wrap;
+    row-gap: 2px;
+  }
+}
+
 /* ---- Global container / section spacing on small screens ---- */
 @media (max-width: 640px) {
   .container {
@@ -12420,6 +12454,28 @@ object {
             --im-ink: #17251f;
             --im-muted: #5f6f6a;
             --im-line: #e7e1d2;
+        }
+
+        /* FIX: .page-header adalah class yang dipakai bersama beberapa
+           halaman. Ada aturan mobile khusus kontak.html (min-height:0;
+           display:block) yang ikut "bocor" ke halaman ini karena sama-sama
+           pakai class .page-header. Di HP, judul 2 baris "Seminar &
+           Sosialisasi Umroh" jadi meluber keluar kotak foto akibat
+           tingginya dipotong ke 0. Dikembalikan tinggi yang cukup, khusus
+           discope ke .im-scope supaya tidak menyentuh tampilan kontak.html. */
+        @media (max-width: 900px) {
+            .im-scope .page-header {
+                min-height: 480px;
+                display: flex;
+                padding: 110px 0 72px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .im-scope .page-header {
+                min-height: 440px;
+                padding: 100px 0 64px;
+            }
         }
 
         /* Page Hero dan Breadcumb */
